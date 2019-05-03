@@ -1,0 +1,516 @@
+\begin{thebibliography}{25}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{{Baars} and {Swenson}(2008)}]{2008PhT....61g..53B}
+\bibinfo{author}{{Baars}, J.W.M.}, \bibinfo{author}{{Swenson}, G.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{{The Paraboloidal Reflector Antenna in Radio
+  Astronomy and Communication: Theory and Practice}}.
+\newblock \bibinfo{journal}{Physics Today} \bibinfo{volume}{61},
+  \bibinfo{pages}{53}.
+\newblock \DOIprefix\doi{10.1063/1.2963014}.
+%Type = Article
+\bibitem[{{BICEP2 Collaboration} et~al.(2018){BICEP2 Collaboration}, {Keck
+  Array Collaboration}, {Ade}, {Ahmed}, {Aikin}, {Alexand er}, {Barkats},
+  {Benton}, {Bischoff}, {Bock}, {Bowens-Rubin}, {Brevik}, {Buder}, {Bullock},
+  {Buza}, {Connors}, {Cornelison}, {Crill}, {Crumrine}, {Dierickx}, {Duband},
+  {Dvorkin}, {Filippini}, {Fliescher}, {Grayson}, {Hall}, {Halpern},
+  {Harrison}, {Hildebrand t}, {Hilton}, {Hui}, {Irwin}, {Kang}, {Karkare},
+  {Karpel}, {Kaufman}, {Keating}, {Kefeli}, {Kernasovskiy}, {Kovac}, {Kuo},
+  {Larsen}, {Lau}, {Leitch}, {Lueker}, {Megerian}, {Moncelsi}, {Namikawa},
+  {Netterfield}, {Nguyen}, {O'Brient}, {Ogburn}, {Palladino}, {Pryke},
+  {Racine}, {Richter}, {Schillaci}, {Schwarz}, {Sheehy}, {Soliman}, {St.
+  Germaine}, {Staniszewski}, {Steinbach}, {Sudiwala}, {Teply}, {Thompson},
+  {Tolan}, {Tucker}, {Turner}, {Umilt{\`a}}, {Vieregg}, {Wand ui}, {Weber},
+  {Wiebe}, {Willmert}, {Wong}, {Wu}, {Yang}, {Yoon} and
+  {Zhang}}]{2018PhRvL.121v1301B}
+\bibinfo{author}{{BICEP2 Collaboration}}, \bibinfo{author}{{Keck Array
+  Collaboration}}, \bibinfo{author}{{Ade}, P.A.R.}, \bibinfo{author}{{Ahmed},
+  Z.}, \bibinfo{author}{{Aikin}, R.W.}, \bibinfo{author}{{Alexand er}, K.D.},
+  \bibinfo{author}{{Barkats}, D.}, \bibinfo{author}{{Benton}, S.J.},
+  \bibinfo{author}{{Bischoff}, C.A.}, \bibinfo{author}{{Bock}, J.J.},
+  \bibinfo{author}{{Bowens-Rubin}, R.}, \bibinfo{author}{{Brevik}, J.A.},
+  \bibinfo{author}{{Buder}, I.}, \bibinfo{author}{{Bullock}, E.},
+  \bibinfo{author}{{Buza}, V.}, \bibinfo{author}{{Connors}, J.},
+  \bibinfo{author}{{Cornelison}, J.}, \bibinfo{author}{{Crill}, B.P.},
+  \bibinfo{author}{{Crumrine}, M.}, \bibinfo{author}{{Dierickx}, M.},
+  \bibinfo{author}{{Duband}, L.}, \bibinfo{author}{{Dvorkin}, C.},
+  \bibinfo{author}{{Filippini}, J.P.}, \bibinfo{author}{{Fliescher}, S.},
+  \bibinfo{author}{{Grayson}, J.}, \bibinfo{author}{{Hall}, G.},
+  \bibinfo{author}{{Halpern}, M.}, \bibinfo{author}{{Harrison}, S.},
+  \bibinfo{author}{{Hildebrand t}, S.R.}, \bibinfo{author}{{Hilton}, G.C.},
+  \bibinfo{author}{{Hui}, H.}, \bibinfo{author}{{Irwin}, K.D.},
+  \bibinfo{author}{{Kang}, J.}, \bibinfo{author}{{Karkare}, K.S.},
+  \bibinfo{author}{{Karpel}, E.}, \bibinfo{author}{{Kaufman}, J.P.},
+  \bibinfo{author}{{Keating}, B.G.}, \bibinfo{author}{{Kefeli}, S.},
+  \bibinfo{author}{{Kernasovskiy}, S.A.}, \bibinfo{author}{{Kovac}, J.M.},
+  \bibinfo{author}{{Kuo}, C.L.}, \bibinfo{author}{{Larsen}, N.A.},
+  \bibinfo{author}{{Lau}, K.}, \bibinfo{author}{{Leitch}, E.M.},
+  \bibinfo{author}{{Lueker}, M.}, \bibinfo{author}{{Megerian}, K.G.},
+  \bibinfo{author}{{Moncelsi}, L.}, \bibinfo{author}{{Namikawa}, T.},
+  \bibinfo{author}{{Netterfield}, C.B.}, \bibinfo{author}{{Nguyen}, H.T.},
+  \bibinfo{author}{{O'Brient}, R.}, \bibinfo{author}{{Ogburn}, R.W.},
+  \bibinfo{author}{{Palladino}, S.}, \bibinfo{author}{{Pryke}, C.},
+  \bibinfo{author}{{Racine}, B.}, \bibinfo{author}{{Richter}, S.},
+  \bibinfo{author}{{Schillaci}, A.}, \bibinfo{author}{{Schwarz}, R.},
+  \bibinfo{author}{{Sheehy}, C.D.}, \bibinfo{author}{{Soliman}, A.},
+  \bibinfo{author}{{St. Germaine}, T.}, \bibinfo{author}{{Staniszewski}, Z.K.},
+  \bibinfo{author}{{Steinbach}, B.}, \bibinfo{author}{{Sudiwala}, R.V.},
+  \bibinfo{author}{{Teply}, G.P.}, \bibinfo{author}{{Thompson}, K.L.},
+  \bibinfo{author}{{Tolan}, J.E.}, \bibinfo{author}{{Tucker}, C.},
+  \bibinfo{author}{{Turner}, A.D.}, \bibinfo{author}{{Umilt{\`a}}, C.},
+  \bibinfo{author}{{Vieregg}, A.G.}, \bibinfo{author}{{Wand ui}, A.},
+  \bibinfo{author}{{Weber}, A.C.}, \bibinfo{author}{{Wiebe}, D.V.},
+  \bibinfo{author}{{Willmert}, J.}, \bibinfo{author}{{Wong}, C.L.},
+  \bibinfo{author}{{Wu}, W.L.K.}, \bibinfo{author}{{Yang}, H.},
+  \bibinfo{author}{{Yoon}, K.W.}, \bibinfo{author}{{Zhang}, C.},
+  \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{Constraints on Primordial Gravitational Waves Using
+  Planck, WMAP, and New BICEP2/Keck Observations through the 2015 Season}}.
+\newblock \bibinfo{journal}{PRL} \bibinfo{volume}{121},
+  \bibinfo{pages}{221301}.
+\newblock \DOIprefix\doi{10.1103/PhysRevLett.121.221301},
+  \href{http://arxiv.org/abs/1810.05216}{\tt arXiv:1810.05216}.
+%Type = Article
+\bibitem[{{Challinor} et~al.(2000){Challinor}, {Fosalba}, {Mortlock},
+  {Ashdown}, {Wandelt} and {G{\'o}rski}}]{2000PhRvD..62l3002C}
+\bibinfo{author}{{Challinor}, A.}, \bibinfo{author}{{Fosalba}, P.},
+  \bibinfo{author}{{Mortlock}, D.}, \bibinfo{author}{{Ashdown}, M.},
+  \bibinfo{author}{{Wandelt}, B.}, \bibinfo{author}{{G{\'o}rski}, K.},
+  \bibinfo{year}{2000}.
+\newblock \bibinfo{title}{{All-sky convolution for polarimetry experiments}}.
+\newblock \bibinfo{journal}{PRD} \bibinfo{volume}{62}, \bibinfo{pages}{123002}.
+\newblock \DOIprefix\doi{10.1103/PhysRevD.62.123002},
+  \href{http://arxiv.org/abs/astro-ph/0008228}{\tt arXiv:astro-ph/0008228}.
+%Type = Book
+\bibitem[{{Chandrasekhar}(1960)}]{1960ratr.book.....C}
+\bibinfo{author}{{Chandrasekhar}, S.}, \bibinfo{year}{1960}.
+\newblock \bibinfo{title}{{Radiative transfer}}.
+%Type = Article
+\bibitem[{{Das} et~al.(2015){Das}, {Mitra} and {Tabitha
+  Paulson}}]{2015JCAP...03..048D}
+\bibinfo{author}{{Das}, S.}, \bibinfo{author}{{Mitra}, S.},
+  \bibinfo{author}{{Tabitha Paulson}, S.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Effect of noncircularity of experimental beam on CMB
+  parameter estimation}}.
+\newblock \bibinfo{journal}{Journal of Cosmology and Astro-Particle Physics}
+  \bibinfo{volume}{2015}, \bibinfo{pages}{048}.
+\newblock \DOIprefix\doi{10.1088/1475-7516/2015/03/048},
+  \href{http://arxiv.org/abs/1501.02101}{\tt arXiv:1501.02101}.
+%Type = Article
+\bibitem[{{Duivenvoorden} et~al.(2018){Duivenvoorden}, {Gudmundsson} and
+  {Rahlin}}]{2018arXiv180905034D}
+\bibinfo{author}{{Duivenvoorden}, A.J.}, \bibinfo{author}{{Gudmundsson}, J.E.},
+  \bibinfo{author}{{Rahlin}, A.S.}, \bibinfo{year}{2018}.
+\newblock \bibinfo{title}{{Full-sky beam convolution for cosmic microwave
+  background applications}}.
+\newblock \bibinfo{journal}{arXiv e-prints} ,
+  \bibinfo{pages}{arXiv:1809.05034}\href{http://arxiv.org/abs/1809.05034}{\tt
+  arXiv:1809.05034}.
+%Type = Inproceedings
+\bibitem[{{Eimer} et~al.(2012){Eimer}, {Bennett}, {Chuss}, {Marriage},
+  {Wollack} and {Zeng}}]{2012SPIE.8452E..20E}
+\bibinfo{author}{{Eimer}, J.R.}, \bibinfo{author}{{Bennett}, C.L.},
+  \bibinfo{author}{{Chuss}, D.T.}, \bibinfo{author}{{Marriage}, T.},
+  \bibinfo{author}{{Wollack}, E.J.}, \bibinfo{author}{{Zeng}, L.},
+  \bibinfo{year}{2012}.
+\newblock \bibinfo{title}{{The cosmology large angular scale surveyor (CLASS):
+  40 GHz optical design}}, in: \bibinfo{booktitle}{Millimeter, Submillimeter,
+  and Far-Infrared Detectors and Instrumentation for Astronomy VI}, p.
+  \bibinfo{pages}{845220}.
+\newblock \DOIprefix\doi{10.1117/12.925464},
+  \href{http://arxiv.org/abs/1211.0041}{\tt arXiv:1211.0041}.
+%Type = Article
+\bibitem[{{Foreman-Mackey} et~al.(2013){Foreman-Mackey}, {Hogg}, {Lang} and
+  {Goodman}}]{emcee}
+\bibinfo{author}{{Foreman-Mackey}, D.}, \bibinfo{author}{{Hogg}, D.W.},
+  \bibinfo{author}{{Lang}, D.}, \bibinfo{author}{{Goodman}, J.},
+  \bibinfo{year}{2013}.
+\newblock \bibinfo{title}{emcee: The mcmc hammer}.
+\newblock \bibinfo{journal}{PASP} \bibinfo{volume}{125},
+  \bibinfo{pages}{306--312}.
+\newblock \DOIprefix\doi{10.1086/670067},
+  \href{http://arxiv.org/abs/1202.3665}{\tt arXiv:1202.3665}.
+%Type = Article
+\bibitem[{{G{\'o}rski} et~al.(2005){G{\'o}rski}, {Hivon}, {Banday}, {Wandelt},
+  {Hansen}, {Reinecke} and {Bartelmann}}]{2005ApJ...622..759G}
+\bibinfo{author}{{G{\'o}rski}, K.M.}, \bibinfo{author}{{Hivon}, E.},
+  \bibinfo{author}{{Banday}, A.J.}, \bibinfo{author}{{Wandelt}, B.D.},
+  \bibinfo{author}{{Hansen}, F.K.}, \bibinfo{author}{{Reinecke}, M.},
+  \bibinfo{author}{{Bartelmann}, M.}, \bibinfo{year}{2005}.
+\newblock \bibinfo{title}{{HEALPix: A Framework for High-Resolution
+  Discretization and Fast Analysis of Data Distributed on the Sphere}}.
+\newblock \bibinfo{journal}{APJ} \bibinfo{volume}{622},
+  \bibinfo{pages}{759--771}.
+\newblock \DOIprefix\doi{10.1086/427976},
+  \href{http://arxiv.org/abs/arXiv:astro-ph/0409513}{\tt
+  arXiv:arXiv:astro-ph/0409513}.
+%Type = Inproceedings
+\bibitem[{{Harrington} et~al.(2016){Harrington}, {Marriage}, {Ali}, {Appel},
+  {Bennett}, {Boone}, {Brewer}, {Chan}, {Chuss}, {Colazo}, {Dahal}, {Denis},
+  {D{\"u}nner}, {Eimer}, {Essinger-Hileman}, {Fluxa}, {Halpern}, {Hilton},
+  {Hinshaw}, {Hubmayr}, {Iuliano}, {Karakla}, {McMahon}, {Miller}, {Moseley},
+  {Palma}, {Parker}, {Petroff}, {Pradenas}, {Rostem}, {Sagliocca}, {Valle},
+  {Watts}, {Wollack}, {Xu} and {Zeng}}]{2016SPIE.9914E..1KH}
+\bibinfo{author}{{Harrington}, K.}, \bibinfo{author}{{Marriage}, T.},
+  \bibinfo{author}{{Ali}, A.}, \bibinfo{author}{{Appel}, J.W.},
+  \bibinfo{author}{{Bennett}, C.L.}, \bibinfo{author}{{Boone}, F.},
+  \bibinfo{author}{{Brewer}, M.}, \bibinfo{author}{{Chan}, M.},
+  \bibinfo{author}{{Chuss}, D.T.}, \bibinfo{author}{{Colazo}, F.},
+  \bibinfo{author}{{Dahal}, S.}, \bibinfo{author}{{Denis}, K.},
+  \bibinfo{author}{{D{\"u}nner}, R.}, \bibinfo{author}{{Eimer}, J.},
+  \bibinfo{author}{{Essinger-Hileman}, T.}, \bibinfo{author}{{Fluxa}, P.},
+  \bibinfo{author}{{Halpern}, M.}, \bibinfo{author}{{Hilton}, G.},
+  \bibinfo{author}{{Hinshaw}, G.F.}, \bibinfo{author}{{Hubmayr}, J.},
+  \bibinfo{author}{{Iuliano}, J.}, \bibinfo{author}{{Karakla}, J.},
+  \bibinfo{author}{{McMahon}, J.}, \bibinfo{author}{{Miller}, N.T.},
+  \bibinfo{author}{{Moseley}, S.H.}, \bibinfo{author}{{Palma}, G.},
+  \bibinfo{author}{{Parker}, L.}, \bibinfo{author}{{Petroff}, M.},
+  \bibinfo{author}{{Pradenas}, B.}, \bibinfo{author}{{Rostem}, K.},
+  \bibinfo{author}{{Sagliocca}, M.}, \bibinfo{author}{{Valle}, D.},
+  \bibinfo{author}{{Watts}, D.}, \bibinfo{author}{{Wollack}, E.},
+  \bibinfo{author}{{Xu}, Z.}, \bibinfo{author}{{Zeng}, L.},
+  \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{{The Cosmology Large Angular Scale Surveyor}}, in:
+  \bibinfo{booktitle}{Millimeter, Submillimeter, and Far-Infrared Detectors and
+  Instrumentation for Astronomy VIII}, p. \bibinfo{pages}{99141K}.
+\newblock \DOIprefix\doi{10.1117/12.2233125},
+  \href{http://arxiv.org/abs/1608.08234}{\tt arXiv:1608.08234}.
+%Type = Article
+\bibitem[{{Jones} et~al.(2007){Jones}, {Montroy}, {Crill}, {Contaldi},
+  {Kisner}, {Lange}, {MacTavish}, {Netterfield} and
+  {Ruhl}}]{2007A&A...470..771J}
+\bibinfo{author}{{Jones}, W.C.}, \bibinfo{author}{{Montroy}, T.E.},
+  \bibinfo{author}{{Crill}, B.P.}, \bibinfo{author}{{Contaldi}, C.R.},
+  \bibinfo{author}{{Kisner}, T.S.}, \bibinfo{author}{{Lange}, A.E.},
+  \bibinfo{author}{{MacTavish}, C.J.}, \bibinfo{author}{{Netterfield}, C.B.},
+  \bibinfo{author}{{Ruhl}, J.E.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{{Instrumental and analytic methods for bolometric
+  polarimetry}}.
+\newblock \bibinfo{journal}{AAP} \bibinfo{volume}{470},
+  \bibinfo{pages}{771--785}.
+\newblock \DOIprefix\doi{10.1051/0004-6361:20065911},
+  \href{http://arxiv.org/abs/astro-ph/0606606}{\tt arXiv:astro-ph/0606606}.
+%Type = Article
+\bibitem[{{Kamionkowski} et~al.(1997){Kamionkowski}, {Kosowsky} and
+  {Stebbins}}]{1997PhRvD..55.7368K}
+\bibinfo{author}{{Kamionkowski}, M.}, \bibinfo{author}{{Kosowsky}, A.},
+  \bibinfo{author}{{Stebbins}, A.}, \bibinfo{year}{1997}.
+\newblock \bibinfo{title}{{Statistics of cosmic microwave background
+  polarization}}.
+\newblock \bibinfo{journal}{PRD} \bibinfo{volume}{55},
+  \bibinfo{pages}{7368--7388}.
+\newblock \DOIprefix\doi{10.1103/PhysRevD.55.7368},
+  \href{http://arxiv.org/abs/astro-ph/9611125}{\tt arXiv:astro-ph/9611125}.
+%Type = Article
+\bibitem[{Lewis and Bridle(2002)}]{Lewis:2002ah}
+\bibinfo{author}{Lewis, A.}, \bibinfo{author}{Bridle, S.},
+  \bibinfo{year}{2002}.
+\newblock \bibinfo{title}{{Cosmological parameters from CMB and other data: A
+  Monte Carlo approach}}.
+\newblock \bibinfo{journal}{PRD} \bibinfo{volume}{66}, \bibinfo{pages}{103511}.
+\newblock \DOIprefix\doi{10.1103/PhysRevD.66.103511},
+  \href{http://arxiv.org/abs/astro-ph/0205436}{\tt arXiv:astro-ph/0205436}.
+%Type = Article
+\bibitem[{Ludwig(1973)}]{1140406}
+\bibinfo{author}{Ludwig, A.}, \bibinfo{year}{1973}.
+\newblock \bibinfo{title}{The definition of cross polarization}.
+\newblock \bibinfo{journal}{IEEE Transactions on Antennas and Propagation}
+  \bibinfo{volume}{21}, \bibinfo{pages}{116--119}.
+\newblock \DOIprefix\doi{10.1109/TAP.1973.1140406}.
+%Type = Article
+\bibitem[{{Mitra} et~al.(2011){Mitra}, {Rocha}, {G{\'o}rski}, {Huffenberger},
+  {Eriksen}, {Ashdown} and {Lawrence}}]{2011ApJS..193....5M}
+\bibinfo{author}{{Mitra}, S.}, \bibinfo{author}{{Rocha}, G.},
+  \bibinfo{author}{{G{\'o}rski}, K.M.}, \bibinfo{author}{{Huffenberger}, K.M.},
+  \bibinfo{author}{{Eriksen}, H.K.}, \bibinfo{author}{{Ashdown}, M.A.J.},
+  \bibinfo{author}{{Lawrence}, C.R.}, \bibinfo{year}{2011}.
+\newblock \bibinfo{title}{{Fast Pixel Space Convolution for Cosmic Microwave
+  Background Surveys with Asymmetric Beams and Complex Scan Strategies:
+  FEBeCoP}}.
+\newblock \bibinfo{journal}{The Astrophysical Journal Supplement Series}
+  \bibinfo{volume}{193}, \bibinfo{pages}{5}.
+\newblock \DOIprefix\doi{10.1088/0067-0049/193/1/5},
+  \href{http://arxiv.org/abs/1005.1929}{\tt arXiv:1005.1929}.
+%Type = Article
+\bibitem[{{O'Dea} et~al.(2007){O'Dea}, {Challinor} and
+  {Johnson}}]{2007MNRAS.376.1767O}
+\bibinfo{author}{{O'Dea}, D.}, \bibinfo{author}{{Challinor}, A.},
+  \bibinfo{author}{{Johnson}, B.R.}, \bibinfo{year}{2007}.
+\newblock \bibinfo{title}{{Systematic errors in cosmic microwave background
+  polarization measurements}}.
+\newblock \bibinfo{journal}{MNRAS} \bibinfo{volume}{376},
+  \bibinfo{pages}{1767--1783}.
+\newblock \DOIprefix\doi{10.1111/j.1365-2966.2007.11558.x},
+  \href{http://arxiv.org/abs/astro-ph/0610361}{\tt arXiv:astro-ph/0610361}.
+%Type = Article
+\bibitem[{{Page} et~al.(2003){Page}, {Barnes}, {Hinshaw}, {Spergel}, {Weiland},
+  {Wollack}, {Bennett}, {Halpern}, {Jarosik}, {Kogut}, {Limon}, {Meyer},
+  {Tucker} and {Wright}}]{2003ApJS..148...39P}
+\bibinfo{author}{{Page}, L.}, \bibinfo{author}{{Barnes}, C.},
+  \bibinfo{author}{{Hinshaw}, G.}, \bibinfo{author}{{Spergel}, D.N.},
+  \bibinfo{author}{{Weiland}, J.L.}, \bibinfo{author}{{Wollack}, E.},
+  \bibinfo{author}{{Bennett}, C.L.}, \bibinfo{author}{{Halpern}, M.},
+  \bibinfo{author}{{Jarosik}, N.}, \bibinfo{author}{{Kogut}, A.},
+  \bibinfo{author}{{Limon}, M.}, \bibinfo{author}{{Meyer}, S.S.},
+  \bibinfo{author}{{Tucker}, G.S.}, \bibinfo{author}{{Wright}, E.L.},
+  \bibinfo{year}{2003}.
+\newblock \bibinfo{title}{{First-Year Wilkinson Microwave Anisotropy Probe
+  (WMAP) Observations: Beam Profiles and Window Functions}}.
+\newblock \bibinfo{journal}{The Astrophysical Journal Supplement Series}
+  \bibinfo{volume}{148}, \bibinfo{pages}{39--50}.
+\newblock \DOIprefix\doi{10.1086/377223},
+  \href{http://arxiv.org/abs/astro-ph/0302214}{\tt arXiv:astro-ph/0302214}.
+%Type = Article
+\bibitem[{Piepmeier et~al.(2008)Piepmeier, Long and
+  Njoku}]{piepmeier_long_njoku_2008}
+\bibinfo{author}{Piepmeier, J.R.}, \bibinfo{author}{Long, D.G.},
+  \bibinfo{author}{Njoku, E.G.}, \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Stokes antenna temperatures}.
+\newblock \bibinfo{journal}{IEEE Transactions on Geoscience and Remote Sensing}
+  \bibinfo{volume}{46}, \bibinfo{pages}{516–527}.
+\newblock \DOIprefix\doi{10.1109/tgrs.2007.909597}.
+%Type = Article
+\bibitem[{{Planck Collaboration} et~al.(2016a){Planck Collaboration}, {Ade},
+  {Aghanim}, {Arnaud}, {Ashdown}, {Aumont}, {Baccigalupi}, {Banday},
+  {Barreiro}, {Bartlett} and et~al.}]{2016A&A...594A..13P}
+\bibinfo{author}{{Planck Collaboration}}, \bibinfo{author}{{Ade}, P.A.R.},
+  \bibinfo{author}{{Aghanim}, N.}, \bibinfo{author}{{Arnaud}, M.},
+  \bibinfo{author}{{Ashdown}, M.}, \bibinfo{author}{{Aumont}, J.},
+  \bibinfo{author}{{Baccigalupi}, C.}, \bibinfo{author}{{Banday}, A.J.},
+  \bibinfo{author}{{Barreiro}, R.B.}, \bibinfo{author}{{Bartlett}, J.G.},
+  \bibinfo{author}{et~al.}, \bibinfo{year}{2016}a.
+\newblock \bibinfo{title}{{Planck 2015 results. XIII. Cosmological
+  parameters}}.
+\newblock \bibinfo{journal}{AAP} \bibinfo{volume}{594}, \bibinfo{pages}{A13}.
+\newblock \DOIprefix\doi{10.1051/0004-6361/201525830},
+  \href{http://arxiv.org/abs/1502.01589}{\tt arXiv:1502.01589}.
+%Type = Article
+\bibitem[{{Planck Collaboration} et~al.(2016b){Planck Collaboration}, {Ade},
+  {Aghanim}, {Arnaud}, {Ashdown}, {Aumont}, {Baccigalupi}, {Banday},
+  {Barreiro}, {Bartlett}, {Bartolo}, {Battaner}, {Benabed}, {Beno{\^\i}t},
+  {Benoit-L{\'e}vy}, {Bernard}, {Bersanelli}, {Bielewicz}, {Bock}, {Bonaldi},
+  {Bonavera}, {Bond}, {Borrill}, {Bouchet}, {Boulanger}, {Bucher}, {Burigana},
+  {Butler}, {Calabrese}, {Cardoso}, {Castex}, {Catalano}, {Challinor},
+  {Chamballu}, {Chiang}, {Christensen}, {Clements}, {Colombi}, {Colombo},
+  {Combet}, {Couchot}, {Coulais}, {Crill}, {Curto}, {Cuttaia}, {Danese},
+  {Davies}, {Davis}, {de Bernardis}, {de Rosa}, {de Zotti}, {Delabrouille},
+  {Delouis}, {D{\'e}sert}, {Dickinson}, {Diego}, {Dolag}, {Dole}, {Donzelli},
+  {Dor{\'e}}, {Douspis}, {Ducout}, {Dupac}, {Efstathiou}, {Elsner},
+  {En{\ss}lin}, {Eriksen}, {Fergusson}, {Finelli}, {Forni}, {Frailis},
+  {Fraisse}, {Franceschi}, {Frejsel}, {Galeotta}, {Galli}, {Ganga}, {Ghosh},
+  {Giard}, {Giraud-H{\'e}raud}, {Gjerl{\o}w}, {Gonz{\'a}lez-Nuevo},
+  {G{\'o}rski}, {Gratton}, {Gregorio}, {Gruppuso}, {Gudmundsson}, {Hansen},
+  {Hanson}, {Harrison}, {Henrot-Versill{\'e}}, {Hern{\'a}ndez-Monteagudo},
+  {Herranz}, {Hildebrandt}, {Hivon}, {Hobson}, {Holmes}, {Hornstrup}, {Hovest},
+  {Huffenberger}, {Hurier}, {Jaffe}, {Jaffe}, {Jones}, {Juvela}, {Karakci},
+  {Keih{\"a}nen}, {Keskitalo}, {Kiiveri}, {Kisner}, {Kneissl}, {Knoche},
+  {Kunz}, {Kurki-Suonio}, {Lagache}, {Lamarre}, {Lasenby}, {Lattanzi},
+  {Lawrence}, {Leonardi}, {Lesgourgues}, {Levrier}, {Liguori}, {Lilje},
+  {Linden-V{\o}rnle}, {Lindholm}, {L{\'o}pez-Caniego}, {Lubin},
+  {Mac{\'\i}as-P{\'e}rez}, {Maggio}, {Maino}, {Mand olesi}, {Mangilli},
+  {Maris}, {Martin}, {Mart{\'\i}nez-Gonz{\'a}lez}, {Masi}, {Matarrese},
+  {McGehee}, {Meinhold}, {Melchiorri}, {Melin}, {Mendes}, {Mennella},
+  {Migliaccio}, {Mitra}, {Miville-Desch{\^e}nes}, {Moneti}, {Montier},
+  {Morgante}, {Mortlock}, {Moss}, {Munshi}, {Murphy}, {Naselsky}, {Nati},
+  {Natoli}, {Netterfield}, {N{\o}rgaard-Nielsen}, {Noviello}, {Novikov},
+  {Novikov}, {Oxborrow}, {Paci}, {Pagano}, {Pajot}, {Paoletti}, {Pasian},
+  {Patanchon}, {Pearson}, {Perdereau}, {Perotto}, {Perrotta}, {Pettorino},
+  {Piacentini}, {Piat}, {Pierpaoli}, {Pietrobon}, {Plaszczynski},
+  {Pointecouteau}, {Polenta}, {Pratt}, {Pr{\'e}zeau}, {Prunet}, {Puget},
+  {Rachen}, {Rebolo}, {Reinecke}, {Remazeilles}, {Renault}, {Renzi},
+  {Ristorcelli}, {Rocha}, {Roman}, {Rosset}, {Rossetti}, {Roudier},
+  {Rubi{\~n}o-Mart{\'\i}n}, {Rusholme}, {Sandri}, {Santos}, {Savelainen},
+  {Scott}, {Seiffert}, {Shellard}, {Spencer}, {Stolyarov}, {Stompor},
+  {Sudiwala}, {Sutton}, {Suur-Uski}, {Sygnet}, {Tauber}, {Terenzi},
+  {Toffolatti}, {Tomasi}, {Tristram}, {Tucci}, {Tuovinen}, {Valenziano},
+  {Valiviita}, {Van Tent}, {Vielva}, {Villa}, {Wade}, {Wandelt}, {Wehus},
+  {Welikala}, {Yvon}, {Zacchei} and {Zonca}}]{2016A&A...594A..12P}
+\bibinfo{author}{{Planck Collaboration}}, \bibinfo{author}{{Ade}, P.A.R.},
+  \bibinfo{author}{{Aghanim}, N.}, \bibinfo{author}{{Arnaud}, M.},
+  \bibinfo{author}{{Ashdown}, M.}, \bibinfo{author}{{Aumont}, J.},
+  \bibinfo{author}{{Baccigalupi}, C.}, \bibinfo{author}{{Banday}, A.J.},
+  \bibinfo{author}{{Barreiro}, R.B.}, \bibinfo{author}{{Bartlett}, J.G.},
+  \bibinfo{author}{{Bartolo}, N.}, \bibinfo{author}{{Battaner}, E.},
+  \bibinfo{author}{{Benabed}, K.}, \bibinfo{author}{{Beno{\^\i}t}, A.},
+  \bibinfo{author}{{Benoit-L{\'e}vy}, A.}, \bibinfo{author}{{Bernard}, J.P.},
+  \bibinfo{author}{{Bersanelli}, M.}, \bibinfo{author}{{Bielewicz}, P.},
+  \bibinfo{author}{{Bock}, J.J.}, \bibinfo{author}{{Bonaldi}, A.},
+  \bibinfo{author}{{Bonavera}, L.}, \bibinfo{author}{{Bond}, J.R.},
+  \bibinfo{author}{{Borrill}, J.}, \bibinfo{author}{{Bouchet}, F.R.},
+  \bibinfo{author}{{Boulanger}, F.}, \bibinfo{author}{{Bucher}, M.},
+  \bibinfo{author}{{Burigana}, C.}, \bibinfo{author}{{Butler}, R.C.},
+  \bibinfo{author}{{Calabrese}, E.}, \bibinfo{author}{{Cardoso}, J.F.},
+  \bibinfo{author}{{Castex}, G.}, \bibinfo{author}{{Catalano}, A.},
+  \bibinfo{author}{{Challinor}, A.}, \bibinfo{author}{{Chamballu}, A.},
+  \bibinfo{author}{{Chiang}, H.C.}, \bibinfo{author}{{Christensen}, P.R.},
+  \bibinfo{author}{{Clements}, D.L.}, \bibinfo{author}{{Colombi}, S.},
+  \bibinfo{author}{{Colombo}, L.P.L.}, \bibinfo{author}{{Combet}, C.},
+  \bibinfo{author}{{Couchot}, F.}, \bibinfo{author}{{Coulais}, A.},
+  \bibinfo{author}{{Crill}, B.P.}, \bibinfo{author}{{Curto}, A.},
+  \bibinfo{author}{{Cuttaia}, F.}, \bibinfo{author}{{Danese}, L.},
+  \bibinfo{author}{{Davies}, R.D.}, \bibinfo{author}{{Davis}, R.J.},
+  \bibinfo{author}{{de Bernardis}, P.}, \bibinfo{author}{{de Rosa}, A.},
+  \bibinfo{author}{{de Zotti}, G.}, \bibinfo{author}{{Delabrouille}, J.},
+  \bibinfo{author}{{Delouis}, J.M.}, \bibinfo{author}{{D{\'e}sert}, F.X.},
+  \bibinfo{author}{{Dickinson}, C.}, \bibinfo{author}{{Diego}, J.M.},
+  \bibinfo{author}{{Dolag}, K.}, \bibinfo{author}{{Dole}, H.},
+  \bibinfo{author}{{Donzelli}, S.}, \bibinfo{author}{{Dor{\'e}}, O.},
+  \bibinfo{author}{{Douspis}, M.}, \bibinfo{author}{{Ducout}, A.},
+  \bibinfo{author}{{Dupac}, X.}, \bibinfo{author}{{Efstathiou}, G.},
+  \bibinfo{author}{{Elsner}, F.}, \bibinfo{author}{{En{\ss}lin}, T.A.},
+  \bibinfo{author}{{Eriksen}, H.K.}, \bibinfo{author}{{Fergusson}, J.},
+  \bibinfo{author}{{Finelli}, F.}, \bibinfo{author}{{Forni}, O.},
+  \bibinfo{author}{{Frailis}, M.}, \bibinfo{author}{{Fraisse}, A.A.},
+  \bibinfo{author}{{Franceschi}, E.}, \bibinfo{author}{{Frejsel}, A.},
+  \bibinfo{author}{{Galeotta}, S.}, \bibinfo{author}{{Galli}, S.},
+  \bibinfo{author}{{Ganga}, K.}, \bibinfo{author}{{Ghosh}, T.},
+  \bibinfo{author}{{Giard}, M.}, \bibinfo{author}{{Giraud-H{\'e}raud}, Y.},
+  \bibinfo{author}{{Gjerl{\o}w}, E.}, \bibinfo{author}{{Gonz{\'a}lez-Nuevo},
+  J.}, \bibinfo{author}{{G{\'o}rski}, K.M.}, \bibinfo{author}{{Gratton}, S.},
+  \bibinfo{author}{{Gregorio}, A.}, \bibinfo{author}{{Gruppuso}, A.},
+  \bibinfo{author}{{Gudmundsson}, J.E.}, \bibinfo{author}{{Hansen}, F.K.},
+  \bibinfo{author}{{Hanson}, D.}, \bibinfo{author}{{Harrison}, D.L.},
+  \bibinfo{author}{{Henrot-Versill{\'e}}, S.},
+  \bibinfo{author}{{Hern{\'a}ndez-Monteagudo}, C.}, \bibinfo{author}{{Herranz},
+  D.}, \bibinfo{author}{{Hildebrandt}, S.R.}, \bibinfo{author}{{Hivon}, E.},
+  \bibinfo{author}{{Hobson}, M.}, \bibinfo{author}{{Holmes}, W.A.},
+  \bibinfo{author}{{Hornstrup}, A.}, \bibinfo{author}{{Hovest}, W.},
+  \bibinfo{author}{{Huffenberger}, K.M.}, \bibinfo{author}{{Hurier}, G.},
+  \bibinfo{author}{{Jaffe}, A.H.}, \bibinfo{author}{{Jaffe}, T.R.},
+  \bibinfo{author}{{Jones}, W.C.}, \bibinfo{author}{{Juvela}, M.},
+  \bibinfo{author}{{Karakci}, A.}, \bibinfo{author}{{Keih{\"a}nen}, E.},
+  \bibinfo{author}{{Keskitalo}, R.}, \bibinfo{author}{{Kiiveri}, K.},
+  \bibinfo{author}{{Kisner}, T.S.}, \bibinfo{author}{{Kneissl}, R.},
+  \bibinfo{author}{{Knoche}, J.}, \bibinfo{author}{{Kunz}, M.},
+  \bibinfo{author}{{Kurki-Suonio}, H.}, \bibinfo{author}{{Lagache}, G.},
+  \bibinfo{author}{{Lamarre}, J.M.}, \bibinfo{author}{{Lasenby}, A.},
+  \bibinfo{author}{{Lattanzi}, M.}, \bibinfo{author}{{Lawrence}, C.R.},
+  \bibinfo{author}{{Leonardi}, R.}, \bibinfo{author}{{Lesgourgues}, J.},
+  \bibinfo{author}{{Levrier}, F.}, \bibinfo{author}{{Liguori}, M.},
+  \bibinfo{author}{{Lilje}, P.B.}, \bibinfo{author}{{Linden-V{\o}rnle}, M.},
+  \bibinfo{author}{{Lindholm}, V.}, \bibinfo{author}{{L{\'o}pez-Caniego}, M.},
+  \bibinfo{author}{{Lubin}, P.M.}, \bibinfo{author}{{Mac{\'\i}as-P{\'e}rez},
+  J.F.}, \bibinfo{author}{{Maggio}, G.}, \bibinfo{author}{{Maino}, D.},
+  \bibinfo{author}{{Mand olesi}, N.}, \bibinfo{author}{{Mangilli}, A.},
+  \bibinfo{author}{{Maris}, M.}, \bibinfo{author}{{Martin}, P.G.},
+  \bibinfo{author}{{Mart{\'\i}nez-Gonz{\'a}lez}, E.}, \bibinfo{author}{{Masi},
+  S.}, \bibinfo{author}{{Matarrese}, S.}, \bibinfo{author}{{McGehee}, P.},
+  \bibinfo{author}{{Meinhold}, P.R.}, \bibinfo{author}{{Melchiorri}, A.},
+  \bibinfo{author}{{Melin}, J.B.}, \bibinfo{author}{{Mendes}, L.},
+  \bibinfo{author}{{Mennella}, A.}, \bibinfo{author}{{Migliaccio}, M.},
+  \bibinfo{author}{{Mitra}, S.}, \bibinfo{author}{{Miville-Desch{\^e}nes},
+  M.A.}, \bibinfo{author}{{Moneti}, A.}, \bibinfo{author}{{Montier}, L.},
+  \bibinfo{author}{{Morgante}, G.}, \bibinfo{author}{{Mortlock}, D.},
+  \bibinfo{author}{{Moss}, A.}, \bibinfo{author}{{Munshi}, D.},
+  \bibinfo{author}{{Murphy}, J.A.}, \bibinfo{author}{{Naselsky}, P.},
+  \bibinfo{author}{{Nati}, F.}, \bibinfo{author}{{Natoli}, P.},
+  \bibinfo{author}{{Netterfield}, C.B.},
+  \bibinfo{author}{{N{\o}rgaard-Nielsen}, H.U.}, \bibinfo{author}{{Noviello},
+  F.}, \bibinfo{author}{{Novikov}, D.}, \bibinfo{author}{{Novikov}, I.},
+  \bibinfo{author}{{Oxborrow}, C.A.}, \bibinfo{author}{{Paci}, F.},
+  \bibinfo{author}{{Pagano}, L.}, \bibinfo{author}{{Pajot}, F.},
+  \bibinfo{author}{{Paoletti}, D.}, \bibinfo{author}{{Pasian}, F.},
+  \bibinfo{author}{{Patanchon}, G.}, \bibinfo{author}{{Pearson}, T.J.},
+  \bibinfo{author}{{Perdereau}, O.}, \bibinfo{author}{{Perotto}, L.},
+  \bibinfo{author}{{Perrotta}, F.}, \bibinfo{author}{{Pettorino}, V.},
+  \bibinfo{author}{{Piacentini}, F.}, \bibinfo{author}{{Piat}, M.},
+  \bibinfo{author}{{Pierpaoli}, E.}, \bibinfo{author}{{Pietrobon}, D.},
+  \bibinfo{author}{{Plaszczynski}, S.}, \bibinfo{author}{{Pointecouteau}, E.},
+  \bibinfo{author}{{Polenta}, G.}, \bibinfo{author}{{Pratt}, G.W.},
+  \bibinfo{author}{{Pr{\'e}zeau}, G.}, \bibinfo{author}{{Prunet}, S.},
+  \bibinfo{author}{{Puget}, J.L.}, \bibinfo{author}{{Rachen}, J.P.},
+  \bibinfo{author}{{Rebolo}, R.}, \bibinfo{author}{{Reinecke}, M.},
+  \bibinfo{author}{{Remazeilles}, M.}, \bibinfo{author}{{Renault}, C.},
+  \bibinfo{author}{{Renzi}, A.}, \bibinfo{author}{{Ristorcelli}, I.},
+  \bibinfo{author}{{Rocha}, G.}, \bibinfo{author}{{Roman}, M.},
+  \bibinfo{author}{{Rosset}, C.}, \bibinfo{author}{{Rossetti}, M.},
+  \bibinfo{author}{{Roudier}, G.}, \bibinfo{author}{{Rubi{\~n}o-Mart{\'\i}n},
+  J.A.}, \bibinfo{author}{{Rusholme}, B.}, \bibinfo{author}{{Sandri}, M.},
+  \bibinfo{author}{{Santos}, D.}, \bibinfo{author}{{Savelainen}, M.},
+  \bibinfo{author}{{Scott}, D.}, \bibinfo{author}{{Seiffert}, M.D.},
+  \bibinfo{author}{{Shellard}, E.P.S.}, \bibinfo{author}{{Spencer}, L.D.},
+  \bibinfo{author}{{Stolyarov}, V.}, \bibinfo{author}{{Stompor}, R.},
+  \bibinfo{author}{{Sudiwala}, R.}, \bibinfo{author}{{Sutton}, D.},
+  \bibinfo{author}{{Suur-Uski}, A.S.}, \bibinfo{author}{{Sygnet}, J.F.},
+  \bibinfo{author}{{Tauber}, J.A.}, \bibinfo{author}{{Terenzi}, L.},
+  \bibinfo{author}{{Toffolatti}, L.}, \bibinfo{author}{{Tomasi}, M.},
+  \bibinfo{author}{{Tristram}, M.}, \bibinfo{author}{{Tucci}, M.},
+  \bibinfo{author}{{Tuovinen}, J.}, \bibinfo{author}{{Valenziano}, L.},
+  \bibinfo{author}{{Valiviita}, J.}, \bibinfo{author}{{Van Tent}, B.},
+  \bibinfo{author}{{Vielva}, P.}, \bibinfo{author}{{Villa}, F.},
+  \bibinfo{author}{{Wade}, L.A.}, \bibinfo{author}{{Wandelt}, B.D.},
+  \bibinfo{author}{{Wehus}, I.K.}, \bibinfo{author}{{Welikala}, N.},
+  \bibinfo{author}{{Yvon}, D.}, \bibinfo{author}{{Zacchei}, A.},
+  \bibinfo{author}{{Zonca}, A.}, \bibinfo{year}{2016}b.
+\newblock \bibinfo{title}{{Planck 2015 results. XII. Full focal plane
+  simulations}}.
+\newblock \bibinfo{journal}{AAP} \bibinfo{volume}{594}, \bibinfo{pages}{A12}.
+\newblock \DOIprefix\doi{10.1051/0004-6361/201527103},
+  \href{http://arxiv.org/abs/1509.06348}{\tt arXiv:1509.06348}.
+%Type = Book
+\bibitem[{Sanders and Kandrot(2010)}]{sanders2010cuda}
+\bibinfo{author}{Sanders, J.}, \bibinfo{author}{Kandrot, E.},
+  \bibinfo{year}{2010}.
+\newblock \bibinfo{title}{CUDA by example: an introduction to general-purpose
+  GPU programming}.
+\newblock \bibinfo{publisher}{Addison-Wesley Professional}.
+%Type = Article
+\bibitem[{Shimon et~al.(2008)Shimon, Keating, Ponthieu and
+  Hivon}]{PhysRevD.77.083003}
+\bibinfo{author}{Shimon, M.}, \bibinfo{author}{Keating, B.},
+  \bibinfo{author}{Ponthieu, N.}, \bibinfo{author}{Hivon, E.},
+  \bibinfo{year}{2008}.
+\newblock \bibinfo{title}{Cmb polarization systematics due to beam asymmetry:
+  Impact on inflationary science}.
+\newblock \bibinfo{journal}{Phys. Rev. D} \bibinfo{volume}{77},
+  \bibinfo{pages}{083003}.
+\newblock \URLprefix \url{https://link.aps.org/doi/10.1103/PhysRevD.77.083003},
+  \DOIprefix\doi{10.1103/PhysRevD.77.083003}.
+%Type = Article
+\bibitem[{{Wandelt} and {G{\'o}rski}(2001)}]{2001PhRvD..63l3002W}
+\bibinfo{author}{{Wandelt}, B.D.}, \bibinfo{author}{{G{\'o}rski}, K.M.},
+  \bibinfo{year}{2001}.
+\newblock \bibinfo{title}{{Fast convolution on the sphere}}.
+\newblock \bibinfo{journal}{PRD} \bibinfo{volume}{63}, \bibinfo{pages}{123002}.
+\newblock \DOIprefix\doi{10.1103/PhysRevD.63.123002},
+  \href{http://arxiv.org/abs/astro-ph/0008227}{\tt arXiv:astro-ph/0008227}.
+%Type = Article
+\bibitem[{{Watts} et~al.(2015){Watts}, {Larson}, {Marriage}, {Abitbol},
+  {Appel}, {Bennett}, {Chuss}, {Eimer}, {Essinger-Hileman}, {Miller}, {Rostem}
+  and {Wollack}}]{2015ApJ...814..103W}
+\bibinfo{author}{{Watts}, D.J.}, \bibinfo{author}{{Larson}, D.},
+  \bibinfo{author}{{Marriage}, T.A.}, \bibinfo{author}{{Abitbol}, M.H.},
+  \bibinfo{author}{{Appel}, J.W.}, \bibinfo{author}{{Bennett}, C.L.},
+  \bibinfo{author}{{Chuss}, D.T.}, \bibinfo{author}{{Eimer}, J.R.},
+  \bibinfo{author}{{Essinger-Hileman}, T.}, \bibinfo{author}{{Miller}, N.J.},
+  \bibinfo{author}{{Rostem}, K.}, \bibinfo{author}{{Wollack}, E.J.},
+  \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{{Measuring the Largest Angular Scale CMB B-mode
+  Polarization with Galactic Foregrounds on a Cut Sky}}.
+\newblock \bibinfo{journal}{APJ} \bibinfo{volume}{814}, \bibinfo{pages}{103}.
+\newblock \DOIprefix\doi{10.1088/0004-637X/814/2/103},
+  \href{http://arxiv.org/abs/1508.00017}{\tt arXiv:1508.00017}.
+%Type = Article
+\bibitem[{{Zaldarriaga} and {Seljak}(1997)}]{1997PhRvD..55.1830Z}
+\bibinfo{author}{{Zaldarriaga}, M.}, \bibinfo{author}{{Seljak}, U.},
+  \bibinfo{year}{1997}.
+\newblock \bibinfo{title}{{All-sky analysis of polarization in the microwave
+  background}}.
+\newblock \bibinfo{journal}{PRD} \bibinfo{volume}{55},
+  \bibinfo{pages}{1830--1840}.
+\newblock \DOIprefix\doi{10.1103/PhysRevD.55.1830},
+  \href{http://arxiv.org/abs/astro-ph/9609170}{\tt arXiv:astro-ph/9609170}.
+
+\end{thebibliography}
