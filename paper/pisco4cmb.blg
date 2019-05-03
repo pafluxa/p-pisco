@@ -1,0 +1,84 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: pisco4cmb.aux
+The style file: model2-names.bst
+Database file #1: bib.bib
+Repeated entry---line 429 of file bib.bib
+ : @article{2016A&A...594A..12P
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 605 of file bib.bib
+ : @article{2005ApJ...622..759G
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 923 of file bib.bib
+ : @book{1960ratr.book.....C
+ :                          ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1009 of file bib.bib
+ : @article{piepmeier_long_njoku_2008
+ :                                   , title={Stokes Antenna Temperatures}, volume={46}, DOI={10.1109/tgrs.2007.909597}, number={2}, journal={IEEE Transactions on Geoscience and Remote Sensing}, author={Piepmeier, Jeffrey R. and Long, David G. and Njoku, Eni G.}, year={2008}, pages={516–527}}
+I'm skipping whatever remains of this entry
+Repeated entry---line 1099 of file bib.bib
+ : @article{2016A&A...594A..12P
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1603 of file bib.bib
+ : @article{2007A&A...470..771J
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1639 of file bib.bib
+ : @article{2007MNRAS.376.1767O
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2299 of file bib.bib
+ : @inproceedings{2016SPIE.9914E..1KH
+ :                                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2713 of file bib.bib
+ : @article{1140406
+ :                 ,
+I'm skipping whatever remains of this entry
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 25 entries,
+            2990 wiz_defined-function locations,
+            952 strings with 19275 characters,
+and the built_in function-call counts, 39444 in all, are:
+= -- 2163
+> -- 3682
+< -- 9
++ -- 1390
+- -- 1362
+* -- 5779
+:= -- 5936
+add.period$ -- 94
+call.type$ -- 25
+change.case$ -- 577
+chr.to.int$ -- 24
+cite$ -- 25
+duplicate$ -- 2061
+empty$ -- 1630
+format.name$ -- 1443
+if$ -- 6711
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 626
+newline$ -- 159
+num.names$ -- 100
+pop$ -- 765
+preamble$ -- 1
+purify$ -- 554
+quote$ -- 0
+skip$ -- 394
+stack$ -- 0
+substring$ -- 691
+swap$ -- 2500
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 219
+warning$ -- 0
+while$ -- 98
+width$ -- 0
+write$ -- 421
+(There were 9 error messages)
