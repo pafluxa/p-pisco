@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.26)  2 MAY 2019 22:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.26)  4 MAY 2019 20:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2292,11 +2292,9 @@ LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <12> not available
 
 
 LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 128.
+(Font)              size <7> substituted on input line 126.
 
-LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <11> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 132.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 139.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 141.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -2304,95 +2302,101 @@ File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 
 
  <./thumbnails/url.jpeg>]
-<tikz/sky_basis.pdf, id=52, 218.83255pt x 224.17049pt>
+Underfull \hbox (badness 1762) in paragraph at lines 141--142
+[]\T1/stix/m/n/10 The Planck ex-per-i-ment de-vel-oped Full Fo-cal Plane
+ []
+
+LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <11> not available
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 161.
+<tikz/sky_basis.pdf, id=47, 218.83255pt x 224.17049pt>
 File: tikz/sky_basis.pdf Graphic file (type pdf)
 <use tikz/sky_basis.pdf>
-Package pdftex.def Info: tikz/sky_basis.pdf  used on input line 152.
+Package pdftex.def Info: tikz/sky_basis.pdf  used on input line 165.
 (pdftex.def)             Requested size: 212.6352pt x 217.82478pt.
-<tikz/beam_basis.pdf, id=53, 224.39735pt x 234.60548pt>
+<tikz/beam_basis.pdf, id=48, 224.39735pt x 234.60548pt>
 File: tikz/beam_basis.pdf Graphic file (type pdf)
 <use tikz/beam_basis.pdf>
-Package pdftex.def Info: tikz/beam_basis.pdf  used on input line 153.
+Package pdftex.def Info: tikz/beam_basis.pdf  used on input line 166.
 (pdftex.def)             Requested size: 212.6352pt x 222.3119pt.
 LaTeX Font Info:    Font shape `T1/stix/m/sl' in size <10> not available
-(Font)              Font shape `T1/stix/m/it' tried instead on input line 158.
- [2 <./tikz/sky_basis.pdf> <./tikz/beam_basis.pdf>]
-<figures/cmb_coord_convention.png, id=102, 1027.84pt x 580.1675pt>
+(Font)              Font shape `T1/stix/m/it' tried instead on input line 171.
+<figures/cmb_coord_convention.png, id=57, 1027.84pt x 580.1675pt>
 File: figures/cmb_coord_convention.png Graphic file (type png)
 <use figures/cmb_coord_convention.png>
 Package pdftex.def Info: figures/cmb_coord_convention.png  used on input line 2
-35.
+48.
 (pdftex.def)             Requested size: 238.25444pt x 134.48032pt.
- [3 <./figures/cmb_coord_convention.png>]
-<figures/PISCO-diagram.png, id=142, 1511.6475pt x 819.06pt>
+[2] [3 <./tikz/sky_basis.pdf> <./tikz/beam_basis.pdf> <./figures/cmb_coord_conv
+ention.png>]
+<figures/PISCO-diagram.png, id=140, 1511.6475pt x 819.06pt>
 File: figures/PISCO-diagram.png Graphic file (type png)
 <use figures/PISCO-diagram.png>
-Package pdftex.def Info: figures/PISCO-diagram.png  used on input line 523.
+Package pdftex.def Info: figures/PISCO-diagram.png  used on input line 538.
 (pdftex.def)             Requested size: 238.25444pt x 129.09012pt.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <10> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 531.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 546.
  [4]
-<figures/pisco-flow-diagram.pdf, id=168, 614.295pt x 794.97pt>
+<figures/pisco-flow-diagram.pdf, id=163, 614.295pt x 794.97pt>
 File: figures/pisco-flow-diagram.pdf Graphic file (type pdf)
 <use figures/pisco-flow-diagram.pdf>
-Package pdftex.def Info: figures/pisco-flow-diagram.pdf  used on input line 539
+Package pdftex.def Info: figures/pisco-flow-diagram.pdf  used on input line 554
 .
 (pdftex.def)             Requested size: 238.25444pt x 308.32669pt.
-
-Underfull \hbox (badness 1783) in paragraph at lines 550--551
+ [5 <./figures/PISCO-diagram.png> <./figures/pisco-flow-diagram.pdf>]
+Underfull \hbox (badness 1783) in paragraph at lines 565--566
 \T1/stix/m/n/10 This makes it dif-fi-cult to es-ti-mate the per-for-mance as
  []
 
-[5 <./figures/PISCO-diagram.png> <./figures/pisco-flow-diagram.pdf>]
-Underfull \hbox (badness 2042) in paragraph at lines 571--572
+
+Underfull \hbox (badness 2042) in paragraph at lines 587--588
 []\T1/stix/m/n/10 The first test in-volved com-par-ing the ca-pa-bil-ity of
  []
 
-LaTeX Font Info:    Try loading font information for TS1+stix on input line 574
+LaTeX Font Info:    Try loading font information for TS1+stix on input line 590
 .
 (/usr/share/texlive/texmf-dist/tex/latex/stix/ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 8.50006pt on input line 581.
-<figures/stokes_I_source_256_beam_1024_dec_45.pdf, id=186, 749.99998pt x 154.50
+(Font)              scaled to size 8.50006pt on input line 597.
+<figures/stokes_I_source_256_beam_1024_dec_45.pdf, id=185, 749.99998pt x 154.50
 85pt>
 File: figures/stokes_I_source_256_beam_1024_dec_45.pdf Graphic file (type pdf)
 <use figures/stokes_I_source_256_beam_1024_dec_45.pdf>
 Package pdftex.def Info: figures/stokes_I_source_256_beam_1024_dec_45.pdf  used
- on input line 593.
+ on input line 609.
 (pdftex.def)             Requested size: 494.50888pt x 101.87689pt.
-<figures/stokes_Q_source_256_beam_1024_dec_45.pdf, id=187, 749.99998pt x 154.50
+<figures/stokes_Q_source_256_beam_1024_dec_45.pdf, id=186, 749.99998pt x 154.50
 85pt>
 File: figures/stokes_Q_source_256_beam_1024_dec_45.pdf Graphic file (type pdf)
 <use figures/stokes_Q_source_256_beam_1024_dec_45.pdf>
 Package pdftex.def Info: figures/stokes_Q_source_256_beam_1024_dec_45.pdf  used
- on input line 594.
+ on input line 610.
 (pdftex.def)             Requested size: 494.50888pt x 101.87689pt.
-<figures/stokes_U_source_256_beam_1024_dec_45.pdf, id=188, 749.99998pt x 154.50
+<figures/stokes_U_source_256_beam_1024_dec_45.pdf, id=187, 749.99998pt x 154.50
 85pt>
 File: figures/stokes_U_source_256_beam_1024_dec_45.pdf Graphic file (type pdf)
 <use figures/stokes_U_source_256_beam_1024_dec_45.pdf>
 Package pdftex.def Info: figures/stokes_U_source_256_beam_1024_dec_45.pdf  used
- on input line 595.
+ on input line 611.
 (pdftex.def)             Requested size: 494.50888pt x 101.87689pt.
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 7.65005pt on input line 596.
+(Font)              scaled to size 7.65005pt on input line 612.
  [6]
-<figures/ps_r0d00.pdf, id=208, 700.00002pt x 216.31189pt>
+<figures/ps_r0d00.pdf, id=205, 700.00002pt x 216.31189pt>
 File: figures/ps_r0d00.pdf Graphic file (type pdf)
 <use figures/ps_r0d00.pdf>
-Package pdftex.def Info: figures/ps_r0d00.pdf  used on input line 619.
+Package pdftex.def Info: figures/ps_r0d00.pdf  used on input line 635.
 (pdftex.def)             Requested size: 494.50888pt x 152.81676pt.
-<figures/ps_r0d01.pdf, id=209, 700.00002pt x 216.31189pt>
+<figures/ps_r0d01.pdf, id=206, 700.00002pt x 216.31189pt>
 File: figures/ps_r0d01.pdf Graphic file (type pdf)
 <use figures/ps_r0d01.pdf>
-Package pdftex.def Info: figures/ps_r0d01.pdf  used on input line 620.
+Package pdftex.def Info: figures/ps_r0d01.pdf  used on input line 636.
 (pdftex.def)             Requested size: 494.50888pt x 152.81676pt.
-<figures/ps_r0d10.pdf, id=210, 700.00002pt x 216.31189pt>
+<figures/ps_r0d10.pdf, id=207, 700.00002pt x 216.31189pt>
 File: figures/ps_r0d10.pdf Graphic file (type pdf)
 <use figures/ps_r0d10.pdf>
-Package pdftex.def Info: figures/ps_r0d10.pdf  used on input line 621.
+Package pdftex.def Info: figures/ps_r0d10.pdf  used on input line 637.
 (pdftex.def)             Requested size: 494.50888pt x 152.81676pt.
  [7 <./figures/stokes_I_source_256_beam_1024_dec_45.pdf> <./figures/stokes_Q_so
 urce_256_beam_1024_dec_45.pdf
@@ -2414,42 +2418,42 @@ pdfTeX warning: /usr/bin/pdflatex (file ./figures/ps_r0d01.pdf): PDF inclusion:
 pdfTeX warning: /usr/bin/pdflatex (file ./figures/ps_r0d10.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
 >]
-<figures/qband_beams_main_beam_fwhm_x.pdf, id=409, 692.3466pt x 708.9687pt>
+<figures/qband_beams_main_beam_fwhm_x.pdf, id=405, 692.3466pt x 708.9687pt>
 File: figures/qband_beams_main_beam_fwhm_x.pdf Graphic file (type pdf)
 <use figures/qband_beams_main_beam_fwhm_x.pdf>
 Package pdftex.def Info: figures/qband_beams_main_beam_fwhm_x.pdf  used on inpu
-t line 648.
+t line 664.
 (pdftex.def)             Requested size: 238.25444pt x 243.96701pt.
-<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf, id=414, 700.00002
+<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf, id=410, 700.00002
 pt x 216.31189pt>
 File: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf Graphic file 
 (type pdf)
 <use figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf>
 Package pdftex.def Info: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d0
-0.pdf  used on input line 679.
+0.pdf  used on input line 695.
 (pdftex.def)             Requested size: 494.50888pt x 152.81676pt.
-<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf, id=415, 700.00002
+<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf, id=411, 700.00002
 pt x 216.31189pt>
 File: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf Graphic file 
 (type pdf)
 <use figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf>
 Package pdftex.def Info: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d0
-1.pdf  used on input line 680.
+1.pdf  used on input line 696.
 (pdftex.def)             Requested size: 494.50888pt x 152.81676pt.
-<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf, id=416, 700.00002
+<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf, id=412, 700.00002
 pt x 216.31189pt>
 File: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf Graphic file 
 (type pdf)
 <use figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf>
 Package pdftex.def Info: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d1
-0.pdf  used on input line 681.
+0.pdf  used on input line 697.
 (pdftex.def)             Requested size: 494.50888pt x 152.81676pt.
  [9 <./figures/qband_beams_main_beam_fwhm_x.pdf>]
-<figures/T_to_P_leakage_for_class.pdf, id=533, 700.00002pt x 216.31189pt>
+<figures/T_to_P_leakage_for_class.pdf, id=530, 700.00002pt x 216.31189pt>
 File: figures/T_to_P_leakage_for_class.pdf Graphic file (type pdf)
 <use figures/T_to_P_leakage_for_class.pdf>
 Package pdftex.def Info: figures/T_to_P_leakage_for_class.pdf  used on input li
-ne 696.
+ne 712.
 (pdftex.def)             Requested size: 494.50888pt x 152.81676pt.
  [10 <./figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf> <./figures
 /CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf
@@ -2463,64 +2467,55 @@ pdfTeX warning: /usr/bin/pdflatex (file ./figures/CLASS_scan_7_20_elliptical_gu
 ssian_beams_r_0d10.pdf): PDF inclusion: multiple pdfs with page group included 
 in a single page
 >] (./pisco4cmb.bbl
-Underfull \hbox (badness 1342) in paragraph at lines 38--87
+Underfull \hbox (badness 1342) in paragraph at lines 29--78
 []\T1/stix/m/n/8 BICEP2 Col-lab-o-ra-tion, Keck Ar-ray Col-lab-o-ra-tion, Ade, 
 P.A.R.,
  []
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 88--97
+Underfull \hbox (badness 1237) in paragraph at lines 79--89
 \T1/stix/m/n/8 per-i-ments.  PRD 62, 123002.  doi:[][]$\T1/zi4/m/n/8 10 . 1103 
 / PhysRevD . 62 . 123002$[][]\T1/stix/m/n/8 ,
  []
 
 
-Underfull \hbox (badness 2469) in paragraph at lines 194--207
+Underfull \hbox (badness 2469) in paragraph at lines 181--193
 \T1/stix/m/n/8 2007.  In-stru-men-tal and an-a-lytic meth-ods for bolo-met-ric 
 po-
  []
 
 [11 <./figures/T_to_P_leakage_for_class.pdf>]
-Underfull \hbox (badness 1365) in paragraph at lines 483--492
+Underfull \hbox (badness 1365) in paragraph at lines 459--468
 []\T1/stix/m/n/8 Wandelt, B.D., Górski, K.M., 2001.  Fast con-vo-lu-tion on the
 
  []
 
 
-Underfull \hbox (badness 4096) in paragraph at lines 483--492
+Underfull \hbox (badness 4096) in paragraph at lines 459--468
 \T1/stix/m/n/8 sphere.  PRD 63, 123002.  doi:[][]$\T1/zi4/m/n/8 10 . 1103 / Phy
 sRevD . 63 . 123002$[][]\T1/stix/m/n/8 ,
  []
 
 )
+<figures/Figure10.pdf, id=710, 597.50786pt x 845.04686pt>
+File: figures/Figure10.pdf Graphic file (type pdf)
+<use figures/Figure10.pdf>
+Package pdftex.def Info: figures/Figure10.pdf  used on input line 739.
+(pdftex.def)             Requested size: 238.25444pt x 336.95541pt.
+ [12]
+Overfull \hbox (15.494pt too wide) in alignment at lines 793--799
+ [][][] []
+ []
 
-LaTeX Warning: Reference `fig::sphericaltrianglea2s' on page 12 undefined on in
-put line 716.
-
-<figures/PISCO_Drawing.pdf, id=717, 767.86874pt x 993.7125pt>
-File: figures/PISCO_Drawing.pdf Graphic file (type pdf)
-<use figures/PISCO_Drawing.pdf>
-Package pdftex.def Info: figures/PISCO_Drawing.pdf  used on input line 720.
-(pdftex.def)             Requested size: 238.25444pt x 308.32062pt.
-<figures/PISCO_Drawing_print.pdf, id=718, 767.86874pt x 993.7125pt>
-File: figures/PISCO_Drawing_print.pdf Graphic file (type pdf)
-<use figures/PISCO_Drawing_print.pdf>
-Package pdftex.def Info: figures/PISCO_Drawing_print.pdf  used on input line 72
-7.
-(pdftex.def)             Requested size: 238.25444pt x 308.32062pt.
-[12] [13 <./figures/PISCO_Drawing.pdf> <./figures/PISCO_Drawing_print.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./figures/PISCO_Drawing_print.pdf): PDF
- inclusion: multiple pdfs with page group included in a single page
->]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 877.
+[13 <./figures/Figure10.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 884.
  [14
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 877.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 884.
  (./pisco4cmb.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 877.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 877.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 884.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 884.
 Package rerunfilecheck Info: File `pisco4cmb.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2528,18 +2523,15 @@ Package rerunfilecheck Info: File `pisco4cmb.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 25115 strings out of 492982
- 415980 string characters out of 6134895
- 523286 words of memory out of 5000000
- 28153 multiletter control sequences out of 15000+600000
+ 25093 strings out of 492982
+ 415307 string characters out of 6134895
+ 524308 words of memory out of 5000000
+ 28139 multiletter control sequences out of 15000+600000
  642805 words of font info for 174 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,18n,92p,10429b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,18n,92p,10429b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -2573,10 +2565,10 @@ stix/stix-mathex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix/sti
 x-mathit.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix/stix-mathrm
 -bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stix/stix-mathrm.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb>
-Output written on pisco4cmb.pdf (14 pages, 1112909 bytes).
+Output written on pisco4cmb.pdf (14 pages, 1102264 bytes).
 PDF statistics:
- 869 PDF objects out of 1000 (max. 8388607)
- 725 compressed objects within 8 object streams
- 115 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 851 PDF objects out of 1000 (max. 8388607)
+ 710 compressed objects within 8 object streams
+ 108 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
