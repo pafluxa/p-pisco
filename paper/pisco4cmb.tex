@@ -734,7 +734,7 @@
 	%\numberwithin{equation}{section}	
 	\section{Computation of antenna coordinates from sky coordinates and antenna pointing}
 	
-	In this appendix we introduce an additional coordinate system, the \textsl{instument basis} which is a spherical coordinate system with unit base vectors $\hat{x}'$, $\hat{y}'$ and $\hat{z}'$ and spherical coordinates $\theta'$ and $\phi'$. For any given beam center pointing $\bar{q}_0$ in the sky basis, the pointing direction unit vector $\hat{p}_0$ points to the sky at the equator and prime meridian $(\theta_0',\phi_0') = (90,0)$ so that the unit vectors $\hat{\theta}_0'$ and $\hat{\phi}_0'$ at that point form the unit base vectors of the antenna basis coordinate system. It is natural for PISCO to adopt Ludwig's 2nd definition of cross polarization \cite{1140406} as this aligns the unit vectors $(\hat{e}_{\co},\hat{e}_{\cx})$ with $(\hat{\theta}',\hat{\phi}')$ for a detector with orientation angle $\zeta = 0$. In particular, this means that, for any beam center pointing $\bar{q}_0 = (90,\phi,0)$ in the sky basis, the co and cross polarization unit vectors are aligned with the Stokes parameters $+U$ and $-U$ respectively across the entire sky.
+	In this appendix we introduce an additional coordinate system, the \textsl{instrument basis} which is a spherical coordinate system with unit base vectors $\hat{x}'$, $\hat{y}'$ and $\hat{z}'$ and spherical coordinates $\theta'$ and $\phi'$. For any given beam center pointing $\bar{q}_0$ in the sky basis, the pointing direction unit vector $\hat{p}_0$ points to the sky at the equator and prime meridian $(\theta_0',\phi_0') = (90,0)$ so that the unit vectors $\hat{\theta}_0'$ and $\hat{\phi}_0'$ at that point form the unit base vectors of the antenna basis coordinate system. It is natural for PISCO to adopt Ludwig's 2nd definition of cross polarization \cite{1140406} as this aligns the unit vectors $(\hat{e}_{\co},\hat{e}_{\cx})$ with $(\hat{\theta}',\hat{\phi}')$ for a detector with orientation angle $\zeta = 0$. In particular, this means that, for any beam center pointing $\bar{q}_0 = (90,\phi,0)$ in the sky basis, the co and cross polarization unit vectors are aligned with the Stokes parameters $+U$ and $-U$ respectively across the entire sky.
 	
 	For a beam center pointing $\bar{q}_0$ and off beam center pointing $\bar{q}$ in the sky basis, we can derive the antenna basis coordinates $(\rho,\sigma)$ and angle $\psi$ between $\hat{e}_{\co}$ and $+U$ ($\hat{\theta}$) by using spherical trigonometry (see Figure \ref{fig::figure10}). 
 	
@@ -748,16 +748,11 @@
 	Defining $\Delta \phi \equiv \phi - \phi_0$, the antenna basis coordinates $(\rho,\sigma)$ are given by
 	%
 	\begin{align}
-	\rho  &= \arccos( \cos(\theta) cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) ) 
-	\end{align}
-	\begin{equation}
-	%
-	\begin{split}
-	\sin(\gamma) &= \frac{\sin(\theta) \sin(\Delta \phi)}{\sin(\rho)} \\
+	\rho  &= \arccos( \cos(\theta) cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) ) \nonumber 
+	\sin(\gamma) &= \frac{\sin(\theta) \sin(\Delta \phi)}{\sin(\rho)} \nonumber \\
 	\cos(\gamma) &= \frac{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)}{\sin(\rho)} \\ 
-	\gamma       &=  \arctan \left(\frac{\sin(\theta) \sin(\Delta \phi)}{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)} \right)
-	\end{split}
-	\end{equation}
+	\gamma       &=  \arctan \left(\frac{\sin(\theta) \sin(\Delta \phi)}{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)} \right) \nonumber
+	\end{align}
 	%
 	so that
 	%
@@ -767,25 +762,21 @@
 	%
 	Then the instrument basis coordinates $(\theta', \phi')$ are
 	%
-	\begin{equation}
-	\begin{split}
-	\theta' &= \arccos(-\sin(\rho) \cos(\sigma)) \\
-	\sin(\phi') &= \frac{\sin(\rho) \sin(\sigma)}{\sin(\theta')} \\
+	\begin{align}
+	\theta' &= \arccos(-\sin(\rho) \cos(\sigma)) \nonumber \\
+	\sin(\phi') &= \frac{\sin(\rho) \sin(\sigma)}{\sin(\theta')} \nonumber \\
 	\cos(\phi') &= \frac{\cos(\rho)}{\sin(\theta')} \\
-	\phi'       &= \arctan \left( \frac{\sin(\rho) \sin(\sigma)}{\cos(\rho')} \right)
-	\end{split}
-	\end{equation}
+	\phi'       &= \arctan \left( \frac{\sin(\rho) \sin(\sigma)}{\cos(\rho')} \right) \nonumber
+	\end{align}
 	%
 	From the uppermost spherical triangle in figure \ref{fig::figure10}, we have
 	%
-	\begin{equation}
-	\begin{split}
-	\cos(l) &= \sin(\theta_0) \cos(\psi_0) \\
-	\sin(\alpha) &= \frac{\cos(\theta_0}{\sin(l)} \\ 
+	\begin{align}
+	\cos(l) &= \sin(\theta_0) \cos(\psi_0) \nonumber \\
+	\sin(\alpha) &= \frac{\cos(\theta_0}{\sin(l)} \nonumber \\ 
 	\cos(\alpha) &= \frac{\sin(\theta_0)  \sin(\psi_0)}{\sin(l)}  \\
-	\alpha       &= \arctan\left( \frac{\cos(\theta_0)}{\sin(\theta_0)  \sin(\psi_0)} \right)
-	\end{split}
-	\end{equation}
+	\alpha       &= \arctan\left( \frac{\cos(\theta_0)}{\sin(\theta_0)  \sin(\psi_0)} \right) \nonumber
+	\end{align}
 	%
 	so that
 	%
@@ -795,13 +786,11 @@
 	%
 	This yields
 	%
-	\begin{equation}
-	\begin{split}
-	\cos(\psi) &= \frac{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)}{\cos(\theta)}  \\
+	\begin{align}
+	\cos(\psi) &= \frac{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)}{\cos(\theta)}  \nonumber \\
 	\sin(\psi) &= \frac{\sin(l) \sin(\beta)}{\cos(\theta)}  \\
-	\psi       &= \arctan\left( \frac{\sin(l) \sin(\beta)}{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)} \right)
-	\end{split}
-	\end{equation}
+	\psi       &= \arctan\left( \frac{\sin(l) \sin(\beta)}{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)} \right) \nonumber
+	\end{align}
 	
 	\section{Calculation of elements of $B$}
 	
