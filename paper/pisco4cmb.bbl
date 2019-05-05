@@ -1,4 +1,4 @@
-\begin{thebibliography}{25}
+\begin{thebibliography}{21}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -11,15 +11,6 @@
 \providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
-%Type = Article
-\bibitem[{{Baars} and {Swenson}(2008)}]{2008PhT....61g..53B}
-\bibinfo{author}{{Baars}, J.W.M.}, \bibinfo{author}{{Swenson}, G.},
-  \bibinfo{year}{2008}.
-\newblock \bibinfo{title}{{The Paraboloidal Reflector Antenna in Radio
-  Astronomy and Communication: Theory and Practice}}.
-\newblock \bibinfo{journal}{Physics Today} \bibinfo{volume}{61},
-  \bibinfo{pages}{53}.
-\newblock \DOIprefix\doi{10.1063/1.2963014}.
 %Type = Article
 \bibitem[{{BICEP2 Collaboration} et~al.(2018){BICEP2 Collaboration}, {Keck
   Array Collaboration}, {Ade}, {Ahmed}, {Aikin}, {Alexand er}, {Barkats},
@@ -93,10 +84,6 @@
 \newblock \bibinfo{journal}{PRD} \bibinfo{volume}{62}, \bibinfo{pages}{123002}.
 \newblock \DOIprefix\doi{10.1103/PhysRevD.62.123002},
   \href{http://arxiv.org/abs/astro-ph/0008228}{\tt arXiv:astro-ph/0008228}.
-%Type = Book
-\bibitem[{{Chandrasekhar}(1960)}]{1960ratr.book.....C}
-\bibinfo{author}{{Chandrasekhar}, S.}, \bibinfo{year}{1960}.
-\newblock \bibinfo{title}{{Radiative transfer}}.
 %Type = Article
 \bibitem[{{Das} et~al.(2015){Das}, {Mitra} and {Tabitha
   Paulson}}]{2015JCAP...03..048D}
@@ -202,17 +189,6 @@
   \bibinfo{pages}{771--785}.
 \newblock \DOIprefix\doi{10.1051/0004-6361:20065911},
   \href{http://arxiv.org/abs/astro-ph/0606606}{\tt arXiv:astro-ph/0606606}.
-%Type = Article
-\bibitem[{{Kamionkowski} et~al.(1997){Kamionkowski}, {Kosowsky} and
-  {Stebbins}}]{1997PhRvD..55.7368K}
-\bibinfo{author}{{Kamionkowski}, M.}, \bibinfo{author}{{Kosowsky}, A.},
-  \bibinfo{author}{{Stebbins}, A.}, \bibinfo{year}{1997}.
-\newblock \bibinfo{title}{{Statistics of cosmic microwave background
-  polarization}}.
-\newblock \bibinfo{journal}{PRD} \bibinfo{volume}{55},
-  \bibinfo{pages}{7368--7388}.
-\newblock \DOIprefix\doi{10.1103/PhysRevD.55.7368},
-  \href{http://arxiv.org/abs/astro-ph/9611125}{\tt arXiv:astro-ph/9611125}.
 %Type = Article
 \bibitem[{Lewis and Bridle(2002)}]{Lewis:2002ah}
 \bibinfo{author}{Lewis, A.}, \bibinfo{author}{Bridle, S.},
@@ -502,15 +478,5 @@
 \newblock \bibinfo{journal}{APJ} \bibinfo{volume}{814}, \bibinfo{pages}{103}.
 \newblock \DOIprefix\doi{10.1088/0004-637X/814/2/103},
   \href{http://arxiv.org/abs/1508.00017}{\tt arXiv:1508.00017}.
-%Type = Article
-\bibitem[{{Zaldarriaga} and {Seljak}(1997)}]{1997PhRvD..55.1830Z}
-\bibinfo{author}{{Zaldarriaga}, M.}, \bibinfo{author}{{Seljak}, U.},
-  \bibinfo{year}{1997}.
-\newblock \bibinfo{title}{{All-sky analysis of polarization in the microwave
-  background}}.
-\newblock \bibinfo{journal}{PRD} \bibinfo{volume}{55},
-  \bibinfo{pages}{1830--1840}.
-\newblock \DOIprefix\doi{10.1103/PhysRevD.55.1830},
-  \href{http://arxiv.org/abs/astro-ph/9609170}{\tt arXiv:astro-ph/9609170}.
 
 \end{thebibliography}

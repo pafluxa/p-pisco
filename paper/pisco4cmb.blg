@@ -11,10 +11,6 @@ Repeated entry---line 605 of file bib.bib
  : @article{2005ApJ...622..759G
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 923 of file bib.bib
- : @book{1960ratr.book.....C
- :                          ,
-I'm skipping whatever remains of this entry
 Repeated entry---line 1009 of file bib.bib
  : @article{piepmeier_long_njoku_2008
  :                                   , title={Stokes Antenna Temperatures}, volume={46}, DOI={10.1109/tgrs.2007.909597}, number={2}, journal={IEEE Transactions on Geoscience and Remote Sensing}, author={Piepmeier, Jeffrey R. and Long, David G. and Njoku, Eni G.}, year={2008}, pages={516–527}}
@@ -40,45 +36,45 @@ Repeated entry---line 2713 of file bib.bib
  :                 ,
 I'm skipping whatever remains of this entry
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 25 entries,
+You've used 21 entries,
             2990 wiz_defined-function locations,
-            952 strings with 19275 characters,
-and the built_in function-call counts, 39444 in all, are:
-= -- 2163
-> -- 3682
-< -- 9
-+ -- 1390
-- -- 1362
-* -- 5779
-:= -- 5936
-add.period$ -- 94
-call.type$ -- 25
-change.case$ -- 577
-chr.to.int$ -- 24
-cite$ -- 25
-duplicate$ -- 2061
-empty$ -- 1630
-format.name$ -- 1443
-if$ -- 6711
+            922 strings with 18545 characters,
+and the built_in function-call counts, 37017 in all, are:
+= -- 1967
+> -- 3610
+< -- 6
++ -- 1362
+- -- 1338
+* -- 5523
+:= -- 5583
+add.period$ -- 80
+call.type$ -- 21
+change.case$ -- 550
+chr.to.int$ -- 20
+cite$ -- 21
+duplicate$ -- 1872
+empty$ -- 1438
+format.name$ -- 1405
+if$ -- 6247
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 626
-newline$ -- 159
-num.names$ -- 100
-pop$ -- 765
+missing$ -- 591
+newline$ -- 137
+num.names$ -- 84
+pop$ -- 702
 preamble$ -- 1
-purify$ -- 554
+purify$ -- 530
 quote$ -- 0
-skip$ -- 394
+skip$ -- 335
 stack$ -- 0
-substring$ -- 691
-swap$ -- 2500
+substring$ -- 587
+swap$ -- 2373
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 219
+type$ -- 186
 warning$ -- 0
-while$ -- 98
+while$ -- 83
 width$ -- 0
-write$ -- 421
-(There were 9 error messages)
+write$ -- 360
+(There were 8 error messages)
