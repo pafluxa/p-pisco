@@ -748,48 +748,43 @@
 	Defining $\Delta \phi \equiv \phi - \phi_0$, the antenna basis coordinates $(\rho,\sigma)$ are given by
 	%
 	\begin{flalign}
-	\rho  &= \arccos( \cos(\theta) cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) ) \nonumber \\
-	\sin(\gamma) &= \frac{\sin(\theta) \sin(\Delta \phi)}{\sin(\rho)} \nonumber \\
-	\cos(\gamma) &= \frac{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)}{\sin(\rho)} \\ 
-	\gamma       &=  \arctan \left(\frac{\sin(\theta) \sin(\Delta \phi)}{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)} \right) \nonumber
-	\end{flalign}
-	%
-	so that
-	%
-	\begin{flalign}
-	\sigma &= 180^{\circ} - \psi_0 - \gamma
+	\rho  &= \arccos( \cos(\theta) cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) ) \nonumber & \\
+	\sin(\gamma) &= \frac{\sin(\theta) \sin(\Delta \phi)}{\sin(\rho)} \nonumber & \\
+	\cos(\gamma) &= \frac{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)}{\sin(\rho)} & \\ 
+	\gamma       &=  \arctan \left(\frac{\sin(\theta) \sin(\Delta \phi)}{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)} \right) \nonumber & \\
+	\sigma &= 180^{\circ} - \psi_0 - \gamma \nonumber &
 	\end{flalign}
 	%
 	Then the instrument basis coordinates $(\theta', \phi')$ are
 	%
 	\begin{flalign}
-	\theta' &= \arccos(-\sin(\rho) \cos(\sigma)) \nonumber \\
-	\sin(\phi') &= \frac{\sin(\rho) \sin(\sigma)}{\sin(\theta')} \nonumber \\
-	\cos(\phi') &= \frac{\cos(\rho)}{\sin(\theta')} \\
-	\phi'       &= \arctan \left( \frac{\sin(\rho) \sin(\sigma)}{\cos(\rho')} \right) \nonumber
+	\theta' &= \arccos(-\sin(\rho) \cos(\sigma)) \nonumber & \\
+	\sin(\phi') &= \frac{\sin(\rho) \sin(\sigma)}{\sin(\theta')} \nonumber & \\
+	\cos(\phi') &= \frac{\cos(\rho)}{\sin(\theta')} & \\
+	\phi'       &= \arctan \left( \frac{\sin(\rho) \sin(\sigma)}{\cos(\rho)} \right) \nonumber &
 	\end{flalign}
 	%
 	From the uppermost spherical triangle in figure \ref{fig::figure10}, we have
 	%
 	\begin{flalign}
-	\cos(l) &= \sin(\theta_0) \cos(\psi_0) \nonumber \\
-	\sin(\alpha) &= \frac{\cos(\theta_0}{\sin(l)} \nonumber \\ 
-	\cos(\alpha) &= \frac{\sin(\theta_0)  \sin(\psi_0)}{\sin(l)}  \\
-	\alpha       &= \arctan\left( \frac{\cos(\theta_0)}{\sin(\theta_0)  \sin(\psi_0)} \right) \nonumber
+	\cos(l) &= \sin(\theta_0) \cos(\psi_0) \nonumber & \\
+	\sin(\alpha) &= \frac{\cos(\theta_0}{\sin(l)} \nonumber & \\ 
+	\cos(\alpha) &= \frac{\sin(\theta_0)  \sin(\psi_0)}{\sin(l)}  & \\
+	\alpha       &= \arctan\left( \frac{\cos(\theta_0)}{\sin(\theta_0)  \sin(\psi_0)} \right) \nonumber &
 	\end{flalign}
 	%
 	so that
 	%
 	\begin{flalign}
-	\beta &= 90^{\circ} - \alpha - \phi'
+	\quad \quad \beta &= 90^{\circ} - \alpha - \phi' &
 	\end{flalign}
 	%
 	This yields
 	%
 	\begin{flalign}
-	\cos(\psi) &= \frac{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)}{\cos(\theta)}  \nonumber \\
-	\sin(\psi) &= \frac{\sin(l) \sin(\beta)}{\cos(\theta)}  \\
-	\psi       &= \arctan\left( \frac{\sin(l) \sin(\beta)}{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)} \right) \nonumber
+	\cos(\psi) &= \frac{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)}{\cos(\theta)}  \nonumber & \\
+	\sin(\psi) &= \frac{\sin(l) \sin(\beta)}{\cos(\theta)}  & \\
+	\psi       &= \arctan\left( \frac{\sin(l) \sin(\beta)}{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)} \right)  \nonumber &
 	\end{flalign}
 	
 	\section{Calculation of elements of $B$}
