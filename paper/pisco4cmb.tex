@@ -764,19 +764,19 @@
 	\phi'       &= \arctan \left( \frac{\sin(\rho) \sin(\sigma)}{\cos(\rho)} \right) \nonumber &
 	\end{flalign}
 	%
-	From the uppermost spherical triangle in figure \ref{fig::figure10}, we have
+	For the arc $l$ and the angle $\alpha$, we have
 	%
 	\begin{flalign}
 	\cos(l) &= \sin(\theta_0) \cos(\psi_0) \nonumber & \\
-	\sin(\alpha) &= \frac{\cos(\theta_0)}{\sin(l)} \nonumber & \\ 
-	\cos(\alpha) &= \frac{\sin(\theta_0)  \sin(\psi_0)}{\sin(l)}  & \\
-	\alpha       &= \arctan\left( \frac{\cos(\theta_0)}{\sin(\theta_0)  \sin(\psi_0)} \right) \nonumber &
+	\sin(\alpha) &= \frac{\sin(\theta_0)  \sin(\psi_0)}{\sin(l)}  & \\
+	\cos(\alpha) &= \frac{\cos(\theta_0)}{\sin(l)} \nonumber & \\ 
+	\alpha       &= \arctan\left( \frac{\sin(\theta_0)  \sin(\psi_0)}{\cos(\theta_0)} \right) \nonumber &
 	\end{flalign}
 	%
 	This yields
 	%
 	\begin{flalign}
-	\beta &= 90^{\circ} - \alpha - \phi' \nonumber & \\
+	\beta &= \alpha - \phi' \nonumber & \\
 	\cos(\psi) &= \frac{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)}{\cos(\theta)}  \nonumber & \\
 	\sin(\psi) &= \frac{\sin(l) \sin(\beta)}{\cos(\theta)}  & \\
 	\psi       &= \arctan\left( \frac{\sin(l) \sin(\beta)}{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)} \right)  \nonumber &
