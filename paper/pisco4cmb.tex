@@ -179,32 +179,32 @@
 	\end{aligned}
 	\end{equation}
 	
-	The \textsl{pointing direction}, denoted by vector $\hat{p}$, can be expressed as a linear combination of base vectors and spherical coordinates $(\theta,\phi)$ via
+	Then the \textsl{pointing direction}, denoted by vector $\hat{p}_0$, can be expressed as a linear combination of base vectors and spherical coordinates $(\theta_0,\phi_0)$ via
 	
 	\begin{equation}
 	\begin{aligned}
-	\hat{p} = \cos(\phi)\sin(\theta)\hat{x} + \sin(\phi)\sin(\theta) \hat{y} + \cos(\theta) \hat{z}
+	\hat{p}_0 = \cos(\phi_0)\sin(\theta_0)\hat{x} + \sin(\phi_0)\sin(\theta_0) \hat{y} + \cos(\theta_0) \hat{z}
 	\end{aligned}
 	\label{eq::p_sky_basis}
 	\end{equation}
 	
-	Figure \ref{fig::sky_basis} shows vectors $\hat{\theta}$ and $\hat{\phi}$ as well, which are computed using
+	Figure \ref{fig::sky_basis} shows vectors $\hat{\theta}_0$ and $\hat{\phi}_0$ as well, which are computed using
 	
 	\begin{eqnarray}
 	\begin{aligned}
-	\hat{\theta} &=&  \cos(\theta) \cos(\phi) \hat{x} + \cos(\theta)\sin(\phi) \hat{y} - \sin(\theta) \hat{z} \\
-	\hat{\phi}   &=&              -\sin(\phi) \hat{x} +             \cos(\phi) \hat{y}
+	\hat{\theta}_0 &=&  \cos(\theta_0) \cos(\phi_0) \hat{x} + \cos(\theta_0)\sin(\phi_0) \hat{y} - \sin(\theta_0) \hat{z} \\
+	\hat{\phi}_0   &=&              -\sin(\phi_0) \hat{x} +             \cos(\phi_0) \hat{y}
 	\end{aligned}
 	\label{eq::tangent_sky_basis}
 	\end{eqnarray}
 	
-	These vectors can be used to build a second coordinate system, the \textsl{antenna basis}. Given an antenna pointing $\bar{q}$, the antenna basis base vectors can be written in term of sky basis coordinates as 
+	These vectors can be used to build a second coordinate system, the \textsl{antenna basis}. Given an antenna pointing $\bar{q}_0$, the antenna basis base vectors can be written in term of sky basis coordinates as 
 	
 	\begin{eqnarray}
 	%\begin{aligned}
-	\hat{p}'      &=&  \hat{p} \\
-	\hat{\theta}' &=&  \cos(\psi)\hat{\theta} + \sin(\psi)\hat{\phi} \\
-	\hat{\phi}'   &=& -\sin(\psi)\hat{\theta} + \cos(\psi)\hat{\phi}
+	\hat{p}'_0      &=&  \hat{p}_0 \\
+	\hat{\theta}'_0 &=&  \cos(\psi_0)\hat{\theta}_0 + \sin(\psi_0)\hat{\phi}_0 \\
+	\hat{\phi}'_0   &=& -\sin(\psi_0)\hat{\theta}_0 + \cos(\psi_0)\hat{\phi}_0
 	%\end{aligned} 
 	\label{eq::antenna_base_vectors}
 	\end{eqnarray}
@@ -213,7 +213,7 @@
 	
 	\begin{equation}
 	\begin{aligned}
-	\hat{k}       &=&  \cos(\sigma)\sin(\rho)\hat{\theta}_0' + \sin(\sigma)\sin(\rho) \hat{\phi}_0' + \cos(\rho) \hat{p}_0' \\
+	\hat{k}       &=&  \cos(\sigma)\sin(\rho)\hat{\theta}'_0 + \sin(\sigma)\sin(\rho) \hat{\phi}'_0 + \cos(\rho) \hat{p}'_0 
 	\end{aligned}
 	\end{equation}
 	
@@ -222,29 +222,19 @@
 	
 	\begin{eqnarray}
 	\begin{aligned}
-	\hat{\rho}    &=&  \cos(\sigma)\cos(\rho)\hat{\theta}_0' + \sin(\sigma)\sin(\rho) \hat{\phi}_0' - \sin(\rho) \hat{p}_0' \\
-	\hat{\sigma}  &=& -\sin(\sigma)\hat{\theta}_0' + \cos(\sigma)\hat{\phi}_0'
+	\hat{\rho}    &=&  \cos(\sigma)\cos(\rho)\hat{\theta}'_0 + \sin(\sigma)\sin(\rho) \hat{\phi}'_0 - \sin(\rho) \hat{p}'_0 \\
+	\hat{\sigma}  &=& -\sin(\sigma)\hat{\theta}'_0 + \cos(\sigma)\hat{\phi}'_0
 	\end{aligned}
 	\end{eqnarray}
 	
 	In many situations, antennas are equipped with polarization sensitive devices. The direction on the sky for which the device has maximum sensitivity to linearly polarized radiation is called co-polarization, denoted by $\hat{e}_{\co}$. The perpendicular direction, known as cross-polarization, is denoted as $\hat{e}_{\cx}$.
-	Both directions are defined in h Ludwig's third definition (see \cite{1140406}) provides a way of calculating both directions for a given point in the antenna basis, namely\footnote{The original definition differs from \ref{eq::ludwig} in that $\hat{\rho}$ must be swapped by $\hat{\phi}$.}
-	
-	\begin{eqnarray}
-	\begin{aligned}
-	\hat{e}_{\co} &=& \sin(\sigma) \hat{\sigma} + \cos(\sigma) \hat{\rho} \\
-	\hat{e}_{\cx} &=& \cos(\sigma) \hat{\sigma} - \sin(\sigma) \hat{\rho} \, .
-	\end{aligned}
-	\label{eq::ludwig}
-	\end{eqnarray}
-	
-	%\noindent
 	Because polarization is defined in the sky basis (see Figure \ref{fig::cmbcoordconvention}), a polarization sensitive antenna must compensate for the apparent rotation of its own polarization basis with respect to the sky. This can me accomplished by rotating the incoming Stokes vector by the angle between $\hat{e}_{\co}$ and $\hat{\theta}$, namely
 	
 	\begin{equation}
-	\chi(\rho,\sigma) = \arctan \left( \frac{ |\hat{e}_{\co} \times \hat{\theta}| }{ \hat{e}_{\co} \cdot \hat{\theta} } \right)
-	\label{eq::chi}
+	\psi(\rho,\sigma) = \arctan \left( \frac{ |\hat{e}_{\co} \times \hat{\theta}| }{ \hat{e}_{\co} \cdot \hat{\theta} } \right)
+	\label{eq::psi}
 	\end{equation}
+	See Appendix A for details on the definition of co-polarization and cross-polarization that PISCO uses and the computation of \psi(\rho,\sigma) using spherical trigonometry.
 	
 	\begin{figure}
 		\centering
@@ -485,8 +475,8 @@
 	\Lambda =
 	\begin{bmatrix}
 	1  & 0 & 0 & 0\\
-	0  & \cos(2\chi) & \sin(2\chi) & 0\\
-	0  &-\sin(2\chi) & \cos(2\chi) & 0\\
+	0  & \cos(2\psi) & \sin(2\psi) & 0\\
+	0  &-\sin(2\psi) & \cos(2\psi) & 0\\
 	0  & 0 & 0 & 1
 	\end{bmatrix}
 	\end{aligned}
@@ -601,11 +591,11 @@
 	
 	In order to find the optimal HEALPix resolution parameters for the beamsor and the sky, we used the prescription described in the FeBeCOP paper (see \cite{2011ApJS..193....5M}) as a starting point. This yielded a ``rule of thumb'' for the ratio $\mathrm{\texttt{NSIDE}}_{B} / \mathrm{\texttt{NSIDE}}_{S} = 4$ so that the convolution preserved the input map flux to better than $0.1\%$. We note that this flux mismatch is independent of the location of the point source, so its effect on whole sky maps should be a constant amplitude bias on the power spectra.
 	
-	Another important fact arises from considering the finite size of the beam (beamsor). When the antenna points near the poles, rapid variations of $\chi$ occur inside the beam. This becomes increasingly more problematic when reaching the poles. In order to correctly take this into account, the computation of $\chi$ used by PISCO was derived from first principles using spherical trigonometry, and the code was thoroughly tested and benchmarked to provide optimal performance. 
+	Another important fact arises from considering the finite size of the beam (beamsor). When the antenna points near the poles, rapid variations of $\psi$ occur inside the beam. This becomes increasingly more problematic when reaching the poles. In order to correctly take this into account, the computation of $\psi$ used by PISCO was derived from first principles using spherical trigonometry, and the code was thoroughly tested and benchmarked to provide optimal performance. 
 	
 	\subsubsection{Results}
 	
-	Results from this validation test are shown in figure \ref{fig::stokesqsource256beam1024dec45}. The first test was to convolve the Gaussian beam with an unpolarized point source. The results show that the flux is preserved to better than $0.1\%$, as expected from using a beamsor-sky \texttt{NSIDE} ratio of 4. Finite machine precision produce leakage from temperature to polarization, but its amplitude is negligible: at least $10$ orders of magnitude below the maximum amplitude of the Stokes I convolved map. Similar results are obtained for polarized sources in $Q$ and $U$. In the case of polarized sources, however, the effect of in-beam variations of $\chi$ becomes dominant. This behavior was expected, and PISCO correctly reproduces the output of harmonic space convolution which naturally handles this situation.
+	Results from this validation test are shown in figure \ref{fig::stokesqsource256beam1024dec45}. The first test was to convolve the Gaussian beam with an unpolarized point source. The results show that the flux is preserved to better than $0.1\%$, as expected from using a beamsor-sky \texttt{NSIDE} ratio of 4. Finite machine precision produce leakage from temperature to polarization, but its amplitude is negligible: at least $10$ orders of magnitude below the maximum amplitude of the Stokes I convolved map. Similar results are obtained for polarized sources in $Q$ and $U$. In the case of polarized sources, however, the effect of in-beam variations of $\psi$ becomes dominant. This behavior was expected, and PISCO correctly reproduces the output of harmonic space convolution which naturally handles this situation.
 	
 	\begin{figure*}
 		\centering
@@ -650,7 +640,7 @@
 	
 	\subsection{Sky model}
 	
-	We followed a similar procedure to the one described in section \ref{sec::val_sky} to generate the maps for this simulation. Maps were generated with 3 different values of the tensor to scalar ratio, $r$: $r=0.0$ (no B-modes), $r=0.01$ (CLASS target) and $r=0.1$, roughly the current limit (see \cite{2018PhRvL.121v1301B}). CLASS Q-band has a beam with a FWHM of 1.5 degrees, so mock CMB maps are not required to be generated at higher resolution than the FWHM of the beam. The optimal resolution was found to $\mathrm{\texttt{NSIDE}} = 128$ for the maps, setting the beamsor resolution to $\mathrm{\texttt{NSIDE}} = 512$. This restricts the analysis in harmonic space to $\ell < 350$, but speeds up the computation by roughly a factor of 4. Since CLASS aims at characterization of the power spectra on large angular scales, we do not expect this constraint to affect the results significantly.
+	We followed a similar procedure to the one described in section \ref{sec::val_sky} to generate the maps for this simulation. Maps were generated with 3 different values of the tensor to scalar ratio, $r$: $r=0.0$ (no B-modes), $r=0.01$ (CLASS target) and $r=0.1$, roughly the current limit (see \cite{2018PhRvL.121v1301B}). CLASS Q-band has a beam with a FWHM of 1.5 degrees, so mock CMB maps are not required to be generated at higher resolution than the FWHM of the beam. The optimal resolution was found to be $\mathrm{\texttt{NSIDE}} = 128$ for the maps, setting the beamsor resolution to $\mathrm{\texttt{NSIDE}} = 512$. This restricts the analysis in harmonic space to $\ell < 350$, but speeds up the computation by roughly a factor of 4. Since CLASS aims at characterization of the power spectra on large angular scales, we do not expect this constraint to affect the results significantly.
 	
 	\subsection{Pointing}
 	
@@ -698,7 +688,7 @@
 		\includegraphics[width=1.0\linewidth]{figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf}
 		\includegraphics[width=1.0\linewidth]{figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf}
 		\includegraphics[width=1.0\linewidth]{figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf}
-		\caption{$EE$ and $BB$ power spectra computed from the simulated observation. In blue is the expected output power spectra of the maps as if the CMB was observed by a circularly symmetric Gaussian beam via the harmonic space convolution. In orange, the power spectra of the PISCO convolved maps, using elliptical beams. Upper plot corresponds to $r=0$, middle one to $r=0.01$ and bottom most to $r=0.1$. From visual inspection, there is good agreement with both the input power spectra and the ones computed from $\ell m$ smoothed ones. For all cases, the $BB$ power spectrum shows an excess starting at $\ell = 50$.}
+		\caption{$EE$ and $BB$ power spectra computed from the simulated observation. In blue are the expected output power spectra of the maps as if the CMB was observed by a circularly symmetric Gaussian beam via the harmonic space convolution. In orange, the power spectra of the PISCO convolved maps, using elliptical beams. Upper plot corresponds to $r=0$, middle one to $r=0.01$ and bottom most to $r=0.1$. From visual inspection, there is good agreement with both the input power spectra and the ones computed from $\ell m$ smoothed ones. For all cases, the $BB$ power spectrum shows an excess starting at $\ell = 50$.}
 		\label{fig::piscoclasssim}
 	\end{figure*}
 	
@@ -734,14 +724,14 @@
 	%\numberwithin{equation}{section}	
 	\section{Computation of antenna coordinates from sky coordinates and antenna pointing}
 	
-	In this appendix we introduce an additional coordinate system, the \textsl{instrument basis} which is a spherical coordinate system with unit base vectors $\hat{x}'$, $\hat{y}'$ and $\hat{z}'$ and spherical coordinates $\theta'$ and $\phi'$. For any given beam center pointing $\bar{q}_0$ in the sky basis, the pointing direction unit vector $\hat{p}_0$ points to the sky at the equator and prime meridian $(\theta_0',\phi_0') = (90,0)$ so that the unit vectors $\hat{\theta}_0'$ and $\hat{\phi}_0'$ at that point form the unit base vectors of the antenna basis coordinate system. It is natural for PISCO to adopt Ludwig's 2nd definition of cross polarization \cite{1140406} as this aligns the unit vectors $(\hat{e}_{\co},\hat{e}_{\cx})$ with $(\hat{\theta}',\hat{\phi}')$ for a detector with orientation angle $\zeta = 0$. In particular, this means that, for any beam center pointing $\bar{q}_0 = (90,\phi,0)$ in the sky basis, the co and cross polarization unit vectors are aligned with the Stokes parameters $+U$ and $-U$ respectively across the entire sky.
+	In this appendix we introduce an additional coordinate system, the \textsl{instrument basis} which is a spherical coordinate system with unit base vectors $\hat{x}'$, $\hat{y}'$ and $\hat{z}'$ and spherical coordinates $\theta'$ and $\phi'$. For any given beam center pointing $\bar{q}_0$ in the sky basis, the pointing direction unit vector $\hat{p}_0$ points to the sky at the equator and prime meridian $(\theta'_0,\phi'_0) = (90,0)$ so that the unit vectors $\hat{\theta}'_0$ and $\hat{\phi}'_0$ at that point form the unit base vectors of the antenna basis coordinate system. It is natural for PISCO to adopt Ludwig's 2nd definition of cross polarization \cite{1140406} as this aligns the unit vectors $(\hat{e}_{\co},\hat{e}_{\cx})$ with $(\hat{\theta}',\hat{\phi}')$ for a detector with orientation angle $\zeta = 0$. In particular, this means that, for any beam center pointing $\bar{q}_0 = (90,\phi,0)$ in the sky basis, the co and cross polarization unit vectors are aligned with the Stokes parameters $+U$ and $-U$ respectively across the entire sky.
 	
-	For a beam center pointing $\bar{q}_0$ and off beam center pointing $\bar{q}$ in the sky basis, we can derive the antenna basis coordinates $(\rho,\sigma)$ and angle $\psi$ between $\hat{e}_{\co}$ and $+U$ ($\hat{\theta}$) by using spherical trigonometry (see Figure \ref{fig::figure10}). 
+	For a beam center pointing $\bar{q}_0$ and off beam center pointing $\bar{q}$ in the sky basis, we can derive the antenna basis coordinates $(\rho,\sigma)$, the instrument basis coordinates $(\theta',\phi')$ and the angle $\psi$ between $\hat{e}_{\co}$ and $+U$ ($\hat{\theta}$) by using spherical trigonometry (see Figure \ref{fig::figure10}). 
 	
 	\begin{figure}
 		\centering
 		\includegraphics[width=1.0\linewidth]{figures/Figure10.pdf}
-		\caption{Sky, instrument and antenna basis coordinates for beam center pointing $\bar{q_0}$ and off beam center pointing $\bar{q}$. Here $\mathrm{\texttt{NCP}}$ is the ICRS North Celestial Pole and $\mathrm{\texttt{Up}}$ is the pole in the up direction of the instrument basis coordinate system. The arc $l$ is the analog of the ITRS co-latitude.}
+		\caption{Sky, instrument and antenna basis coordinates for beam center pointing $\bar{q_0}$ and off beam center pointing $\bar{q}$. Here $\mathrm{\texttt{NCP}}$ is the ICRS North Celestial Pole and $\mathrm{\texttt{Up}}$ is the pole in the upward direction of the instrument basis coordinate system. The instrument basis coordinates of the NCP are $(\theta'_N,\phi'_N)$.
 		\label{fig::figure10}
 	\end{figure}
 	
@@ -764,22 +754,21 @@
 	\phi'       &= \arctan \left( \frac{\sin(\rho) \sin(\sigma)}{\cos(\rho)} \right) \nonumber &
 	\end{flalign}
 	%
-	For the arc $l$ and the angle $\alpha$, we have
+	For the instrument basis coordinates $(\theta'_N,\phi'_N)$, we have
 	%
 	\begin{flalign}
-	\l           &= \arccos(\sin(\theta_0) \cos(\psi_0)) \nonumber & \\
-	\sin(\alpha) &= \frac{\sin(\theta_0)  \sin(\psi_0)}{\sin(l)}  & \\
-	\cos(\alpha) &= \frac{\cos(\theta_0)}{\sin(l)} \nonumber & \\ 
-	\alpha       &= \arctan\left( \frac{\sin(\theta_0)  \sin(\psi_0)}{\cos(\theta_0)} \right) \nonumber &
+	\theta'_N    &= \arccos(\sin(\theta_0) \cos(\psi_0)) \nonumber & \\
+	\sin(\phi'_N) &= \frac{\sin(\theta_0)  \sin(\psi_0)}{\sin(\theta'_N)}  & \\
+	\cos(\phi'_N) &= \frac{\cos(\theta_0)}{\sin(\theta'_N)} \nonumber & \\ 
+	\phi'_N       &= \arctan\left( \frac{\sin(\theta_0)  \sin(\psi_0)}{\cos(\theta_0)} \right) \nonumber &
 	\end{flalign}
 	%
-	This yields
+	Then, defining $\Delta \phi' \equiv \phi'_N - \phi'$, yields
 	%
 	\begin{flalign}
-	\beta &= \alpha - \phi' \nonumber & \\
-	\cos(\psi) &= \frac{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)}{\cos(\theta)}  \nonumber & \\
-	\sin(\psi) &= \frac{\sin(l) \sin(\beta)}{\cos(\theta)}  & \\
-	\psi       &= \arctan\left( \frac{\sin(l) \sin(\beta)}{\cos(l) \sin(\theta') - \sin(l) \cos(\theta') \cos(\beta)} \right)  \nonumber &
+	\cos(\psi) &= \frac{\cos(\theta'_N) \sin(\theta') - \sin(\theta'_N) \cos(\theta') \cos(\Delta \phi')}{\cos(\theta)}  \nonumber & \\
+	\sin(\psi) &= \frac{\sin(\theta'_N) \sin(\Delta \phi')}{\cos(\theta)}  & \\
+	\psi       &= \arctan\left( \frac{\sin(\theta'_N) \sin(\Delta \phi')}{\cos(\theta'_N) \sin(\theta') - \sin(\theta'_N) \cos(\theta') \cos(\Delta \phi')} \right)  \nonumber &
 	\end{flalign}
 	
 	\section{Calculation of elements of $B$}
