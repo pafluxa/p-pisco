@@ -132,8 +132,8 @@ def gauss(x, *p):
 if __name__ == '__main__':
     # Read beam parameter file                                                                                    
     print 'reading beam parameters'                                                                               
-#    beam_data = pandas.read_csv( './data/array_data/qband_array_data_beam_params.csv')                                                   
-    beam_data = pandas.read_csv( 'qband_era2_pair_averaged_beam_parameters.csv')                                                   
+    beam_data = pandas.read_csv( './data/array_data/qband_array_data_beam_params.csv')                                                   
+#    beam_data = pandas.read_csv( 'qband_era2_pair_averaged_beam_parameters.csv')                                                   
 #    beam_data = np.genfromtxt('qband_era2_pair_averaged_beam_parameters.csv', delimiter=',', names=True, dtype=None, encoding='ascii')
     feeds     = np.array( beam_data[   'Feed'] )                                                               
     azOff     = np.array( beam_data[  'AzOff'] )                                                               
