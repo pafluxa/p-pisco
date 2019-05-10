@@ -121,7 +121,10 @@ def make_composite_elliptical_beam_window_function(fwhm_x, fwhm_y, lmax, radius=
         else:  # polarization beam
             # polarization factors [1, 2 sigma^2, 2 sigma^2, sigma^2]
             pol_factor = np.exp([0.0, 2 * sigma2, 2 * sigma2, sigma2])
-            return g[:, np.newaxis] * pol_factor, fwhm_sym
+            G = g[:, np.newaxis] * pol_factor
+            G = G.swapaxes( 1, 0 )
+
+            return G, fwhm_sym
 
 # Define model function to be used to fit to the data above:
 def gauss(x, *p):
