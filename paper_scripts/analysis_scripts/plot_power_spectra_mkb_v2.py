@@ -64,9 +64,9 @@ lmax = 250
 # Get map Pixel Window function
 # I am not entirely sure how to use this, but I was told is just another window function
 # that multiplies the one from the beam
-pixwin_temp, pixwin_pol = healpy.pixwin( NSIDE, pol=True )
-pixwin_temp = pixwin_temp[0:lmax+1]
-pixwin_pol  = pixwin_pol [0:lmax+1]
+#pixwin_temp, pixwin_pol = healpy.pixwin( NSIDE, pol=True )
+#pixwin_temp = pixwin_temp[0:lmax+1]
+#pixwin_pol  = pixwin_pol [0:lmax+1]
 
 
 #----------------------------------------------------------------------------------------------------------#  
@@ -78,19 +78,8 @@ azOff     = numpy.array( beam_data[  'AzOff'] )
 elOff     = numpy.array( beam_data[  'ElOff'] )                                                               
 fwhm_x    = numpy.array( beam_data[ 'FWHM_x'] )                                                               
 fwhm_y    = numpy.array( beam_data[ 'FWHM_y'] )                                                               
-rotation  = numpy.array( beam_data[  'theta'] )                                                               
+rotation  = numpy.array( beam_data[  'Theta'] )                                                               
 #----------------------------------------------------------------------------------------------------------#  
-
-'''
-wl_mkb = make_composite_elliptical_beam_window_function( 
-    numpy.asarray( [beam_fwhm] ), 
-    numpy.asarray( [beam_fwhm] ), 
-    lmax, 5.0, lmax )
-'''
-glTT_mkb, glEE_mkb, glBB_mkb, glTE_mkb, beam_fwhm = make_composite_elliptical_beam_window_function( fwhm_x, fwhm_y, lmax, pol=True ) 
-wl_TT_mkb = (glTT**2)# * pixwin_temp ) 
-wl_EE_mkb = (glEE**2)# * pixwin_pol  )
-wl_BB_mkb = (glBB**2)# * pixwin_pol  )
 
 # Compute PISCO maps
 AtA,AtD,NSIDE = data['AtA'], data['AtD'], data['nside'][()]
@@ -100,6 +89,21 @@ pI,pQ,pU,pW = matrices_to_maps( NSIDE, AtA, AtD )
 oI = numpy.load( sys.argv[2] )['I']
 oQ = numpy.load( sys.argv[2] )['Q'] 
 oU = numpy.load( sys.argv[2] )['U'] 
+
+# Define l numbers
+ell = numpy.arange( lmax + 1 )
+ell2 = ell * (ell+1)/(2*numpy.pi)
+
+# Get window function considering all beams in the focal plane
+w, beam_fwhm = make_composite_elliptical_beam_window_function( fwhm_x, fwhm_y, lmax, pol=True ) 
+glTT_mkb, glEE_mkb, glBB_mkb, glTE_mkb = w
+
+# Get window function of equivalent Gaussian beam
+glTT, glEE, glBB, glTE = healpy.sphtfunc.gauss_beam( numpy.radians(beam_fwhm), pol=True, lmax=lmax ).T
+# I am not (and never was, because I am not sure about it) including the effect of pixwin here.
+wl_TT = (glTT**2) 
+wl_EE = (glEE**2)
+wl_BB = (glBB**2)
 
 # Convolve original maps using smoothing
 sI, sQ, sU = healpy.smoothing( (oI, oQ, oU), fwhm=numpy.radians(beam_fwhm), pol=True )
@@ -130,17 +134,6 @@ pTT = pTT[0:lmax+1]
 pEE = pEE[0:lmax+1]
 pBB = pBB[0:lmax+1]
 
-# Define l numbers
-ell = numpy.arange( oTT.size )
-ell2 = ell * (ell+1)/(2*numpy.pi)
-
-# Get window function from a circularly symmetric Gaussian beam.
-# Note we are getting both polarization and temperature ones.
-glTT, glEE, glBB, glTE = healpy.sphtfunc.gauss_beam( numpy.radians(beam_fwhm), pol=True, lmax=lmax ).T
-# I am not (and never was, because I am not sure about it) including the effect of pixwin here.
-wl_TT = (glTT**2)# * pixwin_temp ) 
-wl_EE = (glEE**2)# * pixwin_pol  )
-wl_BB = (glBB**2)# * pixwin_pol  )
 
 fig  = pylab.figure( figsize=(20,5) )
 
@@ -172,8 +165,8 @@ ax_BB.set_xscale('log')
 # Plot C_\ell^{TT} for original maps
 ax_TT.plot( ell2*oTT, c='black', alpha=0.6,
             label='$C_{\ell}^{TT}$ of input CMB.' ) 
-# Plot C_\ell^{TT} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_TT.plot( ell2*pTT/wl_TT_mkb, c='blue', alpha=0.6,
+# Plot C_\ell^{TT} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function from MKB
+ax_TT.plot( ell2*pTT/glTT_mkb**2, c='blue', alpha=0.6,
             label='$C_{\ell}^{TT} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' )
 # Plot C_\ell^{TT} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_TT.plot( ell2*sTT/wl_TT, c='red', alpha=0.6,
@@ -183,7 +176,7 @@ ax_TT.plot( ell2*sTT/wl_TT, c='red', alpha=0.6,
 ax_EE.plot( ell2*oEE, c='black', alpha=0.6,
             label='$C_{\ell}^{EE}$ of input CMB.' ) 
 # Plot C_\ell^{EE} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_EE.plot( ell2*pEE/wl_EE_mkb, c='blue', alpha=0.6,
+ax_EE.plot( ell2*pEE/glEE_mkb**2, c='blue', alpha=0.6,
             label='$C_{\ell}^{EE} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' ) 
 # Plot C_\ell^{EE} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_EE.plot( ell2*sEE/wl_EE, c='red', alpha=0.6,
@@ -193,7 +186,7 @@ ax_EE.plot( ell2*sEE/wl_EE, c='red', alpha=0.6,
 ax_BB.plot( ell2*oBB, c='black', alpha=0.6,
             label='$C_{\ell}^{BB}$ of input CMB.' ) 
 # Plot C_\ell^{BB} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_BB.plot( ell2*pBB/wl_BB_mkb, c='blue', alpha=0.6,
+ax_BB.plot( ell2*pBB/glBB_mkb**2, c='blue', alpha=0.6,
             label='$C_{\ell}^{BB} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' ) 
 # Plot C_\ell^{BB} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_BB.plot( ell2*sBB/wl_BB, c='red', alpha=0.6,
