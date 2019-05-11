@@ -101,6 +101,16 @@ wl_TT_mkb = (glTT_mkb**2)# * pixwin_temp )
 wl_EE_mkb = (glEE_mkb**2)# * pixwin_pol  )
 wl_BB_mkb = (glBB_mkb**2)# * pixwin_pol  )
 
+# Test
+# Convolve original maps using smoothing with composite window functions
+sI = healpy.smoothing(oI, beam_window=glTT_mkb, pol=False )
+sQ = healpy.smoothing(oQ, beam_window=glEE_mkb, pol=False )
+sU = healpy.smoothing(oU, beam_window=glBB_mkb, pol=False )
+wl_TT = wl_TT_mkb
+wl_EE = wl_EE_mkb
+wl_BB = wl_BB_mkb
+
+'''
 # Get window function of equivalent Gaussian beam
 glTT, glEE, glBB, glTE = healpy.sphtfunc.gauss_beam( numpy.radians(beam_fwhm), pol=True, lmax=lmax ).T
 # I am not (and never was, because I am not sure about it) including the effect of pixwin here.
@@ -110,6 +120,7 @@ wl_BB = (glBB**2)# * pixwin_pol  )
 
 # Convolve original maps using smoothing
 sI, sQ, sU = healpy.smoothing( (oI, oQ, oU), fwhm=numpy.radians(beam_fwhm), pol=True )
+'''
 
 # Create a window from hit map. Mask all pixels with less than 10 hits.
 mask = numpy.where( pW < 10 )
