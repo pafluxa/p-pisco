@@ -174,7 +174,7 @@ ax_BB.set_xscale('log')
 ax_TT.plot( ell2*oTT, c='black', alpha=0.6,
             label='$C_{\ell}^{TT}$ of input CMB.' ) 
 # Plot C_\ell^{TT} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function from MKB
-ax_TT.plot( ell2*pTT/glTT_mkb, c='blue', alpha=0.6,
+ax_TT.plot( ell2*pTT/wl_TT_mkb, c='blue', alpha=0.6,
             label='$C_{\ell}^{TT} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' )
 # Plot C_\ell^{TT} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_TT.plot( ell2*sTT/wl_TT, c='red', alpha=0.6,
@@ -184,7 +184,7 @@ ax_TT.plot( ell2*sTT/wl_TT, c='red', alpha=0.6,
 ax_EE.plot( ell2*oEE, c='black', alpha=0.6,
             label='$C_{\ell}^{EE}$ of input CMB.' ) 
 # Plot C_\ell^{EE} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_EE.plot( ell2*pEE/glEE_mkb, c='blue', alpha=0.6,
+ax_EE.plot( ell2*pEE/wl_EE_mkb, c='blue', alpha=0.6,
             label='$C_{\ell}^{EE} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' ) 
 # Plot C_\ell^{EE} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_EE.plot( ell2*sEE/wl_EE, c='red', alpha=0.6,
@@ -194,7 +194,7 @@ ax_EE.plot( ell2*sEE/wl_EE, c='red', alpha=0.6,
 ax_BB.plot( ell2*oBB, c='black', alpha=0.6,
             label='$C_{\ell}^{BB}$ of input CMB.' ) 
 # Plot C_\ell^{BB} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_BB.plot( ell2*pBB/glBB_mkb, c='blue', alpha=0.6,
+ax_BB.plot( ell2*pBB/wl_BB_mkb, c='blue', alpha=0.6,
             label='$C_{\ell}^{BB} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' ) 
 # Plot C_\ell^{BB} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_BB.plot( ell2*sBB/wl_BB, c='red', alpha=0.6,
