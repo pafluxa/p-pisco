@@ -1,11 +1,13 @@
 # coding: utf-8
 import numpy as np
-#import pylab
-#import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 from scipy.special import i0
 from scipy.integrate import simps
 from scipy.optimize import curve_fit
 import pandas
+from healpy.sphtfunc import gauss_beam
 
 sigma2fwhm = np.sqrt(8.0 * np.log(2.0))
 
@@ -99,8 +101,8 @@ def make_composite_elliptical_beam_window_function(fwhm_x, fwhm_y, lmax, radius=
 
     ''' 
 
-    theta = np.linspace(0.0, radius, lmax )
-    composite = np.zeros(lmax)                                                   
+    theta = np.linspace(0.0, radius, lmax + 1)
+    composite = np.zeros(lmax + 1)                                                   
     ndet = len(fwhm_x)
     for i in range(ndet):
         composite +=  make_elliptical_beam_symmetrical_profile(fwhm_x[i], fwhm_y[i], theta)
@@ -111,11 +113,11 @@ def make_composite_elliptical_beam_window_function(fwhm_x, fwhm_y, lmax, radius=
     sigma2 = window[0] / (2.0 * np.pi)
     #FWHM of equivalent Gaussian beam (degrees)
     fwhm_sym = np.degrees(np.sqrt(sigma2) * sigma2fwhm)
+    #Normalize 
+    g = window / window[0]
     if return_composite:
-        return composite, fwhm_sym
+        return g, composite, fwhm_sym
     else:
-        #Normalize 
-        g = window / window[0]
         if not pol:  # temperature-only beam
             return g, fwhm_sym
         else:  # polarization beam
@@ -135,9 +137,8 @@ def gauss(x, *p):
 if __name__ == '__main__':
     # Read beam parameter file                                                                                    
     print 'reading beam parameters'                                                                               
-    beam_data = pandas.read_csv( './data/array_data/qband_array_data_beam_params.csv')                                                   
-#    beam_data = pandas.read_csv( 'qband_era2_pair_averaged_beam_parameters.csv')                                                   
-#    beam_data = np.genfromtxt('qband_era2_pair_averaged_beam_parameters.csv', delimiter=',', names=True, dtype=None, encoding='ascii')
+#    beam_data = pandas.read_csv( './data/array_data/qband_array_data_beam_params.csv')                                                   
+    beam_data = pandas.read_csv( 'qband_era2_pair_averaged_beam_parameters.csv')                                                   
     feeds     = np.array( beam_data[   'Feed'] )                                                               
     azOff     = np.array( beam_data[  'AzOff'] )                                                               
     elOff     = np.array( beam_data[  'ElOff'] )                                                               
@@ -157,8 +158,8 @@ if __name__ == '__main__':
     # Get composite beam profile
     lmax = 250
     radius = 5.0
-    theta = np.linspace( 0.0, radius, lmax )
-    comp_profile, fwhm_sym = make_composite_elliptical_beam_window_function( fwhm_x, fwhm_y, lmax, radius=radius, return_composite=True ) 
+    theta = np.linspace( 0.0, radius, lmax + 1)
+    window, comp_profile, fwhm_sym = make_composite_elliptical_beam_window_function( fwhm_x, fwhm_y, lmax, radius=radius, return_composite=True ) 
     print "FWHM_sym = ", fwhm_sym
 
     # p0 is the initial guess for the fitting coefficients (A, mu and sigma above)
@@ -169,6 +170,15 @@ if __name__ == '__main__':
     print "Amp   = ", coeff[0]
     print "FWHM  = ", sigma2fwhm * coeff[1]
 
-#    pylab.plot( theta, comp_profile )
+    sigma = fwhm_sym / sigma2fwhm
+    gauss = np.exp(-theta**2/(2.*sigma**2))
+    gauss_window = gauss_beam( np.radians(fwhm_sym), lmax=lmax )
+
+    ell = np.linspace( 0.0, lmax, lmax + 1)
+    plt.subplot(2,1,1)
+    plt.plot( theta / sigma, comp_profile - gauss)
+    plt.subplot(2,1,2)
+    plt.plot( ell, window - gauss_window) 
+    plt.savefig('output.png')
 #    pylab.show()
 
