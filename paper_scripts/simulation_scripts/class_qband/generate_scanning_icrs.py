@@ -78,10 +78,10 @@ for scan in range( nscans ):
     else:
         azimuth[ scan*T*sps: (scan+1)*T*sps ] = numpy.radians( numpy.linspace(  540,-180, (T*sps) ) )
 
-boresights = [-45,-30,-15-0,15,30,45]
+boresights = [-45,-30,-15, 0,15,30,45]
 for day in range( ndays ):
 
-    bday = day % 6
+    bday = day % 7
 
     rotation[ day * 86400 * sps: (day+1) * 86400 * sps ] += numpy.radians( boresights[ bday ] )
 
