@@ -7,55 +7,9 @@ from scipy.special import i0
 from scipy.integrate import simps
 from scipy.optimize import curve_fit
 import pandas
-from healpy.sphtfunc import gauss_beam
+from healpy.sphtfunc import gauss_beam, beam2bl
 
 sigma2fwhm = np.sqrt(8.0 * np.log(2.0))
-
-def beam2bl(beam, theta, lmax):
-    """Computes a transfer (or window) function b(l) in spherical 
-    harmonic space from its circular beam profile b(theta) in real 
-    space.
-
-    Parameters
-    ----------
-    beam : array
-        Circular beam profile b(theta).
-    theta : array
-        Radius at which the beam profile is given. Has to be given 
-        in radians with same size as beam.
-    lmax : integer
-        Maximum multipole moment at which to compute b(l).
-
-    Returns
-    -------
-    bl : array
-        Beam window function b(l).
-    """
-
-    nx = len(theta)
-    nb = len(beam)
-    if nb != nx:
-        print("beam and theta must have same size!")
-
-    x = np.cos(theta)
-    st = np.sin(theta)
-    window = np.zeros(lmax + 1)
-
-    p0 = np.ones(nx)
-    p1 = np.copy(x)
-
-    window[0] = simps(beam * p0 * st, theta)
-    window[1] = simps(beam * p1 * st, theta)
-
-    for l in np.arange(2, lmax + 1):
-        p2 = x * p1 * (2 * l - 1) / l - p0 * (l - 1) / l
-        window[l] = simps(beam * p2 * st, theta)
-        p0 = p1
-        p1 = p2
-
-    window *= 2 * np.pi
-
-    return window
 
 def make_elliptical_beam_symmetrical_profile(fwhm_x, fwhm_y, theta):
     '''
