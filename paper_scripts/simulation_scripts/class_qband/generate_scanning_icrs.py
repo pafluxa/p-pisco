@@ -57,7 +57,7 @@ ndays          = 7
 ts             = 1451606400
 te             = ts + ndays*86400 # This is one week
 sps            = 20
-T              = 600
+T              = 720
 
 # Define the TOD
 ctime     = numpy.arange( ts, te, 1./sps )
