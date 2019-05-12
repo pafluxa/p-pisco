@@ -4,7 +4,6 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from scipy.special import i0
-from scipy.integrate import simps
 from scipy.optimize import curve_fit
 import pandas
 from healpy.sphtfunc import gauss_beam, beam2bl
@@ -91,8 +90,8 @@ def gauss(x, *p):
 if __name__ == '__main__':
     # Read beam parameter file                                                                                    
     print 'reading beam parameters'                                                                               
-#    beam_data = pandas.read_csv( './data/array_data/qband_array_data_beam_params.csv')                                                   
-    beam_data = pandas.read_csv( 'qband_era2_pair_averaged_beam_parameters.csv')                                                   
+    beam_data = pandas.read_csv( './data/array_data/qband_array_data_beam_params.csv')                                                   
+#    beam_data = pandas.read_csv( 'qband_era2_pair_averaged_beam_parameters.csv')                                                   
     feeds     = np.array( beam_data[   'Feed'] )                                                               
     azOff     = np.array( beam_data[  'AzOff'] )                                                               
     elOff     = np.array( beam_data[  'ElOff'] )                                                               
@@ -103,7 +102,7 @@ if __name__ == '__main__':
     '''
     fwhm_x = 1.5
     fwhm_y = 1.3
-    fwhm_sym = np.sqrt((2.0 * fwhm_x**2 * fwhm_y**2) / (fwhm_x**2 + fwhm_y **2))
+    fwhm_sym = np.sqrt(fwhm_x * fwhm_y)
     print "FWHM_sym = ", fwhm_sym
     fwhm_x = np.asarray( [fwhm_x] ) 
     fwhm_y = np.asarray( [fwhm_y] ) 
