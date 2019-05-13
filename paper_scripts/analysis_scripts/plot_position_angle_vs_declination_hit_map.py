@@ -55,7 +55,7 @@ plt.figure()
 plt.title('Hit Map')
 plt.xlabel('Position Angle')
 plt.ylabel('Declination')
-plt.imshow(hits, origin='lower', extent=(pa.min(), pa.max(), dec.min(), dec.max()))
+plt.imshow(hits, origin='lower', extent=(pa.min(), pa.max(), dec.min(), dec.max()), cmap='plasma')
 plt.colorbar()
 plt.savefig('pa_v_dec_hit_map.png')
 
