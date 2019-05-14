@@ -21,7 +21,7 @@ The scan is composed of constant elevation (45 degrees) azimuth scans." )
 
 # number of days
 parser.add_argument(
-    "-hours", action="store", type=int, dest="hours", default=24,
+    "-days", action="store", type=int, dest="days", default=1,
     help="The simulated pointing will encompass the specified number of days. Defaults to 1." )
 
 # sampling frequency
@@ -86,23 +86,23 @@ elOff  = numpy.deg2rad(  elOff )
 
 d   = datetime.strptime( args.startDate, "%d/%m/%YT%H:%M:%S" )
 ts  = float( time.mktime( d.timetuple() ) )
-te  = ts + args.hours * 3600.0
+te  = ts + args.days * 86400.0
 sps = args.sps
 T   = 720
 
 # Compute the number of scans as the duration of a scan
 nscans = int( numpy.ceil( (te - ts)/T ) )
-ndays  = int( numpy.ceil( (te - ts)/3600 ) )
+ndays  = args.days
 
 # path to save everything to
 outputName = ""
 
 if args.tag == "":
-    outputName = "classQbandPointing_nhours_%d_nscans_%d_sps_%dHz.npz" % (
+    outputName = "classQbandPointing_ndays_%d_nscans_%d_sps_%dHz.npz" % (
                   (int)(ndays), (int)(nscans), (int)(sps) )
 
 else:
-    outputName = "classQbandPointing_nhours_%d_nscans_%d_sps_%dHz_tag_%s.npz" % (
+    outputName = "classQbandPointing_ndays_%d_nscans_%d_sps_%dHz_tag_%s.npz" % (
                   (int)(ndays), (int)(nscans), (int)(sps), args.tag )
 
 outputPath = join_paths( args.outputPath, outputName )
@@ -130,7 +130,7 @@ boresights = [-45,-30,-15, 0, 15, 30, 45]
 for day in range( ndays ):
 
     bday = day % 7
-    rotation[ day * 3600 * sps: (day+1) * 3600 * sps ] += numpy.radians( boresights[ bday ] )
+    rotation[ day * 86400.0 * sps: (day+1) * 86400.0 * sps ] += numpy.radians( boresights[ bday ] )
 
 # MKB magic
 sel = numpy.sin(elevation)
@@ -144,13 +144,15 @@ sha = cel * saz / cdec
 ha_bc = numpy.arcsin(sha)
 dec_bc = numpy.arcsin(sdec)
 
-# This line needs to be updated if generating scans for dates too far away from 2019!
 lst = ((1.00273790935 * ctime) % 86400.0) * 2.0 * numpy.pi / 86400.0
 
 ra_bc = lst - ha_bc
+#Keep RA in range.
+if ra_bc > 2.0 * numpy.py: ra_bc -= 2.0 * numpy.pi
+elif ra_bc < 0.0: ra_bc -= 2.0 * numpy.pi
 
 
-# dumm polAng array to zero.
+# dummy polAng array to zero.
 polAng = numpy.zeros_like( elOff )
 print azOff.shape, elOff.shape, polAng.shape
 ra, dec, pa = focalplane_to_equatorial(ra_bc, dec_bc, pa_bc + rotation, azOff, elOff, polAng)
