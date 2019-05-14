@@ -18,3 +18,7 @@ For application (Section 6)
 For discussion (Section 7)
 
 - Compare the effects of having incomplete pairing with calibration errors.
+
+Other
+
+- Move the paper from Elsevier to JCAP.
