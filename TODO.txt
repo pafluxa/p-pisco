@@ -1,0 +1,20 @@
+General:
+
+- Modify pipeline to extract power spectra from PISCO generated maps using Duncan's code.
+- Check GRASP beams match Moon beams. (halfway done)
+- Create mock pointing assuming featureless sky (much faster). Be careful not to include `zeta` here. Make sure to use T=720.
+- Check generated pointing is fine by looking at declination limits, and by making the polarization angle coverage histogram.
+
+For validation (Section 5)
+
+- Re-run the CLASS simulation using the mock pointing and Moon subtracted beam parameters. This is the "perfect era 2 run".
+
+For application (Section 6)
+
+- Rolo suggested running two more simulations. One with no beam mismatch, but a few detectors off, "a la era1". He believes using 
+  beam offsets from era2 should be fine.
+- Second simulation should add calibration errors (changing `epsilon` in equation 3.9).
+
+For discussion (Section 7)
+
+- Compare the effects of having incomplete pairing with calibration errors.
