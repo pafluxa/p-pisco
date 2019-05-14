@@ -1,0 +1,28 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Coordinates}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Definitions}{3}{subsection.2.1}
+\contentsline {section}{\numberline {3}Antenna theory}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Beam}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Beam tensors}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Measuring the sky with antennas}{6}{subsection.3.3}
+\contentsline {section}{\numberline {4}Pixel space convolution}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Discrete convolution on the sphere}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Implementation in CUDA}{7}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}PISCO}{8}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}General description}{8}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Performance}{9}{subsubsection.4.3.2}
+\contentsline {section}{\numberline {5}Code validation}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Validation using mock point source observations}{10}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}Results}{11}{subsubsection.5.1.1}
+\contentsline {subsection}{\numberline {5.2}Validation using mock whole sky observations}{11}{subsection.5.2}
+\contentsline {section}{\numberline {6}Application to a CMB experiment with elliptical beams}{14}{section.6}
+\contentsline {subsection}{\numberline {6.1}Sky model}{14}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Pointing}{14}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Beamsor model}{14}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Power spectra analysis}{15}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Results}{16}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}Discussion}{16}{subsection.6.6}
+\contentsline {section}{\numberline {7}Conclusion}{16}{section.7}
+\contentsline {section}{\numberline {A}Computation of antenna coordinates from sky coordinates and antenna pointing}{20}{appendix.A}
+\contentsline {section}{\numberline {B}Calculation of elements of $B$}{22}{appendix.B}
