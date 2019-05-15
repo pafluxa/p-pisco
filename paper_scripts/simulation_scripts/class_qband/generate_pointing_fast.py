@@ -147,10 +147,6 @@ dec_bc = numpy.arcsin(sdec)
 lst = ((1.00273790935 * ctime) % 86400.0) * 2.0 * numpy.pi / 86400.0
 
 ra_bc = lst - ha_bc
-#Keep RA in range.
-if ra_bc > 2.0 * numpy.py: ra_bc -= 2.0 * numpy.pi
-elif ra_bc < 0.0: ra_bc -= 2.0 * numpy.pi
-
 
 # dummy polAng array to zero.
 polAng = numpy.zeros_like( elOff )
