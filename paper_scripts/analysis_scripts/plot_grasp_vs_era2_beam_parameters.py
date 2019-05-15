@@ -3,11 +3,13 @@ import pylab
 from matplotlib import patches
 
 import numpy
-import pandas
+#import pandas
 
 # pandas are great
-moonBP  = pandas.read_csv( 'data/array_data/qband_era2_moon_subtracted_beam_parameters.csv' )
-graspBP = pandas.read_csv( 'data/array_data/qband_grasp_beam_parameters.csv' )
+#moonBP  = pandas.read_csv( 'data/array_data/qband_era2_moon_subtracted_beam_parameters.csv' )
+#graspBP = pandas.read_csv( 'data/array_data/qband_grasp_beam_parameters.csv' )
+moonBP = numpy.genfromtxt('qband_era2_moon_subtracted_beam_parameters.csv', delimiter=',', names=True, dtype=None, encoding='ascii')
+graspBP = numpy.genfromtxt('grasp_beam_parameters_with_feeds.csv', delimiter=',', names=True, dtype=None, encoding='ascii')
 
 # Setup figure and axes
 fig = pylab.figure()
@@ -32,12 +34,12 @@ axV.set_xlim( -12, 12 )
 axV.set_xlabel( 'degrees' )
 axV.set_ylabel( 'degrees' )
 
-for i in range( len( graspBP ) ):
+for i, det in enumerate(moonBP['Detector']):
    
     # Choose whether to plot in the H of V subplot
     # based on detector polarization angle
     ax = None    
-    if moonBP['det_pol'].iloc[i] > 0:
+    if moonBP['det_pol'][i] > 0:
         ax = axV
     else:
         ax = axH
@@ -46,31 +48,34 @@ for i in range( len( graspBP ) ):
     # Note I am using AzOff and ElOff from Moon data
     # instead of the pointing offsets extracted from GRASP sims.
     # This is because we want to compare only the beams.
-    eg = patches.Ellipse(  
-     (   moonBP['AzOff'].iloc[i], 
-         moonBP['ElOff'].iloc[i] ),  
-         graspBP['fwhm_x'].iloc[i], 
-         graspBP['fwhm_y'].iloc[i], 
-         # Docs say that ellipse is anti-clockwise. 
-         graspBP[ 'theta'].iloc[i], 
-         fill=False,
-         edgecolor='black',
-         linewidth=1,
-         alpha=0.5 )
+    idx = numpy.where(graspBP['det'] == det)
+    if len(idx[0]):
+        idx = idx[0][0]
+        eg = patches.Ellipse(  
+         (   moonBP['AzOff'][i], 
+             moonBP['ElOff'][i] ),  
+             graspBP['fwhm_x'][idx], 
+             graspBP['fwhm_y'][idx], 
+             # Docs say that ellipse is anti-clockwise. 
+             graspBP[ 'theta'][idx], 
+             fill=False,
+             edgecolor='black',
+             linewidth=1,
+             alpha=0.5 )
+        ax.add_patch( eg )
 
     # 'm' is for "Moon"
     em = patches.Ellipse(  
-         (  moonBP['AzOff'].iloc[i], 
-            moonBP['ElOff'].iloc[i] ),  
-            moonBP['FWHM_x'].iloc[i], 
-            moonBP['FWHM_y'].iloc[i],    
+         (  moonBP['AzOff'][i], 
+            moonBP['ElOff'][i] ),  
+            moonBP['FWHM_x'][i], 
+            moonBP['FWHM_y'][i],    
             # Docs say that ellipse is anti-clockwise. 
-            moonBP ['Theta'].iloc[i], 
+            moonBP ['Theta'][i], 
             fill=True,  
             color='red', 
             alpha=0.2 )
 
-    ax.add_patch( eg )
     ax.add_patch( em )
 
 pylab.show()
