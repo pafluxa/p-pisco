@@ -1,3 +1,44 @@
+\documentclass[a4paper,11pt]{article}
+\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+             % images in pdf, png or jpg format)
+
+\usepackage{jcappub} % for details on the use of the package, please
+                     % see the JCAP-author-manual
+
+\usepackage[T1]{fontenc} % if needed
+
+
+
+\title{\boldmath A title with some math: $x=1$}
+
+
+%% %simple case: 2 authors, same institution
+%% \author{A. Uthor}
+%% \author{and A. Nother Author}
+%% \affiliation{Institution,\\Address, Country}
+
+% more complex case: 4 authors, 3 institutions, 2 footnotes
+\author[a,b,1]{F. Irst,\note{Corresponding author.}}
+\author[c]{S. Econd,}
+\author[a,2]{T. Hird\note{Also at Some University.}}
+\author[a,2]{and Fourth}
+
+% The "\note" macro will give a warning: "Ignoring empty anchor..."
+% you can safely ignore it.
+
+\affiliation[a]{One University,\\some-street, Country}
+\affiliation[b]{Another University,\\different-address, Country}
+\affiliation[c]{A School for Advanced Studies,\\some-location, Country}
+
+% e-mail addresses: one for each author, in the same order as the authors
+\emailAdd{first@one.univ}
+\emailAdd{second@asas.edu}
+\emailAdd{third@one.univ}
+\emailAdd{fourth@one.univ}
+
+
+
+
 %\documentclass[review]{elsarticle}
 %\documentclass[a4paper,fleqn,longmktitle]{cas-dc}
 \documentclass[a4paper,fleqn]{cas-dc}\sloppy
@@ -130,7 +171,7 @@
 	
 	CMB anisotropies form a Gaussian field on the sky, being nearly 10\% polarized. The latter can be modeled as a spin-2 field, which is separable in two orthogonal components: a curl-free component called E-mode, and a divergence-free component called B-mode. In the absence of gravitational waves, the polarization field would contain only E-modes, which would be partially turned into B-modes by gravitational waves acting during the epochs of recombination and reionization. The resulting B-mode field would be one or two orders of magnitude lower than the E-mode signal, being very faint and difficult to measure. Moreover, recent results show that this signal lies below other foreground signals like gravitational lensing distortions induced by the matter distribution and polarized emissions from the interstellar medium {\color{red}(add cites)}. Thus, detecting the primordial B-mode signal has become a major technical challenge.
 	
-	Another source of confusion is experimental systematic effects. The tremendous increase in sensitivity of CMB experiments have brought into play a long list of instrumental and observational effects, which need to be properly incorporated into the data reduction process, as well as the design of future experiments. Being an extended signal on the sky, understanding effects the detailed polarized antenna response of the telescope, and how it gets convolved with the sky signal (scan strategy), is key, as it can directly affect the scientific results.
+	Another source of confusion are experimental systematic effects. The tremendous increase in sensitivity of CMB experiments have brought into stage a long list of instrumental and observational effects, which need to be properly incorporated into the data reduction process, as well as for the design of future experiments. Being this an extended signal on the sky, understanding effects the detailed polarized antenna response of the telescope, and how it gets convolved with the sky signal (scan strategy), is key, as it can directly affect the scientific results.
 	
 	The main beam is where most of the radiation is captured by the antenna, and thus the effects of the beam shape and polarization have been extensively studied. 
 	%Analytic techniques
@@ -234,7 +275,7 @@
 	\psi(\rho,\sigma) = \arctan \left( \frac{ |\hat{e}_{\co} \times \hat{\theta}| }{ \hat{e}_{\co} \cdot \hat{\theta} } \right)
 	\label{eq::psi}
 	\end{equation}
-
+	
 	See Appendix A for details on the definition of co-polarization and cross-polarization that PISCO uses and the computation of $\psi(\rho,\sigma)$ using spherical trigonometry.
 	
 	\begin{figure}
@@ -720,7 +761,7 @@
 	
 	\bibliographystyle{model2-names}
 	\bibliography{bib}
-
+	
 	\appendix
 	%\numberwithin{equation}{section}	
 	\section{Computation of antenna coordinates from sky coordinates and antenna pointing}
