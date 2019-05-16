@@ -89,7 +89,7 @@ azOff     = numpy.array( beam_data[ 'AzOff']  )
 elOff     = numpy.array( beam_data[ 'ElOff']  )
 fwhm_x    = numpy.array( beam_data[ 'FWHM_x'] )
 fwhm_y    = numpy.array( beam_data[ 'FWHM_y'] )
-rotation  = numpy.array( beam_data[ 'theta']  )
+rotation  = numpy.array( beam_data[ 'Theta']  )
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#

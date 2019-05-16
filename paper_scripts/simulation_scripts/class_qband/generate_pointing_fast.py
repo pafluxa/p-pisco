@@ -130,7 +130,7 @@ boresights = [-45,-30,-15, 0, 15, 30, 45]
 for day in range( ndays ):
 
     bday = day % 7
-    rotation[ day * 86400.0 * sps: (day+1) * 86400.0 * sps ] += numpy.radians( boresights[ bday ] )
+    rotation[ day * 86400 * sps: (day+1) * 86400 * sps ] += numpy.radians( boresights[ bday ] )
 
 # MKB magic
 sel = numpy.sin(elevation)
