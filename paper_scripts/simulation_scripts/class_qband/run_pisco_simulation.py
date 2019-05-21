@@ -57,6 +57,8 @@ azOff  = config['focalplane']['azOff']
 elOff  = config['focalplane']['elOff']
 detPol = config['focalplane']['detPol']
 isOn   = config['focalplane']['on']
+isOff  = (isOn + 1) % 2 
+print isOff
 
 receiver = Receiver()
 receiver.initialize( uids, azOff, elOff, detPol )
@@ -162,7 +164,8 @@ AtA, AtD = update_matrices(
              det_ra, det_dec, det_pa,
              receiver.pol_angles,
              detector_data,
-             map_nside )
+             map_nside,
+             det_mask=isOff )
 
 # Save matrices
 numpy.savez( output_file, AtA=AtA, AtD=AtD, nside=map_nside )
