@@ -30,107 +30,56 @@ from numpy import pi
 import healpy
 import pylab
 
+from config_parser import parse_config_file
+
 # Do this shit right with argparser
 import argparse
 parser = argparse.ArgumentParser(description='Simulate CLASS Q-band experiment using elliptical Gaussian beams.')
 
-parser.add_argument( '-map_base_path' , action='store', type=str, dest='map_base_path', 
-                      help='Base path to maps. Must be in format <path>/rXdXX/n_%04d_nside=%03d.npz' )
-
-parser.add_argument( '-r' , action='store', type=float, dest='r', 
-                      help='Value of r for the input map' )
-
-parser.add_argument( '-tag' , action='store', type=str, dest='tag',
-                      help='' )
-
-parser.add_argument( '-pointing', action='store', type=str, dest='pointing',
-                      help='NPZ file with the pointing of the season. See generete_pointing.py for more details.' )
-
-parser.add_argument( '-beam_par_file',  action='store', type=str, dest='beam_par_file',
-                      help='File with specifications of the beam parameters for each detector.')
+parser.add_argument( '-config' , action='store', type=str, dest='configFile', 
+                      help='Path to configuration file.' )
 
 args = parser.parse_args()
 
 # Setup simulation tag
-tag = args.tag
+config = parse_config_file( args.configFile )
 
 # Build map path. WARNING: HARD CODED VALUES!!
-map_path = args.map_base_path
-map_path = os.path.join( map_path, 'r%01.2f' % (args.r ), 'n_%04d_nside=%d.npz' % ( 0, 128 ) )
+map_path = config['inputMapPath']
 print map_path
 
-# Build paths for output
-tags   = tag.split( '_' )
-props  = tags[0::2]
-values = tags[1::2]
-
-# append r value
-props.append ( 'r' )
-values.append( "%1.2f" % (args.r) )
-
-# WARNING: HARDCODED VALUE!!
-out_path = './runs/'
-for p,v in zip( props, values ):
-    out_path = os.path.join( out_path, str(p), str(v) )
-print out_path
-
-output_file = os.path.join( out_path, 'matrices.npz' )
+output_file = config['outputFile']
 print output_file
 
-# check if path exists and ask what's up with that
-os.makedirs( out_path )
-
-#----------------------------------------------------------------------------------------------------------#
-# Read beam parameter file
-print 'reading beam parameters'
-beam_data = pandas.read_csv( args.beam_par_file )
-feeds     = numpy.array( beam_data[ 'Feed']   )
-azOff     = numpy.array( beam_data[ 'AzOff']  )
-elOff     = numpy.array( beam_data[ 'ElOff']  )
-fwhm_x    = numpy.array( beam_data[ 'FWHM_x'] )
-fwhm_y    = numpy.array( beam_data[ 'FWHM_y'] )
-rotation  = numpy.array( beam_data[ 'Theta']  )
-#----------------------------------------------------------------------------------------------------------#
-
-#----------------------------------------------------------------------------------------------------------#
-# Setup experiment location
-location = EarthLocation( lat= -22.959748*u.deg, lon=-67.787260*u.deg, height=5200*u.m )
-#----------------------------------------------------------------------------------------------------------#
-
-#----------------------------------------------------------------------------------------------------------#
-# Build focal plane
-#----------------------------------------------------------------------------------------------------------#
-uids   = numpy.arange( feeds.size * 2 )
-feeds  = numpy.repeat( feeds, 2 )
-azOff  = numpy.repeat( azOff, 2 )
-elOff  = numpy.repeat( elOff, 2 ) 
-polang = numpy.ones_like( uids ) * 45
-polang[ uids % 2 == 1 ] = -45
-
-azOff  = numpy.deg2rad(  azOff )
-elOff  = numpy.deg2rad(  elOff )
-polang = numpy.deg2rad( polang )
+uids   = config['focalplane']['uids']
+feeds  = config['focalplane']['feeds']
+azOff  = config['focalplane']['azOff']
+elOff  = config['focalplane']['elOff']
+detPol = config['focalplane']['detPol']
 
 receiver = Receiver()
-receiver.initialize( uids, azOff, elOff, polang )
+receiver.initialize( uids, azOff, elOff, detPol )
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
 # Assemble beams across the focal plane
+fwhm_x   = config['beams']['fwhmX']
+fwhm_y   = config['beams']['fwhmY']
+rotation = config['beams']['theta']
 print 'assembling focal plane beams'
+# TODO: put this in the config file
 beam_nside = 512
 beams      = [None] * receiver.ndets
-for uid in uids:
-    
-    feed = feeds[uid] - 1
+for idx in range( receiver.ndets ):
 
     # Note fwhm_x and fwhm_y are inverted. This is because they come from fitting the beam
     # in az-alt coordinates, where x points East-West and Y North South.
-    # This function uses HEALPix convention, where x points North-South and y East-West.
-    beam_co   = make_gaussian_elliptical_beam( beam_nside, fwhm_y[feed], fwhm_x[feed], phi_0=-rotation[feed] )
+    # This function uses HEALPix convention, where x points North-South and y East-West
+    
+    beam_co   = make_gaussian_elliptical_beam( beam_nside, fwhm_y[idx], fwhm_x[idx], phi_0=-rotation[idx] )
     beam_cx   = numpy.zeros_like( beam_co )
     
-    beams[uid] = { 'co': beam_co , 'cx': beam_cx, 'nside': beam_nside }
+    beams[idx] = { 'co': beam_co , 'cx': beam_cx, 'nside': beam_nside }
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
@@ -140,7 +89,6 @@ map_nside = maps['nside'][()]
 I_map     = maps['I'] 
 Q_map     = maps['Q'] 
 U_map     = maps['U']
-
 # Set this guy to zero for now.
 V_map     = maps['V']*0
 #----------------------------------------------------------------------------------------------------------#
@@ -148,24 +96,23 @@ V_map     = maps['V']*0
 #----------------------------------------------------------------------------------------------------------#
 # Read in pointing stream
 #----------------------------------------------------------------------------------------------------------#
-print 'loading pointing'
-print args.pointing
+print 'loading pointing from', config['pointingFile']
 
-pointing = numpy.load( args.pointing , mmap_mode='r')
+pointing = numpy.load( config['pointingFile'] , mmap_mode='r')
+det_ra  = pointing['ra']
+det_dec = pointing['dec']
+det_pa  = pointing['pa']
 
-feed_ra  = pointing['ra']
-feed_dec = pointing['dec']
-feed_pa  = pointing['pa']
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
 # Setup detector data buffer
 #----------------------------------------------------------------------------------------------------------#
-detector_data = numpy.zeros_like( feed_ra )
+detector_data = numpy.zeros_like( det_ra )
 #----------------------------------------------------------------------------------------------------------#
 
-# Commence deprojection procedure!!
-for feed in feeds:
+# Generate TOD data 
+for feed in numpy.unique( feeds ):
     
     # Find all uids that share the same feed
     pairs = uids[ feeds == feed ] 
@@ -173,29 +120,40 @@ for feed in feeds:
     for i,det in zip(range(2), pairs):
         
         pair = pairs[ (i+1) % 2 ]
+        idx0 = numpy.argwhere( uids ==  det )[0][0]
+        idx1 = numpy.argwhere( uids == pair )[0][0]
 
-        print det, pair
+        print "detector", det, "with index", idx0, "is in feed", feed, \
+               "and is paired to detector", pair, "which has index", idx1
 
-        print 'deprojecting detector %d' % (det)
-        
         data = deproject_sky_for_feedhorn( 
-                      feed_ra[ det ], feed_dec[ det ], feed_pa[ det ],
-                      receiver.pol_angles[ det ],
+                      # detector pointing
+                      det_ra [ idx0 ], 
+                      det_dec[ idx0 ], 
+                      det_pa [ idx0 ],
+                      receiver.pol_angles[ idx0 ],
+                        
+                      # input sky
                       (I_map,Q_map,U_map,V_map),
-                      beams[ det ]['nside'],
-                      numpy.copy(beams[  det ]['co']), 
-                      numpy.copy(beams[  det ]['cx']), 
-                      numpy.copy(beams[ pair ]['co']), 
-                      numpy.copy(beams[ pair ]['cx']),
+                      
+                      # beams, to build beam tensor
+                      beams[ idx0 ]['nside'],
+                      beams[ idx0 ][   'co'], 
+                      beams[ idx0 ][   'cx'], 
+                      beams[ idx1 ][   'co'], 
+                      beams[ idx1 ][   'cx'],
+                    
+                      # use gpu zero, limit memory usage to 7 GB
                       gpu_dev=0, maxmem=7000 )
         
-        detector_data[ det ] = data
+        detector_data[ idx0 ] = data
 
 AtA, AtD = update_matrices(
-             feed_ra, feed_dec, feed_pa,
+             det_ra, det_dec, det_pa,
              receiver.pol_angles,
              detector_data,
              map_nside )
 
 # Save matrices
 numpy.savez( output_file, AtA=AtA, AtD=AtD, nside=map_nside )
+
