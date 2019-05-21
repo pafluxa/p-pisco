@@ -1,0 +1,3 @@
+paper_scripts/runs/
+paper_scripts/data/pointing/*
+*.pyc
