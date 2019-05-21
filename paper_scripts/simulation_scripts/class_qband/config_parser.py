@@ -67,7 +67,7 @@ def parse_config_file( path ):
     # --------------------------------------------------------------------------------------------------#
     # Parse, load and process pointing offsets
     # --------------------------------------------------------------------------------------------------#
-    cols = ['Detector','Feed','AzOff','ElOff','Det_pol']
+    cols = ['Detector','Feed','AzOff','ElOff','Det_pol', 'On']
     
     offsetsFile = parser.get( 'Pointing offsets', 'file' )
     inDegrees = parser.getboolean( 'Pointing offsets', 'angles in degrees' )
@@ -82,6 +82,7 @@ def parse_config_file( path ):
     azOff  = recvData['AzOff'].values
     elOff  = recvData['ElOff'].values
     detPol = recvData['Det_pol'].values
+    state  = recvData['On'].values
     
     if inDegrees:
         azOff  = numpy.deg2rad(  azOff )
@@ -115,7 +116,8 @@ def parse_config_file( path ):
                           'feeds'  :  feeds,
                           'azOff'  :  azOff,
                           'elOff'  :  elOff,
-                          'detPol' : detPol }
+                          'detPol' : detPol,
+                              'on' :  state }
     # done 
     # --------------------------------------------------------------------------------------------------#
     

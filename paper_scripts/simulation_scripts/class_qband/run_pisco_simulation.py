@@ -56,6 +56,7 @@ feeds  = config['focalplane']['feeds']
 azOff  = config['focalplane']['azOff']
 elOff  = config['focalplane']['elOff']
 detPol = config['focalplane']['detPol']
+isOn   = config['focalplane']['on']
 
 receiver = Receiver()
 receiver.initialize( uids, azOff, elOff, detPol )
@@ -125,27 +126,36 @@ for feed in numpy.unique( feeds ):
 
         print "detector", det, "with index", idx0, "is in feed", feed, \
                "and is paired to detector", pair, "which has index", idx1
-
-        data = deproject_sky_for_feedhorn( 
-                      # detector pointing
-                      det_ra [ idx0 ], 
-                      det_dec[ idx0 ], 
-                      det_pa [ idx0 ],
-                      receiver.pol_angles[ idx0 ],
-                        
-                      # input sky
-                      (I_map,Q_map,U_map,V_map),
-                      
-                      # beams, to build beam tensor
-                      beams[ idx0 ]['nside'],
-                      beams[ idx0 ][   'co'], 
-                      beams[ idx0 ][   'cx'], 
-                      beams[ idx1 ][   'co'], 
-                      beams[ idx1 ][   'cx'],
-                    
-                      # use gpu zero, limit memory usage to 7 GB
-                      gpu_dev=0, maxmem=7000 )
         
+
+        data = None
+
+        if isOn[ idx0 ] == 1:
+
+            data = deproject_sky_for_feedhorn( 
+                          # detector pointing
+                          det_ra [ idx0 ], 
+                          det_dec[ idx0 ], 
+                          det_pa [ idx0 ],
+                          receiver.pol_angles[ idx0 ],
+                            
+                          # input sky
+                          (I_map,Q_map,U_map,V_map),
+                          
+                          # beams, to build beam tensor
+                          beams[ idx0 ]['nside'],
+                          beams[ idx0 ][   'co'], 
+                          beams[ idx0 ][   'cx'], 
+                          beams[ idx1 ][   'co'], 
+                          beams[ idx1 ][   'cx'],
+                        
+                          # use gpu zero, limit memory usage to 7 GB
+                          gpu_dev=0, maxmem=7000 )
+        
+        else:
+            
+            data = numpy.zeros_like( det_ra[ idx0 ] )
+
         detector_data[ idx0 ] = data
 
 AtA, AtD = update_matrices(
@@ -156,4 +166,3 @@ AtA, AtD = update_matrices(
 
 # Save matrices
 numpy.savez( output_file, AtA=AtA, AtD=AtD, nside=map_nside )
-
