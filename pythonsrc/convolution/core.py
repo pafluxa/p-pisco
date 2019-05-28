@@ -16,7 +16,7 @@ def deproject_sky_for_feedhorn(
         sky,
         beam_nside, beam0_co, beam0_cx, beam90_co, beam90_cx, 
         gpu_dev=0, maxmem=4096,
-        grid_size=0.1 ):
+        grid_size=numpy.deg2rad(5.0) ):
     '''
     '''
     
@@ -43,7 +43,9 @@ def deproject_sky_for_feedhorn(
     # Build buffer of pixels as a evaluation grid
     sky_nside   = healpy.npix2nside(_I.size ) 
     nsamples    = det_stream.size
-    buffer_size = healpy.query_disc( sky_nside, (0,0,1), grid_size*2 ).size
+    
+    buffer_size = (int)( healpy.query_disc( sky_nside, (0,0,1), grid_size ).size * 1.5 )
+    
     # Normalize by M_TT
     d_omega_sky   = healpy.nside2pixarea( sky_nside )
     d_omega_beam  = healpy.nside2pixarea( beam_nside )
@@ -53,8 +55,7 @@ def deproject_sky_for_feedhorn(
     M_beams = M.get_M( complex = True )
     M_beams = M_beams / norm
     
-    
-    # Call deprojection routine
+
     chunkit = False
     if buffer_size * det_stream.size * 8 / 1e6 > maxmem:
         chunkit = True    
