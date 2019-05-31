@@ -81,46 +81,49 @@ rotation  = numpy.array( beam_data[  'Theta'] )
 AtA,AtD,NSIDE = data['AtA'], data['AtD'], data['nside'][()]
 pI,pQ,pU,pW = matrices_to_maps( NSIDE, AtA, AtD )
 
+print pW[ pW < 1 ].size, pW.size
+
+# create a coverage mask
+covMask = numpy.zeros_like( pW, dtype=bool )
+tht,_ = healpy.pix2ang( NSIDE, numpy.arange( pW.size ) )
+dec   = 90 - numpy.rad2deg( tht )
+covMask = numpy.where( numpy.logical_and( dec < 30, dec > -65 ) )
+seenPixels = pW[ covMask ]
+#print numpy.sum( seenPixels < 1 ), seenPixels.size
+
 # Read original maps from disk
 oI = numpy.load( sys.argv[3] )['I']
 oQ = numpy.load( sys.argv[3] )['Q']
 oU = numpy.load( sys.argv[3] )['U']
 
 lmax = 250
+# Define l numbers                                                                                            
+ell = numpy.arange( lmax + 1 )                                                                                
+ell2 = ell * (ell+1)/(2*numpy.pi)   
 
-# Define l numbers
-ell = numpy.arange( lmax + 1 )
-ell2 = ell * (ell+1)/(2*numpy.pi)
+# Get window function considering all beams in the focal plane                                                
+print fwhm_x, fwhm_y
+w, beam_fwhm = make_composite_elliptical_beam_window_function( fwhm_x, fwhm_y, lmax, pol=True )               
+glTT_mkb, glEE_mkb, glBB_mkb, glTE_mkb = w                                                                    
+wl_TT_mkb = (glTT_mkb**2)# * pixwin_temp )                                                                    
+wl_EE_mkb = (glEE_mkb**2)# * pixwin_pol  )                                                                    
+wl_BB_mkb = (glBB_mkb**2)# * pixwin_pol  )                                                                    
+                                                                                                              
+# Test                                                                                                        
+# Convolve original maps using smoothing with composite window functions                                      
+sI = healpy.smoothing(oI, beam_window=glTT_mkb, pol=False )                                                   
+sQ = healpy.smoothing(oQ, beam_window=glEE_mkb, pol=False )                                                   
+sU = healpy.smoothing(oU, beam_window=glBB_mkb, pol=False )                                                   
+wl_TT = wl_TT_mkb                                                                                             
+wl_EE = wl_EE_mkb                                                                                             
+wl_BB = wl_BB_mkb     
 
-# Get pixel window function for PISCO output
-pixwinT, pixwinP = healpy.sphtfunc.pixwin( NSIDE, pol=True )
-pixwinT = 1.0 #pixwinT[0:lmax+1]
-pixwinP = 1.0# pixwinP[0:lmax+1]
-
-# Get window function considering all beams in the focal plane
-wl, beam_fwhm = make_composite_elliptical_beam_window_function( fwhm_x, fwhm_y, lmax, pol=True )
-glTT_mkb, glEE_mkb, glBB_mkb, glTE_mkb = wl
-wl_TT_mkb = (glTT_mkb**2) * pixwinT
-wl_EE_mkb = (glEE_mkb**2) * pixwinP
-wl_BB_mkb = (glBB_mkb**2) * pixwinP
-
-
-# Test
-# Convolve original maps using smoothing with composite window functions
-sI,sQ,sU = healpy.smoothing( (oI,oQ,oU), fwhm=numpy.deg2rad(1.5), pol=True )
-'''
-sI = healpy.smoothing(oI, beam_window=glTT_mkb, pol=False )
-sQ = healpy.smoothing(oQ, beam_window=glEE_mkb, pol=False )
-sU = healpy.smoothing(oU, beam_window=glBB_mkb, pol=False )
-'''
-wl_TT = wl_TT_mkb
-wl_EE = wl_EE_mkb
-wl_BB = wl_BB_mkb
-
-# DO NOT read CLASS window because is messes up PS
 w = healpy.read_map( './data/masks/CLASS_coverage_mask.fits' )
-healpy.mollview( w )
-pylab.show()
+
+#mask = numpy.where( pW < 1 )
+#print 100.0 * len(mask[0]) / len(pW), 'percent unvisited'
+#w    = numpy.ones_like( pW, dtype='float' )
+#w[ mask ] = 0.0
 
 _,oTT,oEE,oBB,oTE,oTB,oEB = spice_wrap2( (oI,oQ,oU), (oI,oQ,oU), weights=w, lmax=lmax )
 _,sTT,sEE,sBB,sTE,sTB,sEB = spice_wrap2( (sI,sQ,sU), (sI,sQ,sU), weights=w, lmax=lmax )
@@ -171,7 +174,7 @@ ax_BB.set_xscale('log')
 ax_TT.plot( ell2*oTT, c='black', alpha=1.0,
             label='$C_{\ell}^{TT}$ of input CMB.' )
 # Plot C_\ell^{TT} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function from MKB
-ax_TT.plot( ell2*pTT/(wl_TT_mkb*pixwinT), c='blue', alpha=0.6,
+ax_TT.plot( ell2*pTT/(wl_TT_mkb), c='blue', alpha=0.6,
             label='$C_{\ell}^{TT} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' )
 # Plot C_\ell^{TT} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_TT.plot( ell2*sTT/wl_TT, c='red', alpha=0.6,
@@ -181,7 +184,7 @@ ax_TT.plot( ell2*sTT/wl_TT, c='red', alpha=0.6,
 ax_EE.plot( ell2*oEE, c='black', alpha=1.0,
             label='$C_{\ell}^{EE}$ of input CMB.' )
 # Plot C_\ell^{EE} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_EE.plot( ell2*pEE/(wl_EE_mkb*pixwinP), c='blue', alpha=0.6,
+ax_EE.plot( ell2*pEE/(wl_EE_mkb), c='blue', alpha=0.6,
             label='$C_{\ell}^{EE} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' )
 # Plot C_\ell^{EE} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_EE.plot( ell2*sEE/wl_EE, c='red', alpha=0.6,
@@ -191,7 +194,7 @@ ax_EE.plot( ell2*sEE/wl_EE, c='red', alpha=0.6,
 ax_BB.plot( ell2*oBB, c='black', alpha=1.0,
             label='$C_{\ell}^{BB}$ of input CMB.' )
 # Plot C_\ell^{BB} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_BB.plot( ell2*pBB/(wl_BB_mkb*pixwinP), c='blue', alpha=0.6,
+ax_BB.plot( ell2*pBB/(wl_BB_mkb), c='blue', alpha=0.6,
             label='$C_{\ell}^{BB} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' )
 # Plot C_\ell^{BB} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
 ax_BB.plot( ell2*sBB/wl_BB, c='red', alpha=0.6,
