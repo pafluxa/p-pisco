@@ -11,6 +11,8 @@ import numpy as np
 #graspBP = pandas.read_csv( 'data/array_data/qband_grasp_beam_parameters.csv' )
 moonBP = numpy.genfromtxt('./data/array_data/qband_era2_moon_subtracted_beam_parameters.csv', delimiter=',', names=True, dtype=None, encoding='ascii')
 graspBP = numpy.genfromtxt('./data/array_data/grasp_beam_parameters_with_feeds.csv', delimiter=',', names=True, dtype=None, encoding='ascii')
+#moonBP = numpy.genfromtxt('qband_era2_moon_subtracted_beam_parameters.csv', delimiter=',', names=True, dtype=None, encoding='ascii')
+#graspBP = numpy.genfromtxt('grasp_beam_parameters_with_feeds.csv', delimiter=',', names=True, dtype=None, encoding='ascii')
 
 # Setup figure and axes
 fig = pylab.figure()
@@ -74,6 +76,13 @@ for i, det in enumerate(moonBP['Detector']):
             [np.sin(alphag),  np.cos(alphag)],])
     
         xg, yg = np.dot(Rg, np.array([xg, yg]))
+            [ np.cos(alphag), -np.sin(alphag)],
+            [ np.sin(alphag),  np.cos(alphag)],])
+    
+        xg, yg = np.dot(Rg, np.array([xg, yg]))
+        rg = np.sqrt( xg**2 + yg**2 )
+        thetag = theta + alphag
+        rg = np.interp(theta, thetag, rg, period=2.0*np.pi) 
     
         xm     = 0.5 * am * np.cos(theta)
         ym     = 0.5 * bm * np.sin(theta)
@@ -87,8 +96,16 @@ for i, det in enumerate(moonBP['Detector']):
     
         R = np.sqrt( xm**2 + ym**2 ) - np.sqrt( xg**2 + yg**2 )
         R = np.abs( R ) * 6
+            [ np.cos(alpham), -np.sin(alpham)],
+            [ np.sin(alpham),  np.cos(alpham)],])
+    
+        xm, ym = np.dot(Rm, np.array([xm, ym]))
+        rm = np.sqrt( xm**2 + ym**2 )
+        thetam = theta + alpham
+        rm = np.interp(theta, thetam, rm, period=2.0*np.pi) 
+    
+        R = np.abs( rm - rg ) * 6
 
         ax.fill( x0 + R*np.cos(theta), y0 + R*np.sin(theta), facecolor='red', alpha=0.6, linewidth=1 )
 
 pylab.show()
-

@@ -42,10 +42,10 @@ def spice_wrap2(m1, m2, weights=None, lmax=300):
         '-nlmax', str(lmax),
         '-overwrite', 'NO',
         '-polarization', 'YES',
-        '-decouple', 'YES',
+        '-decouple', 'NO',
         '-symmetric_cl', 'YES', # averages T_map1*E_map2 and T_map2*E_map1, etc.
         '-clfile', clfile,
-        '-tolerance', '1e-7'
+        '-tolerance', '1e-6'
         ]
     
     os.system(' '.join(command))
@@ -72,7 +72,7 @@ data = numpy.load( sys.argv[1] )
 #----------------------------------------------------------------------------------------------------------#  
 # Read beam parameter file                                                                                    
 print 'reading beam parameters'                                                                               
-beam_data = pandas.read_csv( './data/array_data/qband_array_data_beam_params.csv'  )                                                   
+beam_data = pandas.read_csv( './data/array_data/qband_era2_pair_averaged_moon_subtracted_beam_parameters.csv' )  
 feeds     = numpy.array( beam_data[   'Feed'] )                                                               
 azOff     = numpy.array( beam_data[  'AzOff'] )                                                               
 elOff     = numpy.array( beam_data[  'ElOff'] )                                                               
