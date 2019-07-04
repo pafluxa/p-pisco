@@ -192,8 +192,6 @@ See Appendix A for details on the definition of co-polarization and cross-polari
 \section{Antenna model}
 \label{sec::antennas}
 
-\subsection{Unpolarized case}
-
 The properties of an antenna equipped with an unpolarized receiver can be fully characterized by its beam. The antenna beam is defined in terms of its angular power density distribution $U(\rho,\sigma)$ via
 
 \begin{equation}
@@ -213,9 +211,7 @@ A standard quantification of an antenna's ability to direct power to a particula
 \label{eq::omega_def}
 \end{equation}
 
-\subsection{Polarized case: beam tensors}
-
-A more general treatment of an antenna, that includes its polarization properties, can be obtained by combining the concept of a beam with the Mueller matrix formalism. This is a formalism by which the effect that an optical element has on the polarization state of incoming light is modeled by the multiplication of $4\times4$ matrix (a Mueller matrix) $\mathbf{M}$, with a Stokes vector $S_{\mathrm{in}}$. Using this formalism, the polarization state of light coming out of the optical element can be expressed as
+These concepts fully characterize a lossless antenna in the case it is not sensitive to polarization. In the more general case where the antenna is used to measure polarization, its polarizing properties can be obtained by combining the concept of a beam with the Mueller matrix formalism. Mueller matrices are widely used to quantify the effect that an optical element has on the polarization state of incoming light. This process is modeled by the multiplication of $4\times4$ matrix $\mathbf{M}$ with a Stokes vector $S_{\mathrm{in}}$ such that the polarization state of light after the interaction with a given optical element becomes
 
 \begin{equation}
 \begin{aligned}
@@ -223,7 +219,8 @@ S_{\mathrm{out}} = \mathbf{M} S_{\mathrm{in}}
 \end{aligned}
 \end{equation}
 
-As described in the work of \cite{piepmeier_long_njoku_2008} and \cite{2007MNRAS.376.1767O}, antennas can be modeled using Mueller matrices. PISCO is based on the work of \cite{2007MNRAS.376.1767O}, since it describes a formalism that is more suitable to be applied to CMB experiments. We note the original paper names ``beam Mueller fields'' to this extended definition of a antenna beam. In this work, we refer to it as a beam tensor, or \textsl{beamsor} for short.
+\noindent
+As described in the work of \cite{piepmeier_long_njoku_2008} and \cite{2007MNRAS.376.1767O}, antennas can be modeled using Mueller matrices. PISCO is based on the work of \cite{2007MNRAS.376.1767O}, since it describes a formalism that is more suitable to be applied to CMB experiments. We note the original paper names ``beam Mueller fields'' to this extended definition of a antenna beam. In this work, we refer to it as a beam tensor, or \textsl{beamsor} for short, to emphasize the multi-dimensional nature of this mathematical entity. 
 
 A beamsor can be interpreted as a field of Mueller matrices such that for each direction $(\rho,\sigma)$, there is an associated Mueller matrix that quantifies the coupling between the antenna and a Stokes vector coming from $(\rho,\sigma)$. We will denote a beamsor by letter $B = B(\rho,\sigma)$. At every antenna basis direction, $B$ is a $4\times4$ matrix in the form
 
@@ -254,7 +251,7 @@ and the elements of $B$ are defined in Appendix B.
 
 \subsection{Measuring the sky with antennas}
 
-Using the formalism described in \cite{2007MNRAS.376.1767O} has the advantage of using Mueller calculus to model the process by which a detector measures the sky using an antenna. Following \cite{2007A&A...470..771J}, a partially polarized, total power detection device corresponds to the following row-vector 
+In order to model the process by which a polarization sensitive detector transform electromagnetic radiation into current (voltage), we used the formalism described in \cite{2007MNRAS.376.1767O}. In Mueller matrix space, a partially polarized, total power detection device corresponds to the following row-vector 
 
 \begin{equation}
 \begin{aligned}
@@ -264,7 +261,7 @@ Using the formalism described in \cite{2007MNRAS.376.1767O} has the advantage of
 \end{equation}
 
 \noindent
-where $1 - \epsilon$ is the polarization efficiency, $s$ is the voltage responsivity of the detector and the angle $\zeta$ is the orientation of the sensitivity axis of the linear polarizer with respect to $\hat{e}_{\co}$ at beam center. The process of taking a total power measurement on a Stokes vector $\tensor{S}{^{i}}$ is then
+where $1 - \epsilon$ is the polarization efficiency, $s$ is the voltage responsivity of the detector and the angle $\zeta$ is the orientation of the polarization sensitivity axis of the linear polarizer with respect to $\hat{e}_{\co}$ at beam center. The process of taking a total power measurement on a Stokes vector $\tensor{S}{^{i}}$ can then be modeled as
 
 \begin{equation}
 \begin{aligned}
@@ -273,18 +270,17 @@ d = \tensor{D}{_{i}} \tensor{S}{^{i}}
 \label{eq::total_power_measurement}
 \end{equation}
 
-\noindent
-Taking $\tensor{S}{^{i}}$ as the convolution between a beamsor and the sky model, a measurement taken by linearly polarized total power detector coupled to an antenna which points along $\hat{p}$ is described by
+We note that $\tensor{S}{^{i}}$ is, in turn, the convolution between the antenna beamsor and the polarized sky. Then, the complete formula describing the measurement taken by linearly polarized, total power detector coupled to an antenna pointing along $\hat{p}$ with position angle $\psi_0$ becomes
 
 \begin{equation}
 \begin{aligned}
-d(\bar{q}) = \tensor{D}{_{i}}(\zeta,\epsilon,s) \int_{4\pi} \tensor{B}{^{i}_{j} } \left[ \tensor{\Lambda}{^{j}_{k} } \tensor{S}{^{k}} \right ] \, \mathbf{d} \Omega
+d(\hat{p},\psi_0) = \tensor{D}{_{i}}(\zeta,\epsilon,s) \int_{4\pi} \tensor{B}{^{i}_{j} } \left[ \tensor{\Lambda}{^{j}_{k} } \tensor{S}{^{k}} \right ] \, \mathbf{d} \Omega
 \end{aligned}
 \label{eq::total_power}
 \end{equation}
 
 \noindent
-where $(i,j) = T,Q,U,V$, and $B$ has been implicitly rotated so it is aligned according to $\bar{q}$ (see Appendix A). Rotation of the sky to antenna polarization basis is carried out by $\Lambda$, which is a matrix field in the form
+where $(i,j) = T,Q,U,V$, and $B$ has been implicitly rotated so it is aligned according to $(\hat{p},\psi_0)$ (see Appendix A). Rotation of the sky to antenna polarization basis is carried out by $\Lambda$, which is a matrix field in the form
 
 \begin{equation}
 \begin{aligned}
@@ -466,13 +462,15 @@ include a power spectra residual plot.
 \section{Realistic CMB experiment}
 \label{sec::realistic_cmb_experiment}
 
-In this section, we describe the procedure and results of a more realistic simulation of a CMB experiment using PISCO. Designing a such an experiment from scratch is a challenging task, so we based the simulation on an ongoing mission, the Cosmology Large Angular Scale Surveyor, CLASS\cite{2016SPIE.9914E..1KH} CLASS aims at characterizing the CMB polarization anisotropy field at large angular scales, particularly the B-mode power spectrum, looking for signatures that could indicate Inflation took place. While the experiment is composed of 4 telescopes, the simulation focuses on the one observing at the lowest frequency (38 GHz), the Q-band receiver. This decision was taken for computational reasons: generating TOD using PISCO scales linearly with the number of detectors and with the length of the pointing stream. Given that CLASS aims at measuring the sky signal over the whole celestial sphere, simulating a receiver with less extended beams requires sampling a higher resolution map than the case of a wide beam. In consequence, the pointing stream must include more samples so as not to get missing pixels. Similarly, higher frequency receivers have in the order of 500 detectors, while the Q-band receiver only has 72. The combination of less detectors with larger beams makes CLASS and its Q-band receiver a good application case to check if PISCO is able to simulate a CMB experiment, using a high-end workstation instead of an HPC facility. 
-
+The tests performed above are highly idealized cases. This section aims at including three systematic effects that are common to many CMB experiments: pointing mismatch, uneven intra-pixel coverage and beam mismatch. Pointing and beam mismatch correspond to differences between beam center offsets and beamsor parameters for a pair of detectors belonging to the same feed, respectively. It has been shown (PF I need at least 3 citations here) has shown that these mismatches can cause leakage from temperature to polarization. Conversely, uneven intra-pixel coverage can cause divergence in the polarization power spectra at angular frequencies comparable to the pixel size of the input sky map (PF cite Hivon et al). As at test for correctness, we applied PISCO to a more realistic case where the systematic effects associated with these conditions should be present. 
+ 
 \subsection{Description}
+
+In this section, we present the procedure and results of a PISCO simulation applied to a more realistic CMB experiment. Since designing a such an experiment from scratch is a challenging task, we turned to simulating an ongoing mission, the Cosmology Large Angular Scale Surveyor, CLASS\cite{2016SPIE.9914E..1KH} CLASS aims at characterizing the CMB anisotropy field at large angular scales, particularly the power spectra of B-modes and E-modes, looking for evidence of inflation. While the experiment is composed of 4 telescopes, the simulation focuses on the one observing at the lowest frequency (38 GHz), the Q-band receiver. This decision was taken for computational reasons: generating TOD using PISCO scales linearly with the number of detectors and with the length of the pointing stream. Given that CLASS aims at measuring the sky signal over the whole celestial sphere, simulating a receiver with less extended beams requires sampling a higher resolution map than in the case of a wide beam. In consequence, the pointing stream must include more samples so as not to get missing pixels. Similarly, higher frequency receivers have in the order of 500 detectors, while the Q-band receiver only has 72. The combination of less detectors and larger beams makes CLASS and its Q-band receiver a good application case to check if PISCO is able to simulate a CMB experiment, using a high-end workstation instead of an HPC facility.
 
 \subsubsection{Sky model}
 
-To generate the maps for this simulation, we followed a similar procedure to the one described in section \ref{sec::ideal_full_sky}. The main difference is the addition of an unpolarized CMB, which was used to check for  T to P leakage caused by effects not present in the test described in the previous section. All maps use the \texttt{HEALPix} pixelization and were generated using \texttt{NSIDE}$=128$. 
+To generate the maps for this simulation, we followed a similar procedure to the one described in section \ref{sec::ideal_full_sky}. The main difference with the above is the addition of an unpolarized CMB, which was used to check for T to P leakage caused by effects that are were not present in \ref{sec::ideal_full_sky}. All maps use the \texttt{HEALPix} pixelization with an \texttt{NSIDE} parameter of $128$. 
 
 \subsubsection{Pointing}
 
@@ -482,7 +480,7 @@ Taking into account the above considerations, the boresight pointing was generat
 
 \subsubsection{Beamsor model}
 
-Following the work of \cite{2012SPIE.8452E..20E} and valuable input from the CLASS Collaboration, beamsor models for all 72 detectors of the Q-band receiver were built. For simplicity, beam tensors do not include any cross-polarization, while the two dimensional profile of the diagonal elements correspond to purely elliptical Gaussian profiles. The simplicity of the beams allows for a further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as, for a unit normalized Gaussian beam, a pixel that is $5^\circ$ away from the centroid has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. Beamsors were also projected into a HEALPix grid of NSIDE=512, which produces an error in the simulated TOD of less than $0.01\%$.
+Following the work of \cite{2012SPIE.8452E..20E} and valuable input from the CLASS Collaboration, beamsor models for all 72 detectors of the Q-band receiver were built. The two dimensional profile of the diagonal beamsor elements correspond to purely elliptical Gaussian profiles, while the off-diagonal terms were set to zero. The simplicity of the beams allows for a further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as, for a unit normalized Gaussian beam, a pixel that is $5^\circ$ away from the centroid has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. PISCO requires beam tensor to be pixelated as a HEALPix grid, which uses an NSIDE parameter of 512. The finite resolution of the beamsor produces an error in the amplitude of simulated TOD that is less than $0.01\%$, consistent with the results described in \ref{sec::validation}.
 
 %\begin{figure}
 %	\centering
@@ -493,37 +491,35 @@ Following the work of \cite{2012SPIE.8452E..20E} and valuable input from the CLA
 
 \subsubsection{Power spectra and beam transfer function}
 
-Given that CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of an estimator than can handle a mask. For this reason, we changed the estimator to \texttt{PolSpice} (PF cite polspice). In addition, the CLASS collaboration provided a realistic sky mask that also covers the galactic plane. 
+Given that CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of a tool than can handle a sky mask. For this reason, we changed the estimator from \texttt{anafast} to \texttt{PolSpice} (PF cite polspice). In addition, the CLASS collaboration provided a realistic sky mask that includes the galactic plane in addition to the natural incomplete coverage. 
 
 PF write a description of the method used for the window function in the case of several elliptical beams
 
 \subsection{Results}
 
-\subsubsection{Effect of pointing mismatch}
-
-In this section were refer to pointing mismatch to the difference between beam center offsets for pairs of detectors belonging to the same feed. The work of (cite Bicep paper here and others) shows that pointing mismatch can produce leakage from temperature to polarization. The goal of this section is to show that PISCO can reproduce this behavior. Two tests were performed to address this; the first test simulates the CLASS Q-band receiver scanning an unpolarized CMB with matched beams and pointing, while the second test introduces a pointing mismatch while keeping other conditions the same. The amplitude of this mismatch comes from preliminary results of the CLASS Q-band receiver. 
-
 \begin{figure*}
 	\centering
 	\includegraphics[width=1\textwidth]{figures/unpolCMB_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/unpolCMB_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
-	\caption{Plots power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure). Significant leakage from $TT$ to $EE$ and $BB$ power spectra is present for the case of mismatched pointing, reaching in the order of $100$ nK at $\ell = 250$.}
+	\caption{Plots power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure). The input CMB was unpolarized. The amplitude of the mismatch was kindly provided by the CLASS collaboration team. Significant leakage from $TT$ to $EE$ and $BB$ power spectra is present for this case were mismatched pointing is present. The spurious signal reaches in the order of $100$ nK at $\ell = 250$ for both $EE$ and $BB$.}
 	\label{fig::pisco4class_pointingmismatch}
 \end{figure*}
 
-\subsubsection{Effect of uneven intra-pixel coverage}
-
-Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the observed pixels. In section \ref{sec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiments, every sample of the TOD ``hits'' a given pixel at an arbitrary location. If, in average, the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric, the resulting maps will produce P to P leakage on the power spectra, as discussed in (Poutanen et al. 2004) and \cite{2005poutanen}. 
-
-In this section, we aimed at exploring this effect for the CLASS Q-band receiver by repeating the simulation performed in the above section, this time using a polarized CMB as input. It is worth mentioning that the input CMB has no primordial B-modes and no E-mode to B-mode leakage caused by lensing, so that any resulting B-mode signal must be the result of leakage. Based on the results of the previous test, we can argue that uneven intra-pixel coverage causes leakage from P to P. As it was shown in the previous section, PISCO does not cause leakage when simulating the observation of an unpolarized CMB when both pointing and beams are matched. In the case of pointing mismatch, T to P leakage occurs. Conversely, this test shows that even in the case of matched beams and matched pointing, the resulting B-mode power spectrum diverges at high $ell$. Since this signal is not caused by T to P leakage (see Figure \ref{fig::pisco4class_pointingmismatch}), the only option is that it is P to P type. We note that this systematic effect is subdominant with respect to T to P leakage caused by pointing mismatch. 
 
 \begin{figure*}
 	\centering
 	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
-	\caption{Plots power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure), using a polarized CMB as input. Both figures show non-negligible amounts of leakage, which shows up as a non-zero B-mode power spectrum. In the case of matched pointing, this leakage is roughly an order of magnitude less ($10$ nK) than the case of matched pointing (100 nK) at $\ell = 250$.}
+	\caption{Plots power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure), using a polarized CMB with no B-modes as input. Both figures show non-negligible amounts of leakage, which shows up as a non-zero B-mode power spectrum. Both simulation cases (mismatched and matched pointing) also have the effect of uneven intra-pixel coverage. The spurious signal in BB is roughly an order of magnitude less ($10$ nK) than the case of matched pointing ($100$ nK) at $\ell = 250$.}
 	\label{fig::pisco4class_pointingmismatch}
 \end{figure*}
+
+%\subsubsection{Effect of uneven intra-pixel coverage}
+%Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the observed pixels. In section \ref{sec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiments, every sample of the TOD ``hits'' a given pixel at an arbitrary location. If, in average, the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric, the resulting maps will produce P to P leakage on the power spectra, as discussed in (Poutanen et al. 2004) and \cite{2005poutanen}. In this section, we aimed at exploring this effect for the CLASS Q-band receiver by repeating the simulation performed in the above section, this time using a polarized CMB as input. It is worth mentioning that the input CMB has no primordial B-modes and no E-mode to B-mode leakage caused by lensing, so that any resulting B-mode signal must be the result of leakage. 
+
+% Move this to discussion
+%Based on the results of the previous test, we can argue that uneven intra-pixel coverage causes leakage from P to P. As it was shown in the previous section, PISCO does not cause leakage when simulating the observation of an unpolarized CMB when both pointing and beams are matched. In the case of pointing mismatch, T to P leakage occurs. Conversely, this test shows that even in the case of matched beams and matched pointing, the resulting B-mode power spectrum diverges at high $ell$. Since this signal is not caused by T to P leakage (see Figure \ref{fig::pisco4class_pointingmismatch}), the only option is that it is P to P type. We note that this systematic effect is subdominant with respect to T to P leakage caused by pointing mismatch. 
+
 
 %
 %If an experiment has a focal plane with detector pairs in the same feed, the map-making will naturally pair difference the signals. If there is a pointing mismatch, leakage from temperature to polarization (cite this) Similarly, beam mismatch within pairs can produce polarization to polarization leakage. 
@@ -548,13 +544,13 @@ In this section, we aimed at exploring this effect for the CLASS Q-band receiver
 %	\label{fig:unpolcmbr0}
 %\end{figure}
 
-\subsubsection{Effect of beam mismatch}
+%\subsubsection{Effect of beam mismatch}
 
-Another source of leakage comes from beam mismatch. It is worth noting that this effect, if present, would dominate the signal from the power spectra at $ell$ comparable to the inverse of the beam FWHM which, for this application case, is $\approx 1.45^\circ$ corresponding to $\ell = 124$. At these scales, pointing mismatch and noise caused by uneven intra-pixel coverage also play an important role, so it becomes mandatory to suppress these systematics. The way we addressed this was to force the pointing of the scanning strategy to hit the center of pixels of an NSIDE=512 HEALPix grid. 
+%Another source of leakage comes from beam mismatch. It is worth noting that this effect, if present, would dominate the signal from the power spectra at $ell$ comparable to the inverse of the beam FWHM which, for this application case, is $\approx 1.45^\circ$: this correspons to $\ell = 124$. At these scales, pointing mismatch and noise caused by uneven intra-pixel coverage also play an important role, so it becomes mandatory to suppress these systematics. The way we addressed this was to force the pointing of the scanning strategy to hit the center of pixels of an NSIDE=512 HEALPix grid. 
 
-(PF maybe show some results from map stats here?)
+%(PF maybe show some results from map stats here?)
 
-Simulations were performed using this pixelated pointing stream for the case of matched and mismatched beams. 
+%Simulations were performed using this pixelated pointing stream for the case of matched and mismatched beams. 
 
 \subsection{Discussion}
 
