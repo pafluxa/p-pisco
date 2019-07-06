@@ -189,10 +189,10 @@ See Appendix A for details on the definition of co-polarization and cross-polari
 	\label{fig::cmbcoordconvention}
 \end{figure}
 
-\section{Antenna model}
+\section{A polarized model for antennas}
 \label{sec::antennas}
 
-The properties of an antenna equipped with an unpolarized receiver can be fully characterized by its beam. The antenna beam is defined in terms of its angular power density distribution $U(\rho,\sigma)$ via
+The properties of an antenna equipped with an unpolarized receiver can be fully characterized by its beam. The beam is defined in terms of the antenna angular power density distribution $U(\rho,\sigma)$ via
 
 \begin{equation}
 \begin{aligned}
@@ -249,9 +249,11 @@ where $\tilde{\Omega}$ is a normalization factor
 \noindent
 and the elements of $B$ are defined in Appendix B. 
 
-\subsection{Measuring the sky with antennas}
+\section{Measuring the sky with polarization sensitive antennas}
 
-In order to model the process by which a polarization sensitive detector transform electromagnetic radiation into current (voltage), we used the formalism described in \cite{2007MNRAS.376.1767O}. In Mueller matrix space, a partially polarized, total power detection device corresponds to the following row-vector 
+\subsection{Continuous case}
+
+In order to model the process by which a polarization sensitive detector transforms electromagnetic radiation into current (voltage), we used the formalism described in \cite{2007MNRAS.376.1767O}. In Mueller matrix space, a partially polarized, total power detection device corresponds to the following row-vector 
 
 \begin{equation}
 \begin{aligned}
@@ -276,7 +278,7 @@ We note that $\tensor{S}{^{i}}$ is, in turn, the convolution between the antenna
 \begin{aligned}
 d(\hat{p},\psi_0) = \tensor{D}{_{i}}(\zeta,\epsilon,s) \int_{4\pi} \tensor{B}{^{i}_{j} } \left[ \tensor{\Lambda}{^{j}_{k} } \tensor{S}{^{k}} \right ] \, \mathbf{d} \Omega
 \end{aligned}
-\label{eq::total_power}
+\label{eq::pisco_equation_cont}
 \end{equation}
 
 \noindent
@@ -295,27 +297,10 @@ where $(i,j) = T,Q,U,V$, and $B$ has been implicitly rotated so it is aligned ac
 \label{eq::lambda_operator}
 \end{equation}
 
-%
-\section{Pixel space convolution}
+\subsection{Pixelated case}
 \label{sec::pixel_conv}
 
-\subsection{Discrete convolution on the sphere}
-
-It is convenient to consider a few conventions that will be used in this section. Continuous fields on the sphere are denoted using capital letters, like $F$. The $k$-th pixel of the pixelated counterpart of $F$ will be written as $\tensor[_k]{F}{}$. A useful interpretation of $\tensor[_k]{F}{}$ is to consider it as the $k$-th row in matrix of $N_p$ (number of pixels) sub-matrices. In this formalism, a pixelated beamsor would be represented by an $N_p \times 4 \times 4$ matrix.
-
-Pixelization of a function defined on the sphere can be modeled as a process where the continuous field $F = F(\theta,\phi)$ becomes a matrix. Generally, any pixelization scheme will make use of a pixel weighting function $w(\theta,\phi)$ to smooth rapid variations of $F$ inside the pixel domain. This is crucial to avoid aliasing noise, which can negatively impact harmonic space analysis of pixelated maps. In this context, to obtain the value of $\tensor[_k]{F}{}$ we must calculate the convolution of $k$-pixel weighting function with $F$, namely 
-
-\begin{equation}
-\begin{aligned}
-\tensor[_k]{F}{} = \int {}_k w (\theta,\phi) F(\theta,\phi) \, \mathrm{d} \Omega
-\end{aligned}
-\label{eq::howtopixelate}
-\end{equation}
-
-\noindent
-It is worth noting that PISCO does not explicitly compute equation \ref{eq::howtopixelate}, as the input maps which are used to generate TOD are already pixelated. The same situation applies for beamsors, which are also inputted as pixelated maps.
-
-Following the aforementioned conventions, the pixel space version of equation \ref{eq::total_power} becomes
+In order to calculate the result of equation \ref{eq::pisco_equation_cont} using a computer, we can no longer use continuous distributions, so we need to use pixelated versions of both the beamsor and sky model. Both the sky model $S$ and beamsor $B$ must then be transformed into a matrix of $N_b$ (number of pixels in the beamsor) and $N_s$ (number of pixels in the sky model) entries, respectively. We will denote the $k$-th pixel of the ``pixelated'' beamsor $B$ (sky $S$) as $\tensor[_k]{B}{}$ ($\tensor[_k]{S}{}$). It is worth noting that the TOD generation routine ran by PISCO requires both the beamsor and sky model to be already pixelated. With the above in mind, we can write equation \ref{eq::pisco_equation_cont} for the pixelated case as
 
 \begin{equation}
 \begin{aligned}
@@ -330,29 +315,15 @@ d(\bar{q}) = \
 \end{equation}
 
 \noindent
-where we have implicitly assumed that $B$ has been properly re-pixelated so as to be aligned according to $\bar{q}$. 
+where we have implicitly assumed that $B$ has been properly re-pixelated so as to be aligned according to $\bar{q}$. In practice, this is done by finding the beamsor pixel $k'$ that matched a given sky pixel $k$, using the equations presented in Appendix A.
 
-\subsection{Implementation in CUDA}
+\section{PISCO}
 
-GPUs allow for substantial acceleration of algorithms that perform a large amount of independent operations\cite{sanders2010cuda}. TOD generation using equation \ref{eq::discrete_beam_conv_tensor} is a great application case, because all operations are independent of each other, including the ones within a convolution. To better understand how this parallelism can exploited, consider the process of synthesizing $N_s$ measurements, each one associated with a pointing $\bar{p}_t$, using a CUDA grid of $B$ blocks and $T$ threads.
+The \textbf{PI}xel \textbf{S}pace \textbf{CO}nvolver (PISCO) is a tool with the capability of generating synthetic Time Ordered Data (TOD) provided a model for the beamsor, the scanning strategy of the mission and a sky model. In this section, we present a pathfinder implementation of PISCO ($p$-PISCO) that exploits the massively parallel architecture of modern GPU systems.
 
-The main algorithm consists of two nested loops, $L1$ and $L2$. $L1$ loops over the pointing, so that each block is associated with a given pointing direction. Note that this makes $L1$ execute $B$ operations in parallel. To prevent a race condition, the pointing is cloned $T$ times so that each thread in a block can read it from memory as fast as possible. $L2$ iterates on beamsor and sky pixel. Since every block executes $T$ threads, every block can compute $N_p/T$ partial summations of equation \ref{eq::discrete_beam_conv_tensor} in parallel. A third, higher level loop, can also be added to the algorithm to further chunk the pointing stream and make use of $N_g$ GPU instances. A graphical description of the algorithm is shown in figure \ref{fig::pisco_diagram}.
+\subsection{General description}
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=0.8\linewidth]{figures/PISCO-diagram.png}
-		\caption{Parallelization scheme. This figure shows the case of PISCO executing in 4 blocks ($B=4$), with four threads per block ($T=4$). Arrays with beamsor and sky elements are at the bottom. Each block has access to four beamsor and sky pixels (gray boxes inside colored boxes) and one pointing entry (colored small boxes) at a time. Green boxes represent the multiplication process of a single beamsor pixel with a single sky pixel. This includes rotating the sky pixel to the antenna polarization basis, and computing the repixelization of $B$ at the corresponding coordinates. Solid and dotted red lines represent the complex memory access pattern generated by this process. Every thread within a block writes its result to shared memory space. When a thread finishes its computation, it waits until all threads have finished and a reduction on the shared memory space is performed on across all blocks. This process is repeated for every pointing. At the end of the procedure, each block has computed the convolution of a beamsor with the sky for a particular pointing, and every shared memory space of the block has the corresponding result. These results are collected into the GPU global memory, which is then transferred back to CPU (host) memory.}
-		\label{fig::pisco_diagram}
-	\end{center}
-\end{figure}
-
-\subsection{PISCO}
-
-The \textbf{PI}xel \textbf{S}pace \textbf{CO}nvolver (PISCO) is a tool with the capability of generating synthetic Time Ordered Data (TOD) provided a model for the beamsor, the scanning strategy of the mission and a sky model. In this section, we present a pathfinder implementation of PISCO that makes use of the massively parallel architecture of modern GPU systems.
-
-\subsubsection{General description}
-
-PISCO is the software tool in charge of generating mock TOD given a beamsor, a sky model and a scanning strategy. A diagram showing the general workings of PISCO is shown in figure \ref{fig::pisco_flow}. PISCO receives as input a sky model in the form of 4 maps representing Stokes parameters $I,Q,U$ and $V$, a beamsor, pointing and focal plane information. The focal plane specifications are only needed if multiple detectors are being included in the pointing stream, as PISCO needs the the angle $\zeta$ of each detector to compute equation \ref{eq::discrete_beam_conv_tensor}. All the inputs are sent to the TOD generation function, which returns the data streams. At this point, the data can either be saved to disk or sent to a map-making code. This last step is preferred as, usually, input-output operations are time consuming. Finally, maps can be analyzed using external tools to calculate the power spectra.
+PISCO is the software tool in charge of generating mock TOD given a beamsor, a sky model and a scanning strategy. A diagram showing the general workings of PISCO is shown in Figure \ref{fig::pisco_flow}. PISCO receives as input a sky model in the form of 4 maps representing Stokes parameters $I,Q,U$ and $V$, a beamsor, pointing and focal plane information. The focal plane specifications are only needed if multiple detectors are being included in the pointing stream, as PISCO needs the the angle $\zeta$ of each detector to compute equation \ref{eq::discrete_beam_conv_tensor}. All the inputs are sent to the TOD generation function, which returns the data streams. At this point, the data can either be saved to disk or sent to a map-making code. This last step is preferred as, usually, input-output operations are time consuming. Finally, maps can be analyzed using external tools to calculate the power spectra.
 
 \begin{figure}
 	\centering
@@ -361,28 +332,48 @@ PISCO is the software tool in charge of generating mock TOD given a beamsor, a s
 	\label{fig::pisco_flow}
 \end{figure}
 
-\subsubsection{Performance}
+\subsection{Implementation using CUDA}
 
-For large enough pointing streams, the available parallelism scales as $N_g \times B \times T$. Sub-optimal performance might arise in the case of a slow storage device if a very large amount of pointing data is read from disc. Because of the way PISCO scales in multi-node systems, this situation should be greatly suppressed by using a parallel file-system, so as to exploit data locality and avoid expensive IO operations. We tested a worst case scenario where multiple GPUs read the pointing stream from a single Network Attached Storage (NAS) over a 1 Gigabit Ethernet connection. The pointing stream had more than 870 million individual directions and it was saved to disc as \texttt{NPZ} files. The data was read from the NAS using \texttt{numpy.load}. We found that the IO penalty was less than $5\%$ of the simulation wall-time. We note that this simulation did not write any TOD to disc.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{figures/PISCO-diagram.png}
+		\caption{Parallelization scheme. This figure shows the case of PISCO executing in 4 blocks ($B=4$), with four threads per block ($T=4$). Arrays with beamsor and sky elements are at the bottom. Each block has access to four beamsor and sky pixels (gray boxes inside colored boxes) and one pointing entry (colored small boxes) at a time. Green boxes represent the multiplication process of a single beamsor pixel with a single sky pixel. This includes rotating the sky pixel to the antenna polarization basis, and computing the re-pixelization of $B$ at the corresponding coordinates. Solid and dotted red lines represent the complex memory access pattern generated by this process. Every thread within a block writes its result to shared memory space. When a thread finishes its computation, it waits until all threads have finished and a reduction on the shared memory space is performed on across all blocks. This process is repeated for every pointing. At the end of the procedure, each block has computed the convolution of a beamsor with the sky for a particular pointing, and every shared memory space of the block has the corresponding result. These results are collected into the GPU global memory, which is then transferred back to CPU (host) memory.}
+		\label{fig::pisco_diagram}
+	\end{center}
+\end{figure}
 
-A realistic simulation of a CMB experiment (see \ref{sec::realistic_cmb_experiment}) took approximately 45 minutes on a single NVIDIA GTX 1080. The machine was also equipped with two Intel Xeon E5-2610 processors (20 physical cores, 40 threads). Since this simulation involved generating a week of data at 20 Hz,  PISCO was able to generate data 40 times faster than a real-time observation by computing more than 19 million convolutions per second. 
+GPUs allow for substantial acceleration of algorithms that perform a large amount of independent operations. TOD generation using equation \ref{eq::discrete_beam_conv_tensor} presents an optimal application case because all operations are independent of each other. In this work, we used the Compute Unified Device Architecture framework from NVIDIA to implement the TOD generation routine. The reader is referred to \cite{sanders2010cuda} for an excellent description of CUDA and associated capabilities.
 
-The complex operations in the CUDA kernels involve large amounts of floating point and integer computations. This makes it difficult to estimate the performance as FLOPS. Also, the CUDA routine reads values from memory in a pseudo-random access pattern, something that is not efficiently performed by GPUs. The penalty associated with this situation is challenging to estimate. Finally, this implementation of PISCO pre-computes the cap of pixels around a given pointing direction in the CPU. While this process is fast, transferring the resulting memory buffer to the GPU takes as much as $30\%$ of the computation time. A solution to this problem has already been devised, and will be implemented in future releases.
+To better understand how the parallelism in \ref{eq::discrete_beam_conv_tensor} can exploited, consider the process of synthesizing $N_T$ measurements using a CUDA grid of $B$ blocks and $T$ threads. Consider each measurement to have an associated pointing $\bar{q}_t$ with $t=0..N_T$. PISCO performs a double parallelization scheme: the ``slow'' loop ($L1$) scans the pointing stream and associates every block to a pointing $\bar{q}_t$. A second, ``faster'' loop ($L2$), iterates over a list of pixels, which correspond to sky pixels that are ``inside'' the beamsor extension. This list of pixels is constructed in advance and then transferred to the GPU. $L2$ executes $T$ operations in parallel. Great care was taken to ensure no race conditions arise when multiple threads try to read (write) from (to) the same memory address. As every block executes $T$ convolution operations in parallel, and the CUDA grid runs $B$ simultaneous blocks, the parallelism is $B \times T$. Furthermore, if $G$ GPUs are available, the computation can be distributed among them, increases the parallelism to $G \times B \times T$. A graphical description of this process is shown in figure \ref{fig::pisco_diagram}.
 
-\begin{table}[tbp]
-	\centering
-	\begin{tabular}{|c|c|c|}
-		\hline
-		Routine description & Time (in seconds) & $\%$ of total time \\
-		\hline
-		convolution & 7967 & 52$\%$  \\
-		query pixel cap & 2171 & 14$\%$ \\
-		transfer pixel cap & 3978 & 27$\%$ \\
-		others & 985 & 7$\%$ \\ 
-		\hline
-	\end{tabular}
-	\caption{Table summarizing the times taken by different routines of PISCO. The simulation executed at more than 19 million convolutions per second.}\label{tbl1}
-\end{table}
+\subsection{Performance}
+
+A simulation of a realistic CMB experiment (see \ref{sec::realistic_cmb_experiment} for more details) took approximately 45 minutes using a node equipped with two Intel Xeon E5-2610 processors (10 physical cores and 20 threads per physical processor) and $256$ GB of RAM and one NVIDIA GTX 1080. This simulation generated 1 week of TOD, meaning that PISCO executed around 224 times faster than ``real time operation'' of the experiment. Unfortunately, measuring performance of the current implementation in FLOPS is a highly nontrivial task: the TOD generation routine performs both integer and floating point mathematical operations which are challenging to keep track of. In addition, we were not able to successfully quantify the impact of the memory access pattern caused by having to match beamsor pixels with sky pixels during the convolution step. Nevertheless, and in an effort to provide a comparison basis with other implementations, we claim that this simulation achieved $322560$ convolutions per second. It is quite possible for programs like \texttt{beamconv} (see \cite{2018arXiv180905034D}) to achieve much higher performance than PISCO for this particular test. It is worth noting, however, that PISCO has a small cost associated to increasing the complexity of the beam, i.e., by adding ghosting, high frequency features (in angular space) and time-dependent beam parameters, or transient events on the sky model, like varying temperature of the ground surrounding the receiver. This makes PISCO a good complement to other software tools that perform similar tasks because, while the computational cost might be larger for ``simpler'' cases (highly symmetrical beams and no time-dependent effects), the extra cost of adding another layer of complexity is comparatively low. We also note that, to date, we are not aware of any other software tool that uses the beam tensor formalism explicitly\footnote{In \cite{2007MNRAS.376.1767O}, the authors claim to have performed a ``direct convolution of simulated Stokes maps with the Mueller beams''. Unfortunately, efforts in contacting the authors in order to obtain the source code used for this test were unsuccessful.}
+
+\subsection{Future improvements}
+
+The main drawback of the current implementation comes from having to calculate the list of sky pixels involved in each convolution for all pointing directions. While the wall-time associated with this operation is modest, the result must be kept in memory, and so the associated buffer quickly becomes too large to be held within the RAM of the GPU. Currently, PISCO handles this situation by performing the generation of TOD in blocks. For the test machine, computing and transferring the lists of pixels can take up to $13\%$ of the \textsl{overall} simulation wall-time. We also note that having this list of pixels in memory decreases the available parallelism. A solution to this problem has already been devised and will be implemented in future releases.
+
+PISCO stores the beamsor elements and sky model as HEALPix (see \cite{2005ApJ...622..759G}) maps. HEALPix was chosen because of being widely used among the CMB community, and because it naturally handles the closed surface topology of the sphere. HEALPix also provides equal area pixels, which is a desirable feature when computing convolution in pixel space. Another drawback of the current implementation is the use of global memory to hold the beam tensor elements. Future releases will exploit data locality by making use of the CUDA texture memory pipeline (see \cite{sanders2010cuda}, Chapter 6). 
+
+Finally, the current version of PISCO was designed to execute in a single node. Experiments were performed by emulating a multi-node system by making PISCO use all 3 GPUs of the machine, which showed an almost linear increase in performance. However, more work is required to check if the performance gain holds when scaling to large GPU-clusters, like the upcoming Perlmutter system at NERSC.
+
+%\begin{table}[tbp]
+%	\centering
+%	\begin{tabular}{|c|c|c|}
+%		\hline
+%		Routine description & Time (in seconds) & $\%$ of total time \\
+%		\hline
+%		convolution & 7967 & 52$\%$  \\
+%		query pixel cap & 2171 & 14$\%$ \\
+%		transfer pixel cap & 3978 & 27$\%$ \\
+%		others & 985 & 7$\%$ \\ 
+%		\hline
+%	\end{tabular}
+%	\caption{Table summarizing the times taken by different routines of PISCO. The simulation executed at more than 19 million convolutions per second.}\label{tbl1}
+%\end{table}
+
+% Sub-optimal performance might arise in the case of a slow storage device if a very large amount of pointing data is read from disc. Because of the way PISCO scales in multi-node systems, this situation should be greatly suppressed by using a parallel file-system, so as to exploit data locality and avoid expensive IO operations. We tested a worst case scenario where multiple GPUs read the pointing stream from a single Network Attached Storage (NAS) over a 1 Gigabit Ethernet connection. The pointing stream had more than 870 million individual directions and it was saved to disc as \texttt{NPZ} files. The data was read from the NAS using \texttt{numpy.load}. We found that the IO penalty was less than $5\%$ of the simulation wall-time. We note that this simulation did not write any TOD to disc.
 
 %
 \section{Code validation}
@@ -462,15 +453,15 @@ include a power spectra residual plot.
 \section{Realistic CMB experiment}
 \label{sec::realistic_cmb_experiment}
 
-The tests performed above are highly idealized cases. This section aims at including three systematic effects that are common to many CMB experiments: pointing mismatch, uneven intra-pixel coverage and beam mismatch. Pointing and beam mismatch correspond to differences between beam center offsets and beamsor parameters for a pair of detectors belonging to the same feed, respectively. It has been shown (PF I need at least 3 citations here) has shown that these mismatches can cause leakage from temperature to polarization. Conversely, uneven intra-pixel coverage can cause divergence in the polarization power spectra at angular frequencies comparable to the pixel size of the input sky map (PF cite Hivon et al). As at test for correctness, we applied PISCO to a more realistic case where the systematic effects associated with these conditions should be present. 
+The tests performed above are highly idealized cases. In this section, we show results for a simple, but more realistic application case where pointing mismatch, uneven intra-pixel coverage and beam mismatch are present. It has been shown (PF I need citations here) has shown that these mismatches can cause leakage from temperature to polarization. Conversely, uneven intra-pixel coverage can cause divergence in the polarization power spectra at angular frequencies comparable to the pixel size of the input sky map (PF cite Hivon et al). It becomes crucial to check whether PISCO reproduces the effects of these systematic effects correctly in order to validate its performance.
  
-\subsection{Description}
+\subsection{Description of the simulation}
 
 In this section, we present the procedure and results of a PISCO simulation applied to a more realistic CMB experiment. Since designing a such an experiment from scratch is a challenging task, we turned to simulating an ongoing mission, the Cosmology Large Angular Scale Surveyor, CLASS\cite{2016SPIE.9914E..1KH} CLASS aims at characterizing the CMB anisotropy field at large angular scales, particularly the power spectra of B-modes and E-modes, looking for evidence of inflation. While the experiment is composed of 4 telescopes, the simulation focuses on the one observing at the lowest frequency (38 GHz), the Q-band receiver. This decision was taken for computational reasons: generating TOD using PISCO scales linearly with the number of detectors and with the length of the pointing stream. Given that CLASS aims at measuring the sky signal over the whole celestial sphere, simulating a receiver with less extended beams requires sampling a higher resolution map than in the case of a wide beam. In consequence, the pointing stream must include more samples so as not to get missing pixels. Similarly, higher frequency receivers have in the order of 500 detectors, while the Q-band receiver only has 72. The combination of less detectors and larger beams makes CLASS and its Q-band receiver a good application case to check if PISCO is able to simulate a CMB experiment, using a high-end workstation instead of an HPC facility.
 
 \subsubsection{Sky model}
 
-To generate the maps for this simulation, we followed a similar procedure to the one described in section \ref{sec::ideal_full_sky}. The main difference with the above is the addition of an unpolarized CMB, which was used to check for T to P leakage caused by effects that are were not present in \ref{sec::ideal_full_sky}. All maps use the \texttt{HEALPix} pixelization with an \texttt{NSIDE} parameter of $128$. 
+To generate the maps for this simulation, we followed a similar procedure to the one described in section \ref{sec::ideal_full_sky}. The main difference with the above is the addition of an unpolarized CMB, which was used to check for T to P leakage caused by effects that were not present in \ref{sec::ideal_full_sky}. All maps use the \texttt{HEALPix} pixelization with an \texttt{NSIDE} parameter of $128$. 
 
 \subsubsection{Pointing}
 
@@ -480,7 +471,7 @@ Taking into account the above considerations, the boresight pointing was generat
 
 \subsubsection{Beamsor model}
 
-Following the work of \cite{2012SPIE.8452E..20E} and valuable input from the CLASS Collaboration, beamsor models for all 72 detectors of the Q-band receiver were built. The two dimensional profile of the diagonal beamsor elements correspond to purely elliptical Gaussian profiles, while the off-diagonal terms were set to zero. The simplicity of the beams allows for a further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as, for a unit normalized Gaussian beam, a pixel that is $5^\circ$ away from the centroid has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. PISCO requires beam tensor to be pixelated as a HEALPix grid, which uses an NSIDE parameter of 512. The finite resolution of the beamsor produces an error in the amplitude of simulated TOD that is less than $0.01\%$, consistent with the results described in \ref{sec::validation}.
+Following the work of \cite{2012SPIE.8452E..20E} and valuable input from the CLASS Collaboration, beamsor models for all 72 detectors of the Q-band receiver were built. The two dimensional profile of the diagonal beamsor elements correspond to purely elliptical Gaussian profiles, while the off-diagonal terms were set to zero. The simplicity of the beams allows for further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as, for a unit normalized Gaussian beam, a pixel that is $5^\circ$ away from the centroid has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. All beamsors were pixelated using $\rm{NSIDE}=512$. The finite resolution of the beamsor produces an error in the amplitude of simulated TOD that is less than $0.01\%$ compared to analytical estimations, which is consistent with the results described in \ref{sec::validation}.
 
 %\begin{figure}
 %	\centering
@@ -491,28 +482,26 @@ Following the work of \cite{2012SPIE.8452E..20E} and valuable input from the CLA
 
 \subsubsection{Power spectra and beam transfer function}
 
-Given that CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of a tool than can handle a sky mask. For this reason, we changed the estimator from \texttt{anafast} to \texttt{PolSpice} (PF cite polspice). In addition, the CLASS collaboration provided a realistic sky mask that includes the galactic plane in addition to the natural incomplete coverage. 
-
-PF write a description of the method used for the window function in the case of several elliptical beams
+Given that CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of a tool than can handle a sky mask. For this reason, we changed the estimator from \texttt{anafast} to \texttt{PolSpice} (PF cite polspice). In addition, the CLASS collaboration provided a realistic sky mask that includes the galactic plane in addition to the natural incomplete coverage. The effect of the beam on the CMB power spectra can be thought as a low-pass filter in harmonic space (cite Page et al) We estimated the equivalent beam transfer function of an arbitrary number of elliptical beams by averaging all beams in ``real'' space and calculating its harmonic transform (PF: check this with Mike. I am sure I am missing something! Shall we put this in the appendix as well?)
 
 \subsection{Results}
 
-\begin{figure*}
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[width=1\textwidth]{figures/unpolCMB_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/unpolCMB_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\caption{Plots power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure). The input CMB was unpolarized. The amplitude of the mismatch was kindly provided by the CLASS collaboration team. Significant leakage from $TT$ to $EE$ and $BB$ power spectra is present for this case were mismatched pointing is present. The spurious signal reaches in the order of $100$ nK at $\ell = 250$ for both $EE$ and $BB$.}
 	\label{fig::pisco4class_pointingmismatch}
-\end{figure*}
+\end{figure}
 
 
-\begin{figure*}
+\begin{figure}[!htb]
 	\centering
 	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\caption{Plots power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure), using a polarized CMB with no B-modes as input. Both figures show non-negligible amounts of leakage, which shows up as a non-zero B-mode power spectrum. Both simulation cases (mismatched and matched pointing) also have the effect of uneven intra-pixel coverage. The spurious signal in BB is roughly an order of magnitude less ($10$ nK) than the case of matched pointing ($100$ nK) at $\ell = 250$.}
 	\label{fig::pisco4class_pointingmismatch}
-\end{figure*}
+\end{figure}
 
 %\subsubsection{Effect of uneven intra-pixel coverage}
 %Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the observed pixels. In section \ref{sec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiments, every sample of the TOD ``hits'' a given pixel at an arbitrary location. If, in average, the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric, the resulting maps will produce P to P leakage on the power spectra, as discussed in (Poutanen et al. 2004) and \cite{2005poutanen}. In this section, we aimed at exploring this effect for the CLASS Q-band receiver by repeating the simulation performed in the above section, this time using a polarized CMB as input. It is worth mentioning that the input CMB has no primordial B-modes and no E-mode to B-mode leakage caused by lensing, so that any resulting B-mode signal must be the result of leakage. 
@@ -550,7 +539,7 @@ PF write a description of the method used for the window function in the case of
 
 %(PF maybe show some results from map stats here?)
 
-%Simulations were performed using this pixelated pointing stream for the case of matched and mismatched beams. 
+%	Simulations were performed using this pixelated pointing stream for the case of matched and mismatched beams. 
 
 \subsection{Discussion}
 
