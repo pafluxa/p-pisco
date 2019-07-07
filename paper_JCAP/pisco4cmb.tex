@@ -51,10 +51,8 @@
 
 % e-mail addresses: one for each author, in the same order as the authors
 \emailAdd{pedro@fluxanet.net}
-\emailAdd{mkb email goes here}
+\emailAdd{brewer@astro.umass.edu}
 \emailAdd{rdunner@astro.puc.cl}
-
-
 
 \abstract{
 	Cosmic microwave background experiments have experienced an exponential increase in complexity, data size and sensitivity. Current and future experiments aim at characterizing the B-mode power spectrum which, due to its faintness, will require extreme control over systematic effects. One of such effects might arise by the complex coupling between the telescope beam and its scanning strategy. In this work, we present a new software tool, the Pixel Space COnvolver, PISCO, capable of producing mock data streams for a general CMB experiment. We show results of an application of PISCO to the Cosmology Large Angular Scale Surveryor, and its Q-band telescope. Results show that beam eccentricity might cause a temperature to polarization leakage above $\ell \approx 50$. }
@@ -323,7 +321,7 @@ The \textbf{PI}xel \textbf{S}pace \textbf{CO}nvolver (PISCO) is a tool with the 
 
 \subsection{General description}
 
-PISCO is the software tool in charge of generating mock TOD given a beamsor, a sky model and a scanning strategy. A diagram showing the general workings of PISCO is shown in Figure \ref{fig::pisco_flow}. PISCO receives as input a sky model in the form of 4 maps representing Stokes parameters $I,Q,U$ and $V$, a beamsor, pointing and focal plane information. The focal plane specifications are only needed if multiple detectors are being included in the pointing stream, as PISCO needs the the angle $\zeta$ of each detector to compute equation \ref{eq::discrete_beam_conv_tensor}. All the inputs are sent to the TOD generation function, which returns the data streams. At this point, the data can either be saved to disk or sent to a map-making code. This last step is preferred as, usually, input-output operations are time consuming. Finally, maps can be analyzed using external tools to calculate the power spectra.
+PISCO is the software tool in charge of generating mock TOD given a beamsor, a sky model and a scanning strategy. A diagram showing the general workings of PISCO is shown in Figure \ref{fig::pisco_flow}. PISCO receives as input a sky model in the form of 4 maps representing Stokes parameters $I,Q,U$ and $V$, a beamsor, pointing and focal plane information. PISCO stores the beamsor elements and sky model as HEALPix (see \cite{2005ApJ...622..759G}) maps. HEALPix was chosen because of being widely used among the CMB community, and because it naturally handles the closed surface topology of the sphere. HEALPix also provides equal area pixels, which is a desirable feature when computing convolution in pixel space. The focal plane specifications are only needed if multiple detectors are being included in the pointing stream, as PISCO needs the the angle $\zeta$ of each detector to compute equation \ref{eq::discrete_beam_conv_tensor}. All the inputs are sent to the TOD generation function, which returns the data streams. At this point, the data can either be saved to disk or sent to a map-making code. This last step is preferred as, usually, input-output operations are time consuming. Finally, maps can be analyzed using external tools to calculate the power spectra.
 
 \begin{figure}
 	\centering
@@ -352,11 +350,7 @@ A simulation of a realistic CMB experiment (see \ref{sec::realistic_cmb_experime
 
 \subsection{Future improvements}
 
-The main drawback of the current implementation comes from having to calculate the list of sky pixels involved in each convolution for all pointing directions. While the wall-time associated with this operation is modest, the result must be kept in memory, and so the associated buffer quickly becomes too large to be held within the RAM of the GPU. Currently, PISCO handles this situation by performing the generation of TOD in blocks. For the test machine, computing and transferring the lists of pixels can take up to $13\%$ of the \textsl{overall} simulation wall-time. We also note that having this list of pixels in memory decreases the available parallelism. A solution to this problem has already been devised and will be implemented in future releases.
-
-PISCO stores the beamsor elements and sky model as HEALPix (see \cite{2005ApJ...622..759G}) maps. HEALPix was chosen because of being widely used among the CMB community, and because it naturally handles the closed surface topology of the sphere. HEALPix also provides equal area pixels, which is a desirable feature when computing convolution in pixel space. Another drawback of the current implementation is the use of global memory to hold the beam tensor elements. Future releases will exploit data locality by making use of the CUDA texture memory pipeline (see \cite{sanders2010cuda}, Chapter 6). 
-
-Finally, the current version of PISCO was designed to execute in a single node. Experiments were performed by emulating a multi-node system by making PISCO use all 3 GPUs of the machine, which showed an almost linear increase in performance. However, more work is required to check if the performance gain holds when scaling to large GPU-clusters, like the upcoming Perlmutter system at NERSC.
+The current implementation must calculate the list of sky pixels involved in each convolution, for all pointing directions, before the CUDA routine is launched. Having this list of pixels in memory decreases the available parallelism, as less pointing directions can be used at a given time. While the wall-time associated with this operation is modest, the result must be kept in memory and transferred to the GPU, so that the associated buffer quickly becomes too large to be held in the VRAM. Currently, PISCO handles this situation by performing the generation of TOD in blocks to avoid memory overflow. In the test machine, computing and transferring the lists of pixels can take up to $13\%$ of the \textsl{overall} simulation wall-time. A solution to this problem has already been devised and will be implemented in future releases. Another drawback of the current implementation is the use of global memory to hold the beam tensor elements. Future releases will exploit data locality by making use of the CUDA texture memory pipeline (see \cite{sanders2010cuda}, Chapter 6). Finally, while the current implementation of PISCO was designed to execute in multiple GPU nodes, significant coding effort is required to provide the user with an easy to use interface. Experiments were performed emulating a multi-node system by making PISCO use all 3 GPUs of the machine. These tests showed an almost linear increase in performance, but more work is required in order to find the knee of the curve between performance and available GPUs.
 
 %\begin{table}[tbp]
 %	\centering
@@ -435,19 +429,12 @@ The scanning strategy was designed so that every pixel on the sky gets visited e
 
 Power spectra was calculated using \texttt{anafast}. No further post-processing of the power spectra was needed given that this simulated observation covers the whole sky, and hence no masking effects arise. The power spectra corresponding to maps that were generated using PISCO TOD were corrected by the equivalent beam transfer function of a circular Gaussian beam of FWHM$=1.5^\circ$. 
 
-\subsubsection{Results}
-
-Results are shown in figure \ref{fig::pisco4wholesky}. We found there is excellent agreement between the output of \texttt{smoothing} and PISCO, with little or no signs of significant deviations across the $\ell=[2,250]$ span. 
-
-include the temperature power spectrum.
-include a power spectra residual plot.
-
-\begin{figure*}
+\begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{figures/ps_r0d00.pdf}
+	\includegraphics[width=1\linewidth]{figures/cmb_r0d00_CLASS_wholeskytest.pdf}
 	\caption{Plots showing maps of PISCO generated TOD and the results from \texttt{smoothing} for whole sky CMB test. Top plot corresponds to power spectra of the input map (blue circles) and the output of PISCO (orange curve) Bottom plot corresponds to the residuals between the input power spectra the one computed from maps generated using PISCO.}
 	\label{fig::pisco4wholesky}
-\end{figure*}
+\end{figure}
 
 %
 \section{Realistic CMB experiment}
@@ -484,71 +471,56 @@ Following the work of \cite{2012SPIE.8452E..20E} and valuable input from the CLA
 
 Given that CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of a tool than can handle a sky mask. For this reason, we changed the estimator from \texttt{anafast} to \texttt{PolSpice} (PF cite polspice). In addition, the CLASS collaboration provided a realistic sky mask that includes the galactic plane in addition to the natural incomplete coverage. The effect of the beam on the CMB power spectra can be thought as a low-pass filter in harmonic space (cite Page et al) We estimated the equivalent beam transfer function of an arbitrary number of elliptical beams by averaging all beams in ``real'' space and calculating its harmonic transform (PF: check this with Mike. I am sure I am missing something! Shall we put this in the appendix as well?)
 
-\subsection{Results}
+\subsection{Results and discussion}
 
-\begin{figure}[!htb]
+\subsubsection{Pointing mismatch}
+
+CMB experiments that rely on detector pairs are subject to leakage caused by pointing mismatch. Leakage arises at the map-making stage and is caused by an incomplete cancellation of the Stokes $I$ term when solving for the individual pixel-covariance matrices. This residual term from the Stokes $I$ is interpreted by the map-making algorithm as a polarized signal, hence causing the leakage showed in figure \ref{fig::pisco4class_pointingmismatch}. We note that leakage is not present below $\ell \approx 100$, but becomes dominant at increasing angular frequencies. We believe this is caused by the effect of pointing mismatch to be restricted to angular scales comparable to the FWHM of the beam. 
+
+\begin{figure}
 	\centering
 	\includegraphics[width=1\textwidth]{figures/unpolCMB_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/unpolCMB_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
-	\caption{Plots power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure). The input CMB was unpolarized. The amplitude of the mismatch was kindly provided by the CLASS collaboration team. Significant leakage from $TT$ to $EE$ and $BB$ power spectra is present for this case were mismatched pointing is present. The spurious signal reaches in the order of $100$ nK at $\ell = 250$ for both $EE$ and $BB$.}
+	\caption{Resulting power spectra for a realistic simulation using mismatched pointing (upper figure), and matched pointing (bottom figure). The input CMB was unpolarized. The amplitude of the mismatch was kindly provided by the CLASS collaboration team. Significant leakage from $TT$ to $EE$ and $BB$ power spectra is present for the mismatched pointing case. The spurious signal reaches in the order of $100$ nK at $\ell = 250$ for both $EE$ and $BB$.}
 	\label{fig::pisco4class_pointingmismatch}
 \end{figure}
 
+\subsubsection{Uneven intra-pixel coverage}
 
-\begin{figure}[!htb]
+Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the sky. In section \ref{sec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiments, every sample of the TOD ``hits'' a given pixel at an arbitrary location within it. If, in average, the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric and gradients between pixels are present (recall that pixel space convolution is affected by neighbor pixels) the resulting power spectra may suffer from P to P leakage. This was discussed in mor detail in (Poutanen et al. 2004) and \cite{2005poutanen}. 
+
+\begin{figure}
 	\centering
+	%\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
-	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
-	\caption{Plots power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure), using a polarized CMB with no B-modes as input. Both figures show non-negligible amounts of leakage, which shows up as a non-zero B-mode power spectrum. Both simulation cases (mismatched and matched pointing) also have the effect of uneven intra-pixel coverage. The spurious signal in BB is roughly an order of magnitude less ($10$ nK) than the case of matched pointing ($100$ nK) at $\ell = 250$.}
-	\label{fig::pisco4class_pointingmismatch}
+	\caption{Resulting power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure), using as input a polarized CMB without B-modes. Both B-mode power spectra show non-negligible amounts of a spurious signal not present in the input power B-mode power spectrum. Both simulation cases (mismatched and matched pointing) also have the effect of uneven intra-pixel coverage. In the case of matched pointing, the spurious B-mode spectrum reaches in the order of $10$ nK at $\ell = 250$.}
+	\label{fig::pisco4class_intrapixel}
 \end{figure}
 
-%\subsubsection{Effect of uneven intra-pixel coverage}
-%Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the observed pixels. In section \ref{sec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiments, every sample of the TOD ``hits'' a given pixel at an arbitrary location. If, in average, the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric, the resulting maps will produce P to P leakage on the power spectra, as discussed in (Poutanen et al. 2004) and \cite{2005poutanen}. In this section, we aimed at exploring this effect for the CLASS Q-band receiver by repeating the simulation performed in the above section, this time using a polarized CMB as input. It is worth mentioning that the input CMB has no primordial B-modes and no E-mode to B-mode leakage caused by lensing, so that any resulting B-mode signal must be the result of leakage. 
+Figure \ref{fig::pisco4class_intrapixel} shows the result of running the realistic simulation with matched pointing, and it is clear that a spurious signal is present in the B-mode power spectrum. In the upper plot of Figure \ref{fig::pisco4class_pointingmismatch}, the same simulation was performed but with an unpolarized CMB as input, the resulting polarized power spectra bing consistent with zero. This indicates that the effect of uneven intra-pixel coverage is P to P leakage. We note that this systematic effect is subdominant with respect to the T to P leakage caused by pointing mismatch by roughly a factor of $10$.
 
-% Move this to discussion
-%Based on the results of the previous test, we can argue that uneven intra-pixel coverage causes leakage from P to P. As it was shown in the previous section, PISCO does not cause leakage when simulating the observation of an unpolarized CMB when both pointing and beams are matched. In the case of pointing mismatch, T to P leakage occurs. Conversely, this test shows that even in the case of matched beams and matched pointing, the resulting B-mode power spectrum diverges at high $ell$. Since this signal is not caused by T to P leakage (see Figure \ref{fig::pisco4class_pointingmismatch}), the only option is that it is P to P type. We note that this systematic effect is subdominant with respect to T to P leakage caused by pointing mismatch. 
+\subsubsection{Beam mismatch}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_forcedPointing_matchedBeams_ellipticalBeams.pdf}
+	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_forcedPointing_mismatchedBeams_ellipticalBeams.pdf}
+	\caption{Resulting power spectra of the realistic simulation without the effect of uneven intra-pixel, matched pointing and matched (upper plot) and mismatched (bottom plot) beams. The amplitude of the beam mismatch was kindly provided by the CLASS collaboration team. We see oscillatory behavior in the resulting B-mode power spectrum for both matched and mismatched beam cases. The spurious B-mode signal reaches roughly $100\, \rm{nK}^2$ at $\ell=250$.}
+	\label{fig::pisco4class_beammismatch}
+\end{figure}
 
-%
-%If an experiment has a focal plane with detector pairs in the same feed, the map-making will naturally pair difference the signals. If there is a pointing mismatch, leakage from temperature to polarization (cite this) Similarly, beam mismatch within pairs can produce polarization to polarization leakage. 
-%
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=1.0\linewidth]{figures/unpolCMB_r0d00_CLASS_matchedPointing_mismatchedBeams_ellipticalBeams.pdf}
-%	\includegraphics[width=1.0\linewidth]{figures/unpolCMB_r0d00_CLASS_mismatchedPointing_mismatchedBeams_ellipticalBeams.pdf}
-%	\caption{Upper plot. Run using an unpolarized CMB as input. Focal plane has matched pointing for all pairs. Pointing was generated so as to emulate the CLASS scanning strategy. Beams follow elliptical Gaussian profiles, and are mismatched between pairs of detectors. This figure shows that even in the presence of mismatched beams, T to P leakage does not occur. Bottom plot: similar conditions to the ones used to generate the plot above, but using \textsl{mismatched} pointing at the focal plane (as well as in the pointing stream). T to P leakage does occur in this case, reaching a maximum of $\approx 50$ nK at $\ell = 250$.}
-%	\label{fig::unpolcmbr0}
-%\end{figure}
+The effect of beam mismatch can be thought as similar to pointing mismatch in that the net effect is to create spurious polarization signal from the temperature field. Beam mismatch can also produce P to P leakage if modulators like Half Wave Plates are present (see \cite{2007MNRAS.376.1767O}). Leakage caused by pointing and beam mismatch are related. Consider the case where the amplitude of the pointing mismatch is comparable to the beam FWHM. In this scenario, paired detectors will effectively be observing different pixels of the sky, making the map-making algorithm interpret the residuals as polarization signals. If the pointing mismatch is small compared to the beam FWHM, this will only happen when one of the paired detectors reaches a pixel border. 
 
-%
-%According to literature, building a map from TOD that doesn't provide symmetric intrapixel coverage can produce divergence on the power spectra at high $\ell$. This effect becomes more dominant for the polarization power spectra, as the signal is amplitude is lower (see Hivon et al, 2002, etc), and can be interpreted as P to P leakage. For this run, we used matched beams for detectors within a pair by averaging the parameters beam pair parameters (FWHMs and ellipse rotation). Using matched beams eliminates the expected P to P leakage associated with this condition. According the Figure \ref{fig::unpolcmbr0}, the only sources of leakage in this experiment should correspond to T to P leakage arising from mismatched pointing, as well as P to P leakage caused by asymmetric intrapixel coverage. 
-%
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=1.0\linewidth]{figures/cmb_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
-%	\includegraphics[width=1.0\linewidth]{figures/cmb_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
-%	\caption{Upper plot. Run using an polarized CMB without B-modes as input. Focal plane has mismatched pointing for all pairs. Pointing was generated so as to emulate the CLASS scanning strategy. using this mismatch between pairs as well. Beams follow elliptical Gaussian profiles, and beam parameters are shared within pairs. Results from this experiment are in qualitative agreement with Figure \ref{fig::unpolcmbr0}, with the maximum of the spurious $BB$ spectrum reaching $\approx 50$ nK at $\ell=250$. Bottom plot: same run using matched pointing and mismatched beams. The only systematic that can explain the observed spurious $BB$ signal corresponds to asymmetric intrapixel coverage. We note that the maximum amplitude of this effect is almost two order of magnitude below  T to P leakage caused by mismatched pointing. This, together with the results of the previous section, strongly suggest this effect to origin from P to P leakage. }
-%	
-%	\label{fig:unpolcmbr0}
-%\end{figure}
+Conversely, beam mismatch changes the way neighboring pixels around a pointing direction are averaged together. For simplicity, consider the case where simple linear transformations are applied to the beams: shear along the $x$ axis and a rotation by an angle $\alpha$ around its center. If the scanning strategy visits all pixels at every possible beam orientation, the effect of the rotation will cancel out the scanning effectively symmetrizes the beam on the sky. The effect of the extension along the $x$-axis will produce leakage from T to P, as every observation with the pair will have slightly different fluxes, and hence a residual, caused by the difference in shape. The mismatch in shape may also cause P to P leakage, particularly near the poles where rapid intra-beam variations will be integrated differently between the pair. We believe this effect to be very small, as the strongest variations of $\psi$ inside the beam happen relatively far away from beam maximum, and are hence weakly weighted by the map-making algorithm.
 
-%\subsubsection{Effect of beam mismatch}
-
-%Another source of leakage comes from beam mismatch. It is worth noting that this effect, if present, would dominate the signal from the power spectra at $ell$ comparable to the inverse of the beam FWHM which, for this application case, is $\approx 1.45^\circ$: this correspons to $\ell = 124$. At these scales, pointing mismatch and noise caused by uneven intra-pixel coverage also play an important role, so it becomes mandatory to suppress these systematics. The way we addressed this was to force the pointing of the scanning strategy to hit the center of pixels of an NSIDE=512 HEALPix grid. 
-
-%(PF maybe show some results from map stats here?)
-
-%	Simulations were performed using this pixelated pointing stream for the case of matched and mismatched beams. 
-
-\subsection{Discussion}
-
-\section{Realistic CMB experiment with non zero cross-polarized beams}
+Figure \ref{fig::pisco4class_beammismatch} shows the resulting power spectra of a simulation with matched pointing, without the effects of uneven intra-pixel coverage and with (without) beam mismatch. Suppressing the effect of intra-pixel coverage systematics was achieved by forcing the pointing of every detector to aim at its closest sky pixel, for an NSIDE resolution of 128. The resulting temperature and E-mode power spectra are in excellent agreement with the input, while the B-mode power spectrum presents some excess signal at large angular scales, as well becoming oscillatory after $\ell=100$. The amplitude of these oscillations reaches $10^{-4} \, \mu\rm{K}^2$, which is an order of magnitude below the effect of intra-pixel coverage. We note, however, that this effect is present in \textsl{both} the matched and mismatched beam cases, and so it is not clear whether this artifact can be associated with beam mismatch. Higher resolution simulations are needed to better constrain this. Unfortunately, this implementation poses a limit on the maximum resolution for beamsors and sky models being used. Future work will address this issue, possibly by making use of multiple GPUs and a more efficient algorithm in terms of memory management.
 
 \section{Conclusion}
 \label{sec::conclusions}
 
-In this work, we have presented PISCO, a new computer simulation code capable of computing tensor convolutions in pixel space for applications in CMB experiments. PISCO was also designed to use GPU acceleration, as well as supporting execution on HPC facilities. PISCO is also unique in its field, being capable of explicitly including time-dependent phenomena present in the data, like modulation techniques, beam degradation due to mechanical effects and transient events on the sky. Application of these capabilities to a realistic CMB experiment will be given in future publications.
+In this work, we have presented PISCO, a computer simulation code capable of generating TOD that include the convolution of arbitrary beams and sky models. PISCO exploits the outstanding parallelism that pixel space convolution offers, and implements this using GPU acceleration. PISCO is also designed for efficient execution in HPC environments, particularly, multi-GPU systems. PISCO is unique in its field by using the treatment found in \cite{2007MNRAS.376.1767O} to model the polarization properties of an antenna. In addition, since the core algorithm works in pixel space, we believe that the associated cost of including time-dependent systematic effects and other phenomena is low compared to implementations like the one described in \cite{2018arXiv180905034D}. These systematic effects include, but are not limited to, imperfections in the modulator, beam degradation due to mechanical deformations and transient events of the sky. A paper showing an application of these capabilities to a realistic CMB experiment will be given in future publications.
+
+This work also showed the results from test performed using a pathfinder implementation of the algorithm. With the exception of the test involving beam mismatch, which is inconclusive and needs further investigation, results indicate that PISCO correctly reproduces known systematic effects at the power spectra level. We note that all these test were performed in a high-end workstation, each test taking less than an hour and executing more than 300000 beam convolutions per second.
 
 \bibliographystyle{plain}
 \bibliography{bib}
