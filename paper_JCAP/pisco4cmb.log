@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.29)  14 MAY 2019 17:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.29)  12 JUN 2019 18:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -303,10 +303,67 @@ Package: tensor 2004/12/20 v2.1 tensor indices package (PGR)
 \tnsr@Sbe=\toks26
 \ncld@Mno=\toks27
 )
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen121
+\extrarowheight=\dimen122
+\NC@list=\toks28
+\extratabsurround=\skip50
+\backup@length=\skip51
+)
+\everycr=\toks29
+\minrowclearance=\skip52
+)
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count116
+\Gm@cntv=\count117
+\c@Gm@tempcnt=\count118
+\Gm@bindingoffset=\dimen123
+\Gm@wd@mp=\dimen124
+\Gm@odd@mp=\dimen125
+\Gm@even@mp=\dimen126
+\Gm@layoutwidth=\dimen127
+\Gm@layoutheight=\dimen128
+\Gm@layouthoffset=\dimen129
+\Gm@layoutvoffset=\dimen130
+\Gm@dimlist=\toks30
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip53
+\multirow@cntb=\count119
+\multirow@dima=\skip54
+\bigstrutjot=\dimen131
+)
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks28
-\inpenc@posthook=\toks29
+\inpenc@prehook=\toks31
+\inpenc@posthook=\toks32
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
@@ -625,34 +682,34 @@ Now handling font encoding PD1 ...
 )) (./pisco4cmb.aux)
 \openout1 = `pisco4cmb.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count116
-\scratchdimen=\dimen121
+\scratchcounter=\count120
+\scratchdimen=\dimen132
 \scratchbox=\box28
-\nofMPsegments=\count117
-\nofMParguments=\count118
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count119
-\MPscratchDim=\dimen122
-\MPnumerator=\count120
-\makeMPintoPDFobject=\count121
-\everyMPtoPDFconversion=\toks31
+\nofMPsegments=\count121
+\nofMParguments=\count122
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count123
+\MPscratchDim=\dimen133
+\MPnumerator=\count124
+\makeMPintoPDFobject=\count125
+\everyMPtoPDFconversion=\toks34
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -671,7 +728,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 55.
+Package hyperref Info: Link coloring ON on input line 62.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -679,22 +736,56 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count122
+\c@section@level=\count126
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 62.
+LaTeX Info: Redefining \pageref on input line 62.
+LaTeX Info: Redefining \nameref on input line 62.
 
 (./pisco4cmb.out) (./pisco4cmb.out)
 \@outlinefile=\write3
 \openout3 = `pisco4cmb.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 56.
 
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-14.1381pt
+* \headheight=13.0pt
+* \headsep=0.0pt
+* \topskip=11.0pt
+* \footskip=55.0pt
+* \marginparwidth=71.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 63.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 56.
+LaTeX Font Info:    Try loading font information for U+msb on input line 63.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -705,87 +796,71 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `pisco4cmb.toc'.
 
  [1] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 88.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 95.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 88.
-<tikz/sky_basis.pdf, id=193, 218.83255pt x 224.17049pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 95.
+
+
+LaTeX Warning: Reference `sec::class_pisco_sim' on page 3 undefined on input li
+ne 99.
+
+<tikz/sky_basis.pdf, id=242, 218.83255pt x 224.17049pt>
 File: tikz/sky_basis.pdf Graphic file (type pdf)
 <use tikz/sky_basis.pdf>
-Package pdftex.def Info: tikz/sky_basis.pdf  used on input line 103.
-(pdftex.def)             Requested size: 206.80054pt x 211.84564pt.
-<tikz/beam_basis.pdf, id=194, 224.39735pt x 234.60548pt>
+Package pdftex.def Info: tikz/sky_basis.pdf  used on input line 110.
+(pdftex.def)             Requested size: 213.96529pt x 219.18617pt.
+<tikz/beam_basis.pdf, id=243, 224.39735pt x 234.60548pt>
 File: tikz/beam_basis.pdf Graphic file (type pdf)
 <use tikz/beam_basis.pdf>
-Package pdftex.def Info: tikz/beam_basis.pdf  used on input line 104.
-(pdftex.def)             Requested size: 206.80054pt x 216.21196pt.
- [3 <./tikz/sky_basis.pdf> <./tikz/beam_basis.pdf>]
-<figures/cmb_coord_convention.png, id=235, 1027.84pt x 580.1675pt>
+Package pdftex.def Info: tikz/beam_basis.pdf  used on input line 111.
+(pdftex.def)             Requested size: 213.96529pt x 223.70445pt.
+[3 <./tikz/sky_basis.pdf> <./tikz/beam_basis.pdf>]
+<figures/cmb_coord_convention.png, id=283, 1027.84pt x 580.1675pt>
 File: figures/cmb_coord_convention.png Graphic file (type png)
 <use figures/cmb_coord_convention.png>
 Package pdftex.def Info: figures/cmb_coord_convention.png  used on input line 1
-77.
-(pdftex.def)             Requested size: 307.99866pt x 173.84798pt.
- [4] [5 <./figures/cmb_coord_convention.png>]
-[6]
-<figures/PISCO-diagram.png, id=285, 1511.6475pt x 819.06pt>
+84.
+(pdftex.def)             Requested size: 318.66948pt x 179.87662pt.
+ [4] [5 <./figures/cmb_coord_convention.png>] [6]
+<figures/PISCO-diagram.png, id=334, 1511.6475pt x 819.06pt>
 File: figures/PISCO-diagram.png Graphic file (type png)
 <use figures/PISCO-diagram.png>
-Package pdftex.def Info: figures/PISCO-diagram.png  used on input line 347.
-(pdftex.def)             Requested size: 352.00134pt x 190.71693pt.
- [7]
-<figures/pisco-flow-diagram.pdf, id=298, 614.295pt x 794.97pt>
+Package pdftex.def Info: figures/PISCO-diagram.png  used on input line 344.
+(pdftex.def)             Requested size: 364.19667pt x 197.32828pt.
+<figures/pisco-flow-diagram.pdf, id=338, 614.295pt x 794.97pt>
 File: figures/pisco-flow-diagram.pdf Graphic file (type pdf)
 <use figures/pisco-flow-diagram.pdf>
-Package pdftex.def Info: figures/pisco-flow-diagram.pdf  used on input line 363
+Package pdftex.def Info: figures/pisco-flow-diagram.pdf  used on input line 360
 .
-(pdftex.def)             Requested size: 264.00269pt x 341.64848pt.
- [8 <./figures/PISCO-diagram.png>] [9 <./figures/pisco-flow-diagram.pdf>] [10]
-<figures/stokes_I_source_256_beam_1024_dec_45.pdf, id=330, 749.99998pt x 154.50
+(pdftex.def)             Requested size: 273.14923pt x 353.48761pt.
+ [7] [8 <./figures/PISCO-diagram.png>] [9 <./figures/pisco-flow-diagram.pdf>]
+<figures/stokes_I_source_256_beam_1024_dec_45.pdf, id=371, 749.99998pt x 154.50
 85pt>
 File: figures/stokes_I_source_256_beam_1024_dec_45.pdf Graphic file (type pdf)
 <use figures/stokes_I_source_256_beam_1024_dec_45.pdf>
 Package pdftex.def Info: figures/stokes_I_source_256_beam_1024_dec_45.pdf  used
- on input line 419.
-(pdftex.def)             Requested size: 440.0pt x 90.64761pt.
-<figures/stokes_Q_source_256_beam_1024_dec_45.pdf, id=331, 749.99998pt x 154.50
+ on input line 414.
+(pdftex.def)             Requested size: 455.24411pt x 93.78795pt.
+<figures/stokes_Q_source_256_beam_1024_dec_45.pdf, id=372, 749.99998pt x 154.50
 85pt>
 File: figures/stokes_Q_source_256_beam_1024_dec_45.pdf Graphic file (type pdf)
 <use figures/stokes_Q_source_256_beam_1024_dec_45.pdf>
 Package pdftex.def Info: figures/stokes_Q_source_256_beam_1024_dec_45.pdf  used
- on input line 420.
-(pdftex.def)             Requested size: 440.0pt x 90.64761pt.
-<figures/stokes_U_source_256_beam_1024_dec_45.pdf, id=332, 749.99998pt x 154.50
+ on input line 415.
+(pdftex.def)             Requested size: 455.24411pt x 93.78795pt.
+<figures/stokes_U_source_256_beam_1024_dec_45.pdf, id=373, 749.99998pt x 154.50
 85pt>
 File: figures/stokes_U_source_256_beam_1024_dec_45.pdf Graphic file (type pdf)
 <use figures/stokes_U_source_256_beam_1024_dec_45.pdf>
 Package pdftex.def Info: figures/stokes_U_source_256_beam_1024_dec_45.pdf  used
- on input line 421.
-(pdftex.def)             Requested size: 440.0pt x 90.64761pt.
- [11]
-<figures/ps_r0d00.pdf, id=345, 700.00002pt x 216.31189pt>
-File: figures/ps_r0d00.pdf Graphic file (type pdf)
-<use figures/ps_r0d00.pdf>
-Package pdftex.def Info: figures/ps_r0d00.pdf  used on input line 445.
-(pdftex.def)             Requested size: 440.0pt x 135.97025pt.
-<figures/ps_r0d01.pdf, id=346, 700.00002pt x 216.31189pt>
-File: figures/ps_r0d01.pdf Graphic file (type pdf)
-<use figures/ps_r0d01.pdf>
-Package pdftex.def Info: figures/ps_r0d01.pdf  used on input line 446.
-(pdftex.def)             Requested size: 440.0pt x 135.97025pt.
-<figures/ps_r0d10.pdf, id=347, 700.00002pt x 216.31189pt>
-File: figures/ps_r0d10.pdf Graphic file (type pdf)
-<use figures/ps_r0d10.pdf>
-Package pdftex.def Info: figures/ps_r0d10.pdf  used on input line 447.
-(pdftex.def)             Requested size: 440.0pt x 135.97025pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12 <./figures/stokes_I_source_256_beam_1024_dec_45.pdf> <./figures/stokes_Q_s
-ource_256_beam_1024_dec_45.pdf
+ on input line 416.
+(pdftex.def)             Requested size: 455.24411pt x 93.78795pt.
+ [10] [11 <./figures/stokes_I_source_256_beam_1024_dec_45.pdf> <./figures/stoke
+s_Q_source_256_beam_1024_dec_45.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./figures/stokes_Q_source_256_beam_1024
 _dec_45.pdf): PDF inclusion: multiple pdfs with page group included in a single
@@ -795,105 +870,58 @@ _dec_45.pdf): PDF inclusion: multiple pdfs with page group included in a single
 pdfTeX warning: /usr/bin/pdflatex (file ./figures/stokes_U_source_256_beam_1024
 _dec_45.pdf): PDF inclusion: multiple pdfs with page group included in a single
  page
->] [13 <./figures/ps_r0d00.pdf> <./figures/ps_r0d01.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./figures/ps_r0d01.pdf): PDF inclusion:
- multiple pdfs with page group included in a single page
-> <./figures/ps_r0d10.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./figures/ps_r0d10.pdf): PDF inclusion:
- multiple pdfs with page group included in a single page
 >]
-<figures/qband_beams_main_beam_fwhm_x.pdf, id=544, 692.3466pt x 708.9687pt>
-File: figures/qband_beams_main_beam_fwhm_x.pdf Graphic file (type pdf)
-<use figures/qband_beams_main_beam_fwhm_x.pdf>
-Package pdftex.def Info: figures/qband_beams_main_beam_fwhm_x.pdf  used on inpu
-t line 474.
-(pdftex.def)             Requested size: 352.00134pt x 360.44418pt.
- [14] [15 <./figures/qband_beams_main_beam_fwhm_x.pdf>]
-<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf, id=661, 700.00002
-pt x 216.31189pt>
-File: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf Graphic file 
-(type pdf)
-<use figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf>
-Package pdftex.def Info: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d0
-0.pdf  used on input line 517.
-(pdftex.def)             Requested size: 440.0pt x 135.97025pt.
-<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf, id=662, 700.00002
-pt x 216.31189pt>
-File: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf Graphic file 
-(type pdf)
-<use figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf>
-Package pdftex.def Info: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d0
-1.pdf  used on input line 518.
-(pdftex.def)             Requested size: 440.0pt x 135.97025pt.
-<figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf, id=663, 700.00002
-pt x 216.31189pt>
-File: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf Graphic file 
-(type pdf)
-<use figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf>
-Package pdftex.def Info: figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d1
-0.pdf  used on input line 519.
-(pdftex.def)             Requested size: 440.0pt x 135.97025pt.
-<figures/T_to_P_leakage_for_class.pdf, id=667, 700.00002pt x 216.31189pt>
-File: figures/T_to_P_leakage_for_class.pdf Graphic file (type pdf)
-<use figures/T_to_P_leakage_for_class.pdf>
-Package pdftex.def Info: figures/T_to_P_leakage_for_class.pdf  used on input li
-ne 534.
-(pdftex.def)             Requested size: 440.0pt x 135.97025pt.
- [16]
-Underfull \vbox (badness 3635) has occurred while \output is active []
-
- [17 <./figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d00.pdf> <./figures
-/CLASS_scan_7_20_elliptical_gussian_beams_r_0d01.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./figures/CLASS_scan_7_20_elliptical_gu
-ssian_beams_r_0d01.pdf): PDF inclusion: multiple pdfs with page group included 
-in a single page
-> <./figures/CLASS_scan_7_20_elliptical_gussian_beams_r_0d10.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./figures/CLASS_scan_7_20_elliptical_gu
-ssian_beams_r_0d10.pdf): PDF inclusion: multiple pdfs with page group included 
-in a single page
->] (./pisco4cmb.bbl [18 <./figures/T_to_P_leakage_for_class.pdf>] [19])
-<figures/Figure10.pdf, id=822, 597.50786pt x 845.04686pt>
-File: figures/Figure10.pdf Graphic file (type pdf)
-<use figures/Figure10.pdf>
-Package pdftex.def Info: figures/Figure10.pdf  used on input line 560.
-(pdftex.def)             Requested size: 352.00134pt x 497.82545pt.
-
-[20] [21 <./figures/Figure10.pdf>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 601.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 601.
-
-[22]
+<figures/ps_r0d00.pdf, id=478, 700.00002pt x 216.31189pt>
+File: figures/ps_r0d00.pdf Graphic file (type pdf)
+<use figures/ps_r0d00.pdf>
+Package pdftex.def Info: figures/ps_r0d00.pdf  used on input line 457.
+(pdftex.def)             Requested size: 455.24411pt x 140.68356pt.
+ [12 <./figures/ps_r0d00.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 686.
+ [13]
+(./pisco4cmb.bbl [14] [15])
+<figures/Figure10.pdf, id=547, 597.50786pt x 845.04686pt>
+File: figures/Figure10.pdf Graphic file (type pdf)
+<use figures/Figure10.pdf>
+Package pdftex.def Info: figures/Figure10.pdf  used on input line 549.
+(pdftex.def)             Requested size: 364.19667pt x 515.07811pt.
 
-[24]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 686.
+Underfull \vbox (badness 2556) has occurred while \output is active []
+
+ [16]
+[17 <./figures/Figure10.pdf>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 590.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 590.
+
+[18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 675.
+ [19] [20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 675.
  (./pisco4cmb.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 686.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 686.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 675.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 675.
 Package rerunfilecheck Info: File `pisco4cmb.out' has not changed.
-(rerunfilecheck)             Checksum: 9EE34FB89E8C18B260B0A0B34E1943FC;1805.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 686.
+(rerunfilecheck)             Checksum: F91173AAB4B70841534B310F5872FA9B;2596.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 675.
  ) 
 Here is how much of TeX's memory you used:
- 7759 strings out of 492982
- 110804 string characters out of 6134896
- 221098 words of memory out of 5000000
- 11060 multiletter control sequences out of 15000+600000
- 21892 words of font info for 83 fonts, out of 8000000 for 9000
+ 8732 strings out of 492982
+ 122555 string characters out of 6134896
+ 240759 words of memory out of 5000000
+ 12014 multiletter control sequences out of 15000+600000
+ 21556 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,18n,31p,1372b,551s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,18n,35p,1565b,551s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -903,23 +931,24 @@ ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-tt10.pfb>
-Output written on pisco4cmb.pdf (25 pages, 955146 bytes).
+onts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
+i10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pf
+b>
+Output written on pisco4cmb.pdf (21 pages, 777966 bytes).
 PDF statistics:
- 952 PDF objects out of 1000 (max. 8388607)
- 802 compressed objects within 9 object streams
- 116 named destinations out of 1000 (max. 500000)
- 302 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 681 PDF objects out of 1000 (max. 8388607)
+ 598 compressed objects within 6 object streams
+ 117 named destinations out of 1000 (max. 500000)
+ 347 words of extra memory for PDF output out of 10000 (max. 10000000)
 

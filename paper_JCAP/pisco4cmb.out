@@ -1,9 +1,9 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Coordinates}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Definitions}{section.2}% 3
-\BOOKMARK [1][-]{section.3}{Antenna theory}{}% 4
-\BOOKMARK [2][-]{subsection.3.1}{Beam}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.2}{Beam tensors}{section.3}% 6
+\BOOKMARK [1][-]{section.3}{Antenna model}{}% 4
+\BOOKMARK [2][-]{subsection.3.1}{Unpolarized case}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.2}{Polarized case: beam tensors}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.3}{Measuring the sky with antennas}{section.3}% 7
 \BOOKMARK [1][-]{section.4}{Pixel space convolution}{}% 8
 \BOOKMARK [2][-]{subsection.4.1}{Discrete convolution on the sphere}{section.4}% 9
@@ -12,16 +12,26 @@
 \BOOKMARK [3][-]{subsubsection.4.3.1}{General description}{subsection.4.3}% 12
 \BOOKMARK [3][-]{subsubsection.4.3.2}{Performance}{subsection.4.3}% 13
 \BOOKMARK [1][-]{section.5}{Code validation}{}% 14
-\BOOKMARK [2][-]{subsection.5.1}{Validation using mock point source observations}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Point source observations}{section.5}% 15
 \BOOKMARK [3][-]{subsubsection.5.1.1}{Results}{subsection.5.1}% 16
-\BOOKMARK [2][-]{subsection.5.2}{Validation using mock whole sky observations}{section.5}% 17
-\BOOKMARK [1][-]{section.6}{Application to a CMB experiment with elliptical beams}{}% 18
-\BOOKMARK [2][-]{subsection.6.1}{Sky model}{section.6}% 19
-\BOOKMARK [2][-]{subsection.6.2}{Pointing}{section.6}% 20
-\BOOKMARK [2][-]{subsection.6.3}{Beamsor model}{section.6}% 21
-\BOOKMARK [2][-]{subsection.6.4}{Power spectra analysis}{section.6}% 22
-\BOOKMARK [2][-]{subsection.6.5}{Results}{section.6}% 23
-\BOOKMARK [2][-]{subsection.6.6}{Discussion}{section.6}% 24
-\BOOKMARK [1][-]{section.7}{Conclusion}{}% 25
-\BOOKMARK [1][-]{appendix.A}{Computation of antenna coordinates from sky coordinates and antenna pointing}{}% 26
-\BOOKMARK [1][-]{appendix.B}{Calculation of elements of B}{}% 27
+\BOOKMARK [2][-]{subsection.5.2}{Ideal CMB experiment}{section.5}% 17
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Description}{subsection.5.2}% 18
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Sky model}{subsection.5.2}% 19
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Scanning strategy}{subsection.5.2}% 20
+\BOOKMARK [3][-]{subsubsection.5.2.4}{Power spectra}{subsection.5.2}% 21
+\BOOKMARK [3][-]{subsubsection.5.2.5}{Results}{subsection.5.2}% 22
+\BOOKMARK [1][-]{section.6}{Realistic CMB experiment}{}% 23
+\BOOKMARK [2][-]{subsection.6.1}{Description}{section.6}% 24
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Sky model}{subsection.6.1}% 25
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Pointing}{subsection.6.1}% 26
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Beamsor model}{subsection.6.1}% 27
+\BOOKMARK [3][-]{subsubsection.6.1.4}{Power spectra and beam transfer function}{subsection.6.1}% 28
+\BOOKMARK [2][-]{subsection.6.2}{Results}{section.6}% 29
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Effect of uneven intra-pixel coverage}{subsection.6.2}% 30
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Effect of pointing mismatch}{subsection.6.2}% 31
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Effect of beam mismatch}{subsection.6.2}% 32
+\BOOKMARK [2][-]{subsection.6.3}{Discussion}{section.6}% 33
+\BOOKMARK [1][-]{section.7}{Realistic CMB experiment with non zero cross-polarized beams}{}% 34
+\BOOKMARK [1][-]{section.8}{Conclusion}{}% 35
+\BOOKMARK [1][-]{appendix.A}{Computation of antenna coordinates from sky coordinates and antenna pointing}{}% 36
+\BOOKMARK [1][-]{appendix.B}{Calculation of elements of B}{}% 37
