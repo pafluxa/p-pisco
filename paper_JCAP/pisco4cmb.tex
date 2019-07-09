@@ -78,7 +78,7 @@ The study of the cosmic microwave background (CMB) in the last few decades has l
 
 CMB anisotropies form a Gaussian field on the sky, being nearly 10\% polarized. The latter can be modeled as a spin-2 field, which is separable in two orthogonal components: a curl-free component called E-mode, and a divergence-free component called B-mode. In the absence of gravitational waves, the polarization field would contain only E-modes, which would be partially turned into B-modes by gravitational waves acting during the epochs of recombination and reionization. The resulting B-mode field would be one or two orders of magnitude lower than the E-mode signal, being very faint and difficult to measure. Moreover, recent results show that this signal lies below other foreground signals like gravitational lensing distortions induced by the matter distribution and polarized emissions from the interstellar medium {\color{red}(add cites)}. Thus, detecting the primordial B-mode signal has become a major technical challenge.
 
-Another source of confusion is experimental systematic effects. The tremendous increase in sensitivity of CMB experiments has brought into play a long list of instrumental and observational effects, which need to be properly incorporated into the data reduction process, as well as for the design of future experiments. Being an extended signal on the sky, understanding the effects of the detailed polarized antenna response of the telescope, and how it gets convolved with the sky signal (scan strategy), is key, as it can directly affect the scientific results.
+Another source of confusion is experimental systematic effects. The tremendous increase in sensitivity of CMB experiments has brought into play a long list of instrumental and observational effects, which need to be properly incorporated into the data reduction process, as well as for the design of future experiments. Being an extended signal on the sky, understanding the effect of the detailed polarized antenna response of the telescope, and how it gets convolved with the sky signal (scan strategy), is key, as it can directly affect the scientific results.
 
 The main beam is where most of the radiation is captured by the antenna, and thus the effects of the beam shape and polarization have been extensively studied. 
 %Analytic techniques
@@ -102,7 +102,7 @@ This paper is organized as follows.
 \S\ref{sec::antennas} presents a brief introduction to antenna theory. 
 \S\ref{sec::pixel_conv} describes the algorithm used by PISCO, as well as a prototype implementation. 
 \S\ref{sec::validation} presents validation tests to assess the performance of PISCO. 
-\S\ref{sec::realistic_cmb_experiment} provides an example application of PISCO to CLASS (\cite{2016SPIE.9914E..1KH}). 
+\S\ref{sec::realistic_cmb_experiment} provides an example application of PISCO to the Cosmology Large Angular Scale Surveyor, CLASS (\cite{2016SPIE.9914E..1KH}). 
 The paper concludes with a brief discussion of the results obtained in \S\ref{sec::conclusions}.
 
 %
@@ -424,11 +424,11 @@ As in the point source case, the simulation of an ideal CMB experiment was accom
 
 \subsubsection{Sky model}
 
-The input sky maps were generated using a combination of CAMB (see \cite{Lewis:2002ah}) to generate $C_\ell$ and \texttt{synfast} The cosmological parameters correspond to the ones reported by the Planck satellite (see \cite{2016A&A...594A..13P}). This procedure returns 3 CMB anisotropy maps, one for each Stokes parameter\footnote{It is usually assumed the CMB has no circular polarization, so $V$ map was set to zero.} CAMB was configured to return a CMB with no primordial B-modes ($r=0$) and no lensing, as this last effect is expected to produce leakage from E-modes to B-modes. The resulting B-mode power spectrum is effectively zero at all angular scales. No foreground or other sources were added on top of the simulated CMB. All maps use the \texttt{HEALPix} pixelization and were generated at a resolution of \texttt{NSIDE}$=128$. This restricts the analysis in harmonic space to $\ell < 384$.
+The input sky maps were generated using a combination of CAMB (see \cite{Lewis:2002ah}) to generate $C_\ell$ and \texttt{synfast} The cosmological parameters correspond to the ones reported by the Planck satellite collaboration(see \cite{2016A&A...594A..13P}). This procedure returns 3 CMB anisotropy maps, one for each Stokes parameter\footnote{It is usually assumed the CMB has no circular polarization, so $V$ map was set to zero.} CAMB was configured to return a CMB with no primordial B-modes ($r=0$) and no lensing, as this last effect is expected to produce leakage from E-modes to B-modes. The resulting B-mode power spectrum is effectively zero at all angular scales. No foreground or other sources were added on top of the simulated CMB. All maps use the \texttt{HEALPix} pixelization and were generated at a resolution of \texttt{NSIDE}$=128$. This restricts the analysis in harmonic space to $\ell < 384$.
 
 \subsubsection{Scanning strategy}
 
-The scanning strategy was designed so that every pixel on the sky gets visited exactly three times, each one at a different beam orientation angle. In addition, every pixel is observed at its center, which is an important requirement that ensures the intra-pixel coverage does not affect the estimation of the power spectra at high $\ell$. Since only three hits per pixel at different values of $\psi$ are required to recover the polarization field of the CMB, the scanning was generated for a single detector with a polarization sensitive angle $\zeta=0$.
+The scanning strategy was designed so that every pixel on the sky gets visited exactly three times, each time at a different beam orientation angle. In addition, every pixel is observed at its center, which is an important requirement that ensures the intra-pixel coverage does not affect the estimation of the power spectra at high $\ell$. Since only three hits per pixel at different values of $\psi$ are required to recover the polarization field of the CMB, the scanning was generated for a single detector with a polarization sensitive angle $\zeta=0$.
 
 \subsubsection{Power spectra}
 
@@ -474,35 +474,35 @@ Following the work of \cite{2012SPIE.8452E..20E} and valuable input from the CLA
 
 \subsubsection{Power spectra and beam transfer function}
 
-Given that CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of a tool than can handle a sky mask. For this reason, we changed the estimator from \texttt{anafast} to \texttt{PolSpice} (PF cite polspice). In addition, the CLASS collaboration provided a realistic sky mask that includes the galactic plane in addition to the natural incomplete coverage. The effect of the beam on the CMB power spectra can be thought as a low-pass filter in harmonic space (cite Page et al) We estimated the equivalent beam transfer function of an arbitrary number of elliptical beams by averaging the radial profiles obtained by by an analytical integration over $\phi$ of all of the beams in ``real'' space and calculating the harmonic transform of the average profile (PF: check this with Mike. I am sure I am missing something! Shall we put this in the appendix as well?)
+Given that, at present, CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of a tool than can handle a sky mask. For this reason, we changed the estimator from \texttt{anafast} to \texttt{PolSpice} (PF cite polspice). In addition, the CLASS collaboration provided a realistic sky mask that includes the galactic plane in addition to the natural incomplete coverage. The effect of the beam on the CMB power spectra can be thought as a low-pass filter in harmonic space (cite Page et al) We estimated the equivalent beam transfer function of an arbitrary number of elliptical beams by averaging the radial profiles obtained by by an analytical integration over $\phi$ of all of the beams in ``real'' space and calculating the harmonic transform of the average profile (PF: check this with Mike. I am sure I am missing something! Shall we put this in the appendix as well?)
 
 \subsection{Results and discussion}
 
 \subsubsection{Pointing mismatch}
 
-CMB experiments that rely on detector pairs are subject to leakage caused by pointing mismatch (PF citation needed). Leakage arises at the map-making stage and is caused by an incomplete cancellation of the Stokes $I$ term when solving for the individual pixel-covariance matrices. This residual term from the Stokes $I$ is interpreted by the map-making algorithm as a polarized signal, hence causing the leakage showed in figure \ref{fig::pisco4class_pointingmismatch}. We note that leakage is not present below $\ell \approx 100$, but becomes dominant at increasing angular frequencies. We believe this is caused by the effect of pointing mismatch to be restricted to angular scales comparable to the FWHM of the beam. 
+CMB experiments that rely on detector pairs are subject to leakage caused by pointing mismatch (PF citation needed). Leakage arises at the map-making stage and is caused by an incomplete cancellation of the Stokes $I$ term when solving for the individual pixel-covariance matrices. This residual term from the Stokes $I$ is interpreted by the map-making algorithm as a polarized signal, hence causing the leakage showed in figure \ref{fig::pisco4class_pointingmismatch}. We note that leakage is not present below $\ell \approx 100$, but becomes dominant at increasing angular frequencies. We believe this is caused by the effect of pointing mismatch being restricted to angular scales comparable to the FWHM of the beam. 
 
 \begin{figure}
 	\centering
 	\includegraphics[width=1\textwidth]{figures/unpolCMB_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/unpolCMB_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
-	\caption{Resulting power spectra for a realistic simulation using mismatched pointing (upper figure), and matched pointing (bottom figure). The input CMB was unpolarized. The amplitude of the mismatch was kindly provided by the CLASS collaboration team. Significant leakage from $TT$ to $EE$ and $BB$ power spectra is present for the mismatched pointing case. The spurious signal reaches in the order of $100$ nK at $\ell = 250$ for both $EE$ and $BB$.}
+	\caption{Resulting power spectra for a realistic simulation using matched pointing (upper figure), and mismatched pointing (bottom figure). The input CMB was unpolarized. The amplitude of the mismatch was kindly provided by the CLASS collaboration team. Significant leakage from $TT$ to $EE$ and $BB$ power spectra is present for the mismatched pointing case. The spurious signal reaches in the order of $30\, \rm{nK}^2$ at $\ell = 250$ for both $EE$ and $BB$.}
 	\label{fig::pisco4class_pointingmismatch}
 \end{figure}
 
 \subsubsection{Uneven intra-pixel coverage}
 
-Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the sky. In section \ref{sec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiments, every sample of the TOD ``hits'' a given pixel at an arbitrary location within it. If, in average, the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric and gradients between pixels are present (recall that pixel space convolution is affected by neighbor pixels) the resulting power spectra may suffer from P to P leakage. This was discussed in mor detail in (Poutanen et al. 2004) and \cite{2005poutanen}. 
+Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the sky. In section \ref{sec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiment, every sample of the TOD ``hits'' a given pixel at an arbitrary location within it. If the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric and gradients between pixels are present (recall that pixel space convolution is affected by neighbor pixels) the resulting power spectra may suffer from P to P leakage. This was discussed in more detail in (Poutanen et al. 2004) and \cite{2005poutanen}. 
 
 \begin{figure}
 	\centering
 	%\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_mismatchedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_matchedPointing_matchedBeams_ellipticalBeams.pdf}
-	\caption{Resulting power spectra for the case of matched pointing (upper figure), and mismatched pointing (bottom figure), using as input a polarized CMB without B-modes. Both B-mode power spectra show non-negligible amounts of a spurious signal not present in the input power B-mode power spectrum. Both simulation cases (mismatched and matched pointing) also have the effect of uneven intra-pixel coverage. In the case of matched pointing, the spurious B-mode spectrum reaches in the order of $10$ nK at $\ell = 250$.}
+	\caption{Resulting power spectra for the case of matched pointing with uneven intra-pixel coverage using as input a polarized CMB without B-modes. The B-mode power spectrum shows non-negligible amounts of a spurious signal not present in the input power B-mode power spectrum. The spurious B-mode spectrum reaches in the order of $1\, \rm{nK}^2$ at $\ell = 250$.}
 	\label{fig::pisco4class_intrapixel}
 \end{figure}
 
-Figure \ref{fig::pisco4class_intrapixel} shows the result of running the realistic simulation with matched pointing, and it is clear that a spurious signal is present in the B-mode power spectrum. In the upper plot of Figure \ref{fig::pisco4class_pointingmismatch}, the same simulation was performed but with an unpolarized CMB as input, the resulting polarized power spectra bing consistent with zero. This indicates that the effect of uneven intra-pixel coverage is P to P leakage. We note that this systematic effect is subdominant with respect to the T to P leakage caused by pointing mismatch by roughly a factor of $10$.
+Figure \ref{fig::pisco4class_intrapixel} shows the result of running the realistic simulation with matched pointing, and it is clear that a spurious signal is present in the B-mode power spectrum. In the upper plot of Figure \ref{fig::pisco4class_pointingmismatch}, the same simulation was performed but with an unpolarized CMB as input, the resulting polarized power spectra being consistent with zero. This indicates that the effect of uneven intra-pixel coverage is P to P leakage. We note that this systematic effect is subdominant with respect to the T to P leakage caused by pointing mismatch by roughly a factor of $30$.
 
 \subsubsection{Beam mismatch}
 
@@ -510,11 +510,11 @@ Figure \ref{fig::pisco4class_intrapixel} shows the result of running the realist
 	\centering
 	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_forcedPointing_matchedBeams_ellipticalBeams.pdf}
 	\includegraphics[width=1\textwidth]{figures/cmb_r0d00_CLASS_forcedPointing_mismatchedBeams_ellipticalBeams.pdf}
-	\caption{Resulting power spectra of the realistic simulation without the effect of uneven intra-pixel, matched pointing and matched (upper plot) and mismatched (bottom plot) beams. The amplitude of the beam mismatch was kindly provided by the CLASS collaboration team. We see oscillatory behavior in the resulting B-mode power spectrum for both matched and mismatched beam cases. The spurious B-mode signal reaches roughly $100\, \rm{nK}^2$ at $\ell=250$.}
+	\caption{Resulting power spectra of the realistic simulation without the effect of uneven intra-pixel, matched pointing and matched (upper plot) and mismatched (bottom plot) beams. The amplitude of the beam mismatch was kindly provided by the CLASS collaboration team. We see oscillatory behavior in the resulting B-mode power spectrum for both matched and mismatched beam cases. The spurious B-mode signal reaches roughly $300\, \rm{pK}^2$ at $\ell=250$.}
 	\label{fig::pisco4class_beammismatch}
 \end{figure}
 
-The effect of beam mismatch can be thought as similar to pointing mismatch in that the net effect is to create spurious polarization signal from the temperature field. Beam mismatch can also produce P to P leakage if modulators like Half Wave Plates are present (see \cite{2007MNRAS.376.1767O}). Leakage caused by pointing and beam mismatch are related. Consider the case where the amplitude of the pointing mismatch is comparable to the beam FWHM. In this scenario, paired detectors will effectively be observing different pixels of the sky, making the map-making algorithm interpret the residuals as polarization signals. If the pointing mismatch is small compared to the beam FWHM, this will only happen when one of the paired detectors reaches a pixel border. 
+The effect of beam mismatch can be thought of as similar to pointing mismatch in that the net effect is to create spurious polarization signal from the temperature field. Beam mismatch can also produce P to P leakage if modulators like half wave plates are present (see \cite{2007MNRAS.376.1767O}). Leakage caused by pointing and beam mismatch are related. Consider the case where the amplitude of the pointing mismatch is comparable to the beam FWHM. In this scenario, paired detectors will effectively be observing different pixels of the sky, making the map-making algorithm interpret the residuals as polarization signals. If the pointing mismatch is small compared to the beam FWHM, this will only happen when one of the paired detectors reaches a pixel border. 
 
 Conversely, beam mismatch changes the way neighboring pixels around a pointing direction are averaged together. For simplicity, consider the case where simple linear transformations are applied to the beams: shear along the $x$ axis and a rotation by an angle $\alpha$ around its center. If the scanning strategy visits all pixels at every possible beam orientation, the effect of the rotation will cancel out the scanning effectively symmetrizes the beam on the sky. The effect of the extension along the $x$-axis will produce leakage from T to P, as every observation with the pair will have slightly different fluxes, and hence a residual, caused by the difference in shape. The mismatch in shape may also cause P to P leakage, particularly near the poles where rapid intra-beam variations will be integrated differently between the pair. We believe this effect to be very small, as the strongest variations of $\psi$ inside the beam happen relatively far away from beam maximum, and are hence weakly weighted by the map-making algorithm.
 
@@ -523,9 +523,9 @@ Figure \ref{fig::pisco4class_beammismatch} shows the resulting power spectra of 
 \section{Conclusion}
 \label{sec::conclusions}
 
-In this work, we have presented PISCO, a computer simulation code capable of generating TOD that include the convolution of arbitrary beams and sky models. PISCO exploits the outstanding parallelism that pixel space convolution offers, and implements this using GPU acceleration. PISCO is also designed for efficient execution in HPC environments, particularly, multi-GPU systems. PISCO is unique in its field by using the treatment found in \cite{2007MNRAS.376.1767O} to model the polarization properties of an antenna. In addition, since the core algorithm works in pixel space, we believe that the associated cost of including time-dependent systematic effects and other phenomena is low compared to implementations like the one described in \cite{2018arXiv180905034D}. These systematic effects include, but are not limited to, imperfections in the modulator, beam degradation due to mechanical deformations and transient events of the sky. A paper showing an application of these capabilities to a realistic CMB experiment will be given in future publications.
+In this work, we have presented PISCO, a computer simulation code capable of generating TOD that include the convolution of arbitrary beams and sky models. PISCO exploits the outstanding parallelism that pixel space convolution offers, and implements this using GPU acceleration. PISCO is also designed for efficient execution in HPC environments, particularly, multi-GPU systems. PISCO is unique in its field in using the treatment found in \cite{2007MNRAS.376.1767O} to model the polarization properties of an antenna. In addition, since the core algorithm works in pixel space, we believe that the associated cost of including time-dependent systematic effects and other phenomena is low compared to implementations like the one described in \cite{2018arXiv180905034D}. These systematic effects include, but are not limited to, imperfections in the modulator, beam degradation due to mechanical deformations and transient events of the sky. A paper showing an application of these capabilities to a realistic CMB experiment will be presented in future publications.
 
-This work also showed the results from test performed using a pathfinder implementation of the algorithm. With the exception of the test involving beam mismatch, which is inconclusive and needs further investigation, results indicate that PISCO correctly reproduces known systematic effects at the power spectra level. We note that all these test were performed in a high-end workstation, each test taking less than an hour and executing more than 300000 beam convolutions per second.
+This work has also shown the results from tests performed using a pathfinder implementation of the algorithm. With the exception of the test involving beam mismatch, which is inconclusive and needs further investigation, results indicate that PISCO correctly reproduces known systematic effects at the power spectra level. We note that all these tests were performed on a high-end workstation, each test taking less than an hour and executing more than 300000 beam convolutions per second.
 
 \bibliographystyle{plain}
 \bibliography{bib}
@@ -547,39 +547,39 @@ For a beam center pointing $\bar{q}_0$ and off beam center pointing $\bar{q}$ in
 
 Defining $\Delta \phi \equiv \phi - \phi_0$, the antenna basis coordinates $(\rho,\sigma)$ are given by
 %
-\begin{flalign}
+\begin{align}
 \rho  &= \arccos( \cos(\theta) cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) ) \nonumber & \\
 \sin(\gamma) &= \frac{\sin(\theta) \sin(\Delta \phi)}{\sin(\rho)} \nonumber & \\
 \cos(\gamma) &= \frac{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)}{\sin(\rho)} & \\ 
 \gamma       &=  \arctan \left(\frac{\sin(\theta) \sin(\Delta \phi)}{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)} \right) \nonumber & \\
 \sigma &= 180^{\circ} - \psi_0 - \gamma \nonumber &
-\end{flalign}
+\end{align}
 %
 Then the instrument basis coordinates $(\theta', \phi')$ are
 %
-\begin{flalign}
+\begin{align}
 \theta' &= \arccos(-\sin(\rho) \cos(\sigma)) \nonumber & \\
 \sin(\phi') &= \frac{\sin(\rho) \sin(\sigma)}{\sin(\theta')} \nonumber & \\
 \cos(\phi') &= \frac{\cos(\rho)}{\sin(\theta')} & \\
 \phi'       &= \arctan \left( \frac{\sin(\rho) \sin(\sigma)}{\cos(\rho)} \right) \nonumber &
-\end{flalign}
+\end{align}
 %
 For the instrument basis coordinates $(\theta'_N,\phi'_N)$, we have
 %
-\begin{flalign}
+\begin{align}
 \theta'_N    &= \arccos(\sin(\theta_0) \cos(\psi_0)) \nonumber & \\
 \sin(\phi'_N) &= \frac{\sin(\theta_0)  \sin(\psi_0)}{\sin(\theta'_N)}  & \\
 \cos(\phi'_N) &= \frac{\cos(\theta_0)}{\sin(\theta'_N)} \nonumber & \\ 
 \phi'_N       &= \arctan\left( \frac{\sin(\theta_0)  \sin(\psi_0)}{\cos(\theta_0)} \right) \nonumber &
-\end{flalign}
+\end{align}
 %
 Then, defining $\Delta \phi' \equiv \phi'_N - \phi'$, yields
 %
-\begin{flalign}
+\begin{align}
 \cos(\psi) &= \frac{\cos(\theta'_N) \sin(\theta') - \sin(\theta'_N) \cos(\theta') \cos(\Delta \phi')}{\cos(\theta)}  \nonumber & \\
 \sin(\psi) &= \frac{\sin(\theta'_N) \sin(\Delta \phi')}{\cos(\theta)}  & \\
 \psi       &= \arctan\left( \frac{\sin(\theta'_N) \sin(\Delta \phi')}{\cos(\theta'_N) \sin(\theta') - \sin(\theta'_N) \cos(\theta') \cos(\Delta \phi')} \right)  \nonumber &
-\end{flalign}
+\end{align}
 
 \section{Calculation of elements of $B$}
 
