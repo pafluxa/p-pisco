@@ -1,0 +1,20 @@
+# Pedro was here
+1) rotate rho and sigma unit vectors in Figure 1
+
+2) caption for Figure 6 needs work
+-> Figure 6 should either show two plots (one power spectra, one residual) or not mention the second plot at all.
+   Plotting the residual would be much better.
+
+3) Rework Sections 7.2.3 and 8.
+-> For section 7.2.3, I need to make clear that the effect of a realisitc mismatch is so small that it cannot be detected.
+   Argue that mismatch produces an effect that is similar to pointing mismatch, but symmetric (see Mike's plot 
+   for the quadrupolar pattern) around the pixel center, and so it tends to be averaged down.
+
+4) Add the missing citations. 
+-> A lot of citations are missing, particularly at the introduction.
+
+# "newer stuff
+5) Change the abstract
+-> Particularly, roll-back to "present a new software tool"
+
+6) Graduate.
