@@ -1,6 +1,5 @@
 \documentclass[a4paper,11pt]{article}
-\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
-         % images in pdf, png or jpg format)
+\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have images in pdf, png or jpg format)
 
 \usepackage{jcappub} % for details on the use of the package, please
                  % see the JCAP-author-manual
@@ -56,7 +55,7 @@
 
 
 \abstract{
-Cosmic microwave background experiments have experienced an exponential increase in complexity, data size and sensitivity. One of the goals of current and future experiments is to characterize the B-mode power spectrum, which would be considered a strong evidence supporting inflation. The signal associated with inflationary B-modes is very weak, and so a successful detection requires exquisite control over systematic effects, several of which might arise due to the interaction between the electromagnetic properties of the telescope beam, the scanning strategy and the sky model. In this work, we present the Pixel Space COnvolver (PISCO), a new software tool capable of producing mock data streams for a general CMB experiment. PISCO uses a fully polarized representation of the electromagnetic properties of the telescope. PISCO also exploits the massively parallel architecture of Graphic Processing Units to provide. This work shows the results of applying PISCO in several scenarios, included a realistic simulation of an ongoing experiment, the Cosmology Large Angular Scale Surveyor. }
+Cosmic microwave background experiments have experienced an exponential increase in complexity, data size and sensitivity. One of the goals of current and future experiments is to characterize the B-mode power spectrum, which would be considered a strong evidence supporting inflation. The signal associated with inflationary B-modes is very weak, and so a successful detection requires exquisite control over systematic effects, several of which might arise due to the interaction between the electromagnetic properties of the telescope beam, the scanning strategy and the sky model. In this work, we present the Pixel Space COnvolver (PISCO), a new software tool capable of producing mock data streams for a general CMB experiment. PISCO uses a fully polarized representation of the electromagnetic properties of the telescope. PISCO also exploits the massively parallel architecture of Graphic Processing Units to provide. This work shows the results of applying PISCO in several scenarios, included a realistic simulation of an ongoing experiment, the Cosmology Large Angular Scale Surveyor.}
 
 
 %\abstract{
@@ -471,9 +470,13 @@ Following the work of \cite{2012SPIE.8452E..20E} and using valuable input from t
 
 \subsubsection{Power spectra and beam transfer function}
 
+
 Given that, at present, CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of a tool than can handle a sky mask. For this reason, we changed the estimator from \texttt{anafast} to \texttt{Spice} though the \texttt{PolSpice} implementation (see \cite{2004MNRAS.350..914C}). In addition, the CLASS collaboration provided a realistic sky mask that includes the galactic plane as well as the natural incomplete coverage. 
 
-In addition, we need to account for the effect of the beam on the CMB power spectra. This can be thought of as a low-pass filter in harmonic space (see \cite{2003ApJS..148...39P}). We estimated the equivalent beam transfer function of an arbitrary number of elliptical beams by averaging the radial profiles obtained from an analytical integration over $\phi$ of all of the beams in ``real'' space,  and calculating the harmonic transform of the average profile.
+We also need to account for the effect of an elliptical beam on the CMB power spectra. We do this by symmetrizing the beam. This symmetrized beam can be thought of as a low-pass filter in harmonic space (see \cite{2003ApJS..148...39P}). We estimated the equivalent beam transfer function of an arbitrary number of elliptical beams by averaging the radial profiles obtained from an analytical integration over $\phi$ of all of the beams in ``real'' space,  and calculating the harmonic transform of the average profile.
+
+%Given that, at present, CLASS only covers $\approx 75\%$ of the sky, computing the power spectra of simulated maps requires the use of a tool than can handle a sky mask. For this reason, we changed the estimator from \texttt{anafast} to \texttt{Spice} though the \texttt{PolSpice} implementation (see \cite{2004MNRAS.350..914C}). In addition, the CLASS collaboration provided a realistic sky mask that includes the galactic plane as well as the natural incomplete coverage. 
+%In addition, we need to account for the effect of the beam on the CMB power spectra. This can be thought of as a low-pass filter in harmonic space (see \cite{2003ApJS..148...39P}). We estimated the equivalent beam transfer function of an arbitrary number of elliptical beams by averaging the radial profiles obtained from an analytical integration over $\phi$ of all of the beams in ``real'' space,  and calculating the harmonic transform of the average profile.
 
 \subsection{Results and discussion}
 
