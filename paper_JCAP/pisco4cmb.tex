@@ -540,13 +540,13 @@ In this work, we have presented PISCO, a new computer simulation code capable of
 % Recognizing that spherical trigonometry is no longer as widely studied in astronomy as it once was (and should be).
 \begin{figure}
 	\centering
-	\includegraphics[width=0.4\linewidth]{figures/Figure10_Lu3.pdf}
+	\includegraphics[width=0.6\linewidth]{figures/Figure10_Lu3.pdf}
 	\caption{Sky and antenna basis coordinates for beam center pointing and off beam center pointing from the view point of an observer looking at the sky. Here $\mathrm{\texttt{NCP}}$ is the 
 		     North Celestial Pole and $\chi$ is the angle between $\hat{e}_{\co}$ and $\hat{\theta}$ according to Ludwig's 3rd definition. }
 	\label{fig::figure10}
 \end{figure}
 %
-For a beam center pointing $(\theta_0, \phi_0)$, rotation angle $\psi_0$ and off beam center pointing $(\theta, \phi)$ in the sky basis, we can derive the antenna basis coordinates $(\rho,\sigma)$ and the angle $\chi$ between $\hat{e}_{\co}$ and $+Q$ ($\hat{\theta}$) by using spherical trigonometry (see Figure \ref{fig::figure10}). The identities used in this derivation are: the law of cosines, the law of sines and the analogue (or five part) formula {\color{red}(cite Wikipedia:Spherical trigonometry)}.
+For a beam center pointing $(\theta_0, \phi_0)$, rotation angle $\psi_0$ and off beam center pointing $(\theta, \phi)$ in the sky basis, we can derive the antenna basis coordinates $(\rho,\sigma)$ and the angle $\chi$ between $\hat{e}_{\co}$ and $+Q$ ($\hat{\theta}$) by using spherical trigonometry (see Figure \ref{fig::figure10}). The identities used in this derivation are: the law of cosines, the law of sines and the analogue (or five part) formula.
 
 Defining $\Delta \phi \equiv \phi - \phi_0$, the antenna basis coordinate $\rho$ is given by
 %
@@ -563,14 +563,14 @@ Then defining $\alpha$ as the angle between $\rho$ and $\theta_0$, the antenna b
 \sigma &= 180^{\circ} - \psi_0 - \alpha &
 \end{align}
 %
-Following Ludwig's third definition of cross polarization (see \cite{1140406}), the unit vectors of co and cross polarization in the antenna basis are
+Following Ludwig's third definition of cross polarization (see \cite{1140406}), after substituting $\sigma + 90^{\circ}$ for Ludwig's $\phi$, the unit vectors of co and cross polarization in the antenna basis are
 %
 \begin{align}
 \hat{e}_{\co} &=  \quad \cos(\sigma)) \hat{\rho} - \sin(\sigma) \hat{\sigma} & \\
 \hat{e}_{\cx} &=      - \sin(\sigma)) \hat{\rho} - \cos(\sigma) \hat{\sigma} & 
 \end{align}
 %
-Thus $\hat{e}_{\co}$ is offset from $\hat{\rho}$ by the angle $-\sigma$. Finally, defining $\beta$ as the angle between $\theta$ and $\rho$ yields
+Thus $\hat{e}_{\co}$ is offset from $\hat{\rho}$ by the angle $-\sigma$. Then, defining $\beta$ as the angle between $\theta$ and $\rho$ yields
 %
 \begin{align}
 \sin(\beta) &= \frac{\sin(\theta_0) \sin(\Delta \phi)}{\sin(\rho)} & \\
