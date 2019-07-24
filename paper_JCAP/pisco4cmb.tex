@@ -535,16 +535,18 @@ In this work, we have presented PISCO, a new computer simulation code capable of
 
 \appendix
 %\numberwithin{equation}{section}	
-\section{Computation of antenna basis coordinates and the angle $\chi$ from sky coordinates}
-
-For a beam center pointing $(\theta_0, \phi_0)$, rotation angle $\psi_0$ and off beam center pointing $(\theta, \phi)$ in the sky basis, we can derive the antenna basis coordinates $(\rho,\sigma)$ and the angle $\chi$ between $\hat{e}_{\co}$ and $+Q$ ($\hat{\theta}$) by using spherical trigonometry (see Figure \ref{fig::figure10}). The identities used in this derivation are: the law of cosines, the law of sines and the analogue (or five part) formula {\color{red}(cite Wikipedia:Spherical trigonometry)}.
+\section{Computation of antenna basis coordinates and the angle $chi$ from sky coordinates}
+%
 % Recognizing that spherical trigonometry is no longer as widely studied in astronomy as it once was (and should be).
 \begin{figure}
 	\centering
 	\includegraphics[width=0.4\linewidth]{figures/Figure10_Lu3.pdf}
-	\caption{Sky and antenna basis coordinates for beam center pointing and off beam center pointing from the view point of an observer looking at the sky. Here $\mathrm{\texttt{NCP}}$ is the North Celestial Pole and $\chi$ is the angle between $\hat{e}_{\co}$ and $\hat{\theta}$ according to Ludwig's 3rd definition. 
+	\caption{Sky and antenna basis coordinates for beam center pointing and off beam center pointing from the view point of an observer looking at the sky. Here $\mathrm{\texttt{NCP}}$ is the 
+		     North Celestial Pole and $\chi$ is the angle between $\hat{e}_{\co}$ and $\hat{\theta}$ according to Ludwig's 3rd definition. }
 	\label{fig::figure10}
 \end{figure}
+%
+For a beam center pointing $(\theta_0, \phi_0)$, rotation angle $\psi_0$ and off beam center pointing $(\theta, \phi)$ in the sky basis, we can derive the antenna basis coordinates $(\rho,\sigma)$ and the angle $\chi$ between $\hat{e}_{\co}$ and $+Q$ ($\hat{\theta}$) by using spherical trigonometry (see Figure \ref{fig::figure10}). The identities used in this derivation are: the law of cosines, the law of sines and the analogue (or five part) formula {\color{red}(cite Wikipedia:Spherical trigonometry)}.
 
 Defining $\Delta \phi \equiv \phi - \phi_0$, the antenna basis coordinate $\rho$ is given by
 %
@@ -576,90 +578,90 @@ Thus $\hat{e}_{\co}$ is offset from $\hat{\rho}$ by the angle $-\sigma$. Finally
 \beta       &=  \arctan \left(\frac{\sin(\theta_0) \sin(\Delta \phi)}{\cos(\theta_0) \sin(\theta) - \sin(\theta_0) \cos(\theta) \cos(\Delta \phi)} \right)  & \\
 \chi &= \beta - \sigma &
 \end{align}
-
-\section{Calculation of elements of $B$}
-
-A beamsor $B$ evaluated at antenna basis coordinates $(\rho,\sigma)$ is a $4 \times 4$ matrix with elements
-
-\begin{equation}
-\begin{aligned}
-B(\rho,\sigma) = \frac{1}{\tilde{\Omega}}
-\begin{bmatrix}
-B_{TT} & B_{QT} & B_{UT} & B_{VT}\\
-B_{TQ} & B_{QQ} & B_{UQ} & B_{VQ}\\
-B_{TU} & B_{QU} & B_{UU} & B_{VU}\\
-B_{TV} & B_{QV} & B_{UV} & B_{VV}
-\end{bmatrix}
-\end{aligned}
-\label{eq::beamsor_appendix}
-\end{equation}
-
-\noindent
-with $\tilde{\Omega}$ being a normalization factor computed as
-
-\begin{equation}
-\begin{aligned}
-\tilde{\Omega} = \int_{4\pi} B_{TT}(\rho,\sigma) \, \mathrm{d} \Omega
-\end{aligned}
-\end{equation}
-
-The definition of a beamsor used in this work differs from the one listed in \cite{2007MNRAS.376.1767O} in that element $B_{XY}$ corresponds to element $B_{YX}$. We believe this definition yields a clearer interpretation of beamsor elements. Consider, for instance, the product of $B$ with a Stokes vector representing an unpolarized source. This yields
-
-\begin{equation}
-\begin{aligned}
-\begin{bmatrix} 
-B_{TT} \\ 
-B_{TQ} \\ 
-B_{TU} \\ 
-B_{TV} 
-\end{bmatrix}
-=
-\begin{bmatrix}
-B_{TT} & B_{QT} & B_{UT} & B_{VT}\\
-B_{TQ} & B_{QQ} & B_{UQ} & B_{VQ}\\
-B_{TU} & B_{QU} & B_{UU} & B_{VU}\\
-B_{TV} & B_{QV} & B_{UV} & B_{VV}
-\end{bmatrix}
-\cdot
-\begin{bmatrix} 
-1 \\ 
-0 \\ 
-0 \\ 
-0 
-\end{bmatrix}
-\end{aligned}
-\label{eq::unpol_beamsor}
-\end{equation}
-
-\noindent
-where it is more evident that elements $B_{TX}$, with $X=Q,U,V$, correspond to the temperature to polarization leakage beams. 
-
-In most CMB applications, linearly polarized detectors are placed at the focus of the antenna. In general, power that was radiated as pure $+Q$ in the detector basis will reach the sky as both $+Q$ and $-Q$ in the antenna basis. This effect can be modeled by introducing co-polar and cross-polar beams. The co-polar beam, $b_{\co}(\rho,\sigma)$, is the unit-normalized power density distribution that reaches the sky with a polarization state parallel to $\hat{e}_{\co}$. The cross-polar $b_{\cx}(\rho,\sigma)$ does so parallel to $\hat{e}_{\cx}$. 
-
-The work of \cite{2007A&A...470..771J} also provides a way of calculating beamsor elements. Given the coordinate system convention used in this work, it is important to re-specify the way these elements are calculated. We start by considering the antenna to broadcast power originated by a linearly polarized source radiating at the location of the detection device. This will produce a distribution of electric fields in the far field, $\vec{E} = \vec{E}(\rho,\sigma)$, where $\vec{E}(\rho,\sigma)$ will have co-polarized and cross polarized components. Take $x$ to be a source oriented such that most of its radiated power reaches the sky as electric fields aligned with $\hat{\theta}'$ at beam center. Similarly, consider another source, $y$, aligned perpendicularly such that most its transmitted power reaches the sky as electric fields aligned with $\hat{\phi}'$, at beam center. In this situation, elements of a beamsor can be computed via
-
-\begin{equation}
-\begin{split}
-B_{TT}&=\frac{1}{2}\left(\left|\vec{E}_{x}\right|^{2}+\left|\vec{E}_{y}\right|^{2}\right)\\
-B_{QT}&=\frac{1}{2}\left(\left|\vec{E}_{x,\co}\right|^{2}-\left|\vec{E}_{x,\cx}\right|^{2} +  \left|E_{y,\cx}\right|^{2}-\left|E_{y,\co}\right|^{2}\right)\\
-B_{UT}&=\frac{1}{2}\left(\vec{E}_{x,\co} E_{x,\cx}^{*} - E_{y,\co} E_{y,\cx}^{*}\right) + \mathrm{c.c.}\\
-B_{VT}&=\frac{1}{2}\mathrm{i}\left(\vec{E}_{x,\co}\vec{E}_{x,\cx}^{*} + \vec{E}_{y,\co} \vec{E}_{y,\cx}^{*}\right) + \mathrm{c.c.}\\
-B_{TQ}&=\frac{1}{2}\left(\left|\vec{E}_{x}\right|^{2}-\left|\vec{E}_{y}\right|^{2}\right)\\
-B_{QQ}&=\frac{1}{2}\left(\left|\vec{E}_{x,\co}\right|^{2}-\left|\vec{E}_{x,\cx}\right|^{2}+\left|\vec{E}_{y,\co}\right|^{2}-\left|\vec{E}_{y,\cx}\right|^{2}\right)\\
-B_{UQ}&=\frac{1}{2}\left(\vec{E}_{x,\co} \vec{E}_{x,\cx}^{*} + \vec{E}_{y,\co} \vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
-B_{VQ}&=\frac{1}{2}\mathrm{i}\left( \vec{E}_{x,\co} E_{x,\cx}^{*} - E_{y,\co} E_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
-B_{TU}&=\frac{1}{2}\left( -\vec{E}_{x,\co} \vec{E}_{x,\cx}^{*} + \vec{E}_{y,\cx} \vec{E}_{y,\co}^{*}\right)+\mathrm{c.c.}\\
-B_{QU}&=\frac{1}{2}\left(-\vec{E}_{x,\co}\vec{E}_{y,\cx}^{*} - \vec{E}_{x,\cx} \vec{E}_{y,\co}^{*}\right)+\mathrm{c.c.}\\
-B_{UU}&=\frac{1}{2}\left(\vec{E}_{x,\co} \vec{E}_{y,\co}^{*} - \vec{E}_{x,\cx} \vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
-B_{VU}&=\frac{1}{2}\mathrm{i}\left(\vec{E}_{x,\co} \vec{E}_{y,\co}^{*} + \vec{E}_{x,\cx}\vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
-B_{TV}&=\frac{1}{2}\mathrm{i}\left(\vec{E}_{x,\co} \vec{E}_{y,\cx}^{*} - \vec{E}_{x,\cx}\vec{E}_{y,\co}^{*}\right)+\mathrm{c.c.}\\
-B_{QV}&=\frac{1}{2}\mathrm{i}\left(\vec{E}_{\mathrm{x,\co}} \vec{E}_{y,\cx}^{*} + \vec{E}_{x,\cx} \vec{E}_{y,\co}^{*}\right)+\mathrm{c.c.}\\
-B_{UV}&=\frac{1}{2}\mathrm{i}\left(-\vec{E}_{x,\co} \vec{E}_{y,\co}^{*} + \vec{E}_{x,\cx} \vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
-B_{VV}&=\frac{1}{2}\left(\vec{E}_{x,\co} \vec{E}_{y,\co}^{*} + \vec{E}_{x,\cx} \vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}
-\end{split}
-\end{equation}
+%%
+%\section{Calculation of elements of $B$}
 %
-\noindent
-where c.c. stands for complex conjugate.
+%A beamsor $B$ evaluated at antenna basis coordinates $(\rho,\sigma)$ is a $4 \times 4$ matrix with elements
+%
+%\begin{equation}
+%\begin{aligned}
+%B(\rho,\sigma) = \frac{1}{\tilde{\Omega}}
+%\begin{bmatrix}
+%B_{TT} & B_{QT} & B_{UT} & B_{VT}\\
+%B_{TQ} & B_{QQ} & B_{UQ} & B_{VQ}\\
+%B_{TU} & B_{QU} & B_{UU} & B_{VU}\\
+%B_{TV} & B_{QV} & B_{UV} & B_{VV}
+%\end{bmatrix}
+%\end{aligned}
+%\label{eq::beamsor_appendix}
+%\end{equation}
+%
+%\noindent
+%with $\tilde{\Omega}$ being a normalization factor computed as
+%
+%\begin{equation}
+%\begin{aligned}
+%\tilde{\Omega} = \int_{4\pi} B_{TT}(\rho,\sigma) \, \mathrm{d} \Omega
+%\end{aligned}
+%\end{equation}
+%
+%The definition of a beamsor used in this work differs from the one listed in \cite{2007MNRAS.376.1767O} in that element $B_{XY}$ corresponds to element $B_{YX}$. We believe this definition yields a clearer interpretation of beamsor elements. Consider, for instance, the product of $B$ with a Stokes vector representing an unpolarized source. This yields
+%
+%\begin{equation}
+%\begin{aligned}
+%\begin{bmatrix} 
+%B_{TT} \\ 
+%B_{TQ} \\ 
+%B_{TU} \\ 
+%B_{TV} 
+%\end{bmatrix}
+%=
+%\begin{bmatrix}
+%B_{TT} & B_{QT} & B_{UT} & B_{VT}\\
+%B_{TQ} & B_{QQ} & B_{UQ} & B_{VQ}\\
+%B_{TU} & B_{QU} & B_{UU} & B_{VU}\\
+%B_{TV} & B_{QV} & B_{UV} & B_{VV}
+%\end{bmatrix}
+%\cdot
+%\begin{bmatrix} 
+%1 \\ 
+%0 \\ 
+%0 \\ 
+%0 
+%\end{bmatrix}
+%\end{aligned}
+%\label{eq::unpol_beamsor}
+%\end{equation}
+%
+%\noindent
+%where it is more evident that elements $B_{TX}$, with $X=Q,U,V$, correspond to the temperature to polarization leakage beams. 
+%
+%In most CMB applications, linearly polarized detectors are placed at the focus of the antenna. In general, power that was radiated as pure $+Q$ in the detector basis will reach the sky as both $+Q$ and $-Q$ in the antenna basis. This effect can be modeled by introducing co-polar and cross-polar beams. The co-polar beam, $b_{\co}(\rho,\sigma)$, is the unit-normalized power density distribution that reaches the sky with a polarization state parallel to $\hat{e}_{\co}$. The cross-polar $b_{\cx}(\rho,\sigma)$ does so parallel to $\hat{e}_{\cx}$. 
+%
+%The work of \cite{2007A&A...470..771J} also provides a way of calculating beamsor elements. Given the coordinate system convention used in this work, it is important to re-specify the way these elements are calculated. We start by considering the antenna to broadcast power originated by a linearly polarized source radiating at the location of the detection device. This will produce a distribution of electric fields in the far field, $\vec{E} = \vec{E}(\rho,\sigma)$, where $\vec{E}(\rho,\sigma)$ will have co-polarized and cross polarized components. Take $x$ to be a source oriented such that most of its radiated power reaches the sky as electric fields aligned with $\hat{\theta}'$ at beam center. Similarly, consider another source, $y$, aligned perpendicularly such that most its transmitted power reaches the sky as electric fields aligned with $\hat{\phi}'$, at beam center. In this situation, elements of a beamsor can be computed via
+%
+%\begin{equation}
+%\begin{split}
+%B_{TT}&=\frac{1}{2}\left(\left|\vec{E}_{x}\right|^{2}+\left|\vec{E}_{y}\right|^{2}\right)\\
+%B_{QT}&=\frac{1}{2}\left(\left|\vec{E}_{x,\co}\right|^{2}-\left|\vec{E}_{x,\cx}\right|^{2} +  \left|E_{y,\cx}\right|^{2}-\left|E_{y,\co}\right|^{2}\right)\\
+%B_{UT}&=\frac{1}{2}\left(\vec{E}_{x,\co} E_{x,\cx}^{*} - E_{y,\co} E_{y,\cx}^{*}\right) + \mathrm{c.c.}\\
+%B_{VT}&=\frac{1}{2}\mathrm{i}\left(\vec{E}_{x,\co}\vec{E}_{x,\cx}^{*} + \vec{E}_{y,\co} \vec{E}_{y,\cx}^{*}\right) + \mathrm{c.c.}\\
+%B_{TQ}&=\frac{1}{2}\left(\left|\vec{E}_{x}\right|^{2}-\left|\vec{E}_{y}\right|^{2}\right)\\
+%B_{QQ}&=\frac{1}{2}\left(\left|\vec{E}_{x,\co}\right|^{2}-\left|\vec{E}_{x,\cx}\right|^{2}+\left|\vec{E}_{y,\co}\right|^{2}-\left|\vec{E}_{y,\cx}\right|^{2}\right)\\
+%B_{UQ}&=\frac{1}{2}\left(\vec{E}_{x,\co} \vec{E}_{x,\cx}^{*} + \vec{E}_{y,\co} \vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
+%B_{VQ}&=\frac{1}{2}\mathrm{i}\left( \vec{E}_{x,\co} E_{x,\cx}^{*} - E_{y,\co} E_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
+%B_{TU}&=\frac{1}{2}\left( -\vec{E}_{x,\co} \vec{E}_{x,\cx}^{*} + \vec{E}_{y,\cx} \vec{E}_{y,\co}^{*}\right)+\mathrm{c.c.}\\
+%B_{QU}&=\frac{1}{2}\left(-\vec{E}_{x,\co}\vec{E}_{y,\cx}^{*} - \vec{E}_{x,\cx} \vec{E}_{y,\co}^{*}\right)+\mathrm{c.c.}\\
+%B_{UU}&=\frac{1}{2}\left(\vec{E}_{x,\co} \vec{E}_{y,\co}^{*} - \vec{E}_{x,\cx} \vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
+%B_{VU}&=\frac{1}{2}\mathrm{i}\left(\vec{E}_{x,\co} \vec{E}_{y,\co}^{*} + \vec{E}_{x,\cx}\vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
+%B_{TV}&=\frac{1}{2}\mathrm{i}\left(\vec{E}_{x,\co} \vec{E}_{y,\cx}^{*} - \vec{E}_{x,\cx}\vec{E}_{y,\co}^{*}\right)+\mathrm{c.c.}\\
+%B_{QV}&=\frac{1}{2}\mathrm{i}\left(\vec{E}_{\mathrm{x,\co}} \vec{E}_{y,\cx}^{*} + \vec{E}_{x,\cx} \vec{E}_{y,\co}^{*}\right)+\mathrm{c.c.}\\
+%B_{UV}&=\frac{1}{2}\mathrm{i}\left(-\vec{E}_{x,\co} \vec{E}_{y,\co}^{*} + \vec{E}_{x,\cx} \vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}\\
+%B_{VV}&=\frac{1}{2}\left(\vec{E}_{x,\co} \vec{E}_{y,\co}^{*} + \vec{E}_{x,\cx} \vec{E}_{y,\cx}^{*}\right)+\mathrm{c.c.}
+%\end{split}
+%\end{equation}
+%%
+%\noindent
+%where c.c. stands for complex conjugate.
 
 \end{document}
