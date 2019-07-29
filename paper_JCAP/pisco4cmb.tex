@@ -563,20 +563,20 @@ Then defining $\alpha$ as the angle between $\rho$ and $\theta_0$, the antenna b
 \sigma &= 180^{\circ} - \psi_0 - \alpha &
 \end{align}
 %
-Following Ludwig's third definition of cross polarization (see \cite{1140406}), after substituting $\sigma + 90^{\circ}$ for Ludwig's $\phi$, the unit vectors of co and cross polarization in the antenna basis are
+Following Ludwig's third definition of cross polarization, substituting $\sigma + 90^{\circ}$ for Ludwig's $\phi$ (see \cite{1140406}), the unit vectors of co and cross polarization for a detector aligned at an angle $\zeta$ with respect to the basis vector $\hat{\theta}'_0$ in the antenna basis are
 %
 \begin{align}
-\hat{e}_{\co} &=  \quad \cos(\sigma)) \hat{\rho} - \sin(\sigma) \hat{\sigma} & \\
-\hat{e}_{\cx} &=      - \sin(\sigma)) \hat{\rho} - \cos(\sigma) \hat{\sigma} & 
+\hat{e}_{\co} &=  \quad \cos(\sigma - \zeta) \hat{\rho} - \sin(\sigma - \zeta) \hat{\sigma} & \\
+\hat{e}_{\cx} &=      - \sin(\sigma - \zeta) \hat{\rho} - \cos(\sigma - \zeta) \hat{\sigma} & 
 \end{align}
 %
-Thus $\hat{e}_{\co}$ is offset from $\hat{\rho}$ by the angle $-\sigma$. Then, defining $\beta$ as the angle between $\theta$ and $\rho$ yields
+Thus $\hat{e}_{\co}$ is offset from $\hat{\rho}$ by the angle $\zeta - \sigma$. Then, defining $\beta$ as the angle between $\theta$ and $\rho$ yields
 %
 \begin{align}
 \sin(\beta) &= \frac{\sin(\theta_0) \sin(\Delta \phi)}{\sin(\rho)} & \\
 \cos(\beta) &= \frac{\cos(\theta_0) \sin(\theta) - \sin(\theta_0) \cos(\theta) \cos(\Delta \phi)}{\sin(\rho)} & \\ 
 \beta       &=  \arctan \left(\frac{\sin(\theta_0) \sin(\Delta \phi)}{\cos(\theta_0) \sin(\theta) - \sin(\theta_0) \cos(\theta) \cos(\Delta \phi)} \right)  & \\
-\chi &= \beta - \sigma &
+\chi &= \beta + \zeta - \sigma &
 \end{align}
 %%
 %\section{Calculation of elements of $B$}
