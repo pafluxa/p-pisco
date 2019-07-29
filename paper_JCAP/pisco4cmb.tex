@@ -207,7 +207,32 @@ A standard quantification of an antenna's ability to direct power to a particula
 \label{eq::omega_def}
 \end{equation}
 
-These concepts fully characterize a lossless antenna in the case it is not sensitive to polarization. In the more general case where the antenna is used to measure polarization, its polarizing properties can be obtained by combining the concept of a beam with the Mueller matrix formalism. Mueller matrices are widely used to quantify the effect that an optical element has on the polarization state of incoming light. This process is modeled by the multiplication of $4\times4$ matrix $\mathbf{M}$ with a Stokes vector $S_{\mathrm{in}}$ such that the polarization state of light after the interaction with a given optical element becomes
+\noindent
+These concepts fully characterize a lossless antenna in the case it is not sensitive to polarization, while modern CMB experiments, aim at measuring E-modes and B-modes. It then becomes necessary to introduce a more general treatment of the antenna, so as to include its polarizing properties. 
+
+Many CMB experiments use polarization sensitive bolometers as detection devices, which are pairs of bolometers usually placed at the focus of the optical chain. By construction, each bolometer is more sensitive to a particular orientation of incoming electric fields. Given a polarization sensitive bolometer consisting of a pair of detectors $(a,b)$ whose polarization sensitive axes are aligned at angles $\zeta$ and $\zeta - 90^{\circ}$ with respect to the antenna basis unit vector $\hat{\theta}'_0$, we can define beam center polarization unit vectors for each detector as
+
+\begin{align}
+\hat{e}_{a,{\co}}    &= \quad \cos(\zeta)\hat{\theta}'_0 + \sin(\zeta)\hat{\phi}'_0 \\
+\hat{e}_{a,{\cx}}    &= \quad \sin(\zeta)\hat{\theta}'_0 - \cos(\zeta)\hat{\phi}'_0 \\
+\hat{e}_{b,{\co}}    &= \quad \sin(\zeta)\hat{\theta}'_0 - \cos(\zeta)\hat{\phi}'_0 \\
+\hat{e}_{b,{\cx}}    &= -\cos(\zeta)\hat{\theta}'_0 - \sin(\zeta)\hat{\phi}'_0 \rm{.} \\
+\label{eq::copol_bolo}
+\end{align}
+
+% PF: I had to comment this out because my LaTeX complains about "double subscript"
+%\begin{align}
+%\hat{e}_a_{\co}    &= \quad \cos(\zeta)\hat{\theta}'_0 + \sin(\zeta)\hat{\phi}'_0 \\
+%\hat{e}_a_{\cx}    &= \quad \sin(\zeta)\hat{\theta}'_0 - \cos(\zeta)\hat{\phi}'_0 \\
+%\hat{e}_b_{\co}    &= \quad \sin(\zeta)\hat{\theta}'_0 - \cos(\zeta)\hat{\phi}'_0 \\
+%\hat{e}_b_{\cx}    &= -\cos(\zeta)\hat{\theta}'_0 - \sin(\zeta)\hat{\phi}'_0 \rm{.} \\
+%\label{eq::copol_bolo}
+%\end{align}
+
+\noindent
+Where the subscript $\co$ denotes ``co-polarization'' and $\cx$ to ``cross-polarization''. 
+
+Conversely, polarizing properties of an antenna can be obtained by combining the concept of a beam with the Mueller matrix formalism. Mueller matrices are widely used to quantify the effect that an optical element has on the polarization state of incoming light. This process is modeled by the multiplication of $4\times4$ matrix $\mathbf{M}$ with a Stokes vector $S_{\mathrm{in}}$, such that the polarization state of light after the interaction with a given optical element becomes
 
 \begin{equation}
 \begin{aligned}
@@ -216,7 +241,7 @@ S_{\mathrm{out}} = \mathbf{M} S_{\mathrm{in}}
 \end{equation}
 
 \noindent
-As described in the work of \cite{piepmeier_long_njoku_2008} and \cite{2007MNRAS.376.1767O}, antennas can be modeled using Mueller matrices. PISCO is based on the work of \cite{2007MNRAS.376.1767O}, since it describes a formalism that is more suitable to be applied to CMB experiments. We note the original paper names ``beam Mueller fields'' to this extended definition of a antenna beam. In this work, we refer to it as a beam tensor, or \textsl{beamsor} for short, to emphasize the multi-dimensional nature of this mathematical entity. 
+As described in the work of \cite{piepmeier_long_njoku_2008} and \cite{2007MNRAS.376.1767O}, antennas can be modeled using Mueller matrices. PISCO uses the formalism presented in \cite{2007MNRAS.376.1767O}, since it is more suitable to be applied to CMB experiments. We note the original paper names ``beam Mueller fields'' to this extended definition of a antenna beam. To emphasize the multi-dimensional nature of this mathematical entity, in this work we refer to it as a beam tensor, or \textsl{beamsor} for short.
 
 A beamsor can be interpreted as a field of Mueller matrices such that for each direction $(\rho,\sigma)$, there is an associated Mueller matrix that quantifies the coupling between the antenna and a Stokes vector coming from $(\rho,\sigma)$. We will denote a beamsor by letter $B = B(\rho,\sigma)$. At every antenna basis direction, $B$ is a $4\times4$ matrix in the form
 
@@ -243,7 +268,7 @@ where $\tilde{\Omega}$ is a normalization factor
 \end{equation}
 
 \noindent
-and the elements of $B$ are defined in Appendix B. 
+and the elements of $B$ are defined in the work of \cite{2007MNRAS.376.1767O}.
 
 \section{Measuring the sky with polarization sensitive antennas}
 
