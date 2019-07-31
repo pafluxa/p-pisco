@@ -297,7 +297,7 @@ We note that $\tensor{S}{^{i}}$ is, in turn, the convolution between the antenna
 
 \begin{equation}
 \begin{aligned}
-d(\bar{q}_0) =  \int_{4\pi} \tensor{D}{_{i}}(\chi,\epsilon,s) \tensor{\Lambda}{^{i}_{l}(\chi) }  \tensor{B}{^{l}_{j} } \left[ \tensor{\Lambda}{^{j}_{m}(-\chi) } \tensor{S}{^{m}} \right ] \, \mathbf{d} \Omega
+d(\bar{q}_0) =  \int_{4\pi} \tensor{D}{_{i}}(\chi,\epsilon,s) \tensor{\Lambda}{^{i}_{l}}(\chi)  \tensor{B}{^{l}_{j} } \left[ \tensor{\Lambda}{^{j}_{m}}(-\chi) \tensor{S}{^{m}} \right ] \, \mathbf{d} \Omega
 \end{aligned}
 \label{eq::pisco_equation_cont}
 \end{equation}
@@ -327,11 +327,11 @@ In order to calculate the result of equation \ref{eq::pisco_equation_cont} using
 \begin{aligned}
 d(\bar{q}_0) = \
 \sum_{k=1}^{N_s} \
-\tensor_k{D}{_{i}}(\chi,\epsilon,s) \
-\tensor_k{\Lambda}{^{i}_{l}(\chi)} \
-\tensor_k{B}{^l_j} \
-\tensor_k{\Lambda}{^{j}_{m}(-\chi)} \
-\tensor_k{S}{^m}
+\tensor[_k]{D}{_{i}}(\chi,\epsilon,s) \
+\tensor[_k]{\Lambda}{^{i}_{l}}(\chi) \
+\tensor[_k]{B}{^l_j} \
+\tensor[_k]{\Lambda}{^{j}_{m}}(-\chi) \
+\tensor[_k]{S}{^m}
 \end{aligned}
 \label{eq::discrete_beam_conv_tensor}
 \end{equation}
