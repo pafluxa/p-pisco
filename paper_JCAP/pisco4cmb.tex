@@ -172,11 +172,11 @@ In many situations, antennas are equipped with polarization sensitive devices. T
 Because polarization is defined in the sky basis (see Figure \ref{fig::cmbcoordconvention}), a polarization sensitive antenna must compensate for the apparent rotation of its own polarization basis with respect to the sky. This can be accomplished by rotating the incoming Stokes vector by the angle between $\hat{e}_{\co}$ and $\hat{\theta}$, namely
 
 \begin{equation}
-\psi(\rho,\sigma) = \arctan \left( \frac{ |\hat{e}_{\co} \times \hat{\theta}| }{ \hat{e}_{\co} \cdot \hat{\theta} } \right)
+\chi(\rho,\sigma) = \arctan \left( \frac{ |\hat{e}_{\co} \times \hat{\theta}| }{ \hat{e}_{\co} \cdot \hat{\theta} } \right)
 \label{eq::psi}
 \end{equation}
 
-See Appendix A for details on the definition of co-polarization and cross-polarization that PISCO uses and the computation of $\psi(\rho,\sigma)$ using spherical trigonometry.
+See Appendix A for details on the definition of co-polarization and cross-polarization that PISCO uses and the computation of $\chi(\rho,\sigma)$ using spherical trigonometry.
 
 \begin{figure}
 	\centering
@@ -297,21 +297,21 @@ We note that $\tensor{S}{^{i}}$ is, in turn, the convolution between the antenna
 
 \begin{equation}
 \begin{aligned}
-d(\bar{q}_0) = \tensor{D}{_{i}}(\zeta,\epsilon,s) \int_{4\pi} \tensor{B}{^{i}_{j} } \left[ \tensor{\Lambda}{^{j}_{k} } \tensor{S}{^{k}} \right ] \, \mathbf{d} \Omega
+d(\bar{q}_0) =  \int_{4\pi} \tensor{D}{_{i}}(\chi,\epsilon,s) \tensor{\Lambda}{^{i}_{l}(\chi) }  \tensor{B}{^{l}_{j} } \left[ \tensor{\Lambda}{^{j}_{m}(-\chi) } \tensor{S}{^{m}} \right ] \, \mathbf{d} \Omega
 \end{aligned}
 \label{eq::pisco_equation_cont}
 \end{equation}
 
 \noindent
-where $(i,j) = T,Q,U,V$, and $B$ is aligned with $(\hat{p},\psi_0)$ (see Appendix A). Rotation of the sky to antenna polarization basis is carried out by $\Lambda$, which is a matrix field in the form
+where $(i,j) = T,Q,U,V$, and $B$ is aligned with $(\hat{p},\psi_0)$. Rotation of the detector polarization basis to the sky basis is carried out using $\chi$ in the argument to $D$ and by $\Lambda$, which is a matrix field in the form
 
 \begin{equation}
 \begin{aligned}
-\Lambda =
+\Lambda(\chi) =
 \begin{bmatrix}
 1  & 0 & 0 & 0\\
-0  & \cos(2\psi) & \sin(2\psi) & 0\\
-0  &-\sin(2\psi) & \cos(2\psi) & 0\\
+0  & \cos(2\chi) & -\sin(2\chi) & 0\\
+0  &\sin(2\chi) & \cos(2\chi) & 0\\
 0  & 0 & 0 & 1
 \end{bmatrix}
 \end{aligned}
@@ -326,11 +326,12 @@ In order to calculate the result of equation \ref{eq::pisco_equation_cont} using
 \begin{equation}
 \begin{aligned}
 d(\bar{q}_0) = \
-\tensor{D}{_{i}}(\zeta,\epsilon,s) \
 \sum_{k=1}^{N_s} \
-\tensor[_k]{B}{^i_j} \
-\tensor[_k]{\Lambda}{^j_m} \
-\tensor[_k]{S}{^m}
+\tensor_k{D}{_{i}}(\chi,\epsilon,s) \
+\tensor_k{\Lambda}{^{i}_{l}(\chi)} \
+\tensor_k{B}{^l_j} \
+\tensor_k{\Lambda}{^{j}_{m}(-\chi)} \
+\tensor_k{S}{^m}
 \end{aligned}
 \label{eq::discrete_beam_conv_tensor}
 \end{equation}
@@ -414,7 +415,7 @@ The simulated observation of a polarized point source was accomplished by the fo
 
 \subsubsection{Results}
 
-Results from this validation test are shown in figure \ref{fig::stokesqsource256beam1024dec45}. The results show that the flux is preserved to better than $0.1\%$. Using a lower \texttt{NSIDE} for the beamsor degrades this considerably. We checked for systematic effects driven by the finite machine precision of the computations, and found that leakage from temperature to polarization is least $10$ orders of magnitude below the maximum amplitude of the Stokes I convolved map. PISCO is also able to correctly account for intra-beam variations of the position angle $\psi$.
+Results from this validation test are shown in figure \ref{fig::stokesqsource256beam1024dec45}. The results show that the flux is preserved to better than $0.1\%$. Using a lower \texttt{NSIDE} for the beamsor degrades this considerably. We checked for systematic effects driven by the finite machine precision of the computations, and found that leakage from temperature to polarization is least $10$ orders of magnitude below the maximum amplitude of the Stokes I convolved map. PISCO is also able to correctly account for intra-beam variations of the position angle $\chi$.
 
 \begin{figure}
 	\centering
@@ -448,7 +449,7 @@ The input sky maps were generated using a combination of CAMB (see \cite{Lewis:2
 
 \subsubsection{Scanning strategy}
 
-The scanning strategy was designed so that every pixel on the sky gets visited exactly three times, each time at a different beam orientation angle. In addition, every pixel was observed at its center, which is an important requirement that ensures the intra-pixel coverage does not affect the estimation of the power spectra at high $\ell$. Since only three hits per pixel at different values of $\psi$ are required to recover the polarization field of the CMB, the scanning was generated for a single detector with a polarization sensitive angle $\zeta=0$.
+The scanning strategy was designed so that every pixel on the sky gets visited exactly three times, each time at a different beam orientation angle. In addition, every pixel was observed at its center, which is an important requirement that ensures the intra-pixel coverage does not affect the estimation of the power spectra at high $\ell$. Since only three hits per pixel at different values of $\chi$ are required to recover the polarization field of the CMB, the scanning was generated for a single detector with a polarization sensitive angle $\zeta=0$.
 
 \subsubsection{Power spectra}
 
