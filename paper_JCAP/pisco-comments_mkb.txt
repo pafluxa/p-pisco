@@ -1,0 +1,98 @@
+1) "architecture of Graphics Processing Units (GPU), via the CUDA" At this point in the paper you are the only one who knows what this "CUDA" is. At least before you had "CUDA platform" which gave a bit of hint. I think it would actually be best to say "NVIDIA's CUDA platform (or API) to make things even more clear. 
+
+> According to wikipedia, CUDA is platform and an API. I'll go with API.
+
+2) "Section 3 presents a brief introduction to antenna theory and describes the methodology that was used to model polarizing properties of an antenna" I think this should refer to both sections 3 and 4. Also that should be "model the polarizing"
+
+> fixed this. I was missing a label on the section "Measuring the sky with antennas"
+
+3) "Section 4.2 describes the algorithm used by PISCO" Surely, you meant Section 5 there. 
+
+> Indeed. Fixed this.
+
+4) Were you going to make some changes to Figure 1? I thought maybe a dotted arrow from the origin of the antenna basis coordinate system on the left pane to the same point on the right pane and maybe a tilt added to the right pane might be helpful.
+
+5) I just noticed this: response with the sky in "real" domain ->  response with the sky in the "real" domain
+
+> Fixed this. It is just that the spell checker I use sometimes suggests me to remove repeated words, like "the". 
+
+6) "and will be denoted by $\hat{e}_{\co}$. The perpendicular direction, known as cross-polarization, is denoted by $\hat{e}_{\cx}$."
+   You are using future tense for co polarization and present tense for cross polarization. Choose one or the other, not both. 
+   
+> fixed this as well. Is there any good alternative to "denote"? I use it a lot.
+
+7) "which are pairs of bolometers usually placed at the focus of the optical chain" Just curious about your use of the word "usually" here. Are they sometimes placed somewhere else?
+
+> Not that I am aware of. I dropped the "usually".
+
+8) This orientation can be parameterized in terms of an angle $\zeta$, which is the angle between the orientation of the polarization sensitivity axis of one detector and $\hat{\theta}^{\prime}_0$. I still think this sentence is completely redundant, but I guess I lost that battle.
+
+> You did not loose the battle. I forgot to drop this sentence. We agreed it was OK to not mention this.
+
+9) \label{eq::copol_bolo} Adding this label in the align block creates a bogus Equation number (3.7).
+
+> It was an "extra" escape sequence. It is fixed now. I think it would be nice to make these equations a single block.
+
+10)  (see Equation \ref{eq::copol_bolo}) This refers to the bogus equation 3.7 that you created. I think both the label and this reference should be dropped. 
+
+> I can drop the reference. The reference doesn't hurt though.
+
+11) "Build a $I,Q$ and $U$ skies with a single non-zero pixel at coordinates" This wording is so poor that I'm having trouble figuring out what you meant by it. Perhaps: Build I, Q and U point sources by placing a single....
+
+> I changed this. I hope it got better now.
+
+12) "We checked for systematic effects driven by the finite machine precision of the computations, and found that leakage from temperature to polarization is least $10$ orders of magnitude below the maximum amplitude of the Stokes I convolved map." Actually, this is down more like 16 orders of magnitude. I'd just say that T->P leakage was zero to machine precision here. You might also note that P->P leakage was of order 10^-5.
+
+> Done. I think it would be worth checking that smoothing does not approximates the angle chi in harmonic space. I have seen that in other codes.
+
+13) "The focus of this section is to demonstrate that the implementation of the model presented in Section 3 is able" Shouldn't this be Sections 3 and 4?
+
+> Yup. Fixed it.
+
+14) "We did not include other systematic effects like gain imbalance, detector effciency,cross-polarization responses and far sidelobes" I think this should read: As in the previous sections, we did not....
+ 
+> I agree. Done.
+ 
+15) "In this section, we present the procedure and results of a PISCO simulation applied to a more realistic CMB experiment." You are repeating yourself here. You just said that in the last paragraph. 
+
+> Fixed this.
+
+16) "check for T to P leakage caused by effects that were not present in section ??." Bad reference. 
+
+> Yes. Fixed it.
+
+17) "Boresight rotation is also key to allowing modulation of both Q and U signals (see [9])" Are you referring to the VPM here? If so, how is this relevant to PISCO?
+
+> Indeed. I dropped this reference.
+ 
+18) "This down-sampling factor was selected so as not to produce pixel misses, with the median number of hits per pixel being on the order of thousands. Down-sampling allows for a ten-fold decrease in computation time" -> Down-sampling by a factor of 10 results in a ten-fold decrease in computation time with the median number of hits per pixel still being on the order of thousands.
+
+> OK.
+
+19) "The equatorial coordinates of every detector were computed from the scanning strategy in horizontal coordinates and the beam center offsets of every detector" -> The equatorial coordinates of every detector were computed from the horizontal coordinates produced by the scanning strategy and the beam center offsets of every detector from the center of the array.
+
+> OK.
+
+20) "Representative beam center offsets of the Q-band receiver were provided" -> Representative beam center offsets for the Q-band receiver were provided
+
+> OK.
+
+21) "Treating the deviation of every offset with respect to the pair average as a Gaussian random error yields an root mean squared mismatch of approximately $5$ arc-seconds ($\approx 0.001^{\circ}$)." This is completely bogus. You can't treat things that don't have a zero mean as Gaussian noise. The actual mean pair difference is 15.24 arcseconds.
+
+> Rats, this happened because I was not careful. I am not mentioning numbers in this paragraph now.
+
+22) "The CLASS collaboration provided us with representative main beam parameters. We did not include cross-polarized response of detectors in the beamsors" You are repeating yourself again. You already said that cross polarization wasn't considered in the introduction to Section 7. 
+
+> OK.
+
+23) "The root mean square mismatch for $\rm{FWHM}_x$ and $\rm{FWHM}_y$ is $0.01^{\circ}$." Again, I'm seeing averages of 0.019 for |delta FWHM_x|, 0.023 for |delta FWHM_y| and 7.8 degrees for |delta theta|. I don't know how meaningful that is as |delta_theta| ranges from 0.35 to 42.68 degrees. As I said, I think the average maximum weight of the pair differenced elliptical Gaussians may be a better metric here. These are 0.42% for pointing mismatch and 1.73% for beam mismatch. 
+
+24) Figure 9 is now the wrong plot. 
+
+> I don't know why, but Figure 9 is now the case for beam mismatch.
+
+25) In the caption for figure 9, you mispelled which.
+
+> Fixed this. Spell-checker also caught suppressed.
+
+26) I still think it would be better to just use the pair averaged pointing rather than forced pointing for Figure 9. I don't think it would make much difference, but it's a better comparison to the mismatched pointing test. 
