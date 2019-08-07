@@ -137,7 +137,7 @@ def make_gaussian_beam( nside, fwhm ):
     '''
     
     # Convert FWHM in degres to sigma in radians
-    sigma = numpy.radians( fwhm )/2.355
+    sigma = numpy.radians( fwhm )/2.35482
     
     pixels  = numpy.arange( healpy.nside2npix(nside) )
     tht,phi = healpy.pix2ang( nside, pixels )

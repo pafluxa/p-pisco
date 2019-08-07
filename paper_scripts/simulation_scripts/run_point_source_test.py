@@ -28,6 +28,8 @@ tht_s = numpy.radians( 90 - dec_s )
 phi_s = numpy.radians( ra_s )
 v     = healpy.ang2vec( tht_s, phi_s )
 source_pixels = healpy.vec2pix( map_nside, v[0], v[1], v[2] )
+theta, phi  = healpy.pix2ang   ( map_nside, source_pixels )
+v     = healpy.ang2vec( theta, phi  )
 
 outputName = ""
 if sys.argv[1] == 'I':
