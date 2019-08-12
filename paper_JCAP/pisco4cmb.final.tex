@@ -110,7 +110,7 @@ The paper concludes with a brief discussion of the results obtained in \S\ref{se
 	\label{fig::sky_basis} 
 \end{figure*}
 
-Since PISCO performs the convolution of the polarized antenna response with the sky in spatial domain, it makes extensive use of coordinate transformations. These operations can be described by the use of two complementary spherical coordinate systems, which are described in Figure \ref{fig::sky_basis}. The first coordinate system corresponds to the \textsl{sky basis}. Unit base vectors of these coordinate system are $\hat{x}$, $\hat{y}$ and $\hat{z}$. For convenience, the antenna pointing in the sky basis will be described as a 3-tuple $\bar{q}$, so that an antenna aiming at co-latitude $\theta_0$ and longitude $\phi_0$, with position angle $\psi_0$ has a pointing 
+Since PISCO performs the convolution of the polarized antenna response with the sky in the spatial domain, it makes extensive use of coordinate transformations. These operations can be described by the use of two complementary spherical coordinate systems, which are described in Figure \ref{fig::sky_basis}. The first coordinate system corresponds to the \textsl{sky basis}. Unit base vectors of these coordinate system are $\hat{x}$, $\hat{y}$ and $\hat{z}$. For convenience, the antenna pointing in the sky basis will be described as a 3-tuple $\bar{q}$, so that an antenna aiming at co-latitude $\theta_0$ and longitude $\phi_0$, with position angle $\psi_0$ has a pointing 
 
 \begin{equation}
 \begin{aligned}
@@ -190,17 +190,17 @@ The properties of an antenna equipped with detectors that are insensitive to pol
 
 \begin{equation}
 \begin{aligned}
-b(\rho, \sigma) = \frac{ U(\rho, \sigma) }{ \mathrm{MAX}\left[ U(\rho,\sigma) \right] }  =  \frac{ U(\rho, \sigma) }{ U(0,0) } \, .
+\mathit{b}(\rho, \sigma) = \frac{ U(\rho, \sigma) }{ \mathrm{max}\left[ U(\rho,\sigma) \right] }  =  \frac{ U(\rho, \sigma) }{ U(0,0) } \, .
 \end{aligned}
 \label{eq::beam_def}
 \end{equation}
 
 \noindent
-From this definition of beam, a standard quantification of an antenna's ability to direct power to a particular region of the sky is given by the beam solid angle $\Omega$, calculated as
+From this definition of the beam, a standard quantification of an antenna's ability to direct power to a particular region of the sky is given by the beam solid angle $\Omega$, calculated as
 
 \begin{equation}
 \begin{aligned}
-\Omega = \int_{4\pi} b(\rho,\sigma) \, \mathrm{d} \Omega \, .
+\Omega = \int_{4\pi} \mathit{b}(\rho,\sigma) \, \mathrm{d} \Omega \, .
 \end{aligned}
 \label{eq::omega_def}
 \end{equation}
@@ -271,14 +271,14 @@ where $\tilde{\Omega}$ is a normalization factor given by
 \end{equation}
 
 \noindent
-and the elements of $B$ are defined in the work of \cite{2007MNRAS.376.1767O}. Note that in the case of no cross polarization and perfectly matched beams, the beamsors reduces to  
+and the elements of $B$ are defined in the work of \cite{2007MNRAS.376.1767O}. Note that in the case of no cross polarization and perfectly matched beams, the beamsors reduces to the tensor product 
 
 \begin{equation}
-B(\rho,\sigma) = \tensor{G}{}(\rho,\sigma) \otimes \tensor{I}{}
+B(\rho,\sigma) = \mathit{b}(\rho,\sigma) \otimes \tensor{I}{}
 \end{equation}
 
 \noindent
-where $\tensor{G}{}$ is an elliptical Gaussian beam and $\mathbf{I}$ an identity matrix. 
+where $\mathbf{I}$ an identity matrix. 
 
 \section{Measuring the sky with polarization sensitive antennas}
 \label{sec::convolution}
@@ -295,7 +295,7 @@ In order to model the process by which a polarization sensitive detector transfo
 \end{equation}
 
 \noindent
-where $1 - \epsilon$ is the polarization efficiency, $s$ is the voltage responsivity of the detector and $\zeta$ was defined in Section \ref{sec::antennas}. The process of taking a total power measurement on a Stokes vector $\tensor{S}{^{i}}$ can then be modeled as a dot product which, using Eisntein's summation convention, yields
+where $1 - \epsilon$ is the polarization efficiency, $s$ is the voltage responsivity of the detector and $\zeta$ was defined in Section \ref{sec::antennas}. The process of taking a total power measurement on a Stokes vector $\tensor{S}{^{i}}$ can then be modeled as a dot product which, using Einstein's summation convention, yields
 
 \begin{equation}
 \begin{aligned}
@@ -350,7 +350,7 @@ d(\bar{q}_0) = \
 \end{equation}
 
 \noindent
-where $B$ has been properly re-pixelated via interpolation to be aligned with the sky according to $\bar{q}_0$ using the equations presented in Appendix A. It is worth noting that this expression operates on a pixelated sky, and so information contained at angular scales that are smaller than a sky pixel is lost.
+where $B$ has been properly re-pixelated via interpolation to be aligned with the sky according to $\bar{q}_0$ using the equations presented in Appendix A. It is worth noting that this expression operates on a pixelated sky, so information at angular scales that are smaller than a sky pixel is lost.
 
 \section{PISCO}
 \label{sec::pisco}
@@ -422,7 +422,7 @@ The simulated observation of a polarized point source was accomplished by the fo
 \begin{itemize}
     % Changing this to explicitly show the detectors and beams are ideal
     %\item Build a beamsor without cross-polarization Each $B_{ii}$ component is a circular Gaussian beam with FWHM of $1.5^\circ$.
-    \item Build a beamsor with off-diagonal elements set to zero. Every $\tensor{B}{_i^i}$ element corresponds to a circular Gaussian beam with FWHM of $1.5^\circ$. 
+    \item Build a beamsor with off-diagonal elements set to zero. Every $\tensor{B}{^i_i}$ element corresponds to a circular Gaussian beam with FWHM of $1.5^\circ$. 
     \item For simplicitly, we used a PSB with $s=1$ and $\epsilon=0$ for both detectors.
 	\item Build a mock sky, with a single non-zero pixel at coordinates $(\theta_k,\phi_k)$. Three cases were run: unpolarized, pure Q polarization and pure U polarization.".
 	\item Set up a raster scan around $(\theta_k,\phi_k)$ for a detector with $\zeta=0$. Note that, in order to have full polarization coverage, the raster scan is repeated 3 times with angles $\psi_0 = 0^{\circ},45^{\circ},90^{\circ}$.
@@ -432,7 +432,7 @@ The simulated observation of a polarized point source was accomplished by the fo
 
 \subsubsection{Results}
 
-Results from this validation test are shown in Figure \ref{fig::stokesqsource256beam1024dec45}. The results show that the flux is preserved to better than $0.1\%$. Using a higher \texttt{NSIDE} did not improve the preservation of flux significantly (from $0.1$\% to $0.04$\%) at the cost of cuadruplicating the amount of memory required to store the beamsor. We checked for systematic effects driven by the finite machine precision of the computations, and found that leakage from temperature to polarization was consistent with zero to machine precision. The maximum residual in the P to P leakage is on the order of $0.1\%$. PISCO is also able to correctly account for intra-beam variations of the position angle $\chi$.
+Results from this validation test are shown in Figure \ref{fig::stokesqsource256beam1024dec45}. The results show that the flux is preserved to better than $0.2\%$. For the \texttt{NSIDE} 256 sky used in this test, doubling \texttt{NSIDE} of the beam from 1024 to 2048 does not improve the preservation of the flux significantly (from $0.2$\% to $0.04$\%) at the cost of quadrupling the amount of memory required to store the beamsor, while using a lower \texttt{NSIDE} for the beam degrades this considerably to $0.8$\%. We conclude that a 4:1 beam to sky \texttt{NSIDE} ratio is sufficient. We also checked for systematic effects driven by the finite machine precision of the computations, and found that leakage from temperature to polarization was consistent with zero to machine precision. The maximum residual in the P to P leakage is on the order of $0.1\%$. PISCO is also able to correctly account for intra-beam variations of the position angle $\chi$.
 
 \begin{figure}
 	\centering
@@ -454,7 +454,7 @@ The simulation of an ideal CMB experiment was accomplished by the following:
 \begin{itemize}
     %\item Build a beamsor without cross-polarization Each $B_{ii}$ component is a circular Gaussian beam with FWHM of $1.5^\circ$.
     % I adding this to explictly say detectors are perfect
-    \item Build a beamsor with off-diagonal elements set to zero. Every $\tensor{B}{_i^i}$ element corresponds to a circular Gaussian beam with FWHM of $1.5^\circ$. 
+    \item Build a beamsor with off-diagonal elements set to zero. Every $\tensor{B}{^i_i}$ element corresponds to a circular Gaussian beam with FWHM of $1.5^\circ$. 
     \item For simplicitly, we used a PSB with $s=1$ and $\epsilon=0$ for both detectors.
     \item Build mock CMB whole sky maps with a tensor-to-scalar ratio $r=0.0$.
 	\item Set up a scanning strategy to visit each pixel center at 3 different position angles $\psi_0 = 0^{\circ},45^{\circ},90^{\circ}$. 
@@ -465,7 +465,7 @@ The simulation of an ideal CMB experiment was accomplished by the following:
 \subsubsection{Sky model}
 \label{subsec::sky_model}
 
-The input sky maps were generated using a combination of CAMB (see \cite{Lewis:2002ah}) to generate $C_\ell$, and \texttt{synfast} to generate maps from the $C_\ell$. The cosmological parameters are consistent with those reported by the \textsl{Planck} satellite collaboration (see \cite{2016A&A...594A..13P}). This procedure returns 3 CMB anisotropy maps, one for each Stokes parameter. It is not expected for the CMB to have Stokes $V$ polarization, so this field was explicitly set to zero. CAMB was configured to return a CMB with no primordial B-modes ($r=0$) and no lensing, as this last effect is expected to transform E-modes to B-modes. The resulting B-mode power spectrum is effectively zero at all angular scales. No foreground or other sources were added on top of the simulated CMB. All maps use the \texttt{HEALPix} pixelization and were generated at a resolution of \texttt{NSIDE}$=128$. This restricts the analysis in harmonic space to $\ell < 384$.
+The input sky maps were generated using a combination of CAMB (see \cite{Lewis:2002ah}) to generate $C_\ell$, and \texttt{synfast} to generate maps from the $C_\ell$. The cosmological parameters are consistent with those reported by the \textsl{Planck} satellite collaboration (see \cite{2016A&A...594A..13P}). This procedure returns 3 CMB anisotropy maps, one for each Stokes parameter. The CMB is not expected to have Stokes $V$ polarization, so this field was explicitly set to zero. CAMB was configured to return a CMB with no primordial B-modes ($r=0$) and no lensing, as this last effect is expected to transform E-modes to B-modes. The resulting B-mode power spectrum is effectively zero at all angular scales. No foreground or other sources were added on top of the simulated CMB. All maps use the \texttt{HEALPix} pixelization and were generated at a resolution of \texttt{NSIDE}$=128$. This restricts the analysis in harmonic space to $\ell < 384$.
 
 \subsubsection{Scanning strategy}
 
@@ -473,7 +473,7 @@ The scanning strategy was designed so that every pixel on the sky gets visited e
 
 \subsubsection{Power spectra}
 
-Power spectra were calculated using \texttt{anafast}. No further post-processing of the power spectra was needed given that this simulated observation covers the whole sky, and hence no masking effects arise. The power spectra corresponding to maps that were generated using PISCO TOD were corrected by the equivalent beam transfer function of a circular Gaussian beam of FWHM $1.5^\circ$. 
+Power spectra were calculated using \texttt{anafast}. No further post-processing of the power spectra was needed given that this simulated observation covers the whole sky, and hence no masking effects arise. The power spectra corresponding to maps that were generated using PISCO TOD were corrected by dividing by the equivalent beam transfer function of a circular Gaussian beam of FWHM $1.5^\circ$. 
 
 \subsubsection{Results}
 
@@ -498,7 +498,7 @@ The tests performed in Section \ref{subsec::ideal_full_sky} correspond to an ide
  
 \subsection{Description of the simulations}
 
-Since designing such an experiment from scratch is a challenging task, we turned to simulating an ongoing mission, the Cosmology Large Angular Scale Surveyor, CLASS. CLASS aims at characterizing the CMB anisotropy field at large angular scales, particularly the power spectra of B-modes and E-modes, looking for evidence of inflation. While the experiment is composed of 4 telescopes, the simulation focuses on the one observing at the lowest frequency (38 GHz), the Q-band receiver. This decision was taken for computational reasons, mainly because Q-band has lower detector count compared to higher frequency receivers. We note that CLASS uses modulation techniques to increase its sensitivity to CMB polarization. The effects of modulation related systematics have been described elsewhere (\cite{2016ApJ...818..151M}). For a more detailed description of CLASS, the reader is referred to \cite{2016SPIE.9914E..1KH}, \cite{2014SPIE.9153E..1IE} and \cite{2019ApJ...876..126A}.
+Since designing such an experiment from scratch is a challenging task, we turned to simulating an ongoing mission, the Cosmology Large Angular Scale Surveyor, CLASS. CLASS aims at characterizing the CMB anisotropy field at large angular scales, particularly the power spectra of B-modes and E-modes, looking for evidence of inflation. While the experiment is composed of 4 telescopes, the simulation focuses on the one observing at the lowest frequency (38 GHz), the Q-band receiver, which has a 1.5 degree beam. This decision was taken for computational reasons, mainly because Q-band has lower detector count compared to higher frequency receivers. We note that CLASS uses modulation techniques to increase its sensitivity to CMB polarization. The effects of modulation related systematics have been described elsewhere (\cite{2016ApJ...818..151M}). For a more detailed description of CLASS, the reader is referred to \cite{2016SPIE.9914E..1KH}, \cite{2014SPIE.9153E..1IE} and \cite{2019ApJ...876..126A}.
 
 \subsubsection{Sky model}
 
@@ -519,7 +519,9 @@ Representative beam center offsets for the Q-band receiver were provided by the 
 %Following the work of \cite{2012SPIE.8452E..20E} and input from the CLASS collaboration, we built beamsor models for all 72 detectors of the Q-band. The two dimensional profile of the diagonal beamsor elements correspond to purely elliptical Gaussian profiles, while the off-diagonal terms were set to zero.
 
 %We calculated the degree of beam mismatch from beam parameters following a similar procedure as for the beam center offsets. The root mean square mismatch for $\rm{FWHM}_x$ and $\rm{FWHM}_y$ is $0.01^{\circ}$.
-The CLASS collaboration also provided us with representative main beam parameters. The main beam parameters correspond to FWHM in the East-West direction ($\rm{FWHM}_x$), FWHM in the North-South direction ($\rm{FWHM}_y$) and the rotation angle of the major axis of the corresponding elliptical profile. Q-band receiver was designed to observe the sky with a Gaussian beam of FWHM=$1.5^\circ$. The simplicity of the beams allows a further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as because a pixel that is $5^\circ$ away from the centroid of the beam has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. All beamsors were pixelated using $\rm{NSIDE}=512$. The finite resolution of the beamsor produces an error in the amplitude of simulated TOD that is less than $0.1\%$ compared to analytical estimations, which is consistent with the results described in Section \S\ref{sec::validation}.
+%The CLASS collaboration also provided us with representative main beam parameters. The main beam parameters correspond to FWHM in the East-West direction ($\rm{FWHM}_x$), FWHM in the North-South direction ($\rm{FWHM}_y$) and the rotation angle of the major axis of the corresponding elliptical profile. Q-band receiver was designed to observe the sky with a Gaussian beam of FWHM=$1.5^\circ$. The simplicity of the beams allows a further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as because a pixel that is $5^\circ$ away from the centroid of the beam has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. All beamsors were pixelated using $\rm{NSIDE}=512$. The finite resolution of the beamsor produces an error in the amplitude of simulated TOD that is less than $0.1\%$ compared to analytical estimations, which is consistent with the results described in Section \S\ref{sec::validation}.
+
+The CLASS collaboration also provided us with representative main beam parameters. The main beam parameters correspond to FWHM in the East-West direction ($\rm{FWHM}_x$), FWHM in the North-South direction ($\rm{FWHM}_y$) and the rotation angle of the major axis of the corresponding elliptical profile. The simplicity of the beams allows a further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as, for a unit normalized Gaussian beam, a pixel that is $5^\circ$ away from the centroid of the $1.5^{\circ}$ FWHM beam of the CLASS Q band receiver has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. All beamsors were pixelated using $\rm{NSIDE}=512$. The finite resolution of the beamsor produces an error in the amplitude of simulated TOD that is less than $0.1\%$ compared to analytical estimations, which is consistent with the results described in Section \S\ref{sec::validation}.
 
 %\begin{figure}
 %	\centering
@@ -542,10 +544,10 @@ While the effect that smooth, circularly symmetric beams have on the power spect
 \subsubsection{A unified metric for describing mismatch }
 \label{sec::mismatch_metric}
 
-While it is simple to use the difference in pointing between two paired detectors to describe pointing mismatch, elliptical beam mismatch involves three quantities: the difference in the semi-major beam widths, the difference in the semi-minor beam widths and the difference in orientation of the two elliptical beams on the sky. When multiple pairs are considered, it becomes unclear how to average these parameters in order to gain insight into the degree of mismatch in the set. For this reason, it is desirable to define a metric that can be suitably applied to more than one pair. One such metric can be derived from the difference $\Delta \textsl{G}(\rho,\sigma)$ in the fitted elliptical Gaussian beams for the detector pair of each PSB, by considering the maximum difference expressed as a percentage of the normalized beams, namely
+While it is simple to use the difference in pointing between two paired detectors to describe pointing mismatch, elliptical beam mismatch involves three quantities: the difference in the semi-major beam widths, the difference in the semi-minor beam widths and the difference in orientation of the two elliptical beams on the sky. When multiple pairs are considered, it becomes unclear how to average these parameters in order to gain insight into the degree of mismatch in the set. For this reason, it is desirable to define a metric that can be suitably applied to more than one pair. One such metric can be derived from the difference $\Delta b(\rho,\sigma)$ in the fitted elliptical Gaussian beams for the detector pair of each PSB by considering the maximum difference expressed as a percentage of the normalized beams, namely
 
 \begin{equation}
-\delta_{(p,b)} = \rm{max}\left| \Delta \textsl{G}_{(p,b)}(\rho,\sigma) \right|
+\delta_{(p,b)} = \rm{max}\left| \Delta \mathit{b}_{(p,b)}(\rho,\sigma) \right|
 \end{equation}
 
 \noindent
@@ -610,7 +612,7 @@ Simulating a CMB experiment using a more realistic scanning strategy can produce
 	\label{fig::pisco4class_intrapixel}
 \end{figure}
 
-Figure \ref{fig::pisco4class_intrapixel} shows the result of running the realistic simulation with matched pointing and matched beams with the addition of a polarized CMB with $r=0.01$. It is clear that a spurious signal is present in the B-mode power spectrum. In the upper plot of Figure \ref{fig::pisco4class_pointingmismatch}, the same simulation was performed but with an unpolarized CMB as input, the resulting polarized power spectra being consistent with zero. This indicates that the effect of uneven intra-pixel coverage is P to P leakage. This systematic effect is subdominant with respect to the T to P leakage caused by pointing and beam mismatch at all scales, as well as having a lower amplitude than a theoretical primordial B-mode power spectrum for $r=0.01$ up to $\ell=130$. It is worth noting that this P to P leakage is likely to be present in real maps, its amplitude being highly dependent on the particular scan strategy of the experiment.
+Figure \ref{fig::pisco4class_intrapixel} shows the result of running the realistic simulation with matched pointing and matched beams with the addition of a polarized CMB with $r=0.01$. It is clear that a spurious signal is present in the B-mode power spectrum. In the upper plot of Figure \ref{fig::pisco4class_pointingmismatch}, the same simulation was performed but with an unpolarized CMB as input, the resulting polarized power spectra being consistent with zero. This indicates that the effect of uneven intra-pixel coverage is P to P leakage. This systematic effect is subdominant with respect to the T to P leakage caused by pointing and beam mismatch at all scales, as well as having a lower amplitude than a theoretical primordial B-mode power spectrum for $r=0.01$ up to $\ell=130$. It is worth noting that this P to P leakage is just due to uneven convolution of the pixel window and, unlike the other effects studied here, can be mitigated as more data is added when using a well planned scanning strategy.
 
 \section{Conclusions}
 \label{sec::conclusions}
@@ -620,9 +622,9 @@ Figure \ref{fig::pisco4class_intrapixel} shows the result of running the realist
 %In this work, we presented a method to simulate the interaction between the electromagnetic properties of an antenna and a polarized sky, in the context of CMB experiments. We have also described PISCO, a new computer simulation code that implements the aformentioned method. PISCO is capable of generating beam-convolved timestreams for arbitrary beams, sky models and scanning strategies. The current implementation is designed to exploit the natural parallelism in the pixel space convolution algorithm by offloading the computation to the GPU. It is worth mentioning that this implementation can be extended so as to distribute the calculation amoung several GPUs. 
 %We performed tests by appliying PISCO to several scenarios: point source convolution, an ideal and more realistic CMB experiment, this last test based on the CLASS experiment. The results from this tests indicate that PISCO performs as expected, and is able to reproduce the effect that pointing mismatch, beam mismatch and uneven intra-pixel coverage have in the CMB power spectra. 
 
-In this work, we have presented a method for simulating the interaction between the electromagnetic properties of an antenna and a polarized sky in the context of CMB experiments. We have also described PISCO, a new computer simulation code that implements this method. PISCO is capable of generating beam-convolved timestreams for arbitrary beams, sky models and scanning strategies, as well as being designed to exploit the natural parallelism in the pixel space convolution algorithm by offloading the computation to the GPU. We performed tests applying PISCO to several scenarios: point source convolution, an ideal and a more realistic CMB experiment, this last set of tests was based on the CLASS experiment. We showed that PISCO is able to reproduce the expected effects that pointing mismatch, beam mismatch and uneven intra-pixel coverage have on CMB power spectra. 
+In this work, we have presented a method for simulating the interaction between the electromagnetic properties of an antenna and a polarized sky in the context of CMB experiments. We have also described PISCO, a new computer simulation code that implements this method. PISCO is capable of generating beam-convolved timestreams for arbitrary beams, sky models and scanning strategies and is designed to exploit the natural parallelism in the pixel space convolution algorithm by offloading the computation to the GPU. We performed tests applying PISCO to several scenarios: point source convolution, an ideal and a more realistic CMB experiment, this last set of tests was based on the CLASS experiment. We showed that PISCO is able to reproduce the expected effects that pointing mismatch, beam mismatch and uneven intra-pixel coverage have on CMB power spectra. 
 
-We are not aware of any other publicly available code that performs pixel space convolution using a formalism that is similar to one used by PISCO, the only documented code that performs pixel space convolution being FeBecop. We believe PISCO will become a valuable tool when modeling the effect of noise sources that are difficult to include in harmonic space implementation like the one described in \cite{2018arXiv180905034D}. These sources include, but are not limited to, atmospheric turbulence, transient events on the sky and time-dependent behavior of the optics. It is also worth noting that PISCO can naturally include modulation techniques, like half-wave plates, when provided with a modulated model of the beamsor. Finally, the parallelism of the pixel space convolution algorithm allows to improve the current implementation to harvest the computational power of modern HPC facilities, particularly those including multiple GPU nodes.
+We are not aware of any other publicly available code that performs pixel space convolution using a formalism that is similar to one used by PISCO, the only documented code that performs pixel space convolution being FEBeCop. We believe PISCO will become a valuable tool when modeling the effect of noise sources that are difficult to include in harmonic space implementations like the one described in \cite{2018arXiv180905034D}. These sources include, but are not limited to, atmospheric turbulence, transient events on the sky and time-dependent behavior of the optics. It is also worth noting that PISCO can naturally include modulation techniques, like half-wave plates, when provided with a modulated model of the beamsor. Finally, the parallelism of the pixel space convolution algorithm provides an opportunity for improvement over the current implementation by harvesting the computational power of modern HPC facilities, particularly those including multiple GPU nodes.
 
 \section{Acknowledgments}
 
@@ -633,7 +635,6 @@ The authors thank the CLASS collaboration, the team at Computational Cosmology C
 \bibliographystyle{plain}
 \bibliography{bib}
 
-\pagebreak
 \appendix
 %\numberwithin{equation}{section}	
 \section{Computation of antenna basis coordinates and the co-polarization angle from sky coordinates}
@@ -652,32 +653,32 @@ For a beam center pointing $(\theta_0, \phi_0)$, rotation angle $\psi_0$ and off
 Defining $\Delta \phi \equiv \phi - \phi_0$, the antenna basis coordinate $\rho$ is given by
 %
 \begin{align}
-\rho  &= \arccos( \cos(\theta) cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) )
+\rho  &= \arccos( \cos(\theta) cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) ).
 \end{align}
 %
-Then defining $\alpha$ as the angle between $\rho$ and $\theta_0$, the antenna basis coordinate $\sigma$ is given by
+Then, defining $\alpha$ as the angle between $\rho$ and $\theta_0$, the antenna basis coordinate $\sigma$ is given by
 %
 \begin{align}
 \sin(\alpha) &= \frac{\sin(\theta) \sin(\Delta \phi)}{\sin(\rho)} & \\
 \cos(\alpha) &= \frac{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)}{\sin(\rho)} & \\ 
 \alpha       &=  \arctan \left(\frac{\sin(\theta) \sin(\Delta \phi)}{\cos(\theta) \sin(\theta_0) - \sin(\theta) \cos(\theta_0) \cos(\Delta \phi)} \right)  & \\
-\sigma &= 180^{\circ} - \psi_0 - \alpha &
+\sigma &= 180^{\circ} - \psi_0 - \alpha. &
 \end{align}
 %
 Following Ludwig's third definition of cross polarization, substituting $\sigma + 90^{\circ}$ for Ludwig's $\phi$ (see \cite{1140406}), the unit vectors of co and cross polarization for a detector aligned at an angle $\zeta$ with respect to the basis vector $\hat{\theta}'_0$ in the antenna basis are
 %
 \begin{align}
 \hat{e}_{\co} &=  \quad \cos(\sigma - \zeta) \hat{\rho} - \sin(\sigma - \zeta) \hat{\sigma} & \\
-\hat{e}_{\cx} &=      - \sin(\sigma - \zeta) \hat{\rho} - \cos(\sigma - \zeta) \hat{\sigma} & 
+\hat{e}_{\cx} &=      - \sin(\sigma - \zeta) \hat{\rho} - \cos(\sigma - \zeta) \hat{\sigma}. & 
 \end{align}
 %
-Thus $\hat{e}_{\co}$ is offset from $\hat{\rho}$ by the angle $\zeta - \sigma$. Then, defining $\beta$ as the angle between $\theta$ and $\rho$ yields
+Thus $\hat{e}_{\co}$ is offset from $\hat{\rho}$ by the angle $\zeta - \sigma$. Then, defining $\beta$ as the angle between $\theta$ and $\rho$, yields
 %
 \begin{align}
 \sin(\beta) &= \frac{\sin(\theta_0) \sin(\Delta \phi)}{\sin(\rho)} & \\
 \cos(\beta) &= \frac{\cos(\theta_0) \sin(\theta) - \sin(\theta_0) \cos(\theta) \cos(\Delta \phi)}{\sin(\rho)} & \\ 
 \beta       &=  \arctan \left(\frac{\sin(\theta_0) \sin(\Delta \phi)}{\cos(\theta_0) \sin(\theta) - \sin(\theta_0) \cos(\theta) \cos(\Delta \phi)} \right)  & \\
-\chi &= \beta + \zeta - \sigma &
+\chi &= \beta + \zeta - \sigma. &
 \end{align}
 %%
 %\section{Calculation of elements of $B$}
