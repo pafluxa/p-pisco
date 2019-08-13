@@ -31,16 +31,17 @@
 
 \title{\boldmath Pixel space convolution for cosmic microwave background experiments}
 
-
+\keywords{Add some keywords here}
+\arxivnumber{12345678}
 %% %simple case: 2 authors, same institution
 %% \author{A. Uthor}
 %% \author{and A. Nother Author}
 %% \affiliation{Institution,\\Address, Country}
 
 % more complex case: 4 authors, 3 institutions, 2 footnotes
-\author[a]{P. Flux\'a, }
-\author[b]{M.K. Brewer, }
-\author[a]{R. D\"unner.}
+\author[a]{P. Flux\'a}
+\author[b]{M.K. Brewer}
+\author[a]{R. D\"unner}
 
 % The "\note" macro will give a warning: "Ignoring empty anchor..."
 % you can safely ignore it.
@@ -49,7 +50,7 @@
 \affiliation[b]{Department of Astronomy, Johns Hopkins University,\\Baltimore MD, USA}
 
 % e-mail addresses: one for each author, in the same order as the authors
-\emailAdd{pedro@fluxanet.net}
+\emailAdd{pafluxa@astro.puc.cl}
 \emailAdd{brewer@astro.umass.edu}
 \emailAdd{rdunner@astro.puc.cl}
 
@@ -179,7 +180,7 @@ See Appendix A for details on the definition of co-polarization and cross-polari
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/cmb_coord_convention}
-	\caption{Figure showing the convention used for polarization among the CMB community. In this figure, $z$ is parallel to $\hat{p}_0$, $x$ is parallel to $\hat{\theta}$ and $y$ points along $\hat{\phi}$. $\psi$ is the angle between the antenna ``up'' direction, and $x$ ($\hat{\theta}$). The sign conventions of Stokes parameters $Q$ and $U$ used by the CMB community are: positive $Q$ if the polarization vector is aligned with $\hat(\theta)$ (North-South direction), negative $Q$ if the polarization vector is aligned with $\hat{\phi}$ (East-West direction), positive $U$ is aligned with $(\pm(\hat{\phi} + \hat{\theta})/\sqrt{2} )$ (North/West-South/East direction), and negative $U$ is aligned with $(\pm(\hat{\phi} - \hat{\theta})/\sqrt{2} )$ (North/East-South/West direction). Note that the right-most panel of this figure corresponds to an observer looking \textsl{towards Earth}. Figure source: \href{https://lambda.gsfc.nasa.gov/product/about/pol_convention.cfm}{LAMBDA website}}
+	\caption{Figure showing the convention used for polarization among the CMB community. In this figure, the arrow named ``Z'' is parallel to $\hat{p}_0$, ``X'' is parallel to $\hat{\theta}$ and ``Y'' points along $\hat{\phi}$. $\psi$ is the angle between unit vectors $\hat{\theta}'$ and $\hat{\theta}$ (``X'' in the figure). The sign conventions of Stokes parameters $Q$ and $U$ used by the CMB community are: positive $Q$ if the polarization vector is aligned with $\hat{\theta}$ (North-South direction), negative $Q$ if the polarization vector is aligned with $\hat{\phi}$ (East-West direction), positive $U$ is aligned with $(\pm(\hat{\phi} + \hat{\theta})/\sqrt{2} )$ (North/West-South/East direction), and negative $U$ is aligned with $(\pm(\hat{\phi} - \hat{\theta})/\sqrt{2} )$ (North/East-South/West direction). The right-most panel of this figure corresponds to an observer looking towards Earth. Figure source: \href{https://lambda.gsfc.nasa.gov/product/about/pol_convention.cfm}{LAMBDA website}}
 	\label{fig::cmbcoordconvention}
 \end{figure}
 
@@ -626,7 +627,7 @@ In this work, we have presented a method for simulating the interaction between 
 
 We are not aware of any other publicly available code that performs pixel space convolution using a formalism that is similar to one used by PISCO, the only documented code that performs pixel space convolution being FEBeCop. We believe PISCO will become a valuable tool when modeling the effect of noise sources that are difficult to include in harmonic space implementations like the one described in \cite{2018arXiv180905034D}. These sources include, but are not limited to, atmospheric turbulence, transient events on the sky and time-dependent behavior of the optics. It is also worth noting that PISCO can naturally include modulation techniques, like half-wave plates, when provided with a modulated model of the beamsor. Finally, the parallelism of the pixel space convolution algorithm provides an opportunity for improvement over the current implementation by harvesting the computational power of modern HPC facilities, particularly those including multiple GPU nodes.
 
-\section{Acknowledgments}
+\acknowledgments
 
 The authors thank the CLASS collaboration, the team at Computational Cosmology Center ($\rm{C}^3$) at LBNL, Lo\"ic Maurin and Tobias Marriage for their comments and suggestions. PF and RD thank CONICYT for grants FONDECYT Regular 1141113, Basal AFB-170002, PIA Anillo ACT-1417 and QUIMAL 160009.
 
@@ -653,7 +654,7 @@ For a beam center pointing $(\theta_0, \phi_0)$, rotation angle $\psi_0$ and off
 Defining $\Delta \phi \equiv \phi - \phi_0$, the antenna basis coordinate $\rho$ is given by
 %
 \begin{align}
-\rho  &= \arccos( \cos(\theta) cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) ).
+\rho  &= \arccos( \cos(\theta) \cos(\theta_0) + \sin(\theta) \sin(\theta_0) \cos(\Delta \phi) ).
 \end{align}
 %
 Then, defining $\alpha$ as the angle between $\rho$ and $\theta_0$, the antenna basis coordinate $\sigma$ is given by
