@@ -1,2 +1,2 @@
 # p-pisco
-Prototype implementation of PISCO used for my PhD work. It has a lot of ther tools for calculating pointing and navi map making. 
+Prototype implementation of PISCO and associated scripts to generate the results described in the paper.
