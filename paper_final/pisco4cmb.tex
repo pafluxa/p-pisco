@@ -40,7 +40,7 @@
 % more complex case: 4 authors, 3 institutions, 2 footnotes
 \author[a]{P. Flux\'a,}
 \author[b]{M.K. Brewer,}
-\author[a]{R. D\"unner,}
+\author[a]{R. D\"unner}
 
 % The "\note" macro will give a warning: "Ignoring empty anchor..."
 % you can safely ignore it.
@@ -160,7 +160,7 @@ See Appendix A for details on the definition of co-polarization and cross-polari
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/cmb_coord_convention}
-	\caption{Figure showing the sign conventions of Stokes parameters $Q$ and $U$ used by the CMB community are: positive $Q$ if the polarization vector is aligned with $\hat{\theta}$ (North-South direction), negative $Q$ if the polarization vector is aligned with $\hat{\phi}$ (East-West direction), positive $U$ is aligned with $(\pm(\hat{\phi} + \hat{\theta})/\sqrt{2} )$ (North/West-South/East direction), and negative $U$ is aligned with $(\pm(\hat{\phi} - \hat{\theta})/\sqrt{2} )$ (North/East-South/West direction). The right-most panel of this figure corresponds to an observer looking towards Earth. This figure is an adaptation. The original figure can be found at the \href{https://lambda.gsfc.nasa.gov/product/about/pol_convention.cfm}{LAMBDA website}.}
+	\caption{Figure showing the sign conventions of Stokes parameters $Q$ and $U$ used by the CMB community. In this figure, $\psi$ is the angle between the antenna basis base unit vector $\hat{\theta}'$ and$\hat{\theta}$. Positive $Q$ if the polarization vector is aligned with $\hat{\theta}$ (North-South direction), negative $Q$ if the polarization vector is aligned with $\hat{\phi}$ (East-West direction), positive $U$ is aligned with $(\pm(\hat{\phi} + \hat{\theta})/\sqrt{2} )$ (North/West-South/East direction), and negative $U$ is aligned with $(\pm(\hat{\phi} - \hat{\theta})/\sqrt{2} )$ (North/East-South/West direction). The right-most panel of this figure corresponds to an observer looking towards Earth. This figure is an adaptation. This figure is adapted from one that was found on NASA's \href{https://lambda.gsfc.nasa.gov/product/about/pol_convention.cfm}{LAMBDA website} and was orginally published in \cite{1999astro.ph..5275G}}
 	\label{fig::cmbcoordconvention}
 \end{figure}
 
@@ -259,7 +259,7 @@ In order to model the process by which a polarization sensitive detector transfo
 \end{equation}
 
 \noindent
-where $1 - \epsilon$ is the polarization efficiency, $s$ is the voltage responsivity of the detector and $\zeta$ was defined in Section \S\ref{sec::antennas}. The process of taking a total power measurement on a Stokes vector $\tensor{S}{^{i}}$ can then be modeled as a dot product which, using Einstein's summation convention, yields
+where $1 - \epsilon$ is the polarization efficiency, $s$ is the voltage responsivity of the detector and $\zeta$ was defined in \S\ref{sec::antennas}. The process of taking a total power measurement on a Stokes vector $\tensor{S}{^{i}}$ can then be modeled as a dot product which, using Einstein's summation convention, yields
 
 \begin{equation}
 \begin{aligned}
@@ -346,7 +346,7 @@ To better understand how the parallelism in \ref{eq::discrete_beam_conv_tensor} 
 
 \subsection{Performance}
 
-A simulation of a realistic CMB experiment (see Section \S\ref{sec::realistic_cmb_experiment} for more details) took approximately 45 minutes using a node equipped with two Intel Xeon E5-2610 processors (10 physical cores and 20 threads per processor), $256$ GB of RAM and one NVIDIA GTX 1080. This simulation generated 1 week of TOD, meaning that PISCO executed around 224 times faster than ``real time operation'' of the experiment. Unfortunately, measuring performance of the current implementation in FLOPS is a highly nontrivial task: the TOD generation routine performs both integer and floating point mathematical operations which are challenging to keep track of. In addition, we were not able to successfully quantify the impact of the memory access pattern caused by having to match beamsor pixels with sky pixels during the convolution step. Nevertheless, and in an effort to provide a comparison basis with other implementations, we report this simulation to have calculated more than $320000$ convolutions per second. It is quite possible for programs like \texttt{beamconv} (see \cite{2018arXiv180905034D}) to achieve much higher performance than PISCO for this particular test. It is worth noting, however, that PISCO has a small cost associated with increasing the complexity of the beam, i.e., by adding ghosting, high frequency features (in angular space) and time-dependent beam parameters, or transient events on the sky model, like varying temperature of the ground surrounding the receiver. This makes PISCO a good complement to other software tools that perform similar tasks because, while the computational cost might be larger for ``simpler'' cases (highly symmetrical beams and no time-dependent effects), the extra cost of adding another layer of complexity is comparatively low. 
+A simulation of a realistic CMB experiment (see \S\ref{sec::realistic_cmb_experiment} for more details) took approximately 45 minutes using a node equipped with two Intel Xeon E5-2610 processors (10 physical cores and 20 threads per processor), $256$ GB of RAM and one NVIDIA GTX 1080. This simulation generated 1 week of TOD, meaning that PISCO executed around 224 times faster than ``real time operation'' of the experiment. Unfortunately, measuring performance of the current implementation in FLOPS is a highly nontrivial task: the TOD generation routine performs both integer and floating point mathematical operations which are challenging to keep track of. In addition, we were not able to successfully quantify the impact of the memory access pattern caused by having to match beamsor pixels with sky pixels during the convolution step. Nevertheless, and in an effort to provide a comparison basis with other implementations, we report this simulation to have calculated more than $320000$ convolutions per second. It is quite possible for programs like \texttt{beamconv} (see \cite{2018arXiv180905034D}) to achieve much higher performance than PISCO for this particular test. It is worth noting, however, that PISCO has a small cost associated with increasing the complexity of the beam, i.e., by adding ghosting, high frequency features (in angular space) and time-dependent beam parameters, or transient events on the sky model, like varying temperature of the ground surrounding the receiver. This makes PISCO a good complement to other software tools that perform similar tasks because, while the computational cost might be larger for ``simpler'' cases (highly symmetrical beams and no time-dependent effects), the extra cost of adding another layer of complexity is comparatively low. 
 
 \subsection{Future improvements}
 
@@ -426,7 +426,7 @@ The main result of this simulation is shown in Figure \ref{fig::pisco4wholesky}.
 \section{A more realistic CMB experiment}
 \label{sec::realistic_cmb_experiment}
 
-The tests performed in Section \S\ref{subsec::ideal_full_sky} correspond to an idealized case. In this section, we show results for a simple, but more realistic, application of PISCO. The focus of this section is on demonstrating that the implementation of the model presented in Sections \ref{sec::antennas} and \ref{sec::pisco} is able to reproduce the expected effect of pointing and beam mismatch, which is T to P leakage (see \cite{2007MNRAS.376.1767O}), and uneven intra-pixel coverage, which is P to P leakage (see \cite{2005poutanen}). As in the previous section, we did not include other systematic effects like gain imbalance, detector efficiency, cross-polarization responses and far sidelobes.
+The tests performed in \S\ref{subsec::ideal_full_sky} correspond to an idealized case. In this section, we show results for a simple, but more realistic, application of PISCO. The focus of this section is on demonstrating that the implementation of the model presented in \ref{sec::antennas} and \ref{sec::pisco} is able to reproduce the expected effect of pointing and beam mismatch, which is T to P leakage (see \cite{2007MNRAS.376.1767O}), and uneven intra-pixel coverage, which is P to P leakage (see \cite{2005poutanen}). As in the previous section, we did not include other systematic effects like gain imbalance, detector efficiency, cross-polarization responses and far sidelobes.
  
 \subsection{Description of the simulations}
 
@@ -434,7 +434,7 @@ Since designing such an experiment from scratch is a challenging task, we turned
 
 \subsubsection{Sky model}
 
-To generate the maps for this simulation, we followed a similar procedure to the one described in Section \S\ref{subsec::sky_model}. The main difference is the addition of a temperature only CMB, which was used to check for T to P leakage caused by effects that were not present in the last test presented in Section \S\ref{sec::validation} All maps use the \texttt{HEALPix} pixelization with an \texttt{NSIDE} parameter of $128$. 
+To generate the maps for this simulation, we followed a similar procedure to the one described in \S\ref{subsec::sky_model}. The main difference is the addition of a temperature only CMB, which was used to check for T to P leakage caused by effects that were not present in the last test presented in \S\ref{sec::validation} All maps use the \texttt{HEALPix} pixelization with an \texttt{NSIDE} parameter of $128$. 
 
 \subsubsection{Pointing}
 
@@ -445,7 +445,7 @@ Representative beam center offsets for the Q-band receiver were provided by the 
 
 \subsubsection{Beamsor model}
 
-The CLASS collaboration also provided us with representative main beam parameters. The main beam parameters correspond to FWHM in the East-West direction ($\rm{FWHM}_x$), FWHM in the North-South direction ($\rm{FWHM}_y$) and the rotation angle of the major axis of the corresponding elliptical profile. The simplicity of the beams allows a further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as, for a unit normalized Gaussian beam, a pixel that is $5^\circ$ away from the centroid of the $1.5^{\circ}$ FWHM beam of the CLASS Q band receiver has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. All beamsors were pixelated using $\rm{NSIDE}=512$. The finite resolution of the beamsor produces an error in the amplitude of simulated TOD that is less than $0.1\%$ compared to analytical estimations, which is consistent with the results described in Section \S\ref{sec::validation}.
+The CLASS collaboration also provided us with representative main beam parameters. The main beam parameters correspond to FWHM in the East-West direction ($\rm{FWHM}_x$), FWHM in the North-South direction ($\rm{FWHM}_y$) and the rotation angle of the major axis of the corresponding elliptical profile. The simplicity of the beams allows a further speed-up in the computation by restricting the convolution to a $5^\circ$ disc around the beam center. This value was chosen as, for a unit normalized Gaussian beam, a pixel that is $5^\circ$ away from the centroid of the $1.5^{\circ}$ FWHM beam of the CLASS Q band receiver has a value of $\approx 10^{-14}$, roughly the limit of double precision arithmetic. All beamsors were pixelated using $\rm{NSIDE}=512$. The finite resolution of the beamsor produces an error in the amplitude of simulated TOD that is less than $0.1\%$ compared to analytical estimations, which is consistent with the results described in \S\ref{sec::validation}.
 
 \subsubsection{Power spectra and beam transfer function}
 
@@ -511,7 +511,7 @@ Figure \ref{fig::pisco4class_beammismatch} shows the resulting power spectra. Th
 
 \subsubsection{Uneven intra-pixel coverage}
 
-Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the sky. In Section \S\ref{subsec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiment, every sample of the TOD ``hits'' a given pixel at an arbitrary location within it. If the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric and gradients between pixels are present (recall that pixel space convolution is affected by neighbor pixels) the resulting power spectra may suffer from P to P leakage. This was discussed in more detail in \cite{2005poutanen}. 
+Simulating a CMB experiment using a more realistic scanning strategy can produce another systematic effect at the power spectra level. This source of noise is related to the intra-pixel coverage of the sky. In \S\ref{subsec::ideal_full_sky}, all pixels were observed exactly at their centers while, in a real experiment, every sample of the TOD ``hits'' a given pixel at an arbitrary location within it. If the distribution of hits inside a pixel is symmetric with respect to pixel center coordinates, map-making will average all observations and the power spectra from the resulting map will not be affected. However, if this distribution is asymmetric and gradients between pixels are present (recall that pixel space convolution is affected by neighbor pixels) the resulting power spectra may suffer from P to P leakage. This was discussed in more detail in \cite{2005poutanen}. 
 
 \begin{figure}
 	\centering
