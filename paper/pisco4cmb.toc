@@ -1,0 +1,34 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Coordinates}{3}{section.2}
+\contentsline {section}{\numberline {3}A polarized model for antennas}{4}{section.3}
+\contentsline {section}{\numberline {4}Measuring the sky with polarization sensitive antennas}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Continuous case}{6}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Pixelated case}{7}{subsection.4.2}
+\contentsline {section}{\numberline {5}PISCO}{7}{section.5}
+\contentsline {subsection}{\numberline {5.1}General description}{7}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Implementation using CUDA}{7}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Performance}{8}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Future improvements}{9}{subsection.5.4}
+\contentsline {section}{\numberline {6}Code validation}{10}{section.6}
+\contentsline {subsection}{\numberline {6.1}Point source observations}{10}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Results}{10}{subsubsection.6.1.1}
+\contentsline {subsection}{\numberline {6.2}Ideal CMB experiment}{10}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Description}{10}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Sky model}{11}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Scanning strategy}{12}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Power spectra}{12}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.5}Results}{12}{subsubsection.6.2.5}
+\contentsline {section}{\numberline {7}A more realistic CMB experiment}{12}{section.7}
+\contentsline {subsection}{\numberline {7.1}Description of the simulations}{13}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}Sky model}{13}{subsubsection.7.1.1}
+\contentsline {subsubsection}{\numberline {7.1.2}Pointing}{13}{subsubsection.7.1.2}
+\contentsline {subsubsection}{\numberline {7.1.3}Beamsor model}{13}{subsubsection.7.1.3}
+\contentsline {subsubsection}{\numberline {7.1.4}Power spectra and beam transfer function}{14}{subsubsection.7.1.4}
+\contentsline {subsubsection}{\numberline {7.1.5}A unified metric for describing mismatch }{14}{subsubsection.7.1.5}
+\contentsline {subsection}{\numberline {7.2}Results and discussion}{14}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}Matched pointing and beams}{14}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Pointing mismatch}{15}{subsubsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.3}Beam mismatch}{15}{subsubsection.7.2.3}
+\contentsline {subsubsection}{\numberline {7.2.4}Uneven intra-pixel coverage}{16}{subsubsection.7.2.4}
+\contentsline {section}{\numberline {8}Conclusions}{17}{section.8}
+\contentsline {section}{\numberline {A}Computation of antenna basis coordinates and the co-polarization angle from sky coordinates}{20}{appendix.A}
