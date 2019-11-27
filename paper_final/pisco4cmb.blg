@@ -1,0 +1,80 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: pisco4cmb.aux
+The style file: plain.bst
+Database file #1: bib.bib
+Repeated entry---line 607 of file bib.bib
+ : @article{2016A&A...594A..12P
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 783 of file bib.bib
+ : @article{2005ApJ...622..759G
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1187 of file bib.bib
+ : @article{piepmeier_long_njoku_2008
+ :                                   , title={Stokes Antenna Temperatures}, volume={46}, DOI={10.1109/tgrs.2007.909597}, number={2}, journal={IEEE Transactions on Geoscience and Remote Sensing}, author={Piepmeier, Jeffrey R. and Long, David G. and Njoku, Eni G.}, year={2008}, pages={516–527}}
+I'm skipping whatever remains of this entry
+Repeated entry---line 1277 of file bib.bib
+ : @article{2016A&A...594A..12P
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1781 of file bib.bib
+ : @article{2007A&A...470..771J
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1931 of file bib.bib
+ : @article{2007MNRAS.376.1767O
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 2591 of file bib.bib
+ : @inproceedings{2016SPIE.9914E..1KH
+ :                                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 3023 of file bib.bib
+ : @article{1140406
+ :                 ,
+I'm skipping whatever remains of this entry
+Warning--empty booktitle in 2014SPIE.9153E..1IE
+You've used 23 entries,
+            2118 wiz_defined-function locations,
+            664 strings with 17793 characters,
+and the built_in function-call counts, 22717 in all, are:
+= -- 1722
+> -- 2763
+< -- 5
++ -- 1102
+- -- 1078
+* -- 2496
+:= -- 4174
+add.period$ -- 69
+call.type$ -- 23
+change.case$ -- 607
+chr.to.int$ -- 0
+cite$ -- 24
+duplicate$ -- 319
+empty$ -- 589
+format.name$ -- 1078
+if$ -- 4050
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 24
+newline$ -- 118
+num.names$ -- 46
+pop$ -- 584
+preamble$ -- 1
+purify$ -- 585
+quote$ -- 0
+skip$ -- 245
+stack$ -- 0
+substring$ -- 463
+swap$ -- 87
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 90
+warning$ -- 1
+while$ -- 67
+width$ -- 25
+write$ -- 254
+(There were 8 error messages)

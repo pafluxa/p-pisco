@@ -160,7 +160,7 @@ See Appendix A for details on the definition of co-polarization and cross-polari
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/cmb_coord_convention}
-	\caption{Figure showing the sign conventions of Stokes parameters $Q$ and $U$ used by the CMB community. In this figure, $\psi$ is the angle between the antenna basis base unit vector $\hat{\theta}'$ and $\hat{\theta}$. Positive $Q$ if the polarization vector is aligned with $\hat{\theta}$ (North-South direction), negative $Q$ if the polarization vector is aligned with $\hat{\phi}$ (East-West direction), positive $U$ is aligned with $(\pm(\hat{\phi} + \hat{\theta})/\sqrt{2} )$ (North/West-South/East direction), and negative $U$ is aligned with $(\pm(\hat{\phi} - \hat{\theta})/\sqrt{2} )$ (North/East-South/West direction). The right-most panel of this figure corresponds to an observer looking towards Earth.  This figure is adapted from one that was found on NASA's \href{https://lambda.gsfc.nasa.gov/product/about/pol_convention.cfm}{LAMBDA website} and was originally published in \cite{healpixDocs}}
+	\caption{Figure showing the sign conventions of Stokes parameters $Q$ and $U$ used by the CMB community. In this figure, $\psi$ is the angle between the antenna basis base unit vector $\hat{\theta}'$ and $\hat{\theta}$. Positive $Q$ if the polarization vector is aligned with $\hat{\theta}$ (North-South direction), negative $Q$ if the polarization vector is aligned with $\hat{\phi}$ (East-West direction), positive $U$ is aligned with $(\pm(\hat{\phi} + \hat{\theta})/\sqrt{2} )$ (North/West-South/East direction), and negative $U$ is aligned with $(\pm(\hat{\phi} - \hat{\theta})/\sqrt{2} )$ (North/East-South/West direction). The right-most panel of this figure corresponds to an observer looking towards Earth.  This figure is adapted from one that was found on NASA's \href{https://lambda.gsfc.nasa.gov/product/about/pol_convention.cfm}{LAMBDA website} and was orginally published in \cite{1999astro.ph..5275G}}
 	\label{fig::cmbcoordconvention}
 \end{figure}
 
@@ -253,7 +253,7 @@ In order to model the process by which a polarization sensitive detector transfo
 
 \begin{equation}
 \begin{aligned}
-\tensor{D}{}(\zeta,\epsilon,s) = \frac{s}{2} \left[(1 + \epsilon), (1 - \epsilon)\cos(2\zeta), (1 - \epsilon)\sin(2\zeta), 0 \right]
+\tensor{D}(\zeta,\epsilon,s) = \frac{s}{2} \left[(1 + \epsilon), (1 - \epsilon)\cos(2\zeta), (1 - \epsilon)\sin(2\zeta), 0 \right]
 \end{aligned}
 \label{eq::M_pol}
 \end{equation}
@@ -534,7 +534,7 @@ We are not aware of any other publicly available code that performs pixel space 
 The authors thank the CLASS collaboration, the team at Computational Cosmology Center ($\rm{C}^3$) at LBNL, Lo\"ic Maurin and Tobias Marriage for their comments and suggestions. PF and RD thank CONICYT for grants FONDECYT Regular 1141113, Basal AFB-170002, PIA Anillo ACT-1417 and QUIMAL 160009.
 
 \bibliographystyle{plain}
-\input{bibliography.bbl}
+\bibliography{bib}
 
 \appendix
 

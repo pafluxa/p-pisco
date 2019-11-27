@@ -160,7 +160,7 @@ See Appendix A for details on the definition of co-polarization and cross-polari
 \begin{figure}
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/cmb_coord_convention}
-	\caption{Figure showing the sign conventions of Stokes parameters $Q$ and $U$ used by the CMB community. In this figure, $\psi$ is the angle between the antenna basis base unit vector $\hat{\theta}'$ and $\hat{\theta}$. Positive $Q$ if the polarization vector is aligned with $\hat{\theta}$ (North-South direction), negative $Q$ if the polarization vector is aligned with $\hat{\phi}$ (East-West direction), positive $U$ is aligned with $(\pm(\hat{\phi} + \hat{\theta})/\sqrt{2} )$ (North/West-South/East direction), and negative $U$ is aligned with $(\pm(\hat{\phi} - \hat{\theta})/\sqrt{2} )$ (North/East-South/West direction). The right-most panel of this figure corresponds to an observer looking towards Earth.  This figure is adapted from one that was found on NASA's \href{https://lambda.gsfc.nasa.gov/product/about/pol_convention.cfm}{LAMBDA website} and was originally published in \cite{healpixDocs}}
+	\caption{Figure showing the sign conventions of Stokes parameters $Q$ and $U$ used by the CMB community. In this figure, $\psi$ is the angle between the antenna basis base unit vector $\hat{\theta}'$ and $\hat{\theta}$. Positive $Q$ if the polarization vector is aligned with $\hat{\theta}$ (North-South direction), negative $Q$ if the polarization vector is aligned with $\hat{\phi}$ (East-West direction), positive $U$ is aligned with $(\pm(\hat{\phi} + \hat{\theta})/\sqrt{2} )$ (North/West-South/East direction), and negative $U$ is aligned with $(\pm(\hat{\phi} - \hat{\theta})/\sqrt{2} )$ (North/East-South/West direction). The right-most panel of this figure corresponds to an observer looking towards Earth.  This figure is adapted from one that was found on NASA's \href{https://lambda.gsfc.nasa.gov/product/about/pol_convention.cfm}{LAMBDA website} and was orginally published in \cite{1999astro.ph..5275G}}
 	\label{fig::cmbcoordconvention}
 \end{figure}
 
@@ -210,11 +210,11 @@ S_{\mathrm{out}} = \mathbf{M} S_{\mathrm{in}} \, .
 \noindent
 As described in the work of \cite{piepmeier_long_njoku_2008} and \cite{2007MNRAS.376.1767O}, antennas can be modeled using Mueller matrices. PISCO uses the formalism presented in \cite{2007MNRAS.376.1767O}, since it is more suitable to be applied to CMB experiments. We note the original paper names ``beam Mueller fields'' to this extended definition of a antenna beam. To emphasize the multi-dimensional nature of this mathematical entity, in this work we refer to it as a beam tensor, or \textsl{beamsor} for short.
 
-A beamsor can be interpreted as a field of Mueller matrices such that for each direction $(\rho,\sigma)$, there is an associated Mueller matrix that quantifies the coupling between the antenna and a Stokes vector coming from $(\rho,\sigma)$. We will denote a beamsor by letter $\mathbf{B} = \mathbf{B}(\rho,\sigma)$. At every antenna basis direction, $\mathbf{B}$ is a $4\times4$ matrix in the form
+A beamsor can be interpreted as a field of Mueller matrices such that for each direction $(\rho,\sigma)$, there is an associated Mueller matrix that quantifies the coupling between the antenna and a Stokes vector coming from $(\rho,\sigma)$. We will denote a beamsor by letter $B = B(\rho,\sigma)$. At every antenna basis direction, $B$ is a $4\times4$ matrix in the form
 
 \begin{equation}
 \begin{aligned}
-\mathbf{B}(\rho,\sigma) = \frac{1}{\tilde{\Omega}}
+B(\rho,\sigma) = \frac{1}{\tilde{\Omega}}
 \begin{bmatrix}
 B_{TT} & B_{QT} & B_{UT} & B_{VT}\\
 B_{TQ} & B_{QQ} & B_{UQ} & B_{VQ}\\
@@ -235,10 +235,10 @@ where $\tilde{\Omega}$ is a normalization factor given by
 \end{equation}
 
 \noindent
-and the elements of $\mathbf{B}$ are defined in the work of \cite{2007MNRAS.376.1767O}. Note that in the case of no cross polarization and perfectly matched beams, the beamsors reduce to the Kronecker product 
+and the elements of $B$ are defined in the work of \cite{2007MNRAS.376.1767O}. Note that in the case of no cross polarization and perfectly matched beams, the beamsors reduce to the Kronecker product 
 
 \begin{equation}
-\mathbf{B}(\rho,\sigma) = \mathit{b}(\rho,\sigma) \otimes \mathbf{I}{}
+B(\rho,\sigma) = \mathit{b}(\rho,\sigma) \otimes \mathbf{I}{}
 \end{equation}
 
 \noindent
@@ -253,7 +253,7 @@ In order to model the process by which a polarization sensitive detector transfo
 
 \begin{equation}
 \begin{aligned}
-\tensor{D}{}(\zeta,\epsilon,s) = \frac{s}{2} \left[(1 + \epsilon), (1 - \epsilon)\cos(2\zeta), (1 - \epsilon)\sin(2\zeta), 0 \right]
+\tensor{D}{_{i}}(\zeta,\epsilon,s) = \frac{s}{2} \left[(1 + \epsilon), (1 - \epsilon)\cos(2\zeta), (1 - \epsilon)\sin(2\zeta), 0 \right]
 \end{aligned}
 \label{eq::M_pol}
 \end{equation}
@@ -278,11 +278,11 @@ d(\bar{q}_0) =  \int_{4\pi} \tensor{D}{_{i}}(\chi,\epsilon,s) \tensor{\Lambda}{^
 \end{equation}
 
 \noindent
-where $(i,j) = T,Q,U,V$, and $\mathbf{B}$ is aligned with $(\hat{p},\psi_0)$. Rotation of the detector polarization basis to the sky basis is carried out using $\chi$ in the argument to $D$, and by $\mathbf{\Lambda}$, which is a matrix field in the form
+where $(i,j) = T,Q,U,V$, and $B$ is aligned with $(\hat{p},\psi_0)$. Rotation of the detector polarization basis to the sky basis is carried out using $\chi$ in the argument to $D$, and by $\Lambda$, which is a matrix field in the form
 
 \begin{equation}
 \begin{aligned}
-\mathbf{\Lambda}(\chi) =
+\Lambda(\chi) =
 \begin{bmatrix}
 1  & 0 & 0 & 0\\
 0  & \cos(2\chi) & -\sin(2\chi) & 0\\
@@ -296,7 +296,7 @@ where $(i,j) = T,Q,U,V$, and $\mathbf{B}$ is aligned with $(\hat{p},\psi_0)$. Ro
 \subsection{Pixelated case}
 \label{sec::pixel_conv}
 
-In order to calculate the result of equation \ref{eq::pisco_equation_cont} using a computer, we can no longer use continuous distributions, so we need to use pixelated versions of both the beamsor and sky model. Both the sky model $S$ and beamsor $\mathbf{B}$ must then be transformed into a matrix of $N_b$ (number of pixels in the beamsor) and $N_s$ (number of pixels in the sky model) entries, respectively. We will denote the $k$-th pixel of the pixelated beamsor $\mathbf{B}$ (sky $S$) as $\tensor[_k]{B}{}$ ($\tensor[_k]{S}{}$). With the above in mind, we can write equation \ref{eq::pisco_equation_cont} for the pixelated case as
+In order to calculate the result of equation \ref{eq::pisco_equation_cont} using a computer, we can no longer use continuous distributions, so we need to use pixelated versions of both the beamsor and sky model. Both the sky model $S$ and beamsor $B$ must then be transformed into a matrix of $N_b$ (number of pixels in the beamsor) and $N_s$ (number of pixels in the sky model) entries, respectively. We will denote the $k$-th pixel of the pixelated beamsor $B$ (sky $S$) as $\tensor[_k]{B}{}$ ($\tensor[_k]{S}{}$). With the above in mind, we can write equation \ref{eq::pisco_equation_cont} for the pixelated case as
 
 \begin{equation}
 \begin{aligned}
@@ -312,7 +312,7 @@ d(\bar{q}_0) = \
 \end{equation}
 
 \noindent
-where $\mathbf{B}$ has been properly re-pixelated via interpolation to be aligned with the sky according to $\bar{q}_0$ using the equations presented in Appendix A. It is worth noting that this expression operates on a pixelated sky, so information at angular scales that are smaller than a sky pixel is lost.
+where $B$ has been properly re-pixelated via interpolation to be aligned with the sky according to $\bar{q}_0$ using the equations presented in Appendix A. It is worth noting that this expression operates on a pixelated sky, so information at angular scales that are smaller than a sky pixel is lost.
 
 \section{PISCO}
 \label{sec::pisco}
@@ -534,7 +534,7 @@ We are not aware of any other publicly available code that performs pixel space 
 The authors thank the CLASS collaboration, the team at Computational Cosmology Center ($\rm{C}^3$) at LBNL, Lo\"ic Maurin and Tobias Marriage for their comments and suggestions. PF and RD thank CONICYT for grants FONDECYT Regular 1141113, Basal AFB-170002, PIA Anillo ACT-1417 and QUIMAL 160009.
 
 \bibliographystyle{plain}
-\input{bibliography.bbl}
+\bibliography{bib}
 
 \appendix
 
