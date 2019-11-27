@@ -46,7 +46,7 @@ def set_size( width, fraction=1, subplot=[1,1] ):
 
     return fig_dim
 
-width = 700
+width = 1280
 
 nice_fonts = {
         # Use LaTex to write all text
@@ -67,21 +67,26 @@ mpl.rcParams.update(nice_fonts)
 #plt.rc('ytick', labelsize='x-large')
 
 # make 3 axes in a row
-lmax = 250
+lmax = 240
 
 data = pandas.read_csv( sys.argv[1] )
 
+# TODO: remove this calibration factor 
+# This factor comes from a bug in the map generation (CAMB->map) script
+
+pi = 3.14159265
+f = (2*pi)
 ell = data['ell']
-ell2 = (ell)*(ell+1)/2.0
+ell2 = (ell)*(ell+1)
 
 # x 1e12 to put in uK
-TT  = data['pTT'] * 1e12
-EE  = data['pEE'] * 1e12
-BB  = data['pBB'] * 1e12
+TT  = data['pTT'] * 1e12 * f
+EE  = data['pEE'] * 1e12 * f 
+BB  = data['pBB'] * 1e12 * 1e6 * f
 
-TTo = data['oTT']  * 1e12
-EEo = data['oEE']  * 1e12
-BBo = data['oBB']  * 1e12
+TTo = data['oTT']  * 1e12 * f
+EEo = data['oEE']  * 1e12 * f
+BBo = data['oBB']  * 1e12 * 1e6 * f 
 
 wl_TT = data['wTT']
 wl_EE = data['wEE']
@@ -106,22 +111,24 @@ axEE.set_xlabel( r'$\ell$' )
 axBB.set_xlabel( r'$\ell$' )
 
 axTT.set_title( r'$C_{\ell}^{TT}$' )
-axTT.set_ylim( (1e1,1e3) )
+axTT.set_ylim( (100,6000) )
 axTT.set_xlim( (2,lmax) )
-axTT.set_yscale('symlog', linthreshy=1e1)
-axTT.set_xscale('log')
+#axTT.set_yscale('symlog', linthreshy=1e2)
+#axTT.set_xscale('log')
 
 axEE.set_title( r'$C_{\ell}^{EE}$' )
+axEE.set_ylabel( r'$\mu \rm{K}^2$' )
 axEE.set_xlim( (2,lmax) )
-axEE.set_ylim( (-1e-3,1e0) )
-axEE.set_yscale('symlog', linthreshy=1e-4)
-axEE.set_xscale('log')
+axEE.set_ylim( (0.001,1.2) )
+#axEE.set_yscale('symlog', linthreshy=0.01)
+#axEE.set_xscale('log')
 
 axBB.set_title( r'$C_{\ell}^{BB}$' )
+axBB.set_ylabel( r'$\rm{nK}^2$' )
 axBB.set_xlim( (2,lmax) )
-axBB.set_ylim( (-1e-3,1e0) )
-axBB.set_yscale('symlog', linthreshy=1e-4)
-axBB.set_xscale('log')
+axBB.set_ylim( (-5E2,5E2) )
+#axBB.set_yscale('symlog', linthreshy=1e-4)
+#axBB.set_xscale('log')
 
 axTT.plot( ell2*TTo      , label='Input' , alpha=1.0, linestyle='--', color='black')
 axTT.plot( ell2*TT/wl_TT , label='PISCO' , alpha=0.4, linestyle= '-', color= 'red' )
@@ -150,11 +157,11 @@ xticks = ax.xaxis.get_major_ticks()
 xticks[-1].label1.set_visible(False)
 
 # second axis (EE) has ticks on the right
-ax = axes[1]
-ax.yaxis.tick_right()
-labels = [item.get_text() for item in ax.get_yticklabels()]
-empty_string_labels = ['']*len(labels)
-ax.set_yticklabels(empty_string_labels)
+#ax = axes[1]
+#ax.yaxis.tick_right()
+#labels = [item.get_text() for item in ax.get_yticklabels()]
+#empty_string_labels = ['']*len(labels)
+#ax.set_yticklabels(empty_string_labels)
 
 # remove last tick label for the second subplot
 xticks = ax.xaxis.get_major_ticks()
@@ -171,8 +178,10 @@ ax.xaxis.major.formatter._useMathText = True
 ax.yaxis.major.formatter._useMathText = True
 #ax.yaxis.set_minor_locator(  AutoMinorLocator(5) )
 #ax.xaxis.set_minor_locator(  AutoMinorLocator(5) )
-ax.yaxis.tick_right()
+ax.yaxis.tick_left()
 
-plt.savefig( "ps.pdf" )
+fig.tight_layout()
+
+#plt.savefig( "ps.pdf" )
 plt.show()
     
