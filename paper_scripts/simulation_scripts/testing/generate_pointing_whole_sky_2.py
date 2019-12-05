@@ -50,10 +50,14 @@ pa  = numpy.concatenate( (  pa,  pa) )
 dec[ dec >  numpy.pi/2.0 ] =  numpy.pi/2.0
 dec[ dec < -numpy.pi/2.0 ] = -numpy.pi/2.0
 
+ra  = numpy.concatenate( (ra,ra) )
+dec = numpy.concatenate( (dec,dec) )
+pa  = numpy.concatenate( (pa,pa) )
+
 # reshape to fool PISCO
-ra  =  ra.reshape( (1,-1) )
-dec = dec.reshape( (1,-1) )
-pa  =  pa.reshape( (1,-1) )
+ra  =  ra.reshape( (2,-1) )
+dec = dec.reshape( (2,-1) )
+pa  =  pa.reshape( (2,-1) )
 
 print ra.shape, dec.shape, pa.shape
 

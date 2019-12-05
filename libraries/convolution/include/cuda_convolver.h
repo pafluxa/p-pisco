@@ -39,7 +39,10 @@ libconvolve_cuda_deproject_detector
     double* reM_VP , double* imM_VP, 
     double* reM_VPs, double* imM_VPs, 
     double* reM_VV , double* imM_VV,
-                                                                                                              
+    
+    //
+    int maxPix,
+
     // Maps with Stokes parameters                                                                            
     int input_map_nside, int input_map_size, float I[], float Q[], float U[], float V[],                      
                                                                                                               

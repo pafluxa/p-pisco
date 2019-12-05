@@ -1,2 +1,3 @@
 Detector,Det_pol,Feed,AzOff,ElOff,FWHM_x,FWHM_y,Theta,On
 0,0,0,0,0,1.5,1.5,0,1
+1,90,0,0,0,1.5,1.5,0,1

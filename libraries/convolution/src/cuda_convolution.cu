@@ -126,6 +126,8 @@ void build_and_transfer_eval_grid
 void allocate_and_transfer_mueller_beams
 (
     int input_beam_nside,
+    
+    int maxPix,
 
     double reM_TT[],  double imM_TT[],
     double reM_TP[],  double imM_TP[],
@@ -148,76 +150,10 @@ void allocate_and_transfer_mueller_beams
     double reM_VV[],  double imM_VV[]
 )
 {
-    int input_beam_size = nside2npix( input_beam_nside );
+    int input_beam_size = maxPix;
+    
+    printf( "%d\n", input_beam_size );
 
-    //######################################################################################################
-    // Allocate space on the GPU
-    //######################################################################################################
-    /*
-    // First Row
-    gpu_error_check( cudaMallocHost( (void**)&h_M_TT,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_TP,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_TPs,  sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_TV,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-    // Second Row
-    gpu_error_check( cudaMallocHost( (void**)&h_M_PT,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_PP,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_PPs,  sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_PV,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-    // Third Row
-    gpu_error_check( cudaMallocHost( (void**)&h_M_PsT,  sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_PsP,  sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_PsPs, sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_PsV,  sizeof( cuDoubleComplex ) * input_beam_size ) );
-    // Fourth Row
-    gpu_error_check( cudaMallocHost( (void**)&h_M_VT,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_VP,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_VPs,  sizeof( cuDoubleComplex ) * input_beam_size ) );
-    gpu_error_check( cudaMallocHost( (void**)&h_M_VV,   sizeof( cuDoubleComplex ) * input_beam_size ) );
-   
-    for( int pix=0; pix < input_beam_size; pix++ )
-    {   
-        h_M_TT  [ pix ].x = reM_TT  [ pix ];
-        h_M_TP  [ pix ].x = reM_TP  [ pix ];
-        h_M_TPs [ pix ].x = reM_TPs [ pix ];
-        h_M_TV  [ pix ].x = reM_TV  [ pix ];
-
-        h_M_PT  [ pix ].x = reM_PT  [ pix ];
-        h_M_PP  [ pix ].x = reM_PP  [ pix ];
-        h_M_PPs [ pix ].x = reM_PPs [ pix ];
-        h_M_PV  [ pix ].x = reM_PV  [ pix ];
-
-        h_M_PsT [ pix ].x = reM_PsT [ pix ];
-        h_M_PsP [ pix ].x = reM_PsP [ pix ];
-        h_M_PsPs[ pix ].x = reM_PsPs[ pix ];
-        h_M_PsV [ pix ].x = reM_PsV [ pix ];
-
-        h_M_VT  [ pix ].x = reM_VT  [ pix ];
-        h_M_VP  [ pix ].x = reM_VP  [ pix ];
-        h_M_VPs [ pix ].x = reM_VPs [ pix ];
-        h_M_VV  [ pix ].x = reM_VV  [ pix ];
-        
-        h_M_TT  [ pix ].y = imM_TT  [ pix ];
-        h_M_TP  [ pix ].y = imM_TP  [ pix ];
-        h_M_TPs [ pix ].y = imM_TPs [ pix ];
-        h_M_TV  [ pix ].y = imM_TV  [ pix ];
-
-        h_M_PT  [ pix ].y = imM_PT  [ pix ];
-        h_M_PP  [ pix ].y = imM_PP  [ pix ];
-        h_M_PPs [ pix ].y = imM_PPs [ pix ];
-        h_M_PV  [ pix ].y = imM_PV  [ pix ];
-
-        h_M_PsT [ pix ].y = imM_PsT [ pix ];
-        h_M_PsP [ pix ].y = imM_PsP [ pix ];
-        h_M_PsPs[ pix ].y = imM_PsPs[ pix ];
-        h_M_PsV [ pix ].y = imM_PsV [ pix ];
-
-        h_M_VT  [ pix ].y = imM_VT  [ pix ];
-        h_M_VP  [ pix ].y = imM_VP  [ pix ];
-        h_M_VPs [ pix ].y = imM_VPs [ pix ];
-        h_M_VV  [ pix ].y = imM_VV  [ pix ];
-    }
-    */
     //######################################################################################################
     // Allocate space on the GPU
     //######################################################################################################
@@ -282,28 +218,6 @@ void free_everything()
     cudaUnbindTexture(tex_IQUV);
     cudaFreeHost( host_IQUV );
     
-    /*
-    cudaFreeHost( h_M_TT );
-    cudaFreeHost( h_M_TP );
-    cudaFreeHost( h_M_TPs );
-    cudaFreeHost( h_M_TV );
-
-    cudaFreeHost( h_M_PT );
-    cudaFreeHost( h_M_PP );
-    cudaFreeHost( h_M_PPs );
-    cudaFreeHost( h_M_PV );
-
-    cudaFreeHost( h_M_PsT );
-    cudaFreeHost( h_M_PsP );
-    cudaFreeHost( h_M_PsPs );
-    cudaFreeHost( h_M_PsV );
-
-    cudaFreeHost( h_M_VT );
-    cudaFreeHost( h_M_VP );
-    cudaFreeHost( h_M_VPs );
-    cudaFreeHost( h_M_VV );
-    */
-
     cudaFree( gpu_M_TT );
     cudaFree( gpu_M_TP );
     cudaFree( gpu_M_TPs );
@@ -336,12 +250,12 @@ convolve_mueller_beams_with_map
 
     int npix_max, int *num_pixels_in_grid, int *eval_grid_pixels,
 
-    int input_beam_nside,
+    int input_beam_nside, 
     double M_TT[],  double M_TP[],  double M_TPs[],  double M_TV[],
     double M_PT[],  double M_PP[],  double M_PPs[],  double M_PV[],
     double M_PsT[], double M_PsP[], double M_PsPs[], double M_PsV[],
     double M_VT[] , double M_VP[] , double M_VPs[] , double M_VV[],
-
+    
     // Input map nside parameter. Maps are held in texture memory.
     int input_map_nside,
 
@@ -384,12 +298,12 @@ convolve_mueller_beams_with_map
             
             // Get value at sky_pixel
             float4 IQUV;
-            double I_pix, Q_pix, U_pix, V_pix;
+            double I_pix, Q_pix, U_pix;
             IQUV  = tex1Dfetch(tex_IQUV, eval_pixel );
             I_pix = IQUV.x; 
             Q_pix = IQUV.y; 
             U_pix = IQUV.z; 
-            V_pix = IQUV.w;
+            //V_pix = IQUV.w;
 
             // Get sky coordinates of eval_pixel
             double dec_eval, ra_eval;
@@ -399,47 +313,48 @@ convolve_mueller_beams_with_map
             dec_eval = pi/2.0 - dec_eval;
                         
             // compute dx/dy offsets from beam center to eval_pixel. Also computes pa at eval_pixel.
-            double tht_at_pix, phi_at_pix, psi_at_pix; 
+            double tht_at_pix, phi_at_pix, psi_at_pix;
             theta_phi_psi_pix( 
                              &tht_at_pix, &phi_at_pix, &psi_at_pix, 
                               ra_bc  , dec_bc, psi_bc,
                               ra_eval, dec_eval );
-            /* 
-            double dx,dy;
-            dx_dy_pix_rdelta(  
-                        ra_bc, dec_bc, psi_bc, 
-                        ra_eval, dec_eval,
-                        &dx, &dy );
             
-            pa_at_pix = pa_pix(  dx, dy, dec_bc, psi_bc );
-
-            double cdx = cos(dx);
-            double sdx = sin(dx);
-            double cdy = cos(dy);
-            double sdy = sin(dy);
-            double cr  = cdx * cdy;
-            
-            tht_at_pix = acos(cr);                                                                                 
-            phi_at_pix = atan2(sdy, sdx * cdy );
-            // Put phi in range {0, 2pi}
-            if( phi_at_pix < 0 )
-                phi_at_pix += twopi;
-            */
+            /*
+             * Uncomment below to make use of Ludwig's 3rd definition.
+             */
+            rho_sigma_chi_pix( &tht_at_pix, &phi_at_pix, &psi_at_pix,
+                                ra_bc, dec_bc, psi_bc,
+                                ra_eval, dec_eval );
 
             /*
-            if(U_pix != 0.0) 
+             * Uncomment below to override polarization angle correction.
+             */
+            // psi_at_pix = psi_bc;
+            
+            /*
+             * Uncomment for debugging.
+            if( s == 0 && pp == 0 )
             {
-              printf(" %lf, %lf, %lf, %lf, %lf, %lf, %lf, %lf \n", 
-                       psi_bc * 180.0 / pi,      ra_bc * 180.0 / pi,    dec_bc * 180.0 / pi, 
-                     ra_eval * 180.0 / pi,   dec_eval * 180.0 / pi, pa_at_pix * 180.0 / pi, 
-                  tht_at_pix * 180.0 / pi, phi_at_pix * 180.0 / pi );
-            } 
+                // Comment the above and uncomment this to use 3rd definition 
+                double rho_at_pix, sigma_at_pix, chi_at_pix;
+                rho_sigma_chi_pix( &rho_at_pix, &sigma_at_pix, &chi_at_pix,
+                                   ra_bc, dec_bc, psi_bc,
+                                   ra_eval, dec_eval );
+
+                double r2d = 180.0/pi;
+                printf( "ra_bc: %+2.4f dec_bc: %+2.4f psi_bc: %+2.4f\n",
+                         r2d * ra_bc, r2d * dec_bc, r2d * psi_bc );
+                printf( "delta rho: %+2.6f delta sigma: %+2.6f delta chi: %+2.6f\n", 
+                    r2d*(tht_at_pix - rho_at_pix), 
+                    r2d*(phi_at_pix - sigma_at_pix), 
+                    r2d*(psi_at_pix - chi_at_pix ) );
+            }
             */
 
             int     neigh_pixels[4];
             double           wgt[4]; 
             cuHealpix_interpolate( input_beam_nside, tht_at_pix, phi_at_pix, neigh_pixels, wgt ); 
-            double scaled_M_XX;
+            double scaled_M_XX = 0;
             
             M[0][0] = 0.0;
             for( int i=0; i < 4; i++ )
@@ -447,7 +362,7 @@ convolve_mueller_beams_with_map
                 scaled_M_XX = M_TT[ neigh_pixels[i] ] * wgt[i];
                 M[0][0] += scaled_M_XX;
             }
-            
+            /*
             M[0][1] = 0.0;
             for( int i=0; i < 4; i++ )
             {   
@@ -475,14 +390,14 @@ convolve_mueller_beams_with_map
                 scaled_M_XX = M_PT[ neigh_pixels[i] ] * wgt[i];
                 M[1][0] += scaled_M_XX;
             }
-            
+            */
             M[1][1] = 0.0;
             for( int i=0; i < 4; i++ )
             {   
                 scaled_M_XX = M_PP[ neigh_pixels[i] ] * wgt[i];
                 M[1][1] += scaled_M_XX;
             }
-            
+            /*
             M[1][2] = 0.0;
             for( int i=0; i < 4; i++ )
             {   
@@ -510,22 +425,21 @@ convolve_mueller_beams_with_map
                 scaled_M_XX = M_PsP[ neigh_pixels[i] ] * wgt[i];
                 M[2][1] += scaled_M_XX;
             }
-            
+            */
             M[2][2] = 0.0;
             for( int i=0; i < 4; i++ )
             {   
                 scaled_M_XX = M_PsPs[ neigh_pixels[i] ] * wgt[i];
                 M[2][2] += scaled_M_XX;
             }
-            
+            /* 
             M[2][3] = 0.0;
             for( int i=0; i < 4; i++ )
             {   
                 scaled_M_XX = M_PsV[ neigh_pixels[i] ] * wgt[i];
                 M[2][3] += scaled_M_XX;
             }
-
-            /*
+            
             M[3][0] = 0.0;
             for( int i=0; i < 4; i++ )
             {   
@@ -556,7 +470,6 @@ convolve_mueller_beams_with_map
             */
             
             double  q =  2*psi_at_pix;
-            //double    q =  2*psi_bc;
             double cq =        cos(q);
             double sq =        sin(q);
 
@@ -596,7 +509,6 @@ convolve_mueller_beams_with_map
             double Q = Q_obs[0];
             double U = U_obs[0];
             
-            //data[s] = cuCreal( S[0] ) + 0.5*cuCreal( cuCadd( cuCmul(S[1],r1 ),cuCmul(S[2],r2) ) );
             data[s] = I + Q*cos(2*cmb_pol_angle) + U*sin(2*cmb_pol_angle);
         }
 
@@ -644,6 +556,9 @@ libconvolve_cuda_deproject_detector
     double* reM_VP , double* imM_VP,
     double* reM_VPs, double* imM_VPs,
     double* reM_VV , double* imM_VV,
+    
+    // max pixel
+    int maxPix,
 
     // Maps with Stokes parameters
     int input_map_nside, int input_map_size, float I[], float Q[], float U[], float V[],
@@ -693,7 +608,7 @@ libconvolve_cuda_deproject_detector
     //
     allocate_and_transfer_mueller_beams
     (
-         input_beam_nside,
+         input_beam_nside, maxPix,
          reM_TT  ,  imM_TT,
          reM_TP  ,  imM_TP,
          reM_TPs ,  imM_TPs,

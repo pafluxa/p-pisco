@@ -7,6 +7,9 @@ from ConfigParser import SafeConfigParser
 
 def parse_config_file( path ):
     
+    # debug: set seed to numpy.random
+    numpy.random.seed( 42 )
+
     opts = {}
 
     parser = SafeConfigParser()
@@ -128,50 +131,77 @@ def parse_config_file( path ):
     
     beamParamsFile = parser.get( 'Beams', 'file' )
     inDegrees = parser.getboolean( 'Beams', 'angles in degrees' )
-    averagePairBeams = parser.getboolean( 'Beams', 'average beams for pairs' )
+    useNominal   = parser.getboolean( 'Beams', 'use nominal' )
     
+    averagePairFWHM  = parser.getboolean( 'Beams', 'match beam fwhm for pairs' )
+    averagePairTheta = parser.getboolean( 'Beams', 'match beam orientation for pairs' )
+    
+    # try to get parameter to enlarge beams
+    amplifyMismatch = False
+    try:
+        amplifyMismatch = parser.getboolean( 'Beams', 'amplify mismatch' )
+    except ValueError:
+        pass
+    
+    # in degrees by default
+    mismatch = 0.0
+    if amplifyMismatch:
+        mismatch = parser.getfloat( 'Beams', 'mismatch' )
+
     # load data
     beamData = pandas.read_csv( beamParamsFile, usecols=cols )
     
     uids  = beamData['Detector' ].values
-    feeds = beamData['Feed'].values
-    fwhmX = beamData['FWHM_x'].values
-    fwhmY = beamData['FWHM_y'].values
-    theta  = beamData['Theta'].values
+    feeds = beamData[     'Feed'].values
+    fwhmX = beamData[   'FWHM_x'].values
+    fwhmY = beamData[   'FWHM_y'].values
+    theta = beamData[    'Theta'].values
     
     if not inDegrees:
         fwhmX  = numpy.rad2deg( fwhmX )
         fwhmY  = numpy.rad2deg( fwhmY )
         theta  = numpy.rad2deg( theta )
-
-    if averagePairBeams:
-        # iterate over feeds
-        for feed in feeds:
+    
+    if useNominal:
+        fwhmX  = 1.5 * numpy.ones_like ( fwhmX ) 
+        fwhmY  = 1.5 * numpy.ones_like ( fwhmY ) 
+        theta  =       numpy.zeros_like( theta )
+    
+    # if mismatch is on, we need to rotate one of the beams by 90 degrees
+    beamRotDelta = 0.0
+    if amplifyMismatch:
+        beamRotDelta = 90
+    
+    # iterate over feeds
+    for feed in feeds:
+        
+        # find uids in the feed
+        pairUids = uids[ numpy.where( feeds == feed ) ]
+        
+        if( len(pairUids) != 2 ):
+            raise RuntimeError( "feed %d has only one detector." % (feed) )
+        
+        # array indexes, which might not be actual uids
+        idx0 = numpy.argwhere( uids == pairUids[0] )
+        idx1 = numpy.argwhere( uids == pairUids[1] )
+        
+        if averagePairFWHM:
             
-            # find uids in the feed
-            pairUids = uids[ numpy.where( feeds == feed ) ]
-            
-            if( len(pairUids) != 2 ):
-                raise RuntimeError( "feed %d has only one detector." % (feed) )
-
-            # array indexes, which might not be actual uids
-            idx0 = numpy.argwhere( uids == pairUids[0] )
-            idx1 = numpy.argwhere( uids == pairUids[1] )
-
             _fwhmX = 0.5 * ( fwhmX[ idx0 ] + fwhmX[ idx1 ] )
             _fwhmY = 0.5 * ( fwhmY[ idx0 ] + fwhmY[ idx1 ] )
-            _theta = 0.5 * ( theta[ idx0 ] + theta[ idx1 ] )
-
-            fwhmX[ idx0 ] = _fwhmX
-            fwhmX[ idx1 ] = _fwhmX
             
-            fwhmY[ idx0 ] = _fwhmY
+            fwhmX[ idx0 ] = _fwhmX + mismatch 
+            fwhmY[ idx0 ] = _fwhmY  
+            
+            fwhmX[ idx1 ] = _fwhmX + mismatch
             fwhmY[ idx1 ] = _fwhmY
-
+        
+        if averagePairTheta:
+            _theta = 0.5 * ( theta[ idx0 ] + theta[ idx1 ] )
             theta[ idx0 ] = _theta
-            theta[ idx1 ] = _theta
-    
-    opts[ 'beams' ] = { 'uids' : uids,
+            theta[ idx1 ] = _theta + beamRotDelta
+        
+    opts[ 'beams' ] = { 'uids'  : uids,
                         'fwhmX' : fwhmX,
                         'fwhmY' : fwhmY,
                         'theta' : theta }

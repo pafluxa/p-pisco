@@ -1,3 +1,6 @@
 paper_scripts/runs/
-paper_scripts/data/pointing/*
+paper_scripts/data/
+build
+tests
+tutorials
 *.pyc

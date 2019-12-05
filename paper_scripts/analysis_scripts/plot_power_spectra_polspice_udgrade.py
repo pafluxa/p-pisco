@@ -77,8 +77,6 @@ fwhm_y    = numpy.array( beam_data[ 'FWHM_y'] )
 rotation  = numpy.array( beam_data[  'Theta'] )
 #----------------------------------------------------------------------------------------------------------#
 
-lmax = 340
-
 # Compute PISCO maps
 AtA,AtD,NSIDE = data['AtA'], data['AtD'], data['nside'][()]
 pI,pQ,pU,pW = matrices_to_maps( NSIDE, AtA, AtD )
@@ -88,7 +86,7 @@ oI = numpy.load( sys.argv[3] )['I']
 oQ = numpy.load( sys.argv[3] )['Q']
 oU = numpy.load( sys.argv[3] )['U']
 
-lmax = 250
+lmax = 383
 
 # Define l numbers
 ell = numpy.arange( lmax + 1 )
@@ -111,7 +109,7 @@ wl_BB_mkb = wl_BB
 sI, sQ, sU = healpy.smoothing( (oI, oQ, oU), fwhm=numpy.radians(beam_fwhm), pol=True )
 
 w   = healpy.read_map( './data/masks/CLASS_coverage_mask.fits' )
-wUp = healpy.ud_grade( w, 256 )
+wUp = healpy.ud_grade( w, NSIDE )
 
 _,oTT,oEE,oBB,oTE,oTB,oEB = spice_wrap2( (oI,oQ,oU), (oI,oQ,oU), weights=w  , lmax=lmax )
 _,sTT,sEE,sBB,sTE,sTB,sEB = spice_wrap2( (sI,sQ,sU), (sI,sQ,sU), weights=w  , lmax=lmax )
