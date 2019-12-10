@@ -70,6 +70,7 @@ fwhm_x   = config['beams']['fwhmX']
 fwhm_y   = config['beams']['fwhmY']
 rotation = config['beams']['theta']
 print 'assembling focal plane beams'
+
 # TODO: put this in the config file
 beam_nside = 512
 beams      = [None] * receiver.ndets
@@ -95,7 +96,7 @@ I_map     = maps['I']
 Q_map     = maps['Q'] 
 U_map     = maps['U']
 # Set this guy to zero for now.
-V_map     = maps['V']*0
+V_map     = numpy.zeros_like( I_map )
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
@@ -106,6 +107,12 @@ pointing = numpy.load( config['pointingFile'] , mmap_mode='r')
 det_ra  = pointing['ra']
 det_dec = pointing['dec']
 det_pa  = pointing['pa']
+# FIXME: remove this stupid if statement
+if len( det_ra.shape ) == 1:
+    det_ra  = numpy.reshape( det_ra , ( int(len(uids)), -1 ) )
+    det_dec = numpy.reshape( det_dec, ( int(len(uids)), -1 ) )
+    det_pa  = numpy.reshape( det_pa , ( int(len(uids)), -1 ) )
+
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
@@ -152,7 +159,7 @@ for feed in numpy.unique( feeds ):
                       beams[ idx1 ][   'cx'],
                     
                       # use gpu two, limit memory usage to 7 GB
-                      gpu_dev=2, maxmem=7000 )
+                      gpu_dev=2, maxmem=8000 )
         
         else:
             data = numpy.zeros_like( det_ra[ idx0 ] )
@@ -162,8 +169,8 @@ for feed in numpy.unique( feeds ):
 # make isOff int32
 isOff = numpy.asarray( isOff, dtype='int32' )
 
+# force this to be 128
 out_nside = 128
-
 AtA, AtD = update_matrices(
              det_ra, det_dec, det_pa,
              receiver.pol_angles,

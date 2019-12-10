@@ -35,12 +35,12 @@ def deproject_sky_for_feedhorn(
     tic = time.time()
     M = CM.make_optical_mueller_matrix( beam_nside, beam0_co, beam0_cx, beam90_co, beam90_cx , grid_size )
     maxPix = M.max_pix
-    print maxPix, numpy.degrees( healpy.pix2ang( beam_nside, maxPix ) )
+    #print maxPix, numpy.degrees( healpy.pix2ang( beam_nside, maxPix ) )
     toc = time.time()
     
     # I like tic-toc
     elapsed = -(tic - toc)
-    print "make_optical_mueller_matrix:", elapsed*1000.0, 'ms'
+    print "\tmake_optical_mueller_matrix:", elapsed*1000.0, 'ms'
    
     # Build buffer of pixels as a evaluation grid
     sky_nside   = healpy.npix2nside(_I.size ) 
@@ -61,12 +61,12 @@ def deproject_sky_for_feedhorn(
     reqMem  = (nsamples * buffer_size + M_beams.size + _I.size * 4)
     reqMem *= 4
     
-    print reqMem/1e6, maxmem
+    #print reqMem/1e6, maxmem
 
     chunkit = False
     if reqMem / 1e6 > maxmem:
         chunkit = True    
-        print 'chunking'    
+        #print 'chunking'    
     
     if chunkit:
         
@@ -101,6 +101,10 @@ def deproject_sky_for_feedhorn(
                 tod )
             
             det_stream = numpy.concatenate( (det_stream,tod) ) 
+            
+            print 'chunk:', n, 'out of', len(cra)
+            n = n + 1
+
 
         det_stream = det_stream[1::]
         
@@ -175,7 +179,7 @@ def generate_TOD(
     sky_nside   = healpy.npix2nside(_I.size ) 
     nsamples    = det_stream.size
     
-    buffer_size = (int)( healpy.query_disc( sky_nside, (0,0,1), grid_size ).size * 1.5 )
+    buffer_size = (int)( healpy.query_disc( sky_nside, (0,0,1), grid_size ).size * 1.1 )
     
     # Normalize by M_TT
     d_omega_sky   = healpy.nside2pixarea( sky_nside )
@@ -190,12 +194,12 @@ def generate_TOD(
     reqMem  = (nsamples * buffer_size + M_beams.size + _I.size * 4)
     reqMem *= 4
     
-    print reqMem/1e6, maxmem
+    #print reqMem/1e6, maxmem
 
     chunkit = False
     if reqMem / 1e6 > maxmem:
         chunkit = True    
-        print 'chunking'    
+        #print 'chunking'    
     
     if chunkit:
         

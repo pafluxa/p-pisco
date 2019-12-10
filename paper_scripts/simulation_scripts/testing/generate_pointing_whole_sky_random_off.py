@@ -1,17 +1,20 @@
 # coding: utf-8
+import sys
+
 import numpy
 import healpy
 from healpy.rotator import euler_matrix_new, Rotator
 
-nside = 128
+nside = int( sys.argv[1] )
+symm_offsets = bool( int(sys.argv[2]) )
+print( symm_offsets )
+
 pixels = numpy.arange( healpy.nside2npix( nside ) )
 
 tht,phi = healpy.pix2ang( nside, pixels )
 
-tht_rot,phi_rot = Rotator(rot=(0.0,0.0,0.0))(tht, phi)
-
-ra  = phi_rot
-dec = numpy.pi/2.0 - tht_rot
+ra  = phi
+dec = numpy.pi/2.0 - tht
 
 # add some random errors to the pointing
 factor = 0.1
@@ -27,39 +30,53 @@ ra1  = ra  + y / numpy.cos(dec)
 ra1  = numpy.tile(  ra1, 3 )
 dec1 = numpy.tile( dec1, 3 )
 
-# generate position angles: 1 per pass.
-pa0 = numpy.zeros_like( ra )
-pa1 = pa0 + numpy.pi/4.0
-pa2 = pa0 + numpy.pi/2.0
-pa  = numpy.concatenate( (pa0,pa1,pa2) )
+if symm_offsets == False:
+    
+    print( "generating pointing with random offsets" )
 
-'''
-# with offsets subtracted
+    # if symm_offsets is False, then we generate a new set of offsets and subtract
+    # those from the original pointing.
+    x = numpy.random.uniform(-factor*pixSize / 2.0, factor*pixSize / 2.0, ra.size  )
+    y = numpy.random.uniform(-factor*pixSize / 2.0, factor*pixSize / 2.0, dec.size  )
+else:
+    # if symm_offsets is true, do nothing and subtract the offsets on the 
+    # next whole sky sweep
+    print( "generating pointing with symmetric random offsets" )
+    pass
+
 dec2 = dec - x
 ra2  = ra  - y / numpy.cos(dec)
-
 # tile
 ra2  = numpy.tile(  ra2, 3 )
 dec2 = numpy.tile( dec2, 3 )
 
-# concatenate
+# generate position angles per pixel (0,45 and 90 degrees)
+# one sweep obsevers at a single pa, but we have 6 sweeps because
+# of the offsets
+pa0   = numpy.zeros_like( ra )
+pa45  = pa0 + numpy.pi/4.0
+pa90  = pa0 + numpy.pi/2.0
+pa    = numpy.concatenate( (pa0,pa45,pa90,pa0,pa45,pa90) )
+
+# and finally concatenate to emulate having two detectors instead of one
 ra  = numpy.concatenate( ( ra1, ra2) )
 dec = numpy.concatenate( (dec1,dec2) )
-pa  = numpy.concatenate( (  pa,  pa) )
-'''
-ra  = numpy.concatenate( (ra1,ra1) )
-dec = numpy.concatenate( (dec1,dec1) )
-pa  = numpy.concatenate( (pa,pa) )
 
-# Make sure declation doesn't go outside limits
-dec[ dec >  numpy.pi/2.0 ] =  numpy.pi/2.0
-dec[ dec < -numpy.pi/2.0 ] = -numpy.pi/2.0
+ra  = numpy.concatenate( (ra , ra) )
+dec = numpy.concatenate( (dec,dec) )
+pa  = numpy.concatenate( (pa,  pa) )
 
-# reshape to fool PISCO
-ra  =  ra.reshape( (2,-1) )
-dec = dec.reshape( (2,-1) )
-pa  =  pa.reshape( (2,-1) )
+basename = ""
+if symm_offsets == True:
+    basename = 'withSymmetricRandomOffsets' 
+else:
+    basename = 'withRandomOffsets'
 
-print ra.shape, dec.shape, pa.shape
+file_name = basename + '_ndays_{}_nscans_1_sps_1Hz.npz'.format( nside )
 
-numpy.savez( '../../data/pointing/wholeSkyPointingRandomNoiseAsym_ndays_128_nscans_1_sps_1Hz.npz' , ra=ra,dec=dec,pa=pa )
+# print shape for sanity check
+#print ra.shape, dec.shape, pa.shape
+#print 2*3*2*pixels.size
+print( "writing to disk..." )
+numpy.savez( file_name , ra=ra,dec=dec,pa=pa )
+print( "done writing" )

@@ -104,7 +104,7 @@ I_map     = maps['I']
 Q_map     = maps['Q'] 
 U_map     = maps['U']
 # Set this guy to zero for now.
-V_map     = maps['V']*0
+V_map     = maps['I']*0
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
@@ -129,7 +129,7 @@ for idx in numpy.arange( receiver.ndets ):
     data = None
     if isOn[ idx ] == 1:
         
-        print( beam_nside )
+        print( idx, receiver.ndets )
 
         data = generate_TOD( 
                   # detector pointing
@@ -142,7 +142,7 @@ for idx in numpy.arange( receiver.ndets ):
                   # beamsor
                   beam_nside, beamsors[ idx ],
                   # use gpu zero, limit memory usage to 8 GB
-                  gpu_dev=0, maxmem=8000 ) 
+                  gpu_dev=2, maxmem=8000 ) 
     else:
         data = numpy.zeros_like( det_ra[ idx ] )
 
@@ -151,12 +151,13 @@ for idx in numpy.arange( receiver.ndets ):
 # make isOff int32
 isOff = numpy.asarray( isOff, dtype='int32' )
 
+out_nside=128
 AtA, AtD = update_matrices(
              det_ra, det_dec, det_pa,
              receiver.pol_angles,
              detector_data,
-             map_nside,
+             out_nside,
              det_mask=isOff )
 
 # Save matrices
-numpy.savez( output_file, AtA=AtA, AtD=AtD, nside=map_nside )
+numpy.savez( output_file, AtA=AtA, AtD=AtD, nside=out_nside )

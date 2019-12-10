@@ -16,7 +16,7 @@
 #include <cuda.h>
 
 #define CUDA_BLOCK_SIZE     32
-#define CUDA_NUM_BLOCKS    128
+#define CUDA_NUM_BLOCKS     64
 
 // Instantiate texture space for sky maps
 texture<float4, 1, cudaReadModeElementType> tex_IQUV;
@@ -152,7 +152,7 @@ void allocate_and_transfer_mueller_beams
 {
     int input_beam_size = maxPix;
     
-    printf( "%d\n", input_beam_size );
+    //printf( "%d\n", input_beam_size );
 
     //######################################################################################################
     // Allocate space on the GPU
@@ -589,7 +589,7 @@ libconvolve_cuda_deproject_detector
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&milliseconds, start, stop);
-    printf( "transfer_pointing_streams: %f ms\n", milliseconds );
+    printf( "\ttransfer_pointing_streams: %f ms\n", milliseconds );
     
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
@@ -600,7 +600,7 @@ libconvolve_cuda_deproject_detector
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&milliseconds, start, stop);
-    printf( "build_and_transfer_eval_grid: %f ms\n", milliseconds );
+    printf( "\tbuild_and_transfer_eval_grid: %f ms\n", milliseconds );
 
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
@@ -630,7 +630,7 @@ libconvolve_cuda_deproject_detector
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&milliseconds, start, stop);
-    printf( "allocate_and_transfer_mueller_beams: %f ms\n", milliseconds );
+    printf( "\tallocate_and_transfer_mueller_beams: %f ms\n", milliseconds );
     texturize_maps( input_map_size, I, Q, U, V );
     
     
@@ -665,7 +665,7 @@ libconvolve_cuda_deproject_detector
     cudaEventRecord(stop);
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&milliseconds, start, stop);
-    printf( "convolve_mueller_beams_with_map: %f ms\n", milliseconds );
+    printf( "\tconvolve_mueller_beams_with_map: %f ms\n", milliseconds );
     
     cudaEventDestroy(start);
     cudaEventDestroy(stop);
