@@ -30,7 +30,7 @@ class ComplexMuellerMatrix( object ):
 
         self = cls()
         
-        self.max_pix = healpy.ang2pix( beam_nside, grid_size*2, 0.0 )
+        self.max_pix = (int)( healpy.ang2pix( beam_nside, grid_size, 0.0 )*1.2 )
         #self.max_pix = self.max_pix#healpy.nside2npix( beam_nside )
         self.npix    = self.max_pix
     
@@ -39,8 +39,7 @@ class ComplexMuellerMatrix( object ):
                         Ey_co[ 0:self.max_pix ], 
                         Ey_cx[ 0:self.max_pix ] )
 
-        #zeroes = numpy.zeros( self.npix - self.max_pix, dtype='float' )
-        zeroes = numpy.zeros( 10, dtype='float' )
+        zeroes = numpy.zeros( 10 )
         
         self.M_TT = numpy.concatenate( (self.compute_MTT(), zeroes ) )
         self.M_TQ = numpy.concatenate( (self.compute_MTQ(), zeroes ) )

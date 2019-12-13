@@ -38,6 +38,8 @@ def spice_wrap2(m1, m2, weights=None, lmax=300):
     hp.write_map(mapfile1, m1, overwrite=True)
     hp.write_map(mapfile2, m2, overwrite=True)
     hp.write_map(weightfile, weights, overwrite=True)
+    
+    print "running polspice..."
 
     command = [
         '/home/pafluxa/software/PolSpice_v03-05-01/build/spice',
@@ -57,6 +59,8 @@ def spice_wrap2(m1, m2, weights=None, lmax=300):
     os.system(' '.join(command))
     ell, TT, EE, BB, TE, TB, EB = np.loadtxt(clfile,unpack=True)
     os.system('rm temp*')
+
+    print "done."
 
     return ell,TT,EE,BB,TE,TB,EB
 
@@ -80,24 +84,18 @@ output_path = config['outputFile']
 
 # build maps from PISCO generated TOD
 data = numpy.load( output_path )
+print "mapping..."
 AtA,AtD,NSIDE = data['AtA'], data['AtD'], data['nside'][()]
 pI,pQ,pU,pW = matrices_to_maps( NSIDE, AtA, AtD )
-
-
-# create a coverage mask
-covMask = numpy.zeros_like( pW, dtype=bool )
-tht,_ = healpy.pix2ang( NSIDE, numpy.arange( pW.size ) )
-dec   = 90 - numpy.rad2deg( tht )
-#covMask = numpy.where( numpy.logical_and( dec < 30, dec > -65 ) )
-#seenPixels = pW[ covMask ]
-#print numpy.sum( seenPixels < 1 ), seenPixels.size
+print "done."
 
 # Read original maps from disk
 maps      = numpy.load( config['inputMapPath'] )
-oI        = maps['I'] 
-oQ        = maps['Q'] + 1e-16
-oU        = maps['U'] + 1e-16
+oI        = maps['I']
+oQ        = maps['Q']
+oU        = maps['U']
 map_nside = maps['nside'][()]
+print( (oI.shape[0]/12.0)**0.5 )
 
 lmax = 250
 
@@ -105,51 +103,60 @@ lmax = 250
 pI *= 1e6
 pQ *= 1e6
 pU *= 1e6
+
 oI *= 1e6
 oQ *= 1e6
 oU *= 1e6
 
 # Define l numbers                                                                                            
-ell = numpy.arange( lmax + 1 )                                                                                
-ell2 = 2 * numpy.pi * ell * (ell+1)   
+ell   = numpy.arange( 1, lmax + 1 )                                                                                
+dl2cl = 1./( (2*numpy.pi)**2 /( ell*(ell+1) ) )
 
 # Get window function considering all beams in the focal plane                                                
 print fwhm_x, fwhm_y
+beam_fwhm = 1.5
+'''
 w, beam_fwhm = make_composite_elliptical_beam_window_function( fwhm_x, fwhm_y, lmax, pol=True )               
 glTT_mkb, glEE_mkb, glBB_mkb, glTE_mkb = w                                                                    
-wl_TT_mkb = (glTT_mkb**2)# * pixwin_temp )                                                                    
-wl_EE_mkb = (glEE_mkb**2)# * pixwin_pol  )                                                                    
-wl_BB_mkb = (glBB_mkb**2)# * pixwin_pol  )                                                                    
-                                                                                                              
+wl_TT_mkb = (glTT_mkb**2)                                                                    
+wl_EE_mkb = (glEE_mkb**2)                                                                    
+wl_BB_mkb = (glBB_mkb**2)                                                                    
+'''
+
 # Get window function of equivalent Gaussian beam
 glTT, glEE, glBB, glTE = healpy.sphtfunc.gauss_beam( numpy.radians(beam_fwhm), pol=True, lmax=lmax ).T
-wl_TT = (glTT**2)
-wl_EE = (glEE**2)
-wl_BB = (glBB**2)
+wl_TT = (glTT**2)[1:lmax+1]
+wl_EE = (glEE**2)[1:lmax+1]
+wl_BB = (glBB**2)[1:lmax+1]
 
+#print( "smoothing..." )
 # Convolve original maps using smoothing
-sI, sQ, sU = healpy.smoothing( (oI, oQ, oU), fwhm=numpy.radians(beam_fwhm), pol=True )
-
+#sI, sQ, sU = healpy.smoothing( (oI, oQ, oU), fwhm=numpy.radians(beam_fwhm), pol=True )
+#print( "done.")
 #w = healpy.read_map( './data/masks/CLASS_coverage_mask.fits' )
 #wUp = healpy.ud_grade( w, NSIDE )
-_,oTT,oEE,oBB,oTE,oTB,oEB = spice_wrap2( (oI,oQ,oU), (oI,oQ,oU), weights=None, lmax=lmax ) 
-_,sTT,sEE,sBB,sTE,sTB,sEB = spice_wrap2( (sI,sQ,sU), (sI,sQ,sU), weights=None, lmax=lmax )
-_,pTT,pEE,pBB,pTE,pTB,pEB = spice_wrap2( (pI,pQ,pU), (pI,pQ,pU), weights=None, lmax=lmax )
+#_,sTT,sEE,sBB,sTE,sTB,sEB = spice_wrap2( (sI,sQ,sU), (sI,sQ,sU), weights=w, lmax=lmax )
+
+_,oTT,oEE,oBB,_,_,_ = spice_wrap2( (oI,oQ,oU), (oI,oQ,oU), weights=None, lmax=lmax ) 
+_,pTT,pEE,pBB,_,_,_ = spice_wrap2( (pI,pQ,pU), (pI,pQ,pU), weights=None, lmax=lmax ) 
+#pTT, pEE, pBB, _, _, _ = healpy.anafast( (oI,oQ,oU), pol=True, alm=False, iter=3 )          
+
+#_,pTT,pEE,pBB,pTE,pTB,pEB = spice_wrap2( (pI,pQ,pU), (pI,pQ,pU), weights=w, lmax=lmax )
 
 
 # Adjust to the lmax parameter, because Spice doesn't have that option
 # and convert to uK**2
-oTT = oTT[0:lmax+1]
-oEE = oEE[0:lmax+1]
-oBB = oBB[0:lmax+1]
+oTT = oTT[1:lmax+1]
+oEE = oEE[1:lmax+1]
+oBB = oBB[1:lmax+1]
 
-sTT = sTT[0:lmax+1]
-sEE = sEE[0:lmax+1]
-sBB = sBB[0:lmax+1]
+#sTT = sTT[0:lmax+1]
+#sEE = sEE[0:lmax+1]
+#sBB = sBB[0:lmax+1]
 
-pTT = pTT[0:lmax+1]
-pEE = pEE[0:lmax+1]
-pBB = pBB[0:lmax+1]
+pTT = pTT[1:lmax+1] / wl_TT
+pEE = pEE[1:lmax+1] / wl_EE
+pBB = pBB[1:lmax+1] / wl_BB
 
 fig  = pylab.figure( figsize=(20,5) )                                                                         
                                                                                                               
@@ -157,55 +164,55 @@ ax_TT = fig.add_subplot( 131 )
 ax_TT.set_title( r'TT Power Spectra' )                                                                        
 ax_TT.set_xlabel( r'$\ell$' )                                                                                 
 ax_TT.set_ylabel( r'uK$^2$' )                                                                                  
-#ax_TT.set_ylim( (1e-6,1e-3) )                                                                              
+ax_TT.set_ylim( (100,6000) )                                                                              
 ax_TT.set_xlim( (2,lmax) )                                                                                    
 #ax_TT.set_yscale('symlog', linthreshy=1e-7)                                                                  
-ax_TT.set_xscale('log')                                                                                       
+#ax_TT.set_xscale('log')                                                                                       
                                                                                                               
 ax_EE = fig.add_subplot( 132 )                                                                                
 ax_EE.set_title( r'EE Power Spectra' )                                                                        
 ax_EE.set_xlabel( r'$\ell$' )                                                                                 
 ax_EE.set_xlim( (2,lmax) )                                                                                    
-ax_EE.set_ylim( ( 1e-4,2) )                                                                              
-ax_EE.set_yscale('symlog', linthreshy=1e-4)                                                                  
-ax_EE.set_xscale('log')                                                                                       
+ax_EE.set_ylim( ( 0,2) )                                                                              
+#ax_EE.set_yscale('symlog', linthreshy=1e-4)                                                                  
+#ax_EE.set_xscale('log')                                                                                       
                                                                                                               
 ax_BB = fig.add_subplot( 133 )                                                                                
 ax_BB.set_title( r'BB Power Spectra' )                                                                        
 ax_BB.set_xlabel( r'$\ell$' )                                                                                 
 ax_BB.set_xlim( (2,lmax) )                                                                                    
-ax_BB.set_ylim( (-1e-4,1e0) )                                                                              
-ax_BB.set_yscale('symlog', linthreshy=1e-5)                                                                  
-ax_BB.set_xscale('log')                                                                                       
+ax_BB.set_ylim( (-1e-3,1e0) )                                                                              
+ax_BB.set_yscale('symlog', linthreshy=1e-4)                                                                  
+#ax_BB.set_yscale('log')                                                                                       
                                                                                                               
 # Plot C_\ell^{TT} for original maps                                                                          
 #ax_TT.plot( ell2*oTT, c='black', alpha=1.0,                                                                   
 #            label='$C_{\ell}^{TT}$ of input CMB.' )                                                           
 # Plot C_\ell^{TT} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function from MKB 
-ax_TT.plot( ell2*pTT/(wl_TT), c='blue', alpha=0.6,                                                        
-            label='$C_{\ell}^{TT} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' )                              
+ax_TT.plot( dl2cl*pTT, c='red', alpha=0.6,                                                        
+            label='$C_{\ell}^{TT}$ original.' )                              
 # Plot C_\ell^{TT} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_TT.plot( ell2*oTT, c='red', alpha=0.6,                                                               
+ax_TT.plot( dl2cl*oTT, c='black', linestyle='--', alpha=0.6,                                                               
             label='$C_{\ell}^{TT} / w_{\ell}^{\mathrm{csg}}$ of smoothed input CMB.' )                        
                                                                                                               
 # Plot C_\ell^{EE} for original maps                                                                          
 #ax_EE.plot( ell2*oEE, c='black', alpha=1.0,                                                                   
 #             label='$C_{\ell}^{EE}$ of input CMB.' )                                                           
 # Plot C_\ell^{EE} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function          
-ax_EE.plot( ell2*pEE/(wl_EE), c='blue', alpha=0.6,                                                        
+ax_EE.plot( dl2cl*pEE, c='red', alpha=0.6,                                                        
             label='$C_{\ell}^{EE} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' )                              
 # Plot C_\ell^{EE} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_EE.plot( ell2*sEE/wl_EE, c='red', alpha=0.6,                                                               
+ax_EE.plot( dl2cl*oEE, c='black', linestyle='--', alpha=0.6,
             label='$C_{\ell}^{EE} / w_{\ell}^{\mathrm{csg}}$ of smoothed input CMB.' )                        
                                                                                                               
 # Plot C_\ell^{BB} for original maps                                                                          
 #ax_BB.plot( ell2*oBB, c='black', alpha=1.0,                                                                   
 #            label='$C_{\ell}^{BB}$ of input CMB.' )                                                           
 # Plot C_\ell^{BB} of PISCO output, divided by a Circularly Symmetric Gaussian (csg) window function          
-ax_BB.plot( ell2*pBB/(wl_BB), c='blue', alpha=0.6,                                                        
+ax_BB.plot( dl2cl*pBB, c='red', alpha=0.6,                                                        
             label='$C_{\ell}^{BB} / w_{\ell}^{\mathrm{mkb}}$ of PISCO output.' )                              
 # Plot C_\ell^{BB} of smoothed original maps, divided by a Circularly Symmetric Gaussian (csg) window function
-ax_BB.plot( ell2*sBB/wl_BB, c='red', alpha=0.6,                                                               
+ax_BB.plot( dl2cl*oBB, c='black', alpha=0.6, linestyle='--',                                                              
             label='$C_{\ell}^{BB} / w_{\ell}^{\mathrm{csg}}$ of smoothed input CMB.' )                        
 ax_TT.legend()                                                                                                
 ax_EE.legend()                                                                                                

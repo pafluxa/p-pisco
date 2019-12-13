@@ -170,7 +170,7 @@ setup(
                 #=============================================
                 'pisco.beam_analysis',
                 'pisco.pointing',
-                'pisco.calibration',
+                #'pisco.calibration',
                 'pisco.mapping',
                 'pisco.convolution',
                 'pisco.tod',
@@ -180,15 +180,15 @@ setup(
                 # Instrument specific stuff. Add new ones here
                 #=============================================
                 'pisco.experiments',
-                'pisco.experiments.class_telescope',
-                'pisco.experiments.class_telescope.input_output',
-                'pisco.experiments.class_telescope.calibration',
-                'pisco.experiments.class_telescope.misc',
+                #'pisco.experiments.class_telescope',
+                #'pisco.experiments.class_telescope.input_output',
+                #'pisco.experiments.class_telescope.calibration',
+                #'pisco.experiments.class_telescope.misc',
                 #=============================================
                ],
     author  = 'Pedro A. Fluxa Rojas.',
     author_email = 'pafluxa@astro.puc.cl',
-    version = '0.2',
+    version = '0.2.2',
     ext_modules = extensions,   
     )
 # *****************************************************************************

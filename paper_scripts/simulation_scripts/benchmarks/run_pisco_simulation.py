@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-__GPU_DEVICE__=2
-
 import array_split
 from array_split import array_split, shape_split
 
@@ -15,7 +13,8 @@ import sys
 
 import pisco
 from pisco.beam_analysis.utils import *
-from pisco.convolution.core import deproject_sky_for_feedhorn
+from pisco.convolution.core import generate_TOD
+from pisco.beam_analysis.mueller import ComplexMuellerMatrix as CM
 from pisco.mapping.core import *
 from pisco.pointing import *
 from pisco.pointing.core import *
@@ -60,6 +59,7 @@ elOff  = config['focalplane']['elOff']
 detPol = config['focalplane']['detPol']
 isOn   = config['focalplane']['on']
 isOff  = (isOn + 1) % 2 
+#print isOff
 
 receiver = Receiver()
 receiver.initialize( uids, azOff, elOff, detPol )
@@ -67,33 +67,35 @@ receiver.initialize( uids, azOff, elOff, detPol )
 
 #----------------------------------------------------------------------------------------------------------#
 # Assemble beams across the focal plane
+print 'assembling beamsors'
 fwhm_x   = config['beams']['fwhmX']
 fwhm_y   = config['beams']['fwhmY']
 rotation = config['beams']['theta']
-print 'assembling focal plane beams'
-# TODO: put this in the config file
-beam_nside  = config['beamcfg']['nside']
-# in degrees!
-beam_maxrho = config['beamcfg']['maxRho']
-print( beam_nside, beam_maxrho )
 
-beams       = [None] * receiver.ndets
+for x,y,r in zip(fwhm_x, fwhm_y, rotation): 
+    print( x, y, r )
+
+# TODO: put this in the config file
+# Assemble all beamsors using "dumb" beams
+# This is a very simple case where it is assumed that whatever mismatch is observed in the beams is not
+# related to polarizing properties of the receiver. The consequence is that every detector has a beamsor
+# that is "diagonal" by its own, i.e. all leakage componets are zero.
+beam_nside = config['beamcfg']['nside']
+maxRho     = config['beamcfg']['maxRho']
+print( "beam nside = ", beam_nside )
+beamsors   = []
 for idx in range( receiver.ndets ):
 
     # Note fwhm_x and fwhm_y are inverted. This is because they come from fitting the beam
     # in az-alt coordinates, where x points East-West and Y North South.
     # This function uses HEALPix convention, where x points North-South and y East-West
+    #print fwhm_y[idx], fwhm_x[idx]
+    E_co    = make_gaussian_elliptical_beam( beam_nside, fwhm_y[idx], fwhm_x[idx], phi_0=-rotation[idx] )
+    E_cx    = numpy.zeros_like( E_co )
+    beamsor = CM.make_optical_mueller_matrix( beam_nside, E_co, E_cx, E_co, E_cx, numpy.radians(maxRho) )
 
-    #print fwhm_x[idx], fwhm_y[idx], rotation[idx]
-    beam_co   = make_gaussian_elliptical_beam( 
-        beam_nside, 
-        fwhm_y[idx], fwhm_x[idx], phi_0=-rotation[idx],
-        max_extent=beam_maxrho )
-    
-    # no cross-polar beams
-    beam_cx   = numpy.zeros_like( beam_co )
-    
-    beams[idx] = { 'co': beam_co , 'cx': beam_cx, 'nside': beam_nside }
+    #beamsor.plot( numpy.abs ) 
+    beamsors.append( beamsor )
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
@@ -104,7 +106,7 @@ I_map     = maps['I']
 Q_map     = maps['Q'] 
 U_map     = maps['U']
 # Set this guy to zero for now.
-V_map     = maps['V']*0
+V_map     = maps['I']*0
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
@@ -120,60 +122,37 @@ det_pa  = pointing['pa']
 #----------------------------------------------------------------------------------------------------------#
 # Setup detector data buffer
 #----------------------------------------------------------------------------------------------------------#
-detector_data = numpy.zeros_like( det_ra )
+nsamples = det_ra.shape[1]
+detector_data = numpy.zeros( (receiver.ndets, nsamples), dtype='float32' )
 #----------------------------------------------------------------------------------------------------------#
 
 # Generate TOD data 
-for feed in numpy.unique( feeds ):
+for idx in numpy.arange( receiver.ndets ):
     
-    # Find all uids that share the same feed
-    pairs = uids[ feeds == feed ] 
-    
-    for i,det in zip(range(2), pairs):
+    data = None
+    if isOn[ idx ] == 1:
         
-        pair = pairs[ (i+1) % 2 ]
-        idx0 = numpy.argwhere( uids ==  det )[0][0]
-        idx1 = numpy.argwhere( uids == pair )[0][0]
+        print( idx, receiver.ndets )
 
-        print "detector", det, "with index", idx0, "is in feed", feed, \
-               "and is paired to detector", pair, "which has index", idx1
+        data = generate_TOD( 
+                  # detector pointing
+                  det_ra [ idx ], 
+                  det_dec[ idx ], 
+                  det_pa [ idx ],
+                  receiver.pol_angles[ idx ],
+                  # input sky
+                  (I_map,Q_map,U_map,V_map),
+                  # beamsor
+                  beam_nside, beamsors[ idx ],
+                  # use gpu zero, limit memory usage to 7 GB
+                  gpu_dev=2, maxmem=7000 ) 
 
-        data = None
-
-        if isOn[ idx0 ] == 1:
-
-            data = deproject_sky_for_feedhorn( 
-                      # detector pointing
-                      det_ra [ idx0 ], 
-                      det_dec[ idx0 ], 
-                      det_pa [ idx0 ],
-                      receiver.pol_angles[ idx0 ],
-                        
-                      # input sky
-                      (I_map,Q_map,U_map,V_map),
-                      
-                      # beams, to build beam tensor
-                      beams[ idx0 ]['nside'],
-                      beams[ idx0 ][   'co'], 
-                      beams[ idx0 ][   'cx'], 
-                      beams[ idx1 ][   'co'], 
-                      beams[ idx1 ][   'cx'],
-                      
-                      # grid size from config file
-                      grid_size = numpy.deg2rad( beam_maxrho ),
-
-                      # use gpu two, limit memory usage to 7 GB
-                      gpu_dev=__GPU_DEVICE__, maxmem=7000 )
-        
-        else:
-            data = numpy.zeros_like( det_ra[ idx0 ] )
-
-        detector_data[ idx0 ] = data
+        detector_data[ idx ] = data
 
 # make isOff int32
 isOff = numpy.asarray( isOff, dtype='int32' )
 
-out_nside = 128
+out_nside=128
 AtA, AtD = update_matrices(
              det_ra, det_dec, det_pa,
              receiver.pol_angles,

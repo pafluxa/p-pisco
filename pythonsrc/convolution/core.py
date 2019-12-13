@@ -10,6 +10,8 @@ from pisco.beam_analysis.mueller import ComplexMuellerMatrix as CM
 
 import time
 
+import sys
+
 def deproject_sky_for_feedhorn(
         feed_ra, feed_dec, feed_pa, 
         det_pol_angle, 
@@ -145,7 +147,6 @@ def deproject_sky_for_feedhorn(
         return det_stream
 
 def generate_TOD(
-
         feed_ra, feed_dec, feed_pa,  
         det_pol_angle, 
         sky,
@@ -166,15 +167,6 @@ def generate_TOD(
     # Create buffers for detector streams
     det_stream = numpy.zeros_like( feed_ra, dtype='float64' )
     
-    '''
-    # Build Complex Mueller Matrices of the optics
-    tic = time.time()
-    M = CM.make_optical_mueller_matrix( beam_nside, beam0_co, beam0_cx, beam90_co, beam90_cx , grid_size )
-    maxPix = M.max_pix
-    print maxPix, numpy.degrees( healpy.pix2ang( beam_nside, maxPix ) )
-    toc = time.time()
-    '''
-    
     # Build buffer of pixels as a evaluation grid
     sky_nside   = healpy.npix2nside(_I.size ) 
     nsamples    = det_stream.size
@@ -190,12 +182,16 @@ def generate_TOD(
     M_beams = beamsor.get_M( complex = True )
     M_beams = M_beams / norm
     
+    print M_beams.dtype,  numpy.real( M_beams ).dtype
+
     maxPix  = beamsor.max_pix
     reqMem  = (nsamples * buffer_size + M_beams.size + _I.size * 4)
     reqMem *= 4
     
-    #print reqMem/1e6, maxmem
-
+    print "buffer size in Gigabytes:", ( reqMem * 1e-9)
+    print "chunks: ", (int)( reqMem / 1e6 )/maxmem + 1
+    #sys.exit(1)
+    
     chunkit = False
     if reqMem / 1e6 > maxmem:
         chunkit = True    

@@ -1,8 +1,5 @@
 #include <healpix_utils.cuh>
 #include <sky_coords.cuh>
-#include <complex_la.h>
-
-//#include <rotations.cuh>
 
 #include <cuda_utils.h>
 
@@ -16,10 +13,11 @@
 #include <cuda.h>
 
 #define CUDA_BLOCK_SIZE     32
-#define CUDA_NUM_BLOCKS     64
+#define CUDA_NUM_BLOCKS    128
 
 // Instantiate texture space for sky maps
 texture<float4, 1, cudaReadModeElementType> tex_IQUV;
+texture<float4, 1, cudaReadModeElementType> tex_beamsor;
 
 
 //######################################################################################################
@@ -36,6 +34,9 @@ double *gpu_tod;
 
 float4* gpu_IQUV;
 float4* host_IQUV;
+
+float4* gpu_beamsor;
+float4* host_beamsor;
 
 //######################################################################################################
 // Mueller Matrices in real form
@@ -76,6 +77,43 @@ void texturize_maps
     //######################################################################################################
     // Bind Texture
     gpu_error_check( cudaBindTexture(0, tex_IQUV, gpu_IQUV, input_map_size * sizeof(float4) ) );
+    //######################################################################################################
+}
+
+void texturize_beamsor
+(
+    int beam_max_pix,
+    float M00[], 
+    float M11[], 
+    float M22[], 
+    float M33[]
+)
+{
+    gpu_error_check( cudaMallocHost( (void**)&host_beamsor, sizeof( float4 ) * beam_max_pix ) );
+
+    gpu_error_check( cudaMalloc( (void**)&gpu_beamsor, sizeof( float4 ) * beam_max_pix ) );
+
+    for( int pix=0; pix < beam_max_pix; pix++ )
+    {
+        host_beamsor[pix].x = M00[ pix ];
+        host_beamsor[pix].y = M11[ pix ];
+        host_beamsor[pix].z = M22[ pix ];
+        host_beamsor[pix].w = M33[ pix ];
+
+    }
+
+    //######################################################################################################
+    // Transfer maps to GPU
+    //######################################################################################################
+    gpu_error_check(
+        cudaMemcpy(
+        gpu_beamsor,            // destination
+        host_beamsor,           // source
+        beam_max_pix * sizeof(float4),   // amount of bytes
+        cudaMemcpyHostToDevice ) );        // specify direction of transfer
+    //######################################################################################################
+    // Bind Texture
+    gpu_error_check( cudaBindTexture(0, tex_beamsor, gpu_beamsor, beam_max_pix * sizeof(float4) ) );
     //######################################################################################################
 }
 
@@ -150,56 +188,92 @@ void allocate_and_transfer_mueller_beams
     double reM_VV[],  double imM_VV[]
 )
 {
+
     int input_beam_size = maxPix;
     
-    //printf( "%d\n", input_beam_size );
+    printf( "beam has %d pixels\n", input_beam_size );
 
     //######################################################################################################
     // Allocate space on the GPU
     //######################################################################################################
     // First Row
     gpu_error_check( cudaMalloc( (void**)&gpu_M_TT,   sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_TP,   sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_TPs,  sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_TV,   sizeof( double ) * input_beam_size ) );
     // Second Row
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_PT,   sizeof( double ) * input_beam_size ) );
+    //gpu_error_check( cudaMalloc( (void**)&gpu_M_PT,   sizeof( double ) * input_beam_size ) );
     gpu_error_check( cudaMalloc( (void**)&gpu_M_PP,   sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_PPs,  sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_PV,   sizeof( double ) * input_beam_size ) );
     // Third Row
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_PsT,  sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_PsP,  sizeof( double ) * input_beam_size ) );
     gpu_error_check( cudaMalloc( (void**)&gpu_M_PsPs, sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_PsV,  sizeof( double ) * input_beam_size ) );
     // Fourth Row
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_VT,   sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_VP,   sizeof( double ) * input_beam_size ) );
-    gpu_error_check( cudaMalloc( (void**)&gpu_M_VPs,  sizeof( double ) * input_beam_size ) );
     gpu_error_check( cudaMalloc( (void**)&gpu_M_VV,   sizeof( double ) * input_beam_size ) );
     
     //######################################################################################################
     // Move stuff to the GPU
     //######################################################################################################
-    gpu_error_check( cudaMemcpy( gpu_M_TT,   reM_TT,   sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_TP,   reM_TP,   sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_TPs,  reM_TPs,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_TV,   reM_TV,   sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
+    gpu_error_check( cudaMemcpy( gpu_M_TT,  reM_TT,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
     // Second Row
-    gpu_error_check( cudaMemcpy( gpu_M_PT,   reM_PT,   sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_PP,   reM_PP,   sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_PPs,  reM_PPs,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_PV,   reM_PV,   sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
+    gpu_error_check( cudaMemcpy( gpu_M_PP,  reM_PP,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
     // Third Row
-    gpu_error_check( cudaMemcpy( gpu_M_PsT,  reM_PsT,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_PsP,  reM_PsP,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_PsPs, reM_PsPs, sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_PsV,  reM_PsV,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
+    gpu_error_check( cudaMemcpy( gpu_M_PsPs,reM_PsPs,sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
     // Fourth Row
-    gpu_error_check( cudaMemcpy( gpu_M_VT,   reM_VT ,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_VP,   reM_VP ,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_VPs,  reM_VPs,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
-    gpu_error_check( cudaMemcpy( gpu_M_VV,   reM_VV ,  sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
+    gpu_error_check( cudaMemcpy( gpu_M_VV,  reM_VV , sizeof( double ) * input_beam_size  , cudaMemcpyHostToDevice));
+    
+    printf( "beam has %d pixels\n", input_beam_size );
+
+}
+
+void allocate_and_transfer_mueller_beams_float32
+(
+    int input_beam_nside,
+    
+    int maxPix,
+
+    float reM_TT[],  float imM_TT[],
+    float reM_TP[],  float imM_TP[],
+    float reM_TPs[], float imM_TPs[],
+    float reM_TV[],  float imM_TV[],
+
+    float reM_PT[],  float imM_PT[],
+    float reM_PP[],  float imM_PP[],
+    float reM_PPs[], float imM_PPs[],
+    float reM_PV[],  float imM_PV[],
+
+    float reM_PsT[],  float imM_PsT[],
+    float reM_PsP[],  float imM_PsP[],
+    float reM_PsPs[], float imM_PsPs[],
+    float reM_PsV[],  float imM_PsV[],
+
+    float reM_VT[],  float imM_VT[],
+    float reM_VP[],  float imM_VP[],
+    float reM_VPs[], float imM_VPs[],
+    float reM_VV[],  float imM_VV[]
+)
+{
+    int input_beam_size = maxPix;
+    
+    printf( "beam has %d pixels\n", input_beam_size );
+
+    //######################################################################################################
+    // Allocate space on the GPU
+    //######################################################################################################
+    // First Row
+    gpu_error_check( cudaMalloc( (void**)&gpu_M_TT,   sizeof( float ) * input_beam_size ) );
+    // Second Row
+    gpu_error_check( cudaMalloc( (void**)&gpu_M_PP,   sizeof( float ) * input_beam_size ) );
+    // Third Row
+    gpu_error_check( cudaMalloc( (void**)&gpu_M_PsPs, sizeof( float ) * input_beam_size ) );
+    // Fourth Row
+    gpu_error_check( cudaMalloc( (void**)&gpu_M_VV,   sizeof( float ) * input_beam_size ) );
+    
+    //######################################################################################################
+    // Move stuff to the GPU
+    //######################################################################################################
+    gpu_error_check( cudaMemcpy( gpu_M_TT,   reM_TT,   sizeof( float ) * input_beam_size, cudaMemcpyHostToDevice));
+    // Second Row
+    gpu_error_check( cudaMemcpy( gpu_M_PP,   reM_PP,   sizeof( float ) * input_beam_size, cudaMemcpyHostToDevice));
+    // Third Row
+    gpu_error_check( cudaMemcpy( gpu_M_PsPs, reM_PsPs, sizeof( float ) * input_beam_size, cudaMemcpyHostToDevice));
+    // Fourth Row
+    gpu_error_check( cudaMemcpy( gpu_M_VV,   reM_VV ,  sizeof( float ) * input_beam_size, cudaMemcpyHostToDevice));
 }
 
 void free_everything()
@@ -219,23 +293,24 @@ void free_everything()
     cudaFreeHost( host_IQUV );
     
     cudaFree( gpu_M_TT );
-    cudaFree( gpu_M_TP );
-    cudaFree( gpu_M_TPs );
-    cudaFree( gpu_M_TV );
+    //cudaFree( gpu_M_TP );
+    //cudaFree( gpu_M_TPs );
+    //cudaFree( gpu_M_TV );
+    
 
-    cudaFree( gpu_M_PT );
+    //cudaFree( gpu_M_PT );
     cudaFree( gpu_M_PP );
-    cudaFree( gpu_M_PPs );
-    cudaFree( gpu_M_PV );
+    //cudaFree( gpu_M_PPs );
+    //cudaFree( gpu_M_PV );
 
-    cudaFree( gpu_M_PsT );
-    cudaFree( gpu_M_PsP );
+    //cudaFree( gpu_M_PsT );
+    //cudaFree( gpu_M_PsP );
     cudaFree( gpu_M_PsPs );
-    cudaFree( gpu_M_PsV );
+    //cudaFree( gpu_M_PsV );
 
-    cudaFree( gpu_M_VT );
-    cudaFree( gpu_M_VP );
-    cudaFree( gpu_M_VPs );
+    //cudaFree( gpu_M_VT );
+    //cudaFree( gpu_M_VP );
+    //cudaFree( gpu_M_VPs );
     cudaFree( gpu_M_VV );
 }
 
@@ -314,17 +389,18 @@ convolve_mueller_beams_with_map
                         
             // compute dx/dy offsets from beam center to eval_pixel. Also computes pa at eval_pixel.
             double tht_at_pix, phi_at_pix, psi_at_pix;
-            theta_phi_psi_pix( 
-                             &tht_at_pix, &phi_at_pix, &psi_at_pix, 
-                              ra_bc  , dec_bc, psi_bc,
-                              ra_eval, dec_eval );
             
             /*
              * Uncomment below to make use of Ludwig's 3rd definition.
              */
+            theta_phi_psi_pix( &tht_at_pix, &phi_at_pix, &psi_at_pix,
+                                ra_bc, dec_bc, psi_bc,
+                                ra_eval, dec_eval );
+            /*
             rho_sigma_chi_pix( &tht_at_pix, &phi_at_pix, &psi_at_pix,
                                 ra_bc, dec_bc, psi_bc,
                                 ra_eval, dec_eval );
+            */
 
             /*
              * Uncomment below to override polarization angle correction.
@@ -362,112 +438,18 @@ convolve_mueller_beams_with_map
                 scaled_M_XX = M_TT[ neigh_pixels[i] ] * wgt[i];
                 M[0][0] += scaled_M_XX;
             }
-            /*
-            M[0][1] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_TP[ neigh_pixels[i] ] * wgt[i];
-                M[0][1] += scaled_M_XX;
-            }
-            
-            M[0][2] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_TPs[ neigh_pixels[i] ] * wgt[i];
-                M[0][2] += scaled_M_XX;
-            }
-            
-            M[0][3] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_TV[ neigh_pixels[i] ] * wgt[i];
-                M[0][3] += scaled_M_XX;
-            }
-            
-            M[1][0] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_PT[ neigh_pixels[i] ] * wgt[i];
-                M[1][0] += scaled_M_XX;
-            }
-            */
             M[1][1] = 0.0;
             for( int i=0; i < 4; i++ )
             {   
                 scaled_M_XX = M_PP[ neigh_pixels[i] ] * wgt[i];
                 M[1][1] += scaled_M_XX;
             }
-            /*
-            M[1][2] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_PPs[ neigh_pixels[i] ] * wgt[i];
-                M[1][2] += scaled_M_XX;
-            }
-            
-            M[1][3] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_PV[ neigh_pixels[i] ] * wgt[i];
-                M[1][3] += scaled_M_XX;
-            }
-            
-            M[2][0] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_PsT[ neigh_pixels[i] ] * wgt[i];
-                M[2][0] += scaled_M_XX;
-            }
-            
-            M[2][1] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_PsP[ neigh_pixels[i] ] * wgt[i];
-                M[2][1] += scaled_M_XX;
-            }
-            */
             M[2][2] = 0.0;
             for( int i=0; i < 4; i++ )
             {   
                 scaled_M_XX = M_PsPs[ neigh_pixels[i] ] * wgt[i];
                 M[2][2] += scaled_M_XX;
             }
-            /* 
-            M[2][3] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_PsV[ neigh_pixels[i] ] * wgt[i];
-                M[2][3] += scaled_M_XX;
-            }
-            
-            M[3][0] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_VT[ neigh_pixels[i] ].x * wgt[i];
-                M[3][0] += scaled_M_XX;
-            }
-            
-            M[3][1] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_VP[ neigh_pixels[i] ].x * wgt[i];
-                M[3][1] += scaled_M_XX;
-            }
-            
-            M[3][2] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_VPs[ neigh_pixels[i] ].x * wgt[i];
-                M[3][2] += scaled_M_XX;
-            }
-            
-            M[3][3] = 0.0;
-            for( int i=0; i < 4; i++ )
-            {   
-                scaled_M_XX = M_VV[ neigh_pixels[i] ].x * wgt[i];
-                M[3][3] += scaled_M_XX;
-            }
-            */
             
             double  q =  2*psi_at_pix;
             double cq =        cos(q);
@@ -579,7 +561,18 @@ libconvolve_cuda_deproject_detector
     gpu_error_check ( cudaSetDevice( gpu_id ) );
 
     allocate_tod( nsamples );
+    
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+    cudaEventRecord(start); 
 
+    texturize_maps( input_map_size, I, Q, U, V );
+    
+    cudaEventRecord(stop);
+    cudaEventSynchronize(stop);
+    cudaEventElapsedTime(&milliseconds, start, stop);
+    printf( "\ttexturize_maps: %f ms\n", milliseconds );
+    
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
     cudaEventRecord(start); 
@@ -631,7 +624,6 @@ libconvolve_cuda_deproject_detector
     cudaEventSynchronize(stop);
     cudaEventElapsedTime(&milliseconds, start, stop);
     printf( "\tallocate_and_transfer_mueller_beams: %f ms\n", milliseconds );
-    texturize_maps( input_map_size, I, Q, U, V );
     
     
     cudaEventCreate(&start);

@@ -5,7 +5,7 @@ import pandas
 
 from ConfigParser import SafeConfigParser
 
-def parse_config_file( path ):
+def parse_config_file( path, useRelativePath=False ):
     
     # debug: set seed to numpy.random
     numpy.random.seed( 42 )

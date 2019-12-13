@@ -326,8 +326,6 @@ static PyObject *convolution_deproject_detector(PyObject *self, PyObject *args)
     // Parse detector streams output buffers to C-arrays
     double *det_stream = (double *)PyArray_DATA( pyArr_det_stream );
     
-    printf( "%d\n", maxPix );
-
     // Call for trouble!!
 	libconvolve_cuda_deproject_detector
 	(

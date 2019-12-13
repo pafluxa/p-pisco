@@ -72,7 +72,7 @@ rotation = config['beams']['theta']
 print 'assembling focal plane beams'
 
 # TODO: put this in the config file
-beam_nside = 512
+beam_nside = 2048
 beams      = [None] * receiver.ndets
 for idx in range( receiver.ndets ):
 
@@ -107,18 +107,12 @@ pointing = numpy.load( config['pointingFile'] , mmap_mode='r')
 det_ra  = pointing['ra']
 det_dec = pointing['dec']
 det_pa  = pointing['pa']
-# FIXME: remove this stupid if statement
-if len( det_ra.shape ) == 1:
-    det_ra  = numpy.reshape( det_ra , ( int(len(uids)), -1 ) )
-    det_dec = numpy.reshape( det_dec, ( int(len(uids)), -1 ) )
-    det_pa  = numpy.reshape( det_pa , ( int(len(uids)), -1 ) )
-
 #----------------------------------------------------------------------------------------------------------#
 
 #----------------------------------------------------------------------------------------------------------#
 # Setup detector data buffer
 #----------------------------------------------------------------------------------------------------------#
-detector_data = numpy.zeros_like( det_ra )
+detector_data = numpy.zeros_like( (receiver.ndets,det_ra.shape[0]) )
 #----------------------------------------------------------------------------------------------------------#
 
 # Generate TOD data 
@@ -132,14 +126,16 @@ for feed in numpy.unique( feeds ):
         pair = pairs[ (i+1) % 2 ]
         idx0 = numpy.argwhere( uids ==  det )[0][0]
         idx1 = numpy.argwhere( uids == pair )[0][0]
-
-        print "detector", det, "with index", idx0, "is in feed", feed, \
-               "and is paired to detector", pair, "which has index", idx1
         
+        print( det, pair )
 
         data = None
 
         if isOn[ idx0 ] == 1:
+            
+            print "detector", det, "with index", idx0, "is in feed", feed, \
+                "and is paired to detector", pair, "which has index", idx1
+
 
             data = deproject_sky_for_feedhorn( 
                       # detector pointing
