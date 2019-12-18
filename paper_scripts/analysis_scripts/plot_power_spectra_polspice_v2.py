@@ -96,7 +96,7 @@ oI = numpy.load( sys.argv[3] )['I']
 oQ = numpy.load( sys.argv[3] )['Q']
 oU = numpy.load( sys.argv[3] )['U']
 
-lmax = 250
+lmax = 383
 # Define l numbers                                                                                            
 ell = numpy.arange( lmax + 1 )                                                                                
 ell2 = ell * (ell+1)/(2*numpy.pi)   
@@ -118,16 +118,17 @@ wl_TT = wl_TT_mkb
 wl_EE = wl_EE_mkb                                                                                             
 wl_BB = wl_BB_mkb     
 
-w = healpy.read_map( './data/masks/CLASS_coverage_mask.fits' )
+w   = healpy.read_map( './data/masks/CLASS_coverage_mask.fits' )
+wUp = healpy.ud_grade( w, NSIDE )
 
 #mask = numpy.where( pW < 1 )
 #print 100.0 * len(mask[0]) / len(pW), 'percent unvisited'
 #w    = numpy.ones_like( pW, dtype='float' )
 #w[ mask ] = 0.0
 
-_,oTT,oEE,oBB,oTE,oTB,oEB = spice_wrap2( (oI,oQ,oU), (oI,oQ,oU), weights=w, lmax=lmax )
-_,sTT,sEE,sBB,sTE,sTB,sEB = spice_wrap2( (sI,sQ,sU), (sI,sQ,sU), weights=w, lmax=lmax )
-_,pTT,pEE,pBB,pTE,pTB,pEB = spice_wrap2( (pI,pQ,pU), (pI,pQ,pU), weights=w, lmax=lmax )
+_,oTT,oEE,oBB,oTE,oTB,oEB = spice_wrap2( (oI,oQ,oU), (oI,oQ,oU), weights=  w, lmax=lmax )
+_,sTT,sEE,sBB,sTE,sTB,sEB = spice_wrap2( (sI,sQ,sU), (sI,sQ,sU), weights=  w, lmax=lmax )
+_,pTT,pEE,pBB,pTE,pTB,pEB = spice_wrap2( (pI,pQ,pU), (pI,pQ,pU), weights=wUp, lmax=lmax )
 
 
 # Adjust to the lmax parameter, because Spice doesn't have that option

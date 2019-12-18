@@ -30,28 +30,17 @@ class ComplexMuellerMatrix( object ):
 
         self = cls()
         
-        self.max_pix = healpy.ang2pix( beam_nside, grid_size, 0.0 )
-        
-        self.npix    = healpy.nside2npix( beam_nside )
-
-        '''
-        self.fields = ( Ex_co,  
-                        Ex_cx, 
-                        Ey_co, 
-                        Ey_cx )
-        
-        self.M_TT = self.compute_MTT()
-        self.M_TQ = self.compute_MTQ()
-        self.M_TU = self.compute_MTU()
-        self.M_TV = self.compute_MTV()
-        '''
-        
+        self.max_pix = healpy.ang2pix( beam_nside, grid_size*2, 0.0 )
+        #self.max_pix = self.max_pix#healpy.nside2npix( beam_nside )
+        self.npix    = self.max_pix
+    
         self.fields = ( Ex_co[ 0:self.max_pix ],  
                         Ex_cx[ 0:self.max_pix ], 
                         Ey_co[ 0:self.max_pix ], 
                         Ey_cx[ 0:self.max_pix ] )
 
-        zeroes = numpy.zeros( self.npix - self.max_pix, dtype='float' )
+        #zeroes = numpy.zeros( self.npix - self.max_pix, dtype='float' )
+        zeroes = numpy.zeros( 10, dtype='float' )
         
         self.M_TT = numpy.concatenate( (self.compute_MTT(), zeroes ) )
         self.M_TQ = numpy.concatenate( (self.compute_MTQ(), zeroes ) )
@@ -111,25 +100,25 @@ class ComplexMuellerMatrix( object ):
 
         f  = pylab.figure()
         
-        healpy.gnomview( func( self.M_TT ), sub=(4,4,1), rot=(0,90) )
-        healpy.gnomview( func( self.M_TP ), sub=(4,4,2), rot=(0,90) )
-        healpy.gnomview( func(self.M_TPs ), sub=(4,4,3), rot=(0,90) )
-        healpy.gnomview( func( self.M_TV ), sub=(4,4,4), rot=(0,90) )
+        healpy.gnomview( func( self.M_TT[0:self.npix] ), sub=(4,4,1), rot=(0,90) )
+        #healpy.gnomview( func( self.M_TP ), sub=(4,4,2), rot=(0,90) )
+        #healpy.gnomview( func(self.M_TPs ), sub=(4,4,3), rot=(0,90) )
+        #healpy.gnomview( func( self.M_TV ), sub=(4,4,4), rot=(0,90) )
         
-        healpy.gnomview( func( self.M_PT ), sub=(4,4,5), rot=(0,90) )
-        healpy.gnomview( func( self.M_PP ), sub=(4,4,6), rot=(0,90) )
-        healpy.gnomview( func(self.M_PPs ), sub=(4,4,7), rot=(0,90) )
-        healpy.gnomview( func( self.M_PV ), sub=(4,4,8), rot=(0,90) )
+        #healpy.gnomview( func( self.M_PT ), sub=(4,4,5), rot=(0,90) )
+        healpy.gnomview( func( self.M_PP[0:self.npix] ), sub=(4,4,6), rot=(0,90) )
+        #healpy.gnomview( func(self.M_PPs ), sub=(4,4,7), rot=(0,90) )
+        #healpy.gnomview( func( self.M_PV ), sub=(4,4,8), rot=(0,90) )
         
-        healpy.gnomview( func( self.M_PsT ), sub=(4,4,9), rot=(0,90) )
-        healpy.gnomview( func( self.M_PsP ), sub=(4,4,10), rot=(0,90) )
-        healpy.gnomview( func(self.M_PsPs ), sub=(4,4,11), rot=(0,90) )
-        healpy.gnomview( func( self.M_PsV ), sub=(4,4,12), rot=(0,90) )
+        #healpy.gnomview( func( self.M_PsT ), sub=(4,4,9), rot=(0,90) )
+        #healpy.gnomview( func( self.M_PsP ), sub=(4,4,10), rot=(0,90) )
+        healpy.gnomview( func(self.M_PsPs[0:self.npix] ), sub=(4,4,11), rot=(0,90) )
+        #healpy.gnomview( func( self.M_PsV[0:self.npix] ), sub=(4,4,12), rot=(0,90) )
         
-        healpy.gnomview( func( self.M_VT ), sub=(4,4,13), rot=(0,90) )
-        healpy.gnomview( func( self.M_VP ), sub=(4,4,14), rot=(0,90) )
-        healpy.gnomview( func(self.M_VPs ), sub=(4,4,15), rot=(0,90) )
-        healpy.gnomview( func( self.M_VV ), sub=(4,4,16), rot=(0,90) )
+        #healpy.gnomview( func( self.M_VT ), sub=(4,4,13), rot=(0,90) )
+        #healpy.gnomview( func( self.M_VP ), sub=(4,4,14), rot=(0,90) )
+        #healpy.gnomview( func(self.M_VPs ), sub=(4,4,15), rot=(0,90) )
+        healpy.gnomview( func( self.M_VV[0:self.npix] ), sub=(4,4,16), rot=(0,90) )
 
         pylab.show()
     

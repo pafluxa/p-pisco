@@ -1,0 +1,2092 @@
+../../data/maps/unpolCMB/r0.00/n_0000_nside_128.npz
+../../runs/unpolCMB_r0.00_CLASS_matchedPointing_matchedBeams_mismatchedTheta_nside128.npz
+assembling beamsors
+loading pointing from ../../data/pointing/CLASS/matched/pointing_ndays_7_nscans_840_sps_20Hz.npz
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 21.757696 ms
+build_and_transfer_eval_grid: 2086.475342 ms
+23980
+allocate_and_transfer_mueller_beams: 2.284000 ms
+convolve_mueller_beams_with_map: 5525.558594 ms
+23980
+transfer_pointing_streams: 19.161888 ms
+build_and_transfer_eval_grid: 1842.750244 ms
+23980
+allocate_and_transfer_mueller_beams: 2.253504 ms
+convolve_mueller_beams_with_map: 5495.450195 ms
+23980
+transfer_pointing_streams: 21.017471 ms
+build_and_transfer_eval_grid: 2056.331299 ms
+23980
+allocate_and_transfer_mueller_beams: 3.310240 ms
+convolve_mueller_beams_with_map: 5532.518066 ms
+23980
+transfer_pointing_streams: 20.633375 ms
+build_and_transfer_eval_grid: 2042.800659 ms
+23980
+allocate_and_transfer_mueller_beams: 2.887616 ms
+convolve_mueller_beams_with_map: 5503.383789 ms
+convolve single detector: 36496.0551262 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 23.811520 ms
+build_and_transfer_eval_grid: 2050.025879 ms
+23980
+allocate_and_transfer_mueller_beams: 2.281984 ms
+convolve_mueller_beams_with_map: 5516.895996 ms
+23980
+transfer_pointing_streams: 26.867777 ms
+build_and_transfer_eval_grid: 2040.069946 ms
+23980
+allocate_and_transfer_mueller_beams: 2.232672 ms
+convolve_mueller_beams_with_map: 5517.335449 ms
+23980
+transfer_pointing_streams: 37.142624 ms
+build_and_transfer_eval_grid: 965.297668 ms
+23980
+allocate_and_transfer_mueller_beams: 1.684992 ms
+convolve_mueller_beams_with_map: 5531.177734 ms
+23980
+transfer_pointing_streams: 28.501793 ms
+build_and_transfer_eval_grid: 2050.126221 ms
+23980
+allocate_and_transfer_mueller_beams: 2.288704 ms
+convolve_mueller_beams_with_map: 5528.995117 ms
+convolve single detector: 33352.3218632 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 26.701088 ms
+build_and_transfer_eval_grid: 2025.645264 ms
+23980
+allocate_and_transfer_mueller_beams: 2.783936 ms
+convolve_mueller_beams_with_map: 5552.975098 ms
+23980
+transfer_pointing_streams: 20.103519 ms
+build_and_transfer_eval_grid: 908.231750 ms
+23980
+allocate_and_transfer_mueller_beams: 1.639232 ms
+convolve_mueller_beams_with_map: 5525.268555 ms
+23980
+transfer_pointing_streams: 22.525663 ms
+build_and_transfer_eval_grid: 1275.264771 ms
+23980
+allocate_and_transfer_mueller_beams: 2.296096 ms
+convolve_mueller_beams_with_map: 5537.509766 ms
+23980
+transfer_pointing_streams: 28.698689 ms
+build_and_transfer_eval_grid: 2042.606567 ms
+23980
+allocate_and_transfer_mueller_beams: 2.848096 ms
+convolve_mueller_beams_with_map: 5541.064941 ms
+convolve single detector: 32624.5610714 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 45.186592 ms
+build_and_transfer_eval_grid: 2066.568848 ms
+23980
+allocate_and_transfer_mueller_beams: 2.296800 ms
+convolve_mueller_beams_with_map: 5530.714844 ms
+23980
+transfer_pointing_streams: 22.240288 ms
+build_and_transfer_eval_grid: 2063.567383 ms
+23980
+allocate_and_transfer_mueller_beams: 10.156640 ms
+convolve_mueller_beams_with_map: 5525.710449 ms
+23980
+transfer_pointing_streams: 26.360479 ms
+build_and_transfer_eval_grid: 2191.943115 ms
+23980
+allocate_and_transfer_mueller_beams: 2.306048 ms
+convolve_mueller_beams_with_map: 5549.183105 ms
+23980
+transfer_pointing_streams: 15.562944 ms
+build_and_transfer_eval_grid: 906.751160 ms
+23980
+allocate_and_transfer_mueller_beams: 1.728672 ms
+convolve_mueller_beams_with_map: 5532.847656 ms
+convolve single detector: 33514.1379833 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 21.267296 ms
+build_and_transfer_eval_grid: 1159.186401 ms
+23980
+allocate_and_transfer_mueller_beams: 2.289408 ms
+convolve_mueller_beams_with_map: 5532.403320 ms
+23980
+transfer_pointing_streams: 26.968096 ms
+build_and_transfer_eval_grid: 2062.418945 ms
+23980
+allocate_and_transfer_mueller_beams: 2.275200 ms
+convolve_mueller_beams_with_map: 5527.499512 ms
+23980
+transfer_pointing_streams: 21.705343 ms
+build_and_transfer_eval_grid: 1059.839233 ms
+23980
+allocate_and_transfer_mueller_beams: 1.690784 ms
+convolve_mueller_beams_with_map: 5533.002441 ms
+23980
+transfer_pointing_streams: 29.833441 ms
+build_and_transfer_eval_grid: 924.884460 ms
+23980
+allocate_and_transfer_mueller_beams: 1.667552 ms
+convolve_mueller_beams_with_map: 5533.829590 ms
+convolve single detector: 31328.4111023 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.969120 ms
+build_and_transfer_eval_grid: 915.304016 ms
+23980
+allocate_and_transfer_mueller_beams: 1.660320 ms
+convolve_mueller_beams_with_map: 5532.938965 ms
+23980
+transfer_pointing_streams: 21.906143 ms
+build_and_transfer_eval_grid: 2043.022095 ms
+23980
+allocate_and_transfer_mueller_beams: 3.784832 ms
+convolve_mueller_beams_with_map: 5543.695312 ms
+23980
+transfer_pointing_streams: 22.498816 ms
+build_and_transfer_eval_grid: 923.518921 ms
+23980
+allocate_and_transfer_mueller_beams: 1.651264 ms
+convolve_mueller_beams_with_map: 5530.698730 ms
+23980
+transfer_pointing_streams: 22.155104 ms
+build_and_transfer_eval_grid: 923.036377 ms
+23980
+allocate_and_transfer_mueller_beams: 1.674304 ms
+convolve_mueller_beams_with_map: 5532.950195 ms
+convolve single detector: 30898.567915 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 42.424641 ms
+build_and_transfer_eval_grid: 904.049683 ms
+23980
+allocate_and_transfer_mueller_beams: 1.634368 ms
+convolve_mueller_beams_with_map: 5524.044922 ms
+23980
+transfer_pointing_streams: 40.633247 ms
+build_and_transfer_eval_grid: 890.076782 ms
+23980
+allocate_and_transfer_mueller_beams: 2.347744 ms
+convolve_mueller_beams_with_map: 5518.603516 ms
+23980
+transfer_pointing_streams: 19.462879 ms
+build_and_transfer_eval_grid: 2029.308594 ms
+23980
+allocate_and_transfer_mueller_beams: 2.316544 ms
+convolve_mueller_beams_with_map: 5536.667969 ms
+23980
+transfer_pointing_streams: 36.044640 ms
+build_and_transfer_eval_grid: 893.786316 ms
+23980
+allocate_and_transfer_mueller_beams: 9.258656 ms
+convolve_mueller_beams_with_map: 5527.192383 ms
+convolve single detector: 30965.8889771 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 22.444832 ms
+build_and_transfer_eval_grid: 904.407227 ms
+23980
+allocate_and_transfer_mueller_beams: 2.160864 ms
+convolve_mueller_beams_with_map: 5532.332031 ms
+23980
+transfer_pointing_streams: 15.849024 ms
+build_and_transfer_eval_grid: 904.756592 ms
+23980
+allocate_and_transfer_mueller_beams: 3.308128 ms
+convolve_mueller_beams_with_map: 5518.748047 ms
+23980
+transfer_pointing_streams: 22.577280 ms
+build_and_transfer_eval_grid: 947.811890 ms
+23980
+allocate_and_transfer_mueller_beams: 1.649280 ms
+convolve_mueller_beams_with_map: 5527.822266 ms
+23980
+transfer_pointing_streams: 22.799423 ms
+build_and_transfer_eval_grid: 915.608887 ms
+23980
+allocate_and_transfer_mueller_beams: 7.064480 ms
+convolve_mueller_beams_with_map: 5525.854004 ms
+convolve single detector: 29885.089159 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.040672 ms
+build_and_transfer_eval_grid: 2028.767334 ms
+23980
+allocate_and_transfer_mueller_beams: 2.305664 ms
+convolve_mueller_beams_with_map: 5567.524902 ms
+23980
+transfer_pointing_streams: 24.655745 ms
+build_and_transfer_eval_grid: 2066.536621 ms
+23980
+allocate_and_transfer_mueller_beams: 2.247040 ms
+convolve_mueller_beams_with_map: 5530.348633 ms
+23980
+transfer_pointing_streams: 17.215103 ms
+build_and_transfer_eval_grid: 945.654297 ms
+23980
+allocate_and_transfer_mueller_beams: 1.650240 ms
+convolve_mueller_beams_with_map: 5530.077637 ms
+23980
+transfer_pointing_streams: 26.611937 ms
+build_and_transfer_eval_grid: 2044.455811 ms
+23980
+allocate_and_transfer_mueller_beams: 2.558976 ms
+convolve_mueller_beams_with_map: 5530.392578 ms
+convolve single detector: 33438.0638599 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.516319 ms
+build_and_transfer_eval_grid: 908.596619 ms
+23980
+allocate_and_transfer_mueller_beams: 3.460832 ms
+convolve_mueller_beams_with_map: 5529.202148 ms
+23980
+transfer_pointing_streams: 19.596928 ms
+build_and_transfer_eval_grid: 897.752197 ms
+23980
+allocate_and_transfer_mueller_beams: 1.638112 ms
+convolve_mueller_beams_with_map: 5525.906250 ms
+23980
+transfer_pointing_streams: 22.512545 ms
+build_and_transfer_eval_grid: 943.545593 ms
+23980
+allocate_and_transfer_mueller_beams: 1.695104 ms
+convolve_mueller_beams_with_map: 5526.445312 ms
+23980
+transfer_pointing_streams: 22.582945 ms
+build_and_transfer_eval_grid: 915.070496 ms
+23980
+allocate_and_transfer_mueller_beams: 1.664896 ms
+convolve_mueller_beams_with_map: 5530.055664 ms
+convolve single detector: 29960.0360394 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 35.272640 ms
+build_and_transfer_eval_grid: 911.650818 ms
+23980
+allocate_and_transfer_mueller_beams: 1.657952 ms
+convolve_mueller_beams_with_map: 5521.408691 ms
+23980
+transfer_pointing_streams: 16.429792 ms
+build_and_transfer_eval_grid: 894.086853 ms
+23980
+allocate_and_transfer_mueller_beams: 1.988320 ms
+convolve_mueller_beams_with_map: 5524.678223 ms
+23980
+transfer_pointing_streams: 22.847456 ms
+build_and_transfer_eval_grid: 959.864197 ms
+23980
+allocate_and_transfer_mueller_beams: 1.652320 ms
+convolve_mueller_beams_with_map: 5537.680176 ms
+23980
+transfer_pointing_streams: 22.000544 ms
+build_and_transfer_eval_grid: 1424.252197 ms
+23980
+allocate_and_transfer_mueller_beams: 2.518176 ms
+convolve_mueller_beams_with_map: 5526.225098 ms
+convolve single detector: 30449.6428967 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 19.170561 ms
+build_and_transfer_eval_grid: 997.649292 ms
+23980
+allocate_and_transfer_mueller_beams: 1.687616 ms
+convolve_mueller_beams_with_map: 5524.950195 ms
+23980
+transfer_pointing_streams: 39.757793 ms
+build_and_transfer_eval_grid: 950.938171 ms
+23980
+allocate_and_transfer_mueller_beams: 1.853600 ms
+convolve_mueller_beams_with_map: 5528.795410 ms
+23980
+transfer_pointing_streams: 43.611839 ms
+build_and_transfer_eval_grid: 1128.590210 ms
+23980
+allocate_and_transfer_mueller_beams: 1.659232 ms
+convolve_mueller_beams_with_map: 5529.847168 ms
+23980
+transfer_pointing_streams: 43.865440 ms
+build_and_transfer_eval_grid: 914.236084 ms
+23980
+allocate_and_transfer_mueller_beams: 4.643136 ms
+convolve_mueller_beams_with_map: 5525.084961 ms
+convolve single detector: 30215.8761024 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 27.651104 ms
+build_and_transfer_eval_grid: 906.794250 ms
+23980
+allocate_and_transfer_mueller_beams: 1.681376 ms
+convolve_mueller_beams_with_map: 5535.224609 ms
+23980
+transfer_pointing_streams: 24.790688 ms
+build_and_transfer_eval_grid: 1995.716553 ms
+23980
+allocate_and_transfer_mueller_beams: 2.326112 ms
+convolve_mueller_beams_with_map: 5546.238770 ms
+23980
+transfer_pointing_streams: 24.139616 ms
+build_and_transfer_eval_grid: 1993.885010 ms
+23980
+allocate_and_transfer_mueller_beams: 2.313152 ms
+convolve_mueller_beams_with_map: 5532.889648 ms
+23980
+transfer_pointing_streams: 43.320545 ms
+build_and_transfer_eval_grid: 909.695557 ms
+23980
+allocate_and_transfer_mueller_beams: 1.672832 ms
+convolve_mueller_beams_with_map: 5518.649414 ms
+convolve single detector: 32158.3118439 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 41.887489 ms
+build_and_transfer_eval_grid: 904.563293 ms
+23980
+allocate_and_transfer_mueller_beams: 1.690144 ms
+convolve_mueller_beams_with_map: 5535.033203 ms
+23980
+transfer_pointing_streams: 51.512096 ms
+build_and_transfer_eval_grid: 909.409607 ms
+23980
+allocate_and_transfer_mueller_beams: 1.715328 ms
+convolve_mueller_beams_with_map: 5527.979492 ms
+23980
+transfer_pointing_streams: 43.900192 ms
+build_and_transfer_eval_grid: 1229.157715 ms
+23980
+allocate_and_transfer_mueller_beams: 2.333088 ms
+convolve_mueller_beams_with_map: 5524.167480 ms
+23980
+transfer_pointing_streams: 27.112127 ms
+build_and_transfer_eval_grid: 1924.213135 ms
+23980
+allocate_and_transfer_mueller_beams: 2.271200 ms
+convolve_mueller_beams_with_map: 5547.507812 ms
+convolve single detector: 31387.6841068 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 21.832031 ms
+build_and_transfer_eval_grid: 939.309204 ms
+23980
+allocate_and_transfer_mueller_beams: 1.627072 ms
+convolve_mueller_beams_with_map: 5529.115234 ms
+23980
+transfer_pointing_streams: 16.944897 ms
+build_and_transfer_eval_grid: 917.199585 ms
+23980
+allocate_and_transfer_mueller_beams: 11.995296 ms
+convolve_mueller_beams_with_map: 5519.734375 ms
+23980
+transfer_pointing_streams: 43.694592 ms
+build_and_transfer_eval_grid: 914.772522 ms
+23980
+allocate_and_transfer_mueller_beams: 2.260128 ms
+convolve_mueller_beams_with_map: 5533.323730 ms
+23980
+transfer_pointing_streams: 35.906464 ms
+build_and_transfer_eval_grid: 919.869263 ms
+23980
+allocate_and_transfer_mueller_beams: 4.155744 ms
+convolve_mueller_beams_with_map: 5529.261719 ms
+convolve single detector: 30099.9820232 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 43.768032 ms
+build_and_transfer_eval_grid: 966.876648 ms
+23980
+allocate_and_transfer_mueller_beams: 1.658016 ms
+convolve_mueller_beams_with_map: 5534.997070 ms
+23980
+transfer_pointing_streams: 22.044096 ms
+build_and_transfer_eval_grid: 1876.422241 ms
+23980
+allocate_and_transfer_mueller_beams: 2.809792 ms
+convolve_mueller_beams_with_map: 5544.660645 ms
+23980
+transfer_pointing_streams: 21.381857 ms
+build_and_transfer_eval_grid: 1948.164673 ms
+23980
+allocate_and_transfer_mueller_beams: 2.300192 ms
+convolve_mueller_beams_with_map: 5536.274902 ms
+23980
+transfer_pointing_streams: 24.492992 ms
+build_and_transfer_eval_grid: 1881.132080 ms
+23980
+allocate_and_transfer_mueller_beams: 2.222976 ms
+convolve_mueller_beams_with_map: 5527.451660 ms
+convolve single detector: 33053.1291962 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.067743 ms
+build_and_transfer_eval_grid: 1864.157104 ms
+23980
+allocate_and_transfer_mueller_beams: 4.108960 ms
+convolve_mueller_beams_with_map: 5525.361328 ms
+23980
+transfer_pointing_streams: 18.721376 ms
+build_and_transfer_eval_grid: 1871.040283 ms
+23980
+allocate_and_transfer_mueller_beams: 2.303328 ms
+convolve_mueller_beams_with_map: 5524.524902 ms
+23980
+transfer_pointing_streams: 18.883265 ms
+build_and_transfer_eval_grid: 1851.322021 ms
+23980
+allocate_and_transfer_mueller_beams: 2.845536 ms
+convolve_mueller_beams_with_map: 5536.183594 ms
+23980
+transfer_pointing_streams: 24.021856 ms
+build_and_transfer_eval_grid: 1891.918701 ms
+23980
+allocate_and_transfer_mueller_beams: 2.305056 ms
+convolve_mueller_beams_with_map: 5530.275391 ms
+convolve single detector: 33714.7009373 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 24.060385 ms
+build_and_transfer_eval_grid: 1878.905884 ms
+23980
+allocate_and_transfer_mueller_beams: 2.857920 ms
+convolve_mueller_beams_with_map: 5537.151855 ms
+23980
+transfer_pointing_streams: 26.357664 ms
+build_and_transfer_eval_grid: 1893.365601 ms
+23980
+allocate_and_transfer_mueller_beams: 2.388864 ms
+convolve_mueller_beams_with_map: 5523.206543 ms
+23980
+transfer_pointing_streams: 20.554943 ms
+build_and_transfer_eval_grid: 2047.382324 ms
+23980
+allocate_and_transfer_mueller_beams: 2.288480 ms
+convolve_mueller_beams_with_map: 5549.314941 ms
+23980
+transfer_pointing_streams: 20.435455 ms
+build_and_transfer_eval_grid: 957.787415 ms
+23980
+allocate_and_transfer_mueller_beams: 1.971296 ms
+convolve_mueller_beams_with_map: 5526.541504 ms
+convolve single detector: 33029.3869972 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.712736 ms
+build_and_transfer_eval_grid: 936.249207 ms
+23980
+allocate_and_transfer_mueller_beams: 2.301440 ms
+convolve_mueller_beams_with_map: 5531.672852 ms
+23980
+transfer_pointing_streams: 22.444000 ms
+build_and_transfer_eval_grid: 937.341431 ms
+23980
+allocate_and_transfer_mueller_beams: 1.683648 ms
+convolve_mueller_beams_with_map: 5521.021973 ms
+23980
+transfer_pointing_streams: 43.672031 ms
+build_and_transfer_eval_grid: 969.164307 ms
+23980
+allocate_and_transfer_mueller_beams: 1.655552 ms
+convolve_mueller_beams_with_map: 5531.736328 ms
+23980
+transfer_pointing_streams: 50.664223 ms
+build_and_transfer_eval_grid: 943.679077 ms
+23980
+allocate_and_transfer_mueller_beams: 1.666528 ms
+convolve_mueller_beams_with_map: 5539.866211 ms
+convolve single detector: 30014.5738125 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 39.947071 ms
+build_and_transfer_eval_grid: 927.751282 ms
+23980
+allocate_and_transfer_mueller_beams: 2.283552 ms
+convolve_mueller_beams_with_map: 5532.312988 ms
+23980
+transfer_pointing_streams: 33.793377 ms
+build_and_transfer_eval_grid: 923.303589 ms
+23980
+allocate_and_transfer_mueller_beams: 1.652224 ms
+convolve_mueller_beams_with_map: 5531.868652 ms
+23980
+transfer_pointing_streams: 43.734016 ms
+build_and_transfer_eval_grid: 929.403198 ms
+23980
+allocate_and_transfer_mueller_beams: 1.669696 ms
+convolve_mueller_beams_with_map: 5539.395020 ms
+23980
+transfer_pointing_streams: 41.323841 ms
+build_and_transfer_eval_grid: 954.677368 ms
+23980
+allocate_and_transfer_mueller_beams: 1.657824 ms
+convolve_mueller_beams_with_map: 5533.734863 ms
+convolve single detector: 30169.5001125 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 43.916992 ms
+build_and_transfer_eval_grid: 970.906006 ms
+23980
+allocate_and_transfer_mueller_beams: 1.647712 ms
+convolve_mueller_beams_with_map: 5526.097168 ms
+23980
+transfer_pointing_streams: 43.674625 ms
+build_and_transfer_eval_grid: 935.759460 ms
+23980
+allocate_and_transfer_mueller_beams: 1.645504 ms
+convolve_mueller_beams_with_map: 5525.043457 ms
+23980
+transfer_pointing_streams: 27.781631 ms
+build_and_transfer_eval_grid: 1394.385010 ms
+23980
+allocate_and_transfer_mueller_beams: 2.763296 ms
+convolve_mueller_beams_with_map: 5530.904297 ms
+23980
+transfer_pointing_streams: 28.154655 ms
+build_and_transfer_eval_grid: 1801.919556 ms
+23980
+allocate_and_transfer_mueller_beams: 2.265056 ms
+convolve_mueller_beams_with_map: 5531.483398 ms
+convolve single detector: 31320.6000328 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.778944 ms
+build_and_transfer_eval_grid: 942.894775 ms
+23980
+allocate_and_transfer_mueller_beams: 1.650432 ms
+convolve_mueller_beams_with_map: 5524.848633 ms
+23980
+transfer_pointing_streams: 22.941536 ms
+build_and_transfer_eval_grid: 980.283752 ms
+23980
+allocate_and_transfer_mueller_beams: 1.700064 ms
+convolve_mueller_beams_with_map: 5524.769043 ms
+23980
+transfer_pointing_streams: 18.705919 ms
+build_and_transfer_eval_grid: 1771.881714 ms
+23980
+allocate_and_transfer_mueller_beams: 2.279840 ms
+convolve_mueller_beams_with_map: 5537.469238 ms
+23980
+transfer_pointing_streams: 22.618240 ms
+build_and_transfer_eval_grid: 948.848938 ms
+23980
+allocate_and_transfer_mueller_beams: 2.008672 ms
+convolve_mueller_beams_with_map: 5528.301270 ms
+convolve single detector: 31176.2549877 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.292255 ms
+build_and_transfer_eval_grid: 1766.849854 ms
+23980
+allocate_and_transfer_mueller_beams: 2.404032 ms
+convolve_mueller_beams_with_map: 5538.681641 ms
+23980
+transfer_pointing_streams: 18.773088 ms
+build_and_transfer_eval_grid: 1808.703247 ms
+23980
+allocate_and_transfer_mueller_beams: 2.291744 ms
+convolve_mueller_beams_with_map: 5526.802734 ms
+23980
+transfer_pointing_streams: 18.707232 ms
+build_and_transfer_eval_grid: 1938.963135 ms
+23980
+allocate_and_transfer_mueller_beams: 2.408064 ms
+convolve_mueller_beams_with_map: 5526.295410 ms
+23980
+transfer_pointing_streams: 23.680672 ms
+build_and_transfer_eval_grid: 1801.016968 ms
+23980
+allocate_and_transfer_mueller_beams: 2.291808 ms
+convolve_mueller_beams_with_map: 5526.865234 ms
+convolve single detector: 33446.231842 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 16.438496 ms
+build_and_transfer_eval_grid: 928.047974 ms
+23980
+allocate_and_transfer_mueller_beams: 6.818528 ms
+convolve_mueller_beams_with_map: 5530.505859 ms
+23980
+transfer_pointing_streams: 18.413120 ms
+build_and_transfer_eval_grid: 1777.461548 ms
+23980
+allocate_and_transfer_mueller_beams: 1.902688 ms
+convolve_mueller_beams_with_map: 5524.193359 ms
+23980
+transfer_pointing_streams: 18.883167 ms
+build_and_transfer_eval_grid: 1781.336304 ms
+23980
+allocate_and_transfer_mueller_beams: 2.523264 ms
+convolve_mueller_beams_with_map: 5529.604492 ms
+23980
+transfer_pointing_streams: 31.155840 ms
+build_and_transfer_eval_grid: 1795.168823 ms
+23980
+allocate_and_transfer_mueller_beams: 2.556736 ms
+convolve_mueller_beams_with_map: 5523.561523 ms
+convolve single detector: 32713.876009 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 27.497824 ms
+build_and_transfer_eval_grid: 1814.280762 ms
+23980
+allocate_and_transfer_mueller_beams: 1.926496 ms
+convolve_mueller_beams_with_map: 5527.666016 ms
+23980
+transfer_pointing_streams: 21.328447 ms
+build_and_transfer_eval_grid: 1788.226929 ms
+23980
+allocate_and_transfer_mueller_beams: 1.861024 ms
+convolve_mueller_beams_with_map: 5525.726562 ms
+23980
+transfer_pointing_streams: 21.773888 ms
+build_and_transfer_eval_grid: 1787.627930 ms
+23980
+allocate_and_transfer_mueller_beams: 1.884000 ms
+convolve_mueller_beams_with_map: 5528.927734 ms
+23980
+transfer_pointing_streams: 19.314880 ms
+build_and_transfer_eval_grid: 1786.771606 ms
+23980
+allocate_and_transfer_mueller_beams: 1.854848 ms
+convolve_mueller_beams_with_map: 5530.386230 ms
+convolve single detector: 33267.9018974 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.353952 ms
+build_and_transfer_eval_grid: 1772.655640 ms
+23980
+allocate_and_transfer_mueller_beams: 2.007328 ms
+convolve_mueller_beams_with_map: 5540.036133 ms
+23980
+transfer_pointing_streams: 21.097504 ms
+build_and_transfer_eval_grid: 1806.414429 ms
+23980
+allocate_and_transfer_mueller_beams: 1.838048 ms
+convolve_mueller_beams_with_map: 5527.620605 ms
+23980
+transfer_pointing_streams: 26.172064 ms
+build_and_transfer_eval_grid: 1811.481934 ms
+23980
+allocate_and_transfer_mueller_beams: 1.867936 ms
+convolve_mueller_beams_with_map: 5540.543945 ms
+23980
+transfer_pointing_streams: 24.281952 ms
+build_and_transfer_eval_grid: 1788.554199 ms
+23980
+allocate_and_transfer_mueller_beams: 1.878912 ms
+convolve_mueller_beams_with_map: 5534.379883 ms
+convolve single detector: 33331.0799599 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 22.580864 ms
+build_and_transfer_eval_grid: 1796.690308 ms
+23980
+allocate_and_transfer_mueller_beams: 1.860544 ms
+convolve_mueller_beams_with_map: 5530.301758 ms
+23980
+transfer_pointing_streams: 28.693920 ms
+build_and_transfer_eval_grid: 938.721802 ms
+23980
+allocate_and_transfer_mueller_beams: 1.764224 ms
+convolve_mueller_beams_with_map: 5522.756836 ms
+23980
+transfer_pointing_streams: 20.401089 ms
+build_and_transfer_eval_grid: 1748.647583 ms
+23980
+allocate_and_transfer_mueller_beams: 2.251968 ms
+convolve_mueller_beams_with_map: 5529.169434 ms
+23980
+transfer_pointing_streams: 23.319967 ms
+build_and_transfer_eval_grid: 1774.556763 ms
+23980
+allocate_and_transfer_mueller_beams: 1.867872 ms
+convolve_mueller_beams_with_map: 5522.460449 ms
+convolve single detector: 32443.3000088 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 23.537024 ms
+build_and_transfer_eval_grid: 1748.407837 ms
+23980
+allocate_and_transfer_mueller_beams: 1.872320 ms
+convolve_mueller_beams_with_map: 5533.486328 ms
+23980
+transfer_pointing_streams: 20.022528 ms
+build_and_transfer_eval_grid: 1776.859863 ms
+23980
+allocate_and_transfer_mueller_beams: 1.860096 ms
+convolve_mueller_beams_with_map: 5518.640137 ms
+23980
+transfer_pointing_streams: 23.272703 ms
+build_and_transfer_eval_grid: 1771.353271 ms
+23980
+allocate_and_transfer_mueller_beams: 1.855424 ms
+convolve_mueller_beams_with_map: 5532.368652 ms
+23980
+transfer_pointing_streams: 18.701824 ms
+build_and_transfer_eval_grid: 998.552612 ms
+23980
+allocate_and_transfer_mueller_beams: 1.739264 ms
+convolve_mueller_beams_with_map: 5525.133789 ms
+convolve single detector: 32311.068058 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 24.215521 ms
+build_and_transfer_eval_grid: 957.818481 ms
+23980
+allocate_and_transfer_mueller_beams: 4.299936 ms
+convolve_mueller_beams_with_map: 5528.692383 ms
+23980
+transfer_pointing_streams: 15.904800 ms
+build_and_transfer_eval_grid: 1464.151001 ms
+23980
+allocate_and_transfer_mueller_beams: 2.295168 ms
+convolve_mueller_beams_with_map: 5527.368164 ms
+23980
+transfer_pointing_streams: 21.407583 ms
+build_and_transfer_eval_grid: 1084.116943 ms
+23980
+allocate_and_transfer_mueller_beams: 1.638144 ms
+convolve_mueller_beams_with_map: 5536.318848 ms
+23980
+transfer_pointing_streams: 26.368128 ms
+build_and_transfer_eval_grid: 1742.469727 ms
+23980
+allocate_and_transfer_mueller_beams: 2.867616 ms
+convolve_mueller_beams_with_map: 5530.615234 ms
+convolve single detector: 31493.1008816 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 21.550913 ms
+build_and_transfer_eval_grid: 1758.072144 ms
+23980
+allocate_and_transfer_mueller_beams: 2.304832 ms
+convolve_mueller_beams_with_map: 5534.375000 ms
+23980
+transfer_pointing_streams: 21.950111 ms
+build_and_transfer_eval_grid: 1767.767212 ms
+23980
+allocate_and_transfer_mueller_beams: 2.245408 ms
+convolve_mueller_beams_with_map: 5524.763672 ms
+23980
+transfer_pointing_streams: 23.797312 ms
+build_and_transfer_eval_grid: 1769.734497 ms
+23980
+allocate_and_transfer_mueller_beams: 2.283648 ms
+convolve_mueller_beams_with_map: 5533.872559 ms
+23980
+transfer_pointing_streams: 28.019297 ms
+build_and_transfer_eval_grid: 1736.974731 ms
+23980
+allocate_and_transfer_mueller_beams: 2.326592 ms
+convolve_mueller_beams_with_map: 5526.295898 ms
+convolve single detector: 33166.0878658 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 17.922720 ms
+build_and_transfer_eval_grid: 1741.424072 ms
+23980
+allocate_and_transfer_mueller_beams: 1.867616 ms
+convolve_mueller_beams_with_map: 5526.899414 ms
+23980
+transfer_pointing_streams: 16.423584 ms
+build_and_transfer_eval_grid: 958.032715 ms
+23980
+allocate_and_transfer_mueller_beams: 1.813888 ms
+convolve_mueller_beams_with_map: 5524.190430 ms
+23980
+transfer_pointing_streams: 21.457727 ms
+build_and_transfer_eval_grid: 991.429871 ms
+23980
+allocate_and_transfer_mueller_beams: 1.657440 ms
+convolve_mueller_beams_with_map: 5531.011719 ms
+23980
+transfer_pointing_streams: 21.441792 ms
+build_and_transfer_eval_grid: 1731.923584 ms
+23980
+allocate_and_transfer_mueller_beams: 2.367744 ms
+convolve_mueller_beams_with_map: 5534.924316 ms
+convolve single detector: 31547.3752022 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 21.284321 ms
+build_and_transfer_eval_grid: 1747.683960 ms
+23980
+allocate_and_transfer_mueller_beams: 2.322816 ms
+convolve_mueller_beams_with_map: 5522.669434 ms
+23980
+transfer_pointing_streams: 21.053473 ms
+build_and_transfer_eval_grid: 1741.329468 ms
+23980
+allocate_and_transfer_mueller_beams: 2.289536 ms
+convolve_mueller_beams_with_map: 5529.577637 ms
+23980
+transfer_pointing_streams: 22.603456 ms
+build_and_transfer_eval_grid: 1932.449829 ms
+23980
+allocate_and_transfer_mueller_beams: 9.360736 ms
+convolve_mueller_beams_with_map: 5534.341797 ms
+23980
+transfer_pointing_streams: 22.393663 ms
+build_and_transfer_eval_grid: 1724.822510 ms
+23980
+allocate_and_transfer_mueller_beams: 5.655520 ms
+convolve_mueller_beams_with_map: 5531.958496 ms
+convolve single detector: 33394.1369057 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 45.253056 ms
+build_and_transfer_eval_grid: 971.454468 ms
+23980
+allocate_and_transfer_mueller_beams: 1.681504 ms
+convolve_mueller_beams_with_map: 5531.601074 ms
+23980
+transfer_pointing_streams: 21.545216 ms
+build_and_transfer_eval_grid: 952.304626 ms
+23980
+allocate_and_transfer_mueller_beams: 1.788032 ms
+convolve_mueller_beams_with_map: 5526.385254 ms
+23980
+transfer_pointing_streams: 27.592480 ms
+build_and_transfer_eval_grid: 1736.346313 ms
+23980
+allocate_and_transfer_mueller_beams: 2.294144 ms
+convolve_mueller_beams_with_map: 5537.938965 ms
+23980
+transfer_pointing_streams: 22.832993 ms
+build_and_transfer_eval_grid: 1751.162231 ms
+23980
+allocate_and_transfer_mueller_beams: 2.327104 ms
+convolve_mueller_beams_with_map: 5530.312500 ms
+convolve single detector: 31753.7269592 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 24.104448 ms
+build_and_transfer_eval_grid: 1017.869507 ms
+23980
+allocate_and_transfer_mueller_beams: 1.781120 ms
+convolve_mueller_beams_with_map: 5524.077148 ms
+23980
+transfer_pointing_streams: 22.874369 ms
+build_and_transfer_eval_grid: 1016.085693 ms
+23980
+allocate_and_transfer_mueller_beams: 9.642208 ms
+convolve_mueller_beams_with_map: 5525.762695 ms
+23980
+transfer_pointing_streams: 22.931583 ms
+build_and_transfer_eval_grid: 959.306641 ms
+23980
+allocate_and_transfer_mueller_beams: 1.795648 ms
+convolve_mueller_beams_with_map: 5539.141602 ms
+23980
+transfer_pointing_streams: 25.828960 ms
+build_and_transfer_eval_grid: 1758.089844 ms
+23980
+allocate_and_transfer_mueller_beams: 1.886912 ms
+convolve_mueller_beams_with_map: 5528.061523 ms
+convolve single detector: 31123.4068871 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 23.486591 ms
+build_and_transfer_eval_grid: 1010.300415 ms
+23980
+allocate_and_transfer_mueller_beams: 1.779872 ms
+convolve_mueller_beams_with_map: 5522.072266 ms
+23980
+transfer_pointing_streams: 22.917343 ms
+build_and_transfer_eval_grid: 948.088623 ms
+23980
+allocate_and_transfer_mueller_beams: 2.395648 ms
+convolve_mueller_beams_with_map: 5528.533691 ms
+23980
+transfer_pointing_streams: 23.130239 ms
+build_and_transfer_eval_grid: 971.502075 ms
+23980
+allocate_and_transfer_mueller_beams: 1.802464 ms
+convolve_mueller_beams_with_map: 5532.081055 ms
+23980
+transfer_pointing_streams: 23.727072 ms
+build_and_transfer_eval_grid: 1722.975342 ms
+23980
+allocate_and_transfer_mueller_beams: 2.203840 ms
+convolve_mueller_beams_with_map: 5528.028320 ms
+convolve single detector: 30752.8681755 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 23.482624 ms
+build_and_transfer_eval_grid: 1706.788940 ms
+23980
+allocate_and_transfer_mueller_beams: 2.341344 ms
+convolve_mueller_beams_with_map: 5528.364746 ms
+23980
+transfer_pointing_streams: 22.722689 ms
+build_and_transfer_eval_grid: 992.059265 ms
+23980
+allocate_and_transfer_mueller_beams: 1.801984 ms
+convolve_mueller_beams_with_map: 5514.912598 ms
+23980
+transfer_pointing_streams: 19.520063 ms
+build_and_transfer_eval_grid: 1022.135925 ms
+23980
+allocate_and_transfer_mueller_beams: 1.669312 ms
+convolve_mueller_beams_with_map: 5535.916504 ms
+23980
+transfer_pointing_streams: 28.189983 ms
+build_and_transfer_eval_grid: 1696.692505 ms
+23980
+allocate_and_transfer_mueller_beams: 2.928064 ms
+convolve_mueller_beams_with_map: 5527.710449 ms
+convolve single detector: 31707.1640491 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.783457 ms
+build_and_transfer_eval_grid: 1719.864624 ms
+23980
+allocate_and_transfer_mueller_beams: 2.304032 ms
+convolve_mueller_beams_with_map: 5527.166016 ms
+23980
+transfer_pointing_streams: 21.196928 ms
+build_and_transfer_eval_grid: 1722.585815 ms
+23980
+allocate_and_transfer_mueller_beams: 2.316896 ms
+convolve_mueller_beams_with_map: 5520.219727 ms
+23980
+transfer_pointing_streams: 20.341791 ms
+build_and_transfer_eval_grid: 1139.376099 ms
+23980
+allocate_and_transfer_mueller_beams: 1.668768 ms
+convolve_mueller_beams_with_map: 5526.357910 ms
+23980
+transfer_pointing_streams: 28.002527 ms
+build_and_transfer_eval_grid: 1704.103394 ms
+23980
+allocate_and_transfer_mueller_beams: 2.939392 ms
+convolve_mueller_beams_with_map: 5529.090820 ms
+convolve single detector: 32615.4270172 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.741665 ms
+build_and_transfer_eval_grid: 1000.830078 ms
+23980
+allocate_and_transfer_mueller_beams: 10.668320 ms
+convolve_mueller_beams_with_map: 5531.501953 ms
+23980
+transfer_pointing_streams: 23.237696 ms
+build_and_transfer_eval_grid: 963.925964 ms
+23980
+allocate_and_transfer_mueller_beams: 1.678080 ms
+convolve_mueller_beams_with_map: 5527.559082 ms
+23980
+transfer_pointing_streams: 16.453505 ms
+build_and_transfer_eval_grid: 1012.604248 ms
+23980
+allocate_and_transfer_mueller_beams: 1.625376 ms
+convolve_mueller_beams_with_map: 5523.731934 ms
+23980
+transfer_pointing_streams: 24.989632 ms
+build_and_transfer_eval_grid: 1688.036011 ms
+23980
+allocate_and_transfer_mueller_beams: 2.415264 ms
+convolve_mueller_beams_with_map: 5514.375488 ms
+convolve single detector: 30855.203867 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 23.656160 ms
+build_and_transfer_eval_grid: 1717.839355 ms
+23980
+allocate_and_transfer_mueller_beams: 2.314400 ms
+convolve_mueller_beams_with_map: 5537.366699 ms
+23980
+transfer_pointing_streams: 22.159040 ms
+build_and_transfer_eval_grid: 1694.750244 ms
+23980
+allocate_and_transfer_mueller_beams: 2.308896 ms
+convolve_mueller_beams_with_map: 5522.668945 ms
+23980
+transfer_pointing_streams: 23.751137 ms
+build_and_transfer_eval_grid: 1735.340820 ms
+23980
+allocate_and_transfer_mueller_beams: 2.289408 ms
+convolve_mueller_beams_with_map: 5530.010742 ms
+23980
+transfer_pointing_streams: 23.314655 ms
+build_and_transfer_eval_grid: 1699.077637 ms
+23980
+allocate_and_transfer_mueller_beams: 4.481632 ms
+convolve_mueller_beams_with_map: 5536.290039 ms
+convolve single detector: 32873.8698959 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 17.408224 ms
+build_and_transfer_eval_grid: 1675.763428 ms
+23980
+allocate_and_transfer_mueller_beams: 1.881536 ms
+convolve_mueller_beams_with_map: 5534.791016 ms
+23980
+transfer_pointing_streams: 22.264320 ms
+build_and_transfer_eval_grid: 1805.852783 ms
+23980
+allocate_and_transfer_mueller_beams: 1.874080 ms
+convolve_mueller_beams_with_map: 5532.170898 ms
+23980
+transfer_pointing_streams: 29.502272 ms
+build_and_transfer_eval_grid: 1692.445435 ms
+23980
+allocate_and_transfer_mueller_beams: 2.556672 ms
+convolve_mueller_beams_with_map: 5527.417480 ms
+23980
+transfer_pointing_streams: 28.035423 ms
+build_and_transfer_eval_grid: 1695.386230 ms
+23980
+allocate_and_transfer_mueller_beams: 1.888480 ms
+convolve_mueller_beams_with_map: 5528.095215 ms
+convolve single detector: 32933.9120388 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.049889 ms
+build_and_transfer_eval_grid: 1689.417969 ms
+23980
+allocate_and_transfer_mueller_beams: 1.886720 ms
+convolve_mueller_beams_with_map: 5532.229980 ms
+23980
+transfer_pointing_streams: 22.705376 ms
+build_and_transfer_eval_grid: 1694.161987 ms
+23980
+allocate_and_transfer_mueller_beams: 1.875424 ms
+convolve_mueller_beams_with_map: 5527.282715 ms
+23980
+transfer_pointing_streams: 18.747265 ms
+build_and_transfer_eval_grid: 1022.405762 ms
+23980
+allocate_and_transfer_mueller_beams: 1.776480 ms
+convolve_mueller_beams_with_map: 5528.309082 ms
+23980
+transfer_pointing_streams: 32.161858 ms
+build_and_transfer_eval_grid: 952.108154 ms
+23980
+allocate_and_transfer_mueller_beams: 1.748512 ms
+convolve_mueller_beams_with_map: 5532.789551 ms
+convolve single detector: 31589.6270275 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 22.875872 ms
+build_and_transfer_eval_grid: 1015.442566 ms
+23980
+allocate_and_transfer_mueller_beams: 1.740352 ms
+convolve_mueller_beams_with_map: 5535.113770 ms
+23980
+transfer_pointing_streams: 16.067553 ms
+build_and_transfer_eval_grid: 940.646179 ms
+23980
+allocate_and_transfer_mueller_beams: 1.644928 ms
+convolve_mueller_beams_with_map: 5527.137207 ms
+23980
+transfer_pointing_streams: 19.045919 ms
+build_and_transfer_eval_grid: 959.089233 ms
+23980
+allocate_and_transfer_mueller_beams: 1.677984 ms
+convolve_mueller_beams_with_map: 5522.439453 ms
+23980
+transfer_pointing_streams: 16.044672 ms
+build_and_transfer_eval_grid: 944.115967 ms
+23980
+allocate_and_transfer_mueller_beams: 1.658624 ms
+convolve_mueller_beams_with_map: 5525.377930 ms
+convolve single detector: 29882.2100163 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.486752 ms
+build_and_transfer_eval_grid: 946.605713 ms
+23980
+allocate_and_transfer_mueller_beams: 3.963584 ms
+convolve_mueller_beams_with_map: 5534.594238 ms
+23980
+transfer_pointing_streams: 23.646112 ms
+build_and_transfer_eval_grid: 1675.024170 ms
+23980
+allocate_and_transfer_mueller_beams: 2.285952 ms
+convolve_mueller_beams_with_map: 5526.988281 ms
+23980
+transfer_pointing_streams: 22.915680 ms
+build_and_transfer_eval_grid: 1117.982300 ms
+23980
+allocate_and_transfer_mueller_beams: 1.674272 ms
+convolve_mueller_beams_with_map: 5528.461426 ms
+23980
+transfer_pointing_streams: 19.602913 ms
+build_and_transfer_eval_grid: 1644.020630 ms
+23980
+allocate_and_transfer_mueller_beams: 4.098784 ms
+convolve_mueller_beams_with_map: 5524.866211 ms
+convolve single detector: 31954.1959763 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 16.805183 ms
+build_and_transfer_eval_grid: 957.023315 ms
+23980
+allocate_and_transfer_mueller_beams: 10.970112 ms
+convolve_mueller_beams_with_map: 5533.157227 ms
+23980
+transfer_pointing_streams: 20.940096 ms
+build_and_transfer_eval_grid: 952.831116 ms
+23980
+allocate_and_transfer_mueller_beams: 1.641504 ms
+convolve_mueller_beams_with_map: 5528.954590 ms
+23980
+transfer_pointing_streams: 23.017023 ms
+build_and_transfer_eval_grid: 1049.678345 ms
+23980
+allocate_and_transfer_mueller_beams: 1.647552 ms
+convolve_mueller_beams_with_map: 5529.986816 ms
+23980
+transfer_pointing_streams: 20.880384 ms
+build_and_transfer_eval_grid: 974.309570 ms
+23980
+allocate_and_transfer_mueller_beams: 1.673088 ms
+convolve_mueller_beams_with_map: 5532.153809 ms
+convolve single detector: 30130.7210922 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.566208 ms
+build_and_transfer_eval_grid: 975.273560 ms
+23980
+allocate_and_transfer_mueller_beams: 2.081120 ms
+convolve_mueller_beams_with_map: 5530.490723 ms
+23980
+transfer_pointing_streams: 19.803104 ms
+build_and_transfer_eval_grid: 1018.785217 ms
+23980
+allocate_and_transfer_mueller_beams: 1.626464 ms
+convolve_mueller_beams_with_map: 5524.308105 ms
+23980
+transfer_pointing_streams: 22.883200 ms
+build_and_transfer_eval_grid: 968.388245 ms
+23980
+allocate_and_transfer_mueller_beams: 1.822912 ms
+convolve_mueller_beams_with_map: 5523.926758 ms
+23980
+transfer_pointing_streams: 23.358688 ms
+build_and_transfer_eval_grid: 1642.744873 ms
+23980
+allocate_and_transfer_mueller_beams: 2.349312 ms
+convolve_mueller_beams_with_map: 5523.983887 ms
+convolve single detector: 30813.4250641 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.076448 ms
+build_and_transfer_eval_grid: 1640.890869 ms
+23980
+allocate_and_transfer_mueller_beams: 2.248320 ms
+convolve_mueller_beams_with_map: 5533.808105 ms
+23980
+transfer_pointing_streams: 31.559393 ms
+build_and_transfer_eval_grid: 1662.089966 ms
+23980
+allocate_and_transfer_mueller_beams: 10.251456 ms
+convolve_mueller_beams_with_map: 5517.310547 ms
+23980
+transfer_pointing_streams: 18.368416 ms
+build_and_transfer_eval_grid: 1922.635620 ms
+23980
+allocate_and_transfer_mueller_beams: 2.838784 ms
+convolve_mueller_beams_with_map: 5524.526855 ms
+23980
+transfer_pointing_streams: 20.521343 ms
+build_and_transfer_eval_grid: 1630.434448 ms
+23980
+allocate_and_transfer_mueller_beams: 2.999936 ms
+convolve_mueller_beams_with_map: 5527.873047 ms
+convolve single detector: 32907.1760178 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 23.804352 ms
+build_and_transfer_eval_grid: 1633.322021 ms
+23980
+allocate_and_transfer_mueller_beams: 2.305472 ms
+convolve_mueller_beams_with_map: 5517.196777 ms
+23980
+transfer_pointing_streams: 18.378656 ms
+build_and_transfer_eval_grid: 1633.827148 ms
+23980
+allocate_and_transfer_mueller_beams: 2.297184 ms
+convolve_mueller_beams_with_map: 5525.670410 ms
+23980
+transfer_pointing_streams: 23.526016 ms
+build_and_transfer_eval_grid: 1634.985229 ms
+23980
+allocate_and_transfer_mueller_beams: 2.278048 ms
+convolve_mueller_beams_with_map: 5529.305664 ms
+23980
+transfer_pointing_streams: 31.274336 ms
+build_and_transfer_eval_grid: 1630.681641 ms
+23980
+allocate_and_transfer_mueller_beams: 2.976992 ms
+convolve_mueller_beams_with_map: 5532.732422 ms
+convolve single detector: 32508.2740784 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.210239 ms
+build_and_transfer_eval_grid: 1641.245605 ms
+23980
+allocate_and_transfer_mueller_beams: 2.293888 ms
+convolve_mueller_beams_with_map: 5525.002930 ms
+23980
+transfer_pointing_streams: 18.118113 ms
+build_and_transfer_eval_grid: 1643.798950 ms
+23980
+allocate_and_transfer_mueller_beams: 2.275456 ms
+convolve_mueller_beams_with_map: 5525.626465 ms
+23980
+transfer_pointing_streams: 20.659201 ms
+build_and_transfer_eval_grid: 1868.935547 ms
+23980
+allocate_and_transfer_mueller_beams: 2.251776 ms
+convolve_mueller_beams_with_map: 5528.466797 ms
+23980
+transfer_pointing_streams: 23.997536 ms
+build_and_transfer_eval_grid: 962.126648 ms
+23980
+allocate_and_transfer_mueller_beams: 1.682912 ms
+convolve_mueller_beams_with_map: 5529.340332 ms
+convolve single detector: 32118.9920902 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.438751 ms
+build_and_transfer_eval_grid: 1635.906250 ms
+23980
+allocate_and_transfer_mueller_beams: 1.855168 ms
+convolve_mueller_beams_with_map: 5521.337402 ms
+23980
+transfer_pointing_streams: 22.842272 ms
+build_and_transfer_eval_grid: 1004.750000 ms
+23980
+allocate_and_transfer_mueller_beams: 1.792544 ms
+convolve_mueller_beams_with_map: 5526.221680 ms
+23980
+transfer_pointing_streams: 18.153025 ms
+build_and_transfer_eval_grid: 1962.157104 ms
+23980
+allocate_and_transfer_mueller_beams: 1.855840 ms
+convolve_mueller_beams_with_map: 5525.218262 ms
+23980
+transfer_pointing_streams: 18.113216 ms
+build_and_transfer_eval_grid: 1614.609131 ms
+23980
+allocate_and_transfer_mueller_beams: 2.508832 ms
+convolve_mueller_beams_with_map: 5524.479980 ms
+convolve single detector: 32204.2181492 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 19.428320 ms
+build_and_transfer_eval_grid: 1601.344849 ms
+23980
+allocate_and_transfer_mueller_beams: 2.525248 ms
+convolve_mueller_beams_with_map: 5521.398926 ms
+23980
+transfer_pointing_streams: 18.122849 ms
+build_and_transfer_eval_grid: 1620.969238 ms
+23980
+allocate_and_transfer_mueller_beams: 1.865024 ms
+convolve_mueller_beams_with_map: 5520.795410 ms
+23980
+transfer_pointing_streams: 18.029568 ms
+build_and_transfer_eval_grid: 1697.185791 ms
+23980
+allocate_and_transfer_mueller_beams: 1.871680 ms
+convolve_mueller_beams_with_map: 5527.143555 ms
+23980
+transfer_pointing_streams: 25.508801 ms
+build_and_transfer_eval_grid: 1616.383301 ms
+23980
+allocate_and_transfer_mueller_beams: 2.526848 ms
+convolve_mueller_beams_with_map: 5524.702148 ms
+convolve single detector: 32563.6599064 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 22.405376 ms
+build_and_transfer_eval_grid: 1638.368408 ms
+23980
+allocate_and_transfer_mueller_beams: 1.866656 ms
+convolve_mueller_beams_with_map: 5532.364258 ms
+23980
+transfer_pointing_streams: 21.922625 ms
+build_and_transfer_eval_grid: 974.914856 ms
+23980
+allocate_and_transfer_mueller_beams: 1.802336 ms
+convolve_mueller_beams_with_map: 5523.936523 ms
+23980
+transfer_pointing_streams: 20.970400 ms
+build_and_transfer_eval_grid: 1010.683960 ms
+23980
+allocate_and_transfer_mueller_beams: 1.653344 ms
+convolve_mueller_beams_with_map: 5523.921387 ms
+23980
+transfer_pointing_streams: 35.517666 ms
+build_and_transfer_eval_grid: 946.064941 ms
+23980
+allocate_and_transfer_mueller_beams: 1.649984 ms
+convolve_mueller_beams_with_map: 5524.436523 ms
+convolve single detector: 30714.4269943 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 23.412096 ms
+build_and_transfer_eval_grid: 973.838013 ms
+23980
+allocate_and_transfer_mueller_beams: 1.666144 ms
+convolve_mueller_beams_with_map: 5526.373047 ms
+23980
+transfer_pointing_streams: 16.021343 ms
+build_and_transfer_eval_grid: 948.473328 ms
+23980
+allocate_and_transfer_mueller_beams: 1.827552 ms
+convolve_mueller_beams_with_map: 5518.727539 ms
+23980
+transfer_pointing_streams: 22.996416 ms
+build_and_transfer_eval_grid: 1098.295288 ms
+23980
+allocate_and_transfer_mueller_beams: 1.667008 ms
+convolve_mueller_beams_with_map: 5538.170898 ms
+23980
+transfer_pointing_streams: 16.488768 ms
+build_and_transfer_eval_grid: 946.585754 ms
+23980
+allocate_and_transfer_mueller_beams: 1.640672 ms
+convolve_mueller_beams_with_map: 5525.365723 ms
+convolve single detector: 29882.1709156 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 16.099169 ms
+build_and_transfer_eval_grid: 1286.855957 ms
+23980
+allocate_and_transfer_mueller_beams: 2.318656 ms
+convolve_mueller_beams_with_map: 5523.220703 ms
+23980
+transfer_pointing_streams: 23.452543 ms
+build_and_transfer_eval_grid: 1600.164429 ms
+23980
+allocate_and_transfer_mueller_beams: 2.313568 ms
+convolve_mueller_beams_with_map: 5520.118164 ms
+23980
+transfer_pointing_streams: 16.018881 ms
+build_and_transfer_eval_grid: 950.642700 ms
+23980
+allocate_and_transfer_mueller_beams: 1.687360 ms
+convolve_mueller_beams_with_map: 5520.467285 ms
+23980
+transfer_pointing_streams: 23.658337 ms
+build_and_transfer_eval_grid: 1611.311646 ms
+23980
+allocate_and_transfer_mueller_beams: 2.295168 ms
+convolve_mueller_beams_with_map: 5518.088379 ms
+convolve single detector: 31474.2619991 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 22.338112 ms
+build_and_transfer_eval_grid: 1609.878662 ms
+23980
+allocate_and_transfer_mueller_beams: 2.897312 ms
+convolve_mueller_beams_with_map: 5531.803223 ms
+23980
+transfer_pointing_streams: 15.919296 ms
+build_and_transfer_eval_grid: 955.863403 ms
+23980
+allocate_and_transfer_mueller_beams: 1.678368 ms
+convolve_mueller_beams_with_map: 5521.848145 ms
+23980
+transfer_pointing_streams: 23.827999 ms
+build_and_transfer_eval_grid: 1614.974365 ms
+23980
+allocate_and_transfer_mueller_beams: 2.812128 ms
+convolve_mueller_beams_with_map: 5523.515625 ms
+23980
+transfer_pointing_streams: 22.405088 ms
+build_and_transfer_eval_grid: 1615.689819 ms
+23980
+allocate_and_transfer_mueller_beams: 2.275040 ms
+convolve_mueller_beams_with_map: 5522.976562 ms
+convolve single detector: 32019.012928 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 21.664097 ms
+build_and_transfer_eval_grid: 1616.470215 ms
+23980
+allocate_and_transfer_mueller_beams: 2.882688 ms
+convolve_mueller_beams_with_map: 5527.094238 ms
+23980
+transfer_pointing_streams: 21.494720 ms
+build_and_transfer_eval_grid: 1596.075928 ms
+23980
+allocate_and_transfer_mueller_beams: 2.356832 ms
+convolve_mueller_beams_with_map: 5525.747070 ms
+23980
+transfer_pointing_streams: 23.095455 ms
+build_and_transfer_eval_grid: 966.752625 ms
+23980
+allocate_and_transfer_mueller_beams: 1.736800 ms
+convolve_mueller_beams_with_map: 5527.162109 ms
+23980
+transfer_pointing_streams: 18.162464 ms
+build_and_transfer_eval_grid: 975.097046 ms
+23980
+allocate_and_transfer_mueller_beams: 1.690368 ms
+convolve_mueller_beams_with_map: 5528.959473 ms
+convolve single detector: 31226.2918949 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 18.161535 ms
+build_and_transfer_eval_grid: 1572.588135 ms
+23980
+allocate_and_transfer_mueller_beams: 3.482656 ms
+convolve_mueller_beams_with_map: 5525.123047 ms
+23980
+transfer_pointing_streams: 23.138975 ms
+build_and_transfer_eval_grid: 1598.995117 ms
+23980
+allocate_and_transfer_mueller_beams: 2.305472 ms
+convolve_mueller_beams_with_map: 5521.592285 ms
+23980
+transfer_pointing_streams: 18.424065 ms
+build_and_transfer_eval_grid: 1326.896606 ms
+23980
+allocate_and_transfer_mueller_beams: 2.373920 ms
+convolve_mueller_beams_with_map: 5535.479980 ms
+23980
+transfer_pointing_streams: 20.583263 ms
+build_and_transfer_eval_grid: 1601.732788 ms
+23980
+allocate_and_transfer_mueller_beams: 2.158752 ms
+convolve_mueller_beams_with_map: 5533.462402 ms
+convolve single detector: 32026.8890858 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 24.905249 ms
+build_and_transfer_eval_grid: 1630.285278 ms
+23980
+allocate_and_transfer_mueller_beams: 2.716672 ms
+convolve_mueller_beams_with_map: 5523.550781 ms
+23980
+transfer_pointing_streams: 23.809088 ms
+build_and_transfer_eval_grid: 977.788818 ms
+23980
+allocate_and_transfer_mueller_beams: 1.754240 ms
+convolve_mueller_beams_with_map: 5516.362793 ms
+23980
+transfer_pointing_streams: 26.317856 ms
+build_and_transfer_eval_grid: 1055.497314 ms
+23980
+allocate_and_transfer_mueller_beams: 1.669824 ms
+convolve_mueller_beams_with_map: 5527.755371 ms
+23980
+transfer_pointing_streams: 17.293823 ms
+build_and_transfer_eval_grid: 953.527100 ms
+23980
+allocate_and_transfer_mueller_beams: 1.681568 ms
+convolve_mueller_beams_with_map: 5521.473145 ms
+convolve single detector: 30665.7719612 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.941889 ms
+build_and_transfer_eval_grid: 967.607666 ms
+23980
+allocate_and_transfer_mueller_beams: 1.629024 ms
+convolve_mueller_beams_with_map: 5524.702637 ms
+23980
+transfer_pointing_streams: 23.094849 ms
+build_and_transfer_eval_grid: 970.918762 ms
+23980
+allocate_and_transfer_mueller_beams: 2.393600 ms
+convolve_mueller_beams_with_map: 5523.813965 ms
+23980
+transfer_pointing_streams: 22.925247 ms
+build_and_transfer_eval_grid: 985.755371 ms
+23980
+allocate_and_transfer_mueller_beams: 2.440928 ms
+convolve_mueller_beams_with_map: 5531.761719 ms
+23980
+transfer_pointing_streams: 19.113792 ms
+build_and_transfer_eval_grid: 967.980286 ms
+23980
+allocate_and_transfer_mueller_beams: 1.652800 ms
+convolve_mueller_beams_with_map: 5528.401367 ms
+convolve single detector: 29822.3938942 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 20.382368 ms
+build_and_transfer_eval_grid: 964.812622 ms
+23980
+allocate_and_transfer_mueller_beams: 1.640192 ms
+convolve_mueller_beams_with_map: 5537.800293 ms
+23980
+transfer_pointing_streams: 20.899136 ms
+build_and_transfer_eval_grid: 946.129761 ms
+23980
+allocate_and_transfer_mueller_beams: 1.668256 ms
+convolve_mueller_beams_with_map: 5518.204590 ms
+23980
+transfer_pointing_streams: 21.065472 ms
+build_and_transfer_eval_grid: 962.150818 ms
+23980
+allocate_and_transfer_mueller_beams: 1.662528 ms
+convolve_mueller_beams_with_map: 5523.265625 ms
+23980
+transfer_pointing_streams: 22.909344 ms
+build_and_transfer_eval_grid: 969.690186 ms
+23980
+allocate_and_transfer_mueller_beams: 1.633760 ms
+convolve_mueller_beams_with_map: 5521.099609 ms
+convolve single detector: 29913.4399891 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 22.086847 ms
+build_and_transfer_eval_grid: 953.776306 ms
+23980
+allocate_and_transfer_mueller_beams: 2.613344 ms
+convolve_mueller_beams_with_map: 5536.676758 ms
+23980
+transfer_pointing_streams: 22.827904 ms
+build_and_transfer_eval_grid: 970.132324 ms
+23980
+allocate_and_transfer_mueller_beams: 2.113280 ms
+convolve_mueller_beams_with_map: 5521.758301 ms
+23980
+transfer_pointing_streams: 23.302784 ms
+build_and_transfer_eval_grid: 953.259094 ms
+23980
+allocate_and_transfer_mueller_beams: 9.307296 ms
+convolve_mueller_beams_with_map: 5528.801758 ms
+23980
+transfer_pointing_streams: 21.883104 ms
+build_and_transfer_eval_grid: 956.082336 ms
+23980
+allocate_and_transfer_mueller_beams: 4.629856 ms
+convolve_mueller_beams_with_map: 5525.518066 ms
+convolve single detector: 29891.5150166 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 16.302624 ms
+build_and_transfer_eval_grid: 942.845337 ms
+23980
+allocate_and_transfer_mueller_beams: 1.614560 ms
+convolve_mueller_beams_with_map: 5524.917480 ms
+23980
+transfer_pointing_streams: 15.750880 ms
+build_and_transfer_eval_grid: 953.131836 ms
+23980
+allocate_and_transfer_mueller_beams: 1.770464 ms
+convolve_mueller_beams_with_map: 5514.231934 ms
+23980
+transfer_pointing_streams: 30.482496 ms
+build_and_transfer_eval_grid: 1580.438599 ms
+23980
+allocate_and_transfer_mueller_beams: 13.768960 ms
+convolve_mueller_beams_with_map: 5526.368652 ms
+23980
+transfer_pointing_streams: 35.117439 ms
+build_and_transfer_eval_grid: 1480.091309 ms
+23980
+allocate_and_transfer_mueller_beams: 1.678016 ms
+convolve_mueller_beams_with_map: 5525.339844 ms
+convolve single detector: 31058.5479736 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 22.502464 ms
+build_and_transfer_eval_grid: 946.636780 ms
+23980
+allocate_and_transfer_mueller_beams: 1.646496 ms
+convolve_mueller_beams_with_map: 5525.349121 ms
+23980
+transfer_pointing_streams: 23.051231 ms
+build_and_transfer_eval_grid: 973.703308 ms
+23980
+allocate_and_transfer_mueller_beams: 2.369024 ms
+convolve_mueller_beams_with_map: 5509.727051 ms
+23980
+transfer_pointing_streams: 22.897535 ms
+build_and_transfer_eval_grid: 954.184143 ms
+23980
+allocate_and_transfer_mueller_beams: 1.654912 ms
+convolve_mueller_beams_with_map: 5527.610840 ms
+23980
+transfer_pointing_streams: 15.868736 ms
+build_and_transfer_eval_grid: 958.377197 ms
+23980
+allocate_and_transfer_mueller_beams: 2.096704 ms
+convolve_mueller_beams_with_map: 5524.833008 ms
+convolve single detector: 29765.3329372 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 17.102592 ms
+build_and_transfer_eval_grid: 955.472595 ms
+23980
+allocate_and_transfer_mueller_beams: 1.752128 ms
+convolve_mueller_beams_with_map: 5529.312988 ms
+23980
+transfer_pointing_streams: 19.104416 ms
+build_and_transfer_eval_grid: 958.507141 ms
+23980
+allocate_and_transfer_mueller_beams: 1.645856 ms
+convolve_mueller_beams_with_map: 5509.816895 ms
+23980
+transfer_pointing_streams: 23.903551 ms
+build_and_transfer_eval_grid: 961.587891 ms
+23980
+allocate_and_transfer_mueller_beams: 1.723520 ms
+convolve_mueller_beams_with_map: 5515.338867 ms
+23980
+transfer_pointing_streams: 15.846272 ms
+build_and_transfer_eval_grid: 956.963440 ms
+23980
+allocate_and_transfer_mueller_beams: 1.644768 ms
+convolve_mueller_beams_with_map: 5523.477051 ms
+convolve single detector: 29831.8340778 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 17.091328 ms
+build_and_transfer_eval_grid: 958.147156 ms
+23980
+allocate_and_transfer_mueller_beams: 1.741504 ms
+convolve_mueller_beams_with_map: 5524.734863 ms
+23980
+transfer_pointing_streams: 19.877312 ms
+build_and_transfer_eval_grid: 969.283081 ms
+23980
+allocate_and_transfer_mueller_beams: 2.488416 ms
+convolve_mueller_beams_with_map: 5516.236328 ms
+23980
+transfer_pointing_streams: 21.356928 ms
+build_and_transfer_eval_grid: 1008.083618 ms
+23980
+allocate_and_transfer_mueller_beams: 1.651776 ms
+convolve_mueller_beams_with_map: 5523.010742 ms
+23980
+transfer_pointing_streams: 29.373728 ms
+build_and_transfer_eval_grid: 1015.795593 ms
+23980
+allocate_and_transfer_mueller_beams: 1.623200 ms
+convolve_mueller_beams_with_map: 5521.736816 ms
+convolve single detector: 30007.3039532 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 15.718048 ms
+build_and_transfer_eval_grid: 962.580505 ms
+23980
+allocate_and_transfer_mueller_beams: 9.974976 ms
+convolve_mueller_beams_with_map: 5532.895020 ms
+23980
+transfer_pointing_streams: 36.264671 ms
+build_and_transfer_eval_grid: 1571.577026 ms
+23980
+allocate_and_transfer_mueller_beams: 2.919904 ms
+convolve_mueller_beams_with_map: 5516.209473 ms
+23980
+transfer_pointing_streams: 18.013472 ms
+build_and_transfer_eval_grid: 1103.838989 ms
+23980
+allocate_and_transfer_mueller_beams: 1.680032 ms
+convolve_mueller_beams_with_map: 5526.737793 ms
+23980
+transfer_pointing_streams: 17.622112 ms
+build_and_transfer_eval_grid: 980.655151 ms
+23980
+allocate_and_transfer_mueller_beams: 1.683008 ms
+convolve_mueller_beams_with_map: 5522.381836 ms
+convolve single detector: 30523.6098766 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 22.481632 ms
+build_and_transfer_eval_grid: 1010.337036 ms
+23980
+allocate_and_transfer_mueller_beams: 6.642848 ms
+convolve_mueller_beams_with_map: 5521.457520 ms
+23980
+transfer_pointing_streams: 29.164640 ms
+build_and_transfer_eval_grid: 1608.694580 ms
+23980
+allocate_and_transfer_mueller_beams: 1.862720 ms
+convolve_mueller_beams_with_map: 5522.722656 ms
+23980
+transfer_pointing_streams: 18.938848 ms
+build_and_transfer_eval_grid: 1019.970581 ms
+23980
+allocate_and_transfer_mueller_beams: 1.782240 ms
+convolve_mueller_beams_with_map: 5530.845215 ms
+23980
+transfer_pointing_streams: 25.442047 ms
+build_and_transfer_eval_grid: 1595.339966 ms
+23980
+allocate_and_transfer_mueller_beams: 1.886240 ms
+convolve_mueller_beams_with_map: 5525.164551 ms
+convolve single detector: 31185.104847 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 24.432993 ms
+build_and_transfer_eval_grid: 1603.883667 ms
+23980
+allocate_and_transfer_mueller_beams: 1.883040 ms
+convolve_mueller_beams_with_map: 5531.774414 ms
+23980
+transfer_pointing_streams: 16.575775 ms
+build_and_transfer_eval_grid: 961.838745 ms
+23980
+allocate_and_transfer_mueller_beams: 1.734720 ms
+convolve_mueller_beams_with_map: 5516.419434 ms
+23980
+transfer_pointing_streams: 20.996096 ms
+build_and_transfer_eval_grid: 960.155762 ms
+23980
+allocate_and_transfer_mueller_beams: 1.836736 ms
+convolve_mueller_beams_with_map: 5520.441895 ms
+23980
+transfer_pointing_streams: 15.864448 ms
+build_and_transfer_eval_grid: 958.215332 ms
+23980
+allocate_and_transfer_mueller_beams: 1.784352 ms
+convolve_mueller_beams_with_map: 5519.374512 ms
+convolve single detector: 30398.0989456 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 26.566561 ms
+build_and_transfer_eval_grid: 1656.899414 ms
+23980
+allocate_and_transfer_mueller_beams: 1.882944 ms
+convolve_mueller_beams_with_map: 5525.366699 ms
+23980
+transfer_pointing_streams: 35.889793 ms
+build_and_transfer_eval_grid: 1031.147705 ms
+23980
+allocate_and_transfer_mueller_beams: 1.777312 ms
+convolve_mueller_beams_with_map: 5517.301270 ms
+23980
+transfer_pointing_streams: 26.399937 ms
+build_and_transfer_eval_grid: 989.133301 ms
+23980
+allocate_and_transfer_mueller_beams: 2.892992 ms
+convolve_mueller_beams_with_map: 5535.414062 ms
+23980
+transfer_pointing_streams: 26.884417 ms
+build_and_transfer_eval_grid: 1606.864258 ms
+23980
+allocate_and_transfer_mueller_beams: 1.871872 ms
+convolve_mueller_beams_with_map: 5527.743164 ms
+convolve single detector: 31375.2868176 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 24.780416 ms
+build_and_transfer_eval_grid: 1611.402710 ms
+23980
+allocate_and_transfer_mueller_beams: 1.881888 ms
+convolve_mueller_beams_with_map: 5524.747559 ms
+23980
+transfer_pointing_streams: 19.605536 ms
+build_and_transfer_eval_grid: 1089.700806 ms
+23980
+allocate_and_transfer_mueller_beams: 1.791040 ms
+convolve_mueller_beams_with_map: 5514.065918 ms
+23980
+transfer_pointing_streams: 30.836672 ms
+build_and_transfer_eval_grid: 993.202759 ms
+23980
+allocate_and_transfer_mueller_beams: 1.796320 ms
+convolve_mueller_beams_with_map: 5522.368652 ms
+23980
+transfer_pointing_streams: 15.402752 ms
+build_and_transfer_eval_grid: 1122.924683 ms
+23980
+allocate_and_transfer_mueller_beams: 2.323040 ms
+convolve_mueller_beams_with_map: 5527.288574 ms
+convolve single detector: 30812.073946 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 26.568447 ms
+build_and_transfer_eval_grid: 1582.357300 ms
+23980
+allocate_and_transfer_mueller_beams: 5.687584 ms
+convolve_mueller_beams_with_map: 5523.855957 ms
+23980
+transfer_pointing_streams: 24.203264 ms
+build_and_transfer_eval_grid: 1606.479248 ms
+23980
+allocate_and_transfer_mueller_beams: 2.298752 ms
+convolve_mueller_beams_with_map: 5509.735840 ms
+23980
+transfer_pointing_streams: 21.287359 ms
+build_and_transfer_eval_grid: 1603.194946 ms
+23980
+allocate_and_transfer_mueller_beams: 1.861248 ms
+convolve_mueller_beams_with_map: 5530.814453 ms
+23980
+transfer_pointing_streams: 25.272192 ms
+build_and_transfer_eval_grid: 1616.383301 ms
+23980
+allocate_and_transfer_mueller_beams: 1.943264 ms
+convolve_mueller_beams_with_map: 5526.947266 ms
+convolve single detector: 32322.6771355 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 26.360865 ms
+build_and_transfer_eval_grid: 1653.209473 ms
+23980
+allocate_and_transfer_mueller_beams: 1.822912 ms
+convolve_mueller_beams_with_map: 5522.159668 ms
+23980
+transfer_pointing_streams: 26.071199 ms
+build_and_transfer_eval_grid: 1580.601685 ms
+23980
+allocate_and_transfer_mueller_beams: 1.817568 ms
+convolve_mueller_beams_with_map: 5521.309082 ms
+23980
+transfer_pointing_streams: 29.049889 ms
+build_and_transfer_eval_grid: 1587.003174 ms
+23980
+allocate_and_transfer_mueller_beams: 2.556448 ms
+convolve_mueller_beams_with_map: 5529.252930 ms
+23980
+transfer_pointing_streams: 29.647680 ms
+build_and_transfer_eval_grid: 1597.852539 ms
+23980
+allocate_and_transfer_mueller_beams: 1.856896 ms
+convolve_mueller_beams_with_map: 5529.732910 ms
+convolve single detector: 32353.6250591 ms
+512
+convolving
+26422.345088 8000
+chunking
+23980
+transfer_pointing_streams: 25.387199 ms
+build_and_transfer_eval_grid: 1571.435425 ms
+23980
+allocate_and_transfer_mueller_beams: 5.191424 ms
+convolve_mueller_beams_with_map: 5521.666504 ms
+23980
+transfer_pointing_streams: 24.400192 ms
+build_and_transfer_eval_grid: 1602.374756 ms
+23980
+allocate_and_transfer_mueller_beams: 1.842080 ms
+convolve_mueller_beams_with_map: 5520.217285 ms
+23980
+transfer_pointing_streams: 24.403936 ms
+build_and_transfer_eval_grid: 1612.757568 ms
+23980
+allocate_and_transfer_mueller_beams: 1.859360 ms
+convolve_mueller_beams_with_map: 5523.966309 ms
+23980
+transfer_pointing_streams: 24.625919 ms
+build_and_transfer_eval_grid: 1596.660400 ms
+23980
+allocate_and_transfer_mueller_beams: 2.468704 ms
+convolve_mueller_beams_with_map: 5530.853027 ms
+convolve single detector: 32245.1891899 ms

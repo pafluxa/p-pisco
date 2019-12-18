@@ -23,6 +23,9 @@ static char      convolution_deproject_detector_docstring[] ="";
 static PyObject *convolution_vectorized_query_disc(PyObject *self, PyObject *args);
 static char      convolution_vectorized_query_disc_docstring[] ="";
 
+static PyObject *convolution_vectorized_query_ranges(PyObject *self, PyObject *args);
+static char      convolution_vectorized_query_ranges_docstring[] ="";
+
 static PyMethodDef module_methods[] = {
 
     {"deproject_detector",
@@ -33,6 +36,10 @@ static PyMethodDef module_methods[] = {
         convolution_vectorized_query_disc,
         METH_VARARGS,
         convolution_vectorized_query_disc_docstring },
+    {"vectorized_query_ranges",
+        convolution_vectorized_query_ranges,
+        METH_VARARGS,
+        convolution_vectorized_query_ranges_docstring },
     // Centinel
     {NULL, NULL, 0, NULL}
 };
@@ -101,6 +108,67 @@ static PyObject *convolution_vectorized_query_disc( PyObject *self, PyObject *ar
     return Py_None;
 }
 
+static PyObject *convolution_vectorized_query_ranges( PyObject *self, PyObject *args )
+{
+
+    PyObject *pyObj_ra, *pyObj_dec, *pyObj_ranges, *pyObj_range_count;
+    int sky_nside;
+    double disc_size;
+
+    if (!PyArg_ParseTuple(args, "OOidOO",
+        &pyObj_ra, &pyObj_dec, 
+        
+        &sky_nside, &disc_size, 
+        
+        &pyObj_ranges, &pyObj_range_count ) )
+    {
+        fprintf( stderr, "Bad arguments to function. RTFM!\n" );
+        return NULL;
+    }
+
+    // Parse feedhorn coordinates to numpy arrays
+    PyArrayObject *pyArr_ra =
+         (PyArrayObject*)PyArray_FROM_OTF( pyObj_ra, NPY_DOUBLE , NPY_ARRAY_IN_ARRAY);
+    
+    PyArrayObject *pyArr_dec =
+         (PyArrayObject*)PyArray_FROM_OTF( pyObj_dec, NPY_DOUBLE , NPY_ARRAY_IN_ARRAY);
+    
+    PyArrayObject *pyArr_ranges =
+         (PyArrayObject*)PyArray_FROM_OTF( pyObj_ranges, NPY_INT32, NPY_ARRAY_IN_ARRAY);
+
+    PyArrayObject *pyArr_range_count =
+         (PyArrayObject*)PyArray_FROM_OTF( pyObj_range_count, NPY_INT32, NPY_ARRAY_IN_ARRAY);
+    
+    int nsamples   = (int)PyArray_DIM( pyArr_ranges, 0 );
+    int max_ranges = (int)PyArray_DIM( pyArr_ranges, 1 );
+    
+    int *ranges      = (int *)PyArray_DATA( pyArr_ranges      );
+    int *range_count = (int *)PyArray_DATA( pyArr_range_count );
+
+    double *ra  = (double *)PyArray_DATA( pyArr_ra  );
+    double *dec = (double *)PyArray_DATA( pyArr_dec );
+   
+    libconvolve_vectorized_query_ranges                                                                           
+    (                                                                                                             
+        // input                                                                                                  
+        nsamples , ra, dec,                                                                  
+        sky_nside, disc_size,                                                                          
+        max_ranges,                                                                                 
+        // output                                                                                                 
+        ranges, range_count 
+    );                                                   
+    
+    Py_DECREF( pyArr_ra );
+    Py_DECREF( pyArr_dec );
+
+    Py_DECREF( pyArr_ranges );
+    Py_DECREF( pyArr_range_count );
+    
+    Py_INCREF( Py_None );
+
+    return Py_None;
+}
+
 static PyObject *convolution_deproject_detector(PyObject *self, PyObject *args)
 {
     // Feedhorn coordinates
@@ -126,9 +194,11 @@ static PyObject *convolution_deproject_detector(PyObject *self, PyObject *args)
 
     // GPU device to use in the computation
     int gpu_device;
+    
+    int maxPix;
 
     // Parse input parameters into Python Objects
-    if (!PyArg_ParseTuple(args, "OOOdiOOOOOOOOiO",
+    if (!PyArg_ParseTuple(args, "OOOdiOOiOOOOOOiO",
 
                   // Feedhorn coordinates
                   &pyObj_feed_ra, &pyObj_feed_dec, &pyObj_feed_pa,
@@ -138,7 +208,7 @@ static PyObject *convolution_deproject_detector(PyObject *self, PyObject *args)
 
                   // Mueller Matrices
                   &input_beam_nside, //NSIDE parameter of the beam
-                  &pyObj_re_M_beams, &pyObj_im_M_beams,
+                  &pyObj_re_M_beams, &pyObj_im_M_beams, &maxPix,
                   // Evaluation grid pixels
                   &pyObj_num_pixels, &pyObj_evalgrid_pixels,
 
@@ -255,6 +325,8 @@ static PyObject *convolution_deproject_detector(PyObject *self, PyObject *args)
 
     // Parse detector streams output buffers to C-arrays
     double *det_stream = (double *)PyArray_DATA( pyArr_det_stream );
+    
+    printf( "%d\n", maxPix );
 
     // Call for trouble!!
 	libconvolve_cuda_deproject_detector
@@ -285,6 +357,8 @@ static PyObject *convolution_deproject_detector(PyObject *self, PyObject *args)
         reM_VP  , imM_VP,
         reM_VPs , imM_VPs,
         reM_VV  , imM_VV,
+        // max pixel
+        maxPix,
         // Input map specs
         input_map_nside, input_map_size, I, Q, U, V,
         
