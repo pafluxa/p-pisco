@@ -1,0 +1,20 @@
+-cambiar cl por dl
+check
+
+-plotear en log y volver a comparar
+check, me gusta lineal
+
+-decir que escala es lineal
+check
+
+-revisar todos los plots
+check
+
+-revisar linea azul
+check
+
+-agregar al caption de figura 9 que es beam mismatch
+check
+
+-plot para tabla de performance y poner punto de class en el plot
+
